@@ -38,6 +38,9 @@ export default function AppLoading({ setIsAppReady }) {
       },
       {
         'montserrat-semi-bold': require('../../../assets/fonts/Montserrat-SemiBold.ttf')
+      },
+      {
+        'pacifico-regular': require('../../../assets/fonts/Pacifico-Regular.ttf')
       }
     ]);
 
