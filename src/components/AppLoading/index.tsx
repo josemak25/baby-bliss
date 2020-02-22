@@ -25,10 +25,19 @@ export default function AppLoading({ setIsAppReady }) {
 
     const fontAssets = cacheFonts([
       {
-        'notosans-regular': require('../../../assets/fonts/NotoSans-Regular.ttf')
+        'IBM-regular': require('../../../assets/fonts/IBMPlexSans-Regular.ttf')
       },
       {
-        'notosans-bold': require('../../../assets/fonts/NotoSans-Bold.ttf')
+        'montserrat-bold': require('../../../assets/fonts/Montserrat-Bold.ttf')
+      },
+      {
+        'montserrat-medium': require('../../../assets/fonts/Montserrat-Medium.ttf')
+      },
+      {
+        'montserrat-regular': require('../../../assets/fonts/Montserrat-Regular.ttf')
+      },
+      {
+        'montserrat-semi-bold': require('../../../assets/fonts/Montserrat-SemiBold.ttf')
       }
     ]);
 
