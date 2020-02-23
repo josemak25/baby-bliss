@@ -8,7 +8,7 @@ export const Container = styled.View`
 
 export const Welcome = styled.Text`
   font-size: ${({ theme }) => theme.fonts.LARGE_SIZE}px;
-  font-family: ${({ theme }) => theme.fonts.FAMILY_REGULAR};
+  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
   color: ${({ theme }) => theme.colors.FONT_DARK_COLOR};
   text-transform: capitalize;
 `;

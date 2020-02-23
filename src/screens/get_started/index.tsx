@@ -1,108 +1,114 @@
-import React, { useState } from 'react';
-
-import Button from '../../components/button';
-import { Container, Welcome } from './styles';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import React, { useContext } from 'react';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import { Ionicons } from '@expo/vector-icons';
+import { ThemeContext } from 'styled-components';
+import {
+  NavigationScreenProp,
+  NavigationParams,
+  NavigationState
+} from 'react-navigation';
+import Button from '../../components/button';
+import boxShadow from '../../utils/boxShadows';
+import { Container, SlideFooter, ReadMoreText } from './styles';
+import SlideScreenItem from './SlideScreenItem';
 
-const GetStarted = props => {
-  const slides = [
+export type SlideItem = {
+  key: string;
+  title: string;
+  text: string;
+  image: string;
+};
+
+interface GetStartedProp {
+  slides: SlideItem[];
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+const GetStarted = (props: GetStartedProp) => {
+
+  const { colors, fonts } = useContext(ThemeContext);
+
+  return (
+    <Container>
+      <AppIntroSlider
+        slides={props.slides}
+        renderItem={SlideScreenItem}
+        renderDoneButton={() => null}
+        renderNextButton={() => null}
+        activeDotStyle={{ backgroundColor: colors.POST_TIP_COLOR }}
+        dotStyle={{ backgroundColor: colors.INACTIVE_ICON_COLOR }}
+        contentContainerStyle={{ height: '80%' }}
+        paginationStyle={{ bottom: 40 }}
+      />
+
+      <SlideFooter>
+        <ReadMoreText>
+          Swipe to learn more
+      </ReadMoreText>
+        <Button
+          buttonStyle={[{
+            backgroundColor: colors.POST_TIP_COLOR,
+            borderRadius: 2
+          }, boxShadow({
+            elevation: 2,
+            color: 'rgba(175, 163, 180, 1)',
+            opacity: 0.3,
+            radius: 1,
+            height: 2.5
+          })]}
+          textStyle={{
+            color: colors.BG_LIGHT_COLOR,
+            textTransform: 'uppercase',
+            fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
+            fontSize: fonts.MEDIUM_SIZE - 1
+          }}
+          title="Get Started"
+          onPress={() => props.navigation.navigate('HomeScreen')}
+        />
+        <Button
+          title="Log in"
+          onPress={() => props.navigation.navigate('HomeScreen')}
+          textStyle={{
+            color: colors.POST_TIP_COLOR,
+            fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
+            fontSize: fonts.MEDIUM_SIZE,
+            textTransform: 'capitalize',
+          }}
+          buttonStyle={[{
+            borderRadius: 2
+          }, boxShadow({
+            elevation: 0.1,
+            color: 'rgba(175, 163, 180, 0.45)',
+            opacity: 0.3,
+            radius: 10,
+            height: 0
+          })]}
+        />
+      </SlideFooter>
+    </Container>
+  );
+};
+
+GetStarted.defaultProps = {
+  slides: [
     {
       key: 'getAnswer',
       title: 'GET ANSWERS',
       text:
         'Become a part of pregnancy and parenting tribe and have all your question answered by member and expect',
-      image: require('../../../assets/images/get-answers.png'),
-      backgroundColor: '#22bcb5'
+      image: require('../../../assets/images/get-answers.png')
     },
     {
       key: 'newsFeed',
       title: 'NEWS FEED',
       text: 'Get all Insight on everything Pregnancy and Motherhood',
-      image: require('../../../assets/images/news.png'),
-      backgroundColor: '#22bcb5'
+      image: require('../../../assets/images/news.png')
     },
     {
       key: 'shop',
       title: 'SHOP',
       text: 'Easily Shop for everything you need for Your baby',
-      image: require('../../../assets/images/shop.png'),
-      backgroundColor: '#22bcb5'
+      image: require('../../../assets/images/shop.png')
     }
-  ];
-  const RenderNextButton = () => {
-    return (
-      <View style={styles.buttonCircle}>
-        <Ionicons
-          name="md-arrow-round-forward"
-          color="rgba(255, 255, 255, .9)"
-          size={24}
-          style={{ backgroundColor: 'transparent' }}
-        />
-      </View>
-    );
-  };
-  const RenderDoneButton = () => {
-    return (
-      <View style={styles.buttonCircle}>
-        <Ionicons
-          name="md-checkmark"
-          color="rgba(255, 255, 255, .9)"
-          size={24}
-          style={{ backgroundColor: 'transparent' }}
-          onPress={() => props.navigation.navigate('HomeScreen')}
-        />
-      </View>
-    );
-  };
-
-  const renderSlideItem = ({ item }) => {
-    return (
-      <View key={item.title}>
-        <Text style={{ textAlign: 'center' }}>{item.title}</Text>
-        <View style={styles.image} >
-          <Image source={item.image} />
-          <Text>{item.text}</Text>
-        </View>
-      </View>
-    );
-  };
-
-  return (
-    <Container>
-      <AppIntroSlider
-        slides={slides}
-        renderItem={renderSlideItem}
-        renderDoneButton={RenderDoneButton}
-        renderNextButton={RenderNextButton}
-      />
-      <View style={styles.buttonStyle}>
-        <Button
-          title="Get Started"
-          onPress={() => props.navigation.navigate('HomeScreen')}
-        />
-      </View>
-    </Container>
-  );
+  ]
 };
-
-
-
-const styles = StyleSheet.create({
-  buttonCircle: {
-    width: 40,
-    height: 40,
-    backgroundColor: 'rgba(0, 0, 0, .2)',
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  image: {
-    width: '100%'
-  },
-  buttonStyle: {
-    marginBottom: 50
-  }
-});
 export default GetStarted;

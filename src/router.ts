@@ -20,8 +20,7 @@ const AppNavigator = createStackNavigator(
     HomeScreen: {
       screen: Screens.HomeScreen,
       navigationOptions: {
-        headerLeft: () => null,
-
+        headerLeft: () => null
       }
     }
   },
