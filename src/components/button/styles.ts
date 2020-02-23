@@ -11,7 +11,7 @@ export const Container = styled.TouchableOpacity`
 
 export const ButtonText = styled.Text`
   font-size: ${({ theme }) => theme.fonts.LARGE_SIZE}px;
-  font-family: ${({ theme }) => theme.fonts.FAMILY_REGULAR};
+  font-family: ${({ theme }) => theme.fonts.IBM_SANS_REGULAR};
   color: ${({ theme }) => theme.colors.FONT_DARK_COLOR};
   text-transform: capitalize;
 `;
