@@ -1,15 +1,11 @@
 import React, { useContext } from 'react';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { ThemeContext } from 'styled-components';
-import {
-  NavigationScreenProp,
-  NavigationParams,
-  NavigationState
-} from 'react-navigation';
 import Button from '../../components/button';
 import boxShadow from '../../utils/boxShadows';
 import { Container, SlideFooter, ReadMoreText } from './styles';
 import SlideScreenItem from './SlideScreenItem';
+import { GetStartedProp } from '../../constants';
 
 export type SlideItem = {
   key: string;
@@ -18,10 +14,7 @@ export type SlideItem = {
   image: string;
 };
 
-interface GetStartedProp {
-  slides: SlideItem[];
-  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
-}
+
 
 const GetStarted = (props: GetStartedProp) => {
 
