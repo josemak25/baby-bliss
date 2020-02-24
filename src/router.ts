@@ -8,11 +8,22 @@ const AppNavigator = createStackNavigator(
   {
     // Splash Route
     SplashScreen: { screen: Screens.SplashScreen },
-    // Splash Route
+
+    // Get started Route
     GetStartedScreen: {
       screen: Screens.GetStartedScreen,
       navigationOptions: {
-        title: null
+        title: null,
+        headerLeft: () => null
+      }
+    },
+
+    // Sign up Route
+    SignUpScreen: {
+      screen: Screens.SignUpScreen,
+      navigationOptions: {
+        title: null,
+        headerLeft: () => null
       }
     },
 
@@ -20,13 +31,14 @@ const AppNavigator = createStackNavigator(
     HomeScreen: {
       screen: Screens.HomeScreen,
       navigationOptions: {
-        headerLeft: () => null
+        headerLeft: () => null,
+        title: null
       }
     }
   },
 
   {
-    initialRouteName: 'GetStartedScreen',
+    initialRouteName: 'SignUpScreen',
     headerMode: 'screen',
     defaultNavigationOptions: { headerStyle: customHeaderStyle }
   }
