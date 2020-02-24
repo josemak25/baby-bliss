@@ -4,7 +4,7 @@ import { IconProps } from '../../src/constants';
 
 export default function PrivacyIcon(props: IconProps) {
   return (
-    <Svg width="70%" height="70%" viewBox="0 0 24 24" fill="none" {...props}>
+    <Svg width="40%" height="40%" viewBox="0 0 24 24" fill="none" {...props}>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

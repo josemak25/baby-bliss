@@ -8,11 +8,11 @@ type LoveIconProps = {
   height: string;
 };
 
-export default function PhoneIcon(props: LoveIconProps) {
+export default function LoveIcon(props: LoveIconProps) {
   const { colors } = useThemeContext();
 
   return (
-    <Svg width="70%" height="70%" viewBox="0 0 24 24" fill="none" {...props}>
+    <Svg width="40%" height="40%" viewBox="0 0 24 24" fill="none" {...props}>
       <Path
         d="M12 21.054C-8 10 6-2 12 5.588 18-2 32 10 12 21.054z"
         fill={
