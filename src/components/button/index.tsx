@@ -15,7 +15,7 @@ export default function Button(props: ButtonProps) {
   const { title, buttonStyle, textStyle } = props;
 
   return (
-    <Container style={[boxShadow({ elevation: 2 }), buttonStyle]} {...props}>
+    <Container style={buttonStyle} {...props}>
       <ButtonText style={textStyle}>{title}</ButtonText>
     </Container>
   );
