@@ -5,7 +5,6 @@ export const Container = styled.View`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.BG_LIGHT_COLOR};
-  padding-bottom: 80px;
 `;
 
 export const SlideContainer = styled.View`
@@ -38,9 +37,10 @@ export const SlideContent = styled.Text`
 
 export const SlideFooter = styled.View`
   width: 80%;
-  height: 20%;
+  height: 120px;
   justify-content: space-between;
   position: relative;
+  margin-bottom: 40px;
 `;
 
 export const ReadMoreText = styled.Text`
