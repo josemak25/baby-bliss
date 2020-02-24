@@ -25,9 +25,9 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
           appLogoLoaded: false,
           pregnancyLogoLoaded: true
         }),
-      3000
+      2000
     );
-    setTimeout(() => navigation.replace('HomeScreen'), 6000);
+    setTimeout(() => navigation.replace('HomeScreen'), 4000);
   }, []);
 
   return (
