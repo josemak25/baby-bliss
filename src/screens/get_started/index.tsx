@@ -26,7 +26,7 @@ export default function GetStarted(props: GetStartedProp) {
   return (
     <Container>
       <AppIntroSlider
-        testID='slider'
+        testID="slider"
         slides={props.slides}
         renderItem={SlideScreenItem}
         renderDoneButton={() => null}

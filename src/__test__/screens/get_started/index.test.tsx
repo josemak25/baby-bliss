@@ -5,61 +5,61 @@ import Theme from '../../../theme';
 import { createNavigationTestProps } from '../../../constants';
 
 const slides = [
-    {
-        key: 'getAnswer',
-        title: 'GET ANSWERS',
-        text:
-            'Become a part of pregnancy and parenting tribe and have all your question answered by member and expect',
-        image: require('../../../../assets/images/get-answers.png')
-    },
-    {
-        key: 'newsFeed',
-        title: 'NEWS FEED',
-        text: 'Get all Insight on everything Pregnancy and Motherhood',
-        image: require('../../../../assets/images/news.png')
-    }
+  {
+    key: 'getAnswer',
+    title: 'GET ANSWERS',
+    text:
+      'Become a part of pregnancy and parenting tribe and have all your question answered by member and expect',
+    image: require('../../../../assets/images/get-answers.png')
+  },
+  {
+    key: 'newsFeed',
+    title: 'NEWS FEED',
+    text: 'Get all Insight on everything Pregnancy and Motherhood',
+    image: require('../../../../assets/images/news.png')
+  }
 ];
 
-let props: any;
-let queryByTestIdGlobal: any;
+const mountComponent = () => {
+  const props: any = createNavigationTestProps({ slides });
+  const renderedProps = render(
+    <Theme>
+      <GetStarted {...props} />
+    </Theme>
+  );
+  return { props, ...renderedProps };
+};
 
-beforeEach(() => {
-    props = createNavigationTestProps({ slides });
-    const { queryByTestId } = render(
-        <Theme>
-            <GetStarted {...props} />
-        </Theme>
-    );
-    queryByTestIdGlobal = queryByTestId;
-});
+describe(' TEST GET_STARTED COMPONENT(<GetStarted/>)', () => {
+  test('It renders the App intro Slider component', () => {
+    const { queryByTestId } = mountComponent();
+    const appSliderComponent = queryByTestId('slider');
+    expect(appSliderComponent).toBeTruthy();
+    const readMoreText = queryByTestId('readMore');
+    expect(readMoreText).toBeTruthy();
+  });
 
-describe('<GetStarted/>', () => {
+  test('the length of the slides in the props to be 2', () => {
+    const { props } = mountComponent();
+    expect(props.slides.length).toBe(2);
+    expect(props.slides).toEqual(slides);
+  });
 
-    test('It renders the App intro Slider component', () => {
-        const appSliderComponent = queryByTestIdGlobal('slider');
-        expect(appSliderComponent).toBeTruthy();
-        const readMoreText = queryByTestIdGlobal('readMore');
-        expect(readMoreText).toBeTruthy();
-    });
+  test('That the login button was pressed', () => {
+    const { props, queryByTestId } = mountComponent();
+    const loginButton = queryByTestId('loginButton');
+    expect(loginButton).toBeTruthy();
+    fireEvent.press(queryByTestId('loginButton'));
+    expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
+    expect(props.navigation.navigate).toHaveBeenCalledWith('HomeScreen');
+  });
 
-    test('the length of the slides in the props to be 2', () => {
-        expect(props.slides.length).toBe(2);
-        expect(props.slides).toEqual(slides);
-    });
-
-    test('That the login button was pressed', () => {
-        const loginButton = queryByTestIdGlobal('loginButton');
-        expect(loginButton).toBeTruthy();
-        fireEvent.press(queryByTestIdGlobal('loginButton'));
-        expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
-        expect(props.navigation.navigate).toHaveBeenCalledWith('HomeScreen');
-    });
-
-    test('That the sigUp button was pressed', () => {
-        const signUpButton = queryByTestIdGlobal('getStartedButton');
-        expect(signUpButton).toBeTruthy();
-        fireEvent.press(queryByTestIdGlobal('getStartedButton'));
-        expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
-        expect(props.navigation.navigate).toHaveBeenCalledWith('SignUp');
-    });
+  test('That the sigUp button was pressed', () => {
+    const { props, queryByTestId } = mountComponent();
+    const signUpButton = queryByTestId('getStartedButton');
+    expect(signUpButton).toBeTruthy();
+    fireEvent.press(queryByTestId('getStartedButton'));
+    expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
+    expect(props.navigation.navigate).toHaveBeenCalledWith('SignUp');
+  });
 });

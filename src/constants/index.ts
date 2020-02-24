@@ -11,11 +11,16 @@ export const customHeaderStyle = {
   shadowOpacity: 0
 };
 
-export interface NavigationInterface {
-  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+interface NavigationScreenType
+  extends NavigationScreenProp<NavigationState, NavigationParams> {
+  replace: (T: string) => void;
 }
 
-export const createNavigationTestProps = (props: object) => ({
+export interface NavigationInterface {
+  navigation: NavigationScreenType;
+}
+
+export const createNavigationTestProps = (props: object = {}) => ({
   navigation: {
     state: { params: {} },
     dispatch: jest.fn(),
