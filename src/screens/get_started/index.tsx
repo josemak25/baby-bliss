@@ -26,7 +26,7 @@ export default function GetStarted(props: GetStartedProp) {
   return (
     <Container>
       <AppIntroSlider
-        testID='slider'
+        testID="slider"
         slides={props.slides}
         renderItem={SlideScreenItem}
         renderDoneButton={() => null}
@@ -61,7 +61,7 @@ export default function GetStarted(props: GetStartedProp) {
             fontSize: fonts.MEDIUM_SIZE - 1
           }}
           title="Get Started"
-          onPress={() => props.navigation.navigate('SignUp')}
+          onPress={() => props.navigation.navigate('SignUpScreen')}
         />
         <Button
           title="Log in"
