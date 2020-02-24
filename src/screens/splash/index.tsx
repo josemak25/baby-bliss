@@ -1,11 +1,16 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ActivityIndicator } from 'react-native';
-import { ThemeContext } from 'styled-components';
+import { NavigationInterface } from '../../constants';
 
 import { Container, ImageContainer, Image } from './styles';
+import { useThemeContext } from '../../theme';
 
-export default function SplashScreen({ navigation }) {
-  const { colors } = useContext(ThemeContext);
+interface SplashScreenProp extends NavigationInterface {
+  testID?: string;
+}
+
+export default function SplashScreen({ navigation }: SplashScreenProp) {
+  const { colors } = useThemeContext();
 
   const [splash, setSplash] = useState({
     appLogoLoaded: true,
@@ -20,9 +25,9 @@ export default function SplashScreen({ navigation }) {
           appLogoLoaded: false,
           pregnancyLogoLoaded: true
         }),
-      4000
+      3000
     );
-    setTimeout(() => navigation.replace('HomeScreen'), 8000);
+    setTimeout(() => navigation.replace('HomeScreen'), 6000);
   }, []);
 
   return (
@@ -30,6 +35,7 @@ export default function SplashScreen({ navigation }) {
       start={{ x: 0, y: 1 }}
       end={{ x: 0, y: 0 }}
       colors={[colors.GRADIENT_COLOR_FROM, colors.GRADIENT_COLOR_TO]}
+      testID="app-container"
     >
       {splash.appLogoLoaded && (
         <ImageContainer>
@@ -37,6 +43,7 @@ export default function SplashScreen({ navigation }) {
             style={{ resizeMode: 'contain', width: '100%', height: '100%' }}
             source={require('../../../assets/images/splash.png')}
             fadeDuration={0}
+            testID="app-icon"
           />
         </ImageContainer>
       )}
@@ -46,6 +53,7 @@ export default function SplashScreen({ navigation }) {
           style={{ resizeMode: 'stretch' }}
           source={require('../../../assets/images/splash_pregnancy.png')}
           fadeDuration={0}
+          testID="pregnancy-photo"
         />
       )}
 
@@ -60,6 +68,4 @@ export default function SplashScreen({ navigation }) {
   );
 }
 
-SplashScreen.navigationOptions = {
-  header: () => null
-};
+SplashScreen.navigationOptions = { header: () => null };
