@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.TouchableOpacity`
   min-width: 100px;
   min-height: 50px;
+  padding: 15px;
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.BD_DARK_COLOR};
