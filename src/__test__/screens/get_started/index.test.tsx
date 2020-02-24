@@ -20,52 +20,46 @@ const slides = [
     }
 ];
 
-
-
-
 let props: any;
-let mockedNavigator: any;
+let queryByTestIdGlobal: any;
 
-
-// beforeAll(() => {
-//     props = createNavigationTestProps({ slides })
-//     console.log(props);
-
-//     mockedNavigator = jest.fn(() => {
-//         return props.navigation.navigate()
-//     })
-//     console.log("mockedNavigator", mockedNavigator);
-
-
-// });
-
-describe('<GetStarted/>', () => {
+beforeEach(() => {
     props = createNavigationTestProps({ slides });
-
-    const { getByText, queryByTestId } = render(
+    const { queryByTestId } = render(
         <Theme>
-            <GetStarted testID='slider' {...props} />
+            <GetStarted {...props} />
         </Theme>
     );
+    queryByTestIdGlobal = queryByTestId;
+});
+
+describe('<GetStarted/>', () => {
 
     test('It renders the App intro Slider component', () => {
-        const appSliderComponent = queryByTestId('slider');
+        const appSliderComponent = queryByTestIdGlobal('slider');
         expect(appSliderComponent).toBeTruthy();
-        const readMoreText = queryByTestId('readMore');
+        const readMoreText = queryByTestIdGlobal('readMore');
         expect(readMoreText).toBeTruthy();
     });
 
     test('the length of the slides in the props to be 2', () => {
-        // expect(props.navigation['slides']).toBe(1);
+        expect(props.slides.length).toBe(2);
+        expect(props.slides).toEqual(slides);
     });
 
     test('That the login button was pressed', () => {
-        const loginButton = queryByTestId('loginButton');
+        const loginButton = queryByTestIdGlobal('loginButton');
         expect(loginButton).toBeTruthy();
+        fireEvent.press(queryByTestIdGlobal('loginButton'));
+        expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
+        expect(props.navigation.navigate).toHaveBeenCalledWith('HomeScreen');
+    });
 
-        // fireEvent.press(queryByTestId('loginButton');
-        // it('calls the onPress handler', () => {
-        //     expect(mockedNavigator).toHaveBeenCalledTimes(1);
-        // });
+    test('That the sigUp button was pressed', () => {
+        const signUpButton = queryByTestIdGlobal('getStartedButton');
+        expect(signUpButton).toBeTruthy();
+        fireEvent.press(queryByTestIdGlobal('getStartedButton'));
+        expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
+        expect(props.navigation.navigate).toHaveBeenCalledWith('SignUp');
     });
 });

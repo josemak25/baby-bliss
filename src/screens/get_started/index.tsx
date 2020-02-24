@@ -5,9 +5,8 @@ import SlideScreenItem from './SlideScreenItem';
 import boxShadow from '../../utils/boxShadows';
 import { NavigationInterface } from '../../constants';
 
-import { useThemeContext } from '../../theme'
+import { useThemeContext } from '../../theme';
 import { Container, SlideFooter, ReadMoreText } from './styles';
-
 
 export type SlideItem = {
   key: string;
@@ -17,10 +16,9 @@ export type SlideItem = {
 };
 
 interface GetStartedProp extends NavigationInterface {
-  slides: SlideItem[],
-  testID?: string
+  slides: SlideItem[];
+  testID?: string;
 }
-
 
 export default function GetStarted(props: GetStartedProp) {
   const { colors, fonts } = useThemeContext();
@@ -28,7 +26,7 @@ export default function GetStarted(props: GetStartedProp) {
   return (
     <Container>
       <AppIntroSlider
-        testID={props.testID}
+        testID='slider'
         slides={props.slides}
         renderItem={SlideScreenItem}
         renderDoneButton={() => null}
@@ -40,9 +38,9 @@ export default function GetStarted(props: GetStartedProp) {
       />
 
       <SlideFooter>
-        <ReadMoreText testID='readMore'>Swipe to learn more</ReadMoreText>
+        <ReadMoreText testID="readMore">Swipe to learn more</ReadMoreText>
         <Button
-          testID='getStartedButton'
+          testID="getStartedButton"
           buttonStyle={[
             {
               backgroundColor: colors.POST_TIP_COLOR,
@@ -67,7 +65,7 @@ export default function GetStarted(props: GetStartedProp) {
         />
         <Button
           title="Log in"
-          testID='loginButton'
+          testID="loginButton"
           onPress={() => props.navigation.navigate('HomeScreen')}
           textStyle={{
             color: colors.POST_TIP_COLOR,
@@ -91,7 +89,7 @@ export default function GetStarted(props: GetStartedProp) {
       </SlideFooter>
     </Container>
   );
-};
+}
 
 GetStarted.defaultProps = {
   slides: [
@@ -115,4 +113,4 @@ GetStarted.defaultProps = {
       image: require('../../../assets/images/shop.png')
     }
   ]
-}
+};
