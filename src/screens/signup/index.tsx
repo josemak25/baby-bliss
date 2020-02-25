@@ -11,7 +11,7 @@ import {
   TermsLink
 } from './styles';
 import UserIcon from '../../../assets/icons/user';
-import { View, KeyboardAvoidingView } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native';
 import MailIcon from '../../../assets/icons/mail';
 import PhoneIcon from '../../../assets/icons/phone';
 import PrivacyIcon from '../../../assets/icons/privacy';
@@ -40,6 +40,7 @@ export default function SignUp(props) {
         keyboardVerticalOffset={100}
       >
         <Logo
+          testID="appLogo"
           source={require('../../../assets/images/logo.png')}
           style={{ resizeMode: 'contain' }}
         />
@@ -116,12 +117,12 @@ export default function SignUp(props) {
             fontSize: fonts.MEDIUM_SIZE - 1
           }}
           title="Submit"
-          onPress={() => props.navigation.navigate('HomeScreen')}
+          onPress={() => props.navigation.navigate('ProfileSetupScreen')}
         />
         <Button
           title="Log in"
           testID="loginButton"
-          onPress={() => props.navigation.navigate('HomeScreen')}
+          onPress={() => props.navigation.navigate('LoginScreen')}
           textStyle={{
             color: colors.POST_TIP_COLOR,
             fontFamily: fonts.MONTSERRAT_SEMI_BOLD,

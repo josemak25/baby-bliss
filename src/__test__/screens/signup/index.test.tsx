@@ -1,64 +1,63 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
-import GetStarted from '../../../screens/get_started';
 import Theme from '../../../theme';
 import { createNavigationTestProps } from '../../../constants';
+import SignUpScreen from '../../../screens/signup';
 
-const slides = [
-  {
-    key: 'getAnswer',
-    title: 'GET ANSWERS',
-    text:
-      'Become a part of pregnancy and parenting tribe and have all your question answered by member and expect',
-    image: require('../../../../assets/images/get-answers.png')
-  },
-  {
-    key: 'newsFeed',
-    title: 'NEWS FEED',
-    text: 'Get all Insight on everything Pregnancy and Motherhood',
-    image: require('../../../../assets/images/news.png')
-  }
-];
+const user = {
+  userName: 'user1',
+  email: 'user1@decagonhq.com',
+  phone: '+2347090231093',
+  password: 'password'
+};
 
-let props: any;
-let queryByTestIdGlobal: any;
+const mountComponent = () => {
+  const onHandleChange = jest.fn(() => {});
 
-beforeEach(() => {
-  props = createNavigationTestProps({ slides });
-  const { queryByTestId } = render(
+  const props: any = createNavigationTestProps();
+  const renderedProps = render(
     <Theme>
-      <GetStarted {...props} />
+      <SignUpScreen {...props} />
     </Theme>
   );
-  queryByTestIdGlobal = queryByTestId;
-});
+  return {
+    props,
+    ...renderedProps,
+    onHandleChange
+  };
+};
 
-describe('<GetStarted/>', () => {
-  test('It renders the App intro Slider component', () => {
-    const appSliderComponent = queryByTestIdGlobal('slider');
-    expect(appSliderComponent).toBeTruthy();
-    const readMoreText = queryByTestIdGlobal('readMore');
-    expect(readMoreText).toBeTruthy();
+describe(' TEST GET_SIGNUP SCREEN (<SignUpScreen/>)', () => {
+  test('It renders the App logo component', () => {
+    const { queryByTestId } = mountComponent();
+    expect(queryByTestId('appLogo')).toBeTruthy();
   });
 
-  test('the length of the slides in the props to be 2', () => {
-    expect(props.slides.length).toBe(2);
-    expect(props.slides).toEqual(slides);
+  test('That the screen has all the necessary input fields', () => {
+    const { getByTestId } = mountComponent();
+    expect(getByTestId('userName')).toBeTruthy();
+    expect(getByTestId('email')).toBeTruthy();
+    expect(getByTestId('phone')).toBeTruthy();
+    expect(getByTestId('password')).toBeTruthy();
   });
 
   test('That the login button was pressed', () => {
-    const loginButton = queryByTestIdGlobal('loginButton');
+    const { props, queryByTestId } = mountComponent();
+    const loginButton = queryByTestId('loginButton');
     expect(loginButton).toBeTruthy();
-    fireEvent.press(queryByTestIdGlobal('loginButton'));
+    fireEvent.press(queryByTestId('loginButton'));
     expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
-    expect(props.navigation.navigate).toHaveBeenCalledWith('HomeScreen');
+    expect(props.navigation.navigate).toHaveBeenCalledWith('LoginScreen');
   });
 
   test('That the sigUp button was pressed', () => {
-    const signUpButton = queryByTestIdGlobal('getStartedButton');
+    const { props, queryByTestId } = mountComponent();
+    const signUpButton = queryByTestId('submitButton');
     expect(signUpButton).toBeTruthy();
-    fireEvent.press(queryByTestIdGlobal('getStartedButton'));
+    fireEvent.press(queryByTestId('submitButton'));
     expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
-    expect(props.navigation.navigate).toHaveBeenCalledWith('SignUpScreen');
+    expect(props.navigation.navigate).toHaveBeenCalledWith(
+      'ProfileSetupScreen'
+    );
   });
 });

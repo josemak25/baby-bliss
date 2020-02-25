@@ -9,7 +9,7 @@ describe('TEST INPUT_FILED COMPONENT(<InputFiled/>)', () => {
   const onFocusMock = jest.fn();
   const onBlurMock = jest.fn();
 
-  const { getByTestId, queryByTestId } = render(
+  const { getByTestId } = render(
     <Theme>
       <TextInput
         testID="textInput"
