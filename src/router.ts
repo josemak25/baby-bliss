@@ -6,6 +6,9 @@ import Screens from './screens';
 
 const AppNavigator = createStackNavigator(
   {
+    // Forgot Password Screen Route
+    ForgotPasswordScreen: { screen: Screens.ForgotPasswordScreen },
+
     // Splash Route
     SplashScreen: { screen: Screens.SplashScreen },
 
