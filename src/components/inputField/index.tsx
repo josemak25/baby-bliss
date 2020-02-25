@@ -36,7 +36,8 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
     keyboardType = 'default',
     returnKeyType = 'next',
     secureTextEntry = false,
-    style
+    style,
+    testID
   } = props;
 
   const [inputState, setInputState] = useState({
@@ -128,6 +129,7 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
           <Placeholder>{props.placeholder}</Placeholder>
         )}
         <TextInput
+          testID={testID}
           defaultValue={defaultValue}
           onChangeText={onChangeText}
           placeholder={placeholder}
