@@ -11,7 +11,9 @@ enum COLORS {
   POST_TIP_COLOR = '#50AE7C',
   FLOATING_MESSAGE_COLOR = '#3CB6AB',
   TEXT_INPUT_BORDER_COLOR = '#97989A',
-  IDLE_INPUT_COLOR = '#EEF2F5'
+  IDLE_INPUT_COLOR = '#EEF2F5',
+  GRADIENT_COLOR_FROM = '#53AF7E',
+  GRADIENT_COLOR_TO = '#3CB6AB'
 }
 
 // All app font sizes
@@ -44,6 +46,8 @@ declare module 'styled-components' {
       FLOATING_MESSAGE_COLOR: string;
       TEXT_INPUT_BORDER_COLOR: string;
       IDLE_INPUT_COLOR: string;
+      GRADIENT_COLOR_FROM: string;
+      GRADIENT_COLOR_TO: string;
     };
 
     // All Global App Font Sizes

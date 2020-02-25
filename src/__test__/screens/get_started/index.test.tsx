@@ -20,44 +20,45 @@ const slides = [
   }
 ];
 
-let props: any;
-let queryByTestIdGlobal: any;
-
-beforeEach(() => {
-  props = createNavigationTestProps({ slides });
-  const { queryByTestId } = render(
+const mountComponent = () => {
+  const props: any = createNavigationTestProps({ slides });
+  const renderedProps = render(
     <Theme>
       <GetStarted {...props} />
     </Theme>
   );
-  queryByTestIdGlobal = queryByTestId;
-});
+  return { props, ...renderedProps };
+};
 
-describe('<GetStarted/>', () => {
+describe(' TEST GET_STARTED COMPONENT(<GetStarted/>)', () => {
   test('It renders the App intro Slider component', () => {
-    const appSliderComponent = queryByTestIdGlobal('slider');
+    const { queryByTestId } = mountComponent();
+    const appSliderComponent = queryByTestId('slider');
     expect(appSliderComponent).toBeTruthy();
-    const readMoreText = queryByTestIdGlobal('readMore');
+    const readMoreText = queryByTestId('readMore');
     expect(readMoreText).toBeTruthy();
   });
 
   test('the length of the slides in the props to be 2', () => {
+    const { props } = mountComponent();
     expect(props.slides.length).toBe(2);
     expect(props.slides).toEqual(slides);
   });
 
   test('That the login button was pressed', () => {
-    const loginButton = queryByTestIdGlobal('loginButton');
+    const { props, queryByTestId } = mountComponent();
+    const loginButton = queryByTestId('loginButton');
     expect(loginButton).toBeTruthy();
-    fireEvent.press(queryByTestIdGlobal('loginButton'));
+    fireEvent.press(queryByTestId('loginButton'));
     expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
     expect(props.navigation.navigate).toHaveBeenCalledWith('HomeScreen');
   });
 
   test('That the sigUp button was pressed', () => {
-    const signUpButton = queryByTestIdGlobal('getStartedButton');
+    const { props, queryByTestId } = mountComponent();
+    const signUpButton = queryByTestId('getStartedButton');
     expect(signUpButton).toBeTruthy();
-    fireEvent.press(queryByTestIdGlobal('getStartedButton'));
+    fireEvent.press(queryByTestId('getStartedButton'));
     expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
     expect(props.navigation.navigate).toHaveBeenCalledWith('SignUpScreen');
   });
