@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import InputFiled from '../../components/inputField';
 
-import { Container, Logo, FormFields, FormControls } from './styles';
+import {
+  Container,
+  Logo,
+  FormFields,
+  FormControls,
+  TermsAndCondition,
+  TermsLabel,
+  TermsLink
+} from './styles';
 import UserIcon from '../../../assets/icons/user';
 import { View, KeyboardAvoidingView } from 'react-native';
 import MailIcon from '../../../assets/icons/mail';
@@ -25,13 +33,16 @@ export default function SignUp(props) {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior="padding"
-      keyboardVerticalOffset={100}
-    >
-      <Container>
-        <Logo source={require('../../../assets/images/logo.png')} />
+    <Container>
+      <KeyboardAvoidingView
+        style={{ alignItems: 'center', width: '100%' }}
+        behavior="padding"
+        keyboardVerticalOffset={100}
+      >
+        <Logo
+          source={require('../../../assets/images/logo.png')}
+          style={{ resizeMode: 'contain' }}
+        />
         <FormFields>
           <InputFiled
             placeholder="Username"
@@ -39,6 +50,10 @@ export default function SignUp(props) {
             onChangeText={onHandleChange('userName')}
             defaultValue={values.userName}
             textContentType="name"
+            style={{
+              borderTopStartRadius: 10,
+              borderTopEndRadius: 10
+            }}
           >
             <UserIcon />
           </InputFiled>
@@ -67,71 +82,77 @@ export default function SignUp(props) {
             testID="password"
             onChangeText={onHandleChange('password')}
             defaultValue={values.password}
-            textContentType="password"
+            secureTextEntry={true}
             returnKeyType="done"
+            style={{
+              borderBottomStartRadius: 10,
+              borderBottomEndRadius: 10
+            }}
           >
             <PrivacyIcon />
           </InputFiled>
-          <FormControls>
-            <Button
-              testID="signupButton"
-              buttonStyle={[
-                {
-                  backgroundColor: colors.POST_TIP_COLOR,
-                  borderRadius: 2
-                },
-                boxShadow({
-                  elevation: 2,
-                  color: 'rgba(175, 163, 180, 1)',
-                  opacity: 0.3,
-                  radius: 1,
-                  height: 2.5
-                })
-              ]}
-              textStyle={{
-                color: colors.BG_LIGHT_COLOR,
-                textTransform: 'uppercase',
-                fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
-                fontSize: fonts.MEDIUM_SIZE - 1
-              }}
-              title="Sign up"
-              onPress={() => props.navigation.navigate('HomeScreen')}
-            />
-            <Button
-              title="Log in"
-              testID="loginButton"
-              onPress={() => props.navigation.navigate('HomeScreen')}
-              textStyle={{
-                color: colors.POST_TIP_COLOR,
-                fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
-                fontSize: fonts.MEDIUM_SIZE,
-                textTransform: 'capitalize'
-              }}
-              buttonStyle={[
-                {
-                  borderRadius: 2
-                },
-                boxShadow({
-                  elevation: 0.1,
-                  color: 'rgba(175, 163, 180, 0.45)',
-                  opacity: 0.3,
-                  radius: 10,
-                  height: 0
-                })
-              ]}
-            />
-          </FormControls>
         </FormFields>
-      </Container>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+      <FormControls>
+        <Button
+          testID="submitButton"
+          buttonStyle={[
+            {
+              backgroundColor: colors.POST_TIP_COLOR,
+              borderRadius: 2
+            },
+            boxShadow({
+              elevation: 2,
+              color: 'rgba(175, 163, 180, 1)',
+              opacity: 0.3,
+              radius: 1,
+              height: 2.5
+            })
+          ]}
+          textStyle={{
+            color: colors.BG_LIGHT_COLOR,
+            textTransform: 'uppercase',
+            fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
+            fontSize: fonts.MEDIUM_SIZE - 1
+          }}
+          title="Submit"
+          onPress={() => props.navigation.navigate('HomeScreen')}
+        />
+        <Button
+          title="Log in"
+          testID="loginButton"
+          onPress={() => props.navigation.navigate('HomeScreen')}
+          textStyle={{
+            color: colors.POST_TIP_COLOR,
+            fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
+            fontSize: fonts.MEDIUM_SIZE,
+            textTransform: 'capitalize'
+          }}
+          buttonStyle={[
+            {
+              borderRadius: 2
+            },
+            boxShadow({
+              elevation: 0.3,
+              color: 'rgba(175, 163, 180, 0.45)',
+              opacity: 0.5,
+              radius: 10,
+              height: 0
+            })
+          ]}
+        />
+      </FormControls>
+      <TermsAndCondition>
+        <TermsLabel>By signing up you have agreed to our</TermsLabel>
+        <TermsLink>Terms of Use & Privacy Policy</TermsLink>
+      </TermsAndCondition>
+    </Container>
   );
 }
 
 SignUp.navigationOptions = ({ navigationOptions }) => {
   return {
     ...navigationOptions,
-    headerStyle: {
-      backgroundColor: '#F4F8FB'
-    }
+    headerStyle: { backgroundColor: '#F4F8FB' }
   };
 };
