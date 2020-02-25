@@ -5,7 +5,6 @@ export const Container = styled.View`
   height: 75px;
   flex-direction: row;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.BG_LIGHT_COLOR};
 `;
 
 export const InputContainer = styled.View`
@@ -19,7 +18,7 @@ export const Placeholder = styled.Text`
   width: 100%;
   font-size: ${({ theme }) => theme.fonts.MEDIUM_SIZE}px;
   font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
-  color: ${({ theme }) => theme.colors.TEXT_INPUT_BORDER_COLOR};
+  color: ${({ theme }) => theme.colors.POST_TIP_COLOR};
   text-transform: capitalize;
   padding-top: 10px;
 `;
@@ -37,4 +36,14 @@ export const IconContainer = styled.View`
   height: 100%;
   justify-content: center;
   align-items: center;
+`;
+
+export const CheckedContainer = styled.View`
+  width: 17px;
+  height: 17px;
+  border-radius: ${17 / 2}px;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  right: 20px;
 `;
