@@ -68,4 +68,11 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
   );
 }
 
-SplashScreen.navigationOptions = { header: () => null };
+SplashScreen.navigationOptions = ({ navigationOptions }) => {
+  return {
+    ...navigationOptions,
+    headerTitle: () => null,
+    headerLeft: () => null,
+    headerStyle: { backgroundColor: '#F4F8FB' }
+  };
+};
