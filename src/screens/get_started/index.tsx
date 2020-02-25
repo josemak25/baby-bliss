@@ -61,7 +61,7 @@ export default function GetStarted(props: GetStartedProp) {
             fontSize: fonts.MEDIUM_SIZE - 1
           }}
           title="Get Started"
-          onPress={() => props.navigation.navigate('SignUp')}
+          onPress={() => props.navigation.navigate('SignUpScreen')}
         />
         <Button
           title="Log in"
@@ -113,4 +113,13 @@ GetStarted.defaultProps = {
       image: require('../../../assets/images/shop.png')
     }
   ]
+};
+
+GetStarted.navigationOptions = ({ navigationOptions }) => {
+  return {
+    ...navigationOptions,
+    headerTitle: () => null,
+    headerLeft: () => null,
+    headerStyle: { backgroundColor: '#F4F8FB' }
+  };
 };

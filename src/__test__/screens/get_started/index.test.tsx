@@ -60,6 +60,6 @@ describe(' TEST GET_STARTED COMPONENT(<GetStarted/>)', () => {
     expect(signUpButton).toBeTruthy();
     fireEvent.press(queryByTestId('getStartedButton'));
     expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
-    expect(props.navigation.navigate).toHaveBeenCalledWith('SignUp');
+    expect(props.navigation.navigate).toHaveBeenCalledWith('SignUpScreen');
   });
 });

@@ -2,7 +2,7 @@ import 'styled-components';
 
 // All app colors
 enum COLORS {
-  BD_DARK_COLOR = '#FEFEFE',
+  BD_DARK_COLOR = '#F4F8FB',
   BG_LIGHT_COLOR = '#FFFFFF',
   FONT_DARK_COLOR = '#0D0E10',
   FONT_LIGHT_COLOR = '#2E2D2D',
@@ -10,6 +10,8 @@ enum COLORS {
   LIKE_POST_COLOR = '#F42850',
   POST_TIP_COLOR = '#50AE7C',
   FLOATING_MESSAGE_COLOR = '#3CB6AB',
+  TEXT_INPUT_BORDER_COLOR = '#97989A',
+  IDLE_INPUT_COLOR = '#EEF2F5',
   GRADIENT_COLOR_FROM = '#53AF7E',
   GRADIENT_COLOR_TO = '#3CB6AB'
 }
@@ -42,6 +44,8 @@ declare module 'styled-components' {
       LIKE_POST_COLOR: string;
       POST_TIP_COLOR: string;
       FLOATING_MESSAGE_COLOR: string;
+      TEXT_INPUT_BORDER_COLOR: string;
+      IDLE_INPUT_COLOR: string;
       GRADIENT_COLOR_FROM: string;
       GRADIENT_COLOR_TO: string;
     };
