@@ -11,7 +11,7 @@ export const Container = styled.View`
 export const Logo = styled.Image`
   width: 100px;
   height: 60px;
-  margin-bottom: 20px;
+  bottom: 20px;
 `;
 
 export const FormFields = styled.View`

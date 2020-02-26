@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
+import { KeyboardAvoidingView } from 'react-native';
+import { useThemeContext } from '../../theme';
+import { NavigationInterface } from '../../constants';
+
+import Button from '../../components/button';
 import InputFiled from '../../components/inputField';
+
+import UserIcon from '../../../assets/icons/user';
+import MailIcon from '../../../assets/icons/mail';
+import PhoneIcon from '../../../assets/icons/phone';
+import PrivacyIcon from '../../../assets/icons/privacy';
+import boxShadow from '../../utils/boxShadows';
 
 import {
   Container,
@@ -10,26 +21,26 @@ import {
   TermsLabel,
   TermsLink
 } from './styles';
-import UserIcon from '../../../assets/icons/user';
-import { KeyboardAvoidingView } from 'react-native';
-import MailIcon from '../../../assets/icons/mail';
-import PhoneIcon from '../../../assets/icons/phone';
-import PrivacyIcon from '../../../assets/icons/privacy';
-import Button from '../../components/button';
-import { useThemeContext } from '../../theme';
-import boxShadow from '../../utils/boxShadows';
 
-export default function SignUp(props) {
+export default function SignUp({ navigation }: NavigationInterface) {
   const [values, setValues] = useState({
     userName: '',
     email: '',
     phone: '',
     password: ''
   });
+
   const { colors, fonts } = useThemeContext();
 
   const onHandleChange = (field: string) => (value: string) => {
     setValues({ ...values, [field]: value });
+  };
+
+  const handleSubmit = () => {
+    // dispatch action to submit form
+
+    // on success navigate to profile setup screen
+    navigation.navigate('ProfileSetupScreen');
   };
 
   return (
@@ -117,12 +128,12 @@ export default function SignUp(props) {
             fontSize: fonts.MEDIUM_SIZE - 1
           }}
           title="Submit"
-          onPress={() => props.navigation.navigate('ProfileSetupScreen')}
+          onPress={handleSubmit}
         />
         <Button
           title="Log in"
           testID="loginButton"
-          onPress={() => props.navigation.navigate('LoginScreen')}
+          onPress={() => navigation.navigate('LoginScreen')}
           textStyle={{
             color: colors.POST_TIP_COLOR,
             fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
