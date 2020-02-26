@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 
 export const SafeAreaView = styled.SafeAreaView`
   flex: 1;
+  background-color: ${({ theme }) => theme.colors.BD_DARK_COLOR};
 `;
 
 export const KeyboardAvoidingView = styled.KeyboardAvoidingView`
@@ -11,7 +12,6 @@ export const KeyboardAvoidingView = styled.KeyboardAvoidingView`
 export const Container = styled.View`
   flex: 1;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.BD_DARK_COLOR};
 `;
 
 export const HeaderTitle = styled.Text`
@@ -26,7 +26,6 @@ export const ImageContainer = styled.View`
   width: 100%;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.BD_DARK_COLOR};
 `;
 
 export const TitleContainer = styled.View`

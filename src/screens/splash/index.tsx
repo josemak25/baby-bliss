@@ -40,7 +40,13 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
       {splash.appLogoLoaded && (
         <ImageContainer>
           <Image
-            style={{ resizeMode: 'contain', width: '100%', height: '100%' }}
+            style={{
+              resizeMode: 'contain',
+              width: '60%',
+              height: '100%',
+              bottom: 50,
+              left: 10
+            }}
             source={require('../../../assets/images/splash.png')}
             fadeDuration={0}
             testID="app-icon"
@@ -68,11 +74,4 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
   );
 }
 
-SplashScreen.navigationOptions = ({ navigationOptions }) => {
-  return {
-    ...navigationOptions,
-    headerTitle: () => null,
-    headerLeft: () => null,
-    headerStyle: { backgroundColor: '#F4F8FB' }
-  };
-};
+SplashScreen.navigationOptions = { headerShown: false };
