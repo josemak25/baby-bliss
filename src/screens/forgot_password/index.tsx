@@ -42,7 +42,7 @@ export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
     <SafeAreaView>
       <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={100}>
         <Container testID="forgot-password-container">
-          <ImageContainer>
+          <ImageContainer testID="lottie-animation-container">
             <LottieView
               source={require('../../../assets/animations/forgot_password.json')}
               autoPlay
@@ -57,7 +57,7 @@ export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
           <FormField>
             <InputField
               placeholder="Email"
-              testID="email"
+              testID="email-input"
               onChangeText={onHandleChange}
               defaultValue={email}
               textContentType="emailAddress"
