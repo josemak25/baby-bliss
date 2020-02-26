@@ -2,8 +2,13 @@ import React from 'react';
 
 import Button from '../../components/button';
 import { Container, Welcome } from './styles';
+import { NavigationInterface } from '../../constants';
 
-export default function HomeScreen() {
+interface HomeScreenProp extends NavigationInterface {
+  testID?: string;
+}
+
+export default function HomeScreen(props: HomeScreenProp) {
   return (
     <Container>
       <Button title="HomeScreen screen button" />
