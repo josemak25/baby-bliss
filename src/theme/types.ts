@@ -10,8 +10,7 @@ enum COLORS {
   LIKE_POST_COLOR = '#F42850',
   POST_TIP_COLOR = '#50AE7C',
   FLOATING_MESSAGE_COLOR = '#3CB6AB',
-  TEXT_INPUT_BORDER_COLOR = '#97989A',
-  IDLE_INPUT_COLOR = '#EEF2F5',
+  IDLE_INPUT_COLOR = '#e6ebee',
   GRADIENT_COLOR_FROM = '#53AF7E',
   GRADIENT_COLOR_TO = '#3CB6AB'
 }
@@ -44,7 +43,6 @@ declare module 'styled-components' {
       LIKE_POST_COLOR: string;
       POST_TIP_COLOR: string;
       FLOATING_MESSAGE_COLOR: string;
-      TEXT_INPUT_BORDER_COLOR: string;
       IDLE_INPUT_COLOR: string;
       GRADIENT_COLOR_FROM: string;
       GRADIENT_COLOR_TO: string;
