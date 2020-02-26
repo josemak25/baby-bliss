@@ -16,7 +16,6 @@ HomeScreen.navigationOptions = ({ navigationOptions }) => {
   return {
     ...navigationOptions,
     headerTitle: () => null,
-    headerLeft: () => null,
-    headerStyle: { backgroundColor: '#F4F8FB' }
+    headerLeft: () => null
   };
 };
