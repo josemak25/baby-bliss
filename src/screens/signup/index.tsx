@@ -20,7 +20,8 @@ import {
   TermsAndCondition,
   TermsLabel,
   TermsLink,
-  SafeAreaView
+  SafeAreaView,
+  HeaderTitle
 } from './styles';
 
 export default function SignUp({ navigation }: NavigationInterface) {
@@ -168,8 +169,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
 SignUp.navigationOptions = ({ navigationOptions }) => {
   return {
     ...navigationOptions,
-    headerTitle: () => null,
-    headerLeft: () => null,
+    headerTitle: () => <HeaderTitle>signup</HeaderTitle>,
     headerStyle: { backgroundColor: '#F4F8FB' }
   };
 };

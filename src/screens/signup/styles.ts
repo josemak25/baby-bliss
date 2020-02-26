@@ -5,6 +5,13 @@ export const SafeAreaView = styled.SafeAreaView`
   background-color: ${({ theme }) => theme.colors.BD_DARK_COLOR};
 `;
 
+export const HeaderTitle = styled.Text`
+  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE}px;
+  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
+  color: ${({ theme }) => theme.colors.FONT_DARK_COLOR};
+  text-transform: capitalize;
+`;
+
 export const Container = styled.View`
   flex: 1;
   justify-content: space-evenly;
