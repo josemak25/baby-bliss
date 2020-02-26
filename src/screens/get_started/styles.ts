@@ -4,7 +4,7 @@ export const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.BG_LIGHT_COLOR};
+  background-color: ${({ theme }) => theme.colors.BD_DARK_COLOR};
 `;
 
 export const SlideContainer = styled.View`
@@ -16,10 +16,12 @@ export const SlideContainer = styled.View`
 `;
 
 export const SlideTitle = styled.Text`
+  width: 100%;
   font-size: ${({ theme }) => theme.fonts.LARGE_SIZE + 15}px;
   font-family: ${({ theme }) => theme.fonts.PACIFICO_REGULAR};
   color: ${({ theme }) => theme.colors.POST_TIP_COLOR};
   text-transform: capitalize;
+  text-align: center;
 `;
 
 export const SlideImage = styled.Image`
