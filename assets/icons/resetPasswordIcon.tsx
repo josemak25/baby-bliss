@@ -1,7 +1,8 @@
 import * as React from 'react';
 import Svg, { Path } from 'react-native-svg';
+import { IconProps } from '../../src/constants';
 
-export default function ForgotPasswordIcon(props) {
+export default function ForgotPasswordIcon(props: IconProps) {
   return (
     <Svg width="100%" height="100%" viewBox="0 0 445 473" {...props}>
       <Path
