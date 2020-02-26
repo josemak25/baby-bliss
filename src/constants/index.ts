@@ -8,7 +8,8 @@ import {
 export const customHeaderStyle = {
   borderBottomWidth: 0,
   elevation: 0,
-  shadowOpacity: 0
+  shadowOpacity: 0,
+  backgroundColor: '#F4F8FB'
 };
 
 interface NavigationScreenType

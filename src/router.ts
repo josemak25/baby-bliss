@@ -6,21 +6,24 @@ import Screens from './screens';
 
 const AppNavigator = createStackNavigator(
   {
-    // Splash Route
+    // Forgot Password Screen Route
+    ForgotPasswordScreen: { screen: Screens.ForgotPasswordScreen },
+
+    // Splash Screen Route
     SplashScreen: { screen: Screens.SplashScreen },
 
-    // Get started Route
+    // Get started Screen Route
     GetStartedScreen: { screen: Screens.GetStartedScreen },
 
-    // Sign up Route
+    // Sign Up Screen Route
     SignUpScreen: { screen: Screens.SignUpScreen },
 
-    // Home Route
+    // Home Screen Route
     HomeScreen: { screen: Screens.HomeScreen }
   },
 
   {
-    initialRouteName: 'SignUpScreen',
+    initialRouteName: 'SplashScreen',
     headerMode: 'screen',
     defaultNavigationOptions: { headerStyle: customHeaderStyle }
   }

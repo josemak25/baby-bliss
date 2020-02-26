@@ -6,7 +6,7 @@ import boxShadow from '../../utils/boxShadows';
 import { NavigationInterface } from '../../constants';
 
 import { useThemeContext } from '../../theme';
-import { Container, SlideFooter, ReadMoreText } from './styles';
+import { Container, SlideFooter, ReadMoreText, SafeAreaView } from './styles';
 
 export type SlideItem = {
   key: string;
@@ -24,70 +24,72 @@ export default function GetStarted(props: GetStartedProp) {
   const { colors, fonts } = useThemeContext();
 
   return (
-    <Container>
-      <AppIntroSlider
-        testID="slider"
-        slides={props.slides}
-        renderItem={SlideScreenItem}
-        renderDoneButton={() => null}
-        renderNextButton={() => null}
-        activeDotStyle={{ backgroundColor: colors.POST_TIP_COLOR }}
-        dotStyle={{ backgroundColor: colors.INACTIVE_ICON_COLOR }}
-        contentContainerStyle={{ height: '80%' }}
-        paginationStyle={{ bottom: 40 }}
-      />
+    <SafeAreaView>
+      <Container>
+        <AppIntroSlider
+          testID="slider"
+          slides={props.slides}
+          renderItem={SlideScreenItem}
+          renderDoneButton={() => null}
+          renderNextButton={() => null}
+          activeDotStyle={{ backgroundColor: colors.POST_TIP_COLOR }}
+          dotStyle={{ backgroundColor: colors.INACTIVE_ICON_COLOR }}
+          contentContainerStyle={{ height: '80%' }}
+          paginationStyle={{ bottom: 40 }}
+        />
 
-      <SlideFooter>
-        <ReadMoreText testID="readMore">Swipe to learn more</ReadMoreText>
-        <Button
-          testID="getStartedButton"
-          buttonStyle={[
-            {
-              backgroundColor: colors.POST_TIP_COLOR,
-              borderRadius: 2
-            },
-            boxShadow({
-              elevation: 2,
-              color: 'rgba(175, 163, 180, 1)',
-              opacity: 0.3,
-              radius: 1,
-              height: 2.5
-            })
-          ]}
-          textStyle={{
-            color: colors.BG_LIGHT_COLOR,
-            textTransform: 'uppercase',
-            fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
-            fontSize: fonts.MEDIUM_SIZE - 1
-          }}
-          title="Get Started"
-          onPress={() => props.navigation.navigate('SignUpScreen')}
-        />
-        <Button
-          title="Log in"
-          testID="loginButton"
-          onPress={() => props.navigation.navigate('HomeScreen')}
-          textStyle={{
-            color: colors.POST_TIP_COLOR,
-            fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
-            fontSize: fonts.MEDIUM_SIZE,
-            textTransform: 'capitalize'
-          }}
-          buttonStyle={[
-            {
-              borderRadius: 2
-            },
-            boxShadow({
-              elevation: 0.1,
-              color: 'rgba(175, 163, 180, 0.45)',
-              opacity: 0.3,
-              radius: 10,
-              height: 0
-            })
-          ]}
-        />
-      </SlideFooter>
-    </Container>
+        <SlideFooter>
+          <ReadMoreText testID="readMore">Swipe to learn more</ReadMoreText>
+          <Button
+            testID="getStartedButton"
+            buttonStyle={[
+              {
+                backgroundColor: colors.POST_TIP_COLOR,
+                borderRadius: 2
+              },
+              boxShadow({
+                elevation: 2,
+                color: 'rgba(175, 163, 180, 1)',
+                opacity: 0.3,
+                radius: 1,
+                height: 2.5
+              })
+            ]}
+            textStyle={{
+              color: colors.BG_LIGHT_COLOR,
+              textTransform: 'uppercase',
+              fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
+              fontSize: fonts.MEDIUM_SIZE - 1
+            }}
+            title="Get Started"
+            onPress={() => props.navigation.navigate('SignUpScreen')}
+          />
+          <Button
+            title="Log in"
+            testID="loginButton"
+            onPress={() => props.navigation.navigate('HomeScreen')}
+            textStyle={{
+              color: colors.POST_TIP_COLOR,
+              fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
+              fontSize: fonts.MEDIUM_SIZE,
+              textTransform: 'capitalize'
+            }}
+            buttonStyle={[
+              {
+                borderRadius: 2
+              },
+              boxShadow({
+                elevation: 0.1,
+                color: 'rgba(175, 163, 180, 0.45)',
+                opacity: 0.3,
+                radius: 10,
+                height: 0
+              })
+            ]}
+          />
+        </SlideFooter>
+      </Container>
+    </SafeAreaView>
   );
 }
 
@@ -119,7 +121,6 @@ GetStarted.navigationOptions = ({ navigationOptions }) => {
   return {
     ...navigationOptions,
     headerTitle: () => null,
-    headerLeft: () => null,
-    headerStyle: { backgroundColor: '#F4F8FB' }
+    headerLeft: () => null
   };
 };
