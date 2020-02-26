@@ -45,4 +45,5 @@ export const createNavigationTestProps = (props: object = {}) => ({
 export type IconProps = {
   width?: string;
   height?: string;
+  fillColor?: string;
 };
