@@ -100,8 +100,6 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
       default:
         break;
     }
-
-    // setInputState({ ...inputState, activateColor: true, canShowIsValid: true });
   };
 
   const decorateTextFieldOnFocus = () => {
