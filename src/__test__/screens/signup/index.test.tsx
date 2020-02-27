@@ -4,13 +4,6 @@ import Theme from '../../../theme';
 import { createNavigationTestProps } from '../../../constants';
 import SignUpScreen from '../../../screens/signup';
 
-const user = {
-  userName: 'user1',
-  email: 'user1@decagonhq.com',
-  phone: '+2347090231093',
-  password: 'password'
-};
-
 const mountComponent = () => {
   const onHandleChange = jest.fn(() => {});
 
@@ -47,7 +40,7 @@ describe(' TEST GET_SIGNUP SCREEN (<SignUpScreen/>)', () => {
     expect(loginButton).toBeTruthy();
     fireEvent.press(queryByTestId('loginButton'));
     expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
-    expect(props.navigation.navigate).toHaveBeenCalledWith('LoginScreen');
+    expect(props.navigation.navigate).toHaveBeenCalledWith('SignInScreen');
   });
 
   test('That the sigUp button was pressed', () => {
