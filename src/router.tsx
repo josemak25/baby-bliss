@@ -13,7 +13,6 @@ import CommunityIcon from '../assets/icons/community';
 // APP BOTTOM NAVIGATOR
 export const AppBottomTabNavigator = createMaterialBottomTabNavigator(
   {
-    // Home Route For Bottom Nav
     HomeScreen: {
       screen: Screens.HomeScreen,
       navigationOptions: {
@@ -22,8 +21,6 @@ export const AppBottomTabNavigator = createMaterialBottomTabNavigator(
         }
       }
     },
-
-    // Community Route For Bottom Nav
     CommunityScreen: {
       screen: Screens.CommunityScreen,
       navigationOptions: {
@@ -32,8 +29,6 @@ export const AppBottomTabNavigator = createMaterialBottomTabNavigator(
         }
       }
     },
-
-    // Profile Route For Bottom Nav
     ProfileScreen: {
       screen: Screens.ProfileScreen,
       navigationOptions: {
@@ -52,7 +47,7 @@ export const AppBottomTabNavigator = createMaterialBottomTabNavigator(
 );
 
 // APP AUTH NAVIGATOR
-export const AppNavigator = createStackNavigator(
+const AppNavigator = createStackNavigator(
   {
     // Forgot Password Screen Route
     ForgotPasswordScreen: { screen: Screens.ForgotPasswordScreen },
