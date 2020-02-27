@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-import { customHeaderStyle } from './constants';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+
+import { customHeaderStyle } from './constants';
 import Screens from './screens';
 import { theme } from './theme/types';
-import { Ionicons } from '@expo/vector-icons';
 import HomeIcon from '../assets/icons/home';
 import UserIcon from '../assets/icons/user';
 import CommunityIcon from '../assets/icons/community';
-
-const { colors, fonts } = theme;
 
 const AppNavigator = createStackNavigator(
   {
@@ -38,33 +37,66 @@ const BottomTabNavigation = createBottomTabNavigator(
   {
     Home: {
       screen: AppNavigator,
-      navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <HomeIcon />
+      navigationOptions: ({ navigation: { getParam } }) => {
+        return {
+          tabBarIcon: ({ focused }) => {
+            const home = getParam('home');
+            return <HomeIcon isFilled={home} />;
+          },
+          tabBarOnPress: ({ navigation: { setParams } }) => {
+            setParams({
+              home: true,
+              community: null,
+              userIcon: null
+            });
+          }
+        };
       }
     },
     Community: {
       screen: Screens.CommunityScreen,
-      navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <CommunityIcon />
+      navigationOptions: ({ navigation: { getParam } }) => {
+        return {
+          tabBarIcon: ({ focused }) => {
+            const community = getParam('community');
+
+            return <CommunityIcon isFilled={community} />;
+          },
+          tabBarOnPress: ({ navigation: { setParams } }) => {
+            setParams({
+              home: null,
+              community: true,
+              userIcon: null
+            });
+          }
+        };
       }
     },
     Profile: {
       screen: Screens.ProfileScreen,
-      navigationOptions: {
-        tabBarIcon: ({ tintColor }) => <UserIcon />
+      navigationOptions: ({ navigation: { getParam } }) => {
+        return {
+          tabBarIcon: ({ focused }) => {
+            const userIcon = getParam('userIcon');
+
+            return <UserIcon isFilled={userIcon} />;
+          },
+          tabBarOnPress: ({ navigation: { setParams } }) => {
+            setParams({
+              home: false,
+              community: false,
+              userIcon: true
+            });
+          }
+        };
       }
     }
   },
   {
     defaultNavigationOptions: {
-      tabBarLabel: () => null
+      tabBarLabel: () => null //to turn off the labe that normally appears under the bottom tab icon.
     },
-    tabBarOptions: {
-      activeTintColor: colors.POST_TIP_COLOR,
-      labelStyle: {
-        fontFamily: `${fonts.MONTSERRAT_REGULAR}`
-      }
-    }
+    initialRouteName: 'Home'
   }
 );
 
