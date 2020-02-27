@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-import { customHeaderStyle } from './constants';
+import { customHeaderStyle, navigationBackButton } from './constants';
 
 import Screens from './screens';
 
@@ -18,14 +18,20 @@ const AppNavigator = createStackNavigator(
     // Sign Up Screen Route
     SignUpScreen: { screen: Screens.SignUpScreen },
 
+    // Sign In Screen Route
+    SignInScreen: { screen: Screens.SignInScreen },
+
     // Home Screen Route
     HomeScreen: { screen: Screens.HomeScreen }
   },
 
   {
-    initialRouteName: 'SplashScreen',
+    initialRouteName: 'SignInScreen',
     headerMode: 'screen',
-    defaultNavigationOptions: { headerStyle: customHeaderStyle }
+    defaultNavigationOptions: ({ navigation }) => {
+      navigation.state['navigationBackButton'] = navigationBackButton;
+      return { headerStyle: customHeaderStyle };
+    }
   }
 );
 
