@@ -136,7 +136,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
           <Button
             title="Log in"
             testID="loginButton"
-            onPress={() => navigation.navigate('LoginScreen')}
+            onPress={() => navigation.navigate('SignInScreen')}
             textStyle={{
               color: colors.POST_TIP_COLOR,
               fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
@@ -166,9 +166,12 @@ export default function SignUp({ navigation }: NavigationInterface) {
   );
 }
 
-SignUp.navigationOptions = ({ navigationOptions }) => {
+SignUp.navigationOptions = ({ navigationOptions, navigation }) => {
+  const { navigationBackButton } = navigation.state;
+
   return {
     ...navigationOptions,
+    ...navigationBackButton,
     headerTitle: () => <HeaderTitle>signup</HeaderTitle>,
     headerStyle: { backgroundColor: '#F4F8FB' }
   };

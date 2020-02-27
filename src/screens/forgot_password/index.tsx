@@ -97,6 +97,15 @@ export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
   );
 }
 
-ForgotPasswordScreen.navigationOptions = {
-  headerTitle: () => <HeaderTitle>forgot password</HeaderTitle>
+ForgotPasswordScreen.navigationOptions = ({
+  navigation,
+  navigationOptions
+}) => {
+  const { navigationBackButton } = navigation.state;
+
+  return {
+    ...navigationOptions,
+    ...navigationBackButton,
+    headerTitle: () => <HeaderTitle>forgot password</HeaderTitle>
+  };
 };
