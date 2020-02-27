@@ -27,7 +27,7 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
         }),
       2000
     );
-    setTimeout(() => navigation.replace('HomeScreen'), 4000);
+    setTimeout(() => navigation.replace('SignInScreen'), 4000);
   }, []);
 
   return (

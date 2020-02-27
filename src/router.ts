@@ -26,7 +26,7 @@ const AppNavigator = createStackNavigator(
   },
 
   {
-    initialRouteName: 'SignInScreen',
+    initialRouteName: 'SplashScreen',
     headerMode: 'screen',
     defaultNavigationOptions: ({ navigation }) => {
       navigation.state['navigationBackButton'] = navigationBackButton;
