@@ -16,7 +16,7 @@ export default function HomeScreen(props: HomeScreenProp) {
   console.log(store);
   // postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch);
   return (
-    <SafeAreaView>
+    <SafeAreaView testID="HomeScreen">
       <Container>
         <Button title="HomeScreen screen button" />
         <Welcome>HomeScreen Screen</Welcome>

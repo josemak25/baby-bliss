@@ -11,8 +11,9 @@ import UserIcon from '../assets/icons/user';
 import CommunityIcon from '../assets/icons/community';
 
 // APP BOTTOM NAVIGATOR
-const AppBottomTabNavigator = createMaterialBottomTabNavigator(
+export const AppBottomTabNavigator = createMaterialBottomTabNavigator(
   {
+    // Home Route For Bottom Nav
     HomeScreen: {
       screen: Screens.HomeScreen,
       navigationOptions: {
@@ -21,6 +22,8 @@ const AppBottomTabNavigator = createMaterialBottomTabNavigator(
         }
       }
     },
+
+    // Community Route For Bottom Nav
     CommunityScreen: {
       screen: Screens.CommunityScreen,
       navigationOptions: {
@@ -29,6 +32,8 @@ const AppBottomTabNavigator = createMaterialBottomTabNavigator(
         }
       }
     },
+
+    // Profile Route For Bottom Nav
     ProfileScreen: {
       screen: Screens.ProfileScreen,
       navigationOptions: {
@@ -39,7 +44,7 @@ const AppBottomTabNavigator = createMaterialBottomTabNavigator(
     }
   },
   {
-    initialRouteName: 'ProfileScreen',
+    initialRouteName: 'HomeScreen',
     barStyle: { backgroundColor: '#F4F8FB' },
     labeled: false,
     activeColor: '#262F56'
@@ -47,7 +52,7 @@ const AppBottomTabNavigator = createMaterialBottomTabNavigator(
 );
 
 // APP AUTH NAVIGATOR
-const AppNavigator = createStackNavigator(
+export const AppNavigator = createStackNavigator(
   {
     // Forgot Password Screen Route
     ForgotPasswordScreen: { screen: Screens.ForgotPasswordScreen },

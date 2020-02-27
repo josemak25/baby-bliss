@@ -10,7 +10,7 @@ interface CommunityScreenProp extends NavigationInterface {
 
 export default function CommunityScreen(props: CommunityScreenProp) {
   return (
-    <Container>
+    <Container testID="Community">
       <Button title="Community Screen button" />
       <Welcome>Community Screen</Welcome>
     </Container>
