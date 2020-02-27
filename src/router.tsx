@@ -4,45 +4,24 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 
-import { customHeaderStyle } from './constants';
+import { customHeaderStyle, navigationBackButton } from './constants';
 import Screens from './screens';
 import HomeIcon from '../assets/icons/home';
 import UserIcon from '../assets/icons/user';
 import CommunityIcon from '../assets/icons/community';
 
-const AppNavigator = createStackNavigator(
+// APP BOTTOM NAVIGATOR
+const AppBottomTabNavigator = createMaterialBottomTabNavigator(
   {
-    // Splash Route
-    SplashScreen: { screen: Screens.SplashScreen },
-
-    // Get started Route
-    GetStartedScreen: { screen: Screens.GetStartedScreen },
-
-    // Sign up Route
-    SignUpScreen: { screen: Screens.SignUpScreen },
-
-    //Home Route
-    HomeScreen: Screens.HomeScreen
-  },
-
-  {
-    initialRouteName: 'SplashScreen',
-    headerMode: 'screen',
-    defaultNavigationOptions: { headerStyle: customHeaderStyle }
-  }
-);
-
-const BottomTabNavigation = createMaterialBottomTabNavigator(
-  {
-    Home: {
-      screen: AppNavigator,
+    HomeScreen: {
+      screen: Screens.HomeScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => {
           return <HomeIcon fillColor={tintColor} />;
         }
       }
     },
-    Community: {
+    CommunityScreen: {
       screen: Screens.CommunityScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => {
@@ -50,7 +29,7 @@ const BottomTabNavigation = createMaterialBottomTabNavigator(
         }
       }
     },
-    Profile: {
+    ProfileScreen: {
       screen: Screens.ProfileScreen,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => {
@@ -60,11 +39,43 @@ const BottomTabNavigation = createMaterialBottomTabNavigator(
     }
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'ProfileScreen',
     barStyle: { backgroundColor: '#F4F8FB' },
     labeled: false,
     activeColor: '#262F56'
   }
 );
 
-export default createAppContainer(BottomTabNavigation);
+// APP AUTH NAVIGATOR
+const AppNavigator = createStackNavigator(
+  {
+    // Forgot Password Screen Route
+    ForgotPasswordScreen: { screen: Screens.ForgotPasswordScreen },
+
+    // Splash Screen Route
+    SplashScreen: { screen: Screens.SplashScreen },
+
+    // Get started Screen Route
+    GetStartedScreen: { screen: Screens.GetStartedScreen },
+
+    // Sign Up Screen Route
+    SignUpScreen: { screen: Screens.SignUpScreen },
+
+    // Sign In Screen Route
+    SignInScreen: { screen: Screens.SignInScreen },
+
+    // Home Screen Route
+    HomeScreen: AppBottomTabNavigator
+  },
+
+  {
+    initialRouteName: 'SplashScreen',
+    headerMode: 'screen',
+    defaultNavigationOptions: ({ navigation }) => {
+      navigation.state['navigationBackButton'] = navigationBackButton;
+      return { headerStyle: customHeaderStyle };
+    }
+  }
+);
+
+export default createAppContainer(AppNavigator);

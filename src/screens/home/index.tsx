@@ -5,7 +5,7 @@ import { Container, Welcome, SafeAreaView } from './styles';
 import { NavigationInterface } from '../../constants';
 import { useStoreContext } from '../../store';
 import postsActions from '../../store/posts/actions';
-import { POST_ACTION_TYPES } from '../../store/posts/types';
+// import { POST_ACTION_TYPES } from '../../store/posts/types';
 
 interface HomeScreenProp extends NavigationInterface {
   testID?: string;
@@ -25,8 +25,11 @@ export default function HomeScreen(props: HomeScreenProp) {
   );
 }
 
-HomeScreen.navigationOptions = ({ navigationOptions }) => {
+HomeScreen.navigationOptions = ({ navigationOptions, navigation }) => {
+  const { navigationBackButton } = navigation.state;
+
   return {
+    ...navigationBackButton,
     ...navigationOptions,
     headerTitle: () => null,
     headerLeft: () => null

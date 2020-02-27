@@ -17,8 +17,11 @@ export default function ProfileScreen(props: ProfileScreenProp) {
   );
 }
 
-ProfileScreen.navigationOptions = ({ navigationOptions }) => {
+ProfileScreen.navigationOptions = ({ navigationOptions, navigation }) => {
+  const { navigationBackButton } = navigation.state;
+
   return {
+    ...navigationBackButton,
     ...navigationOptions,
     headerTitle: () => null,
     headerLeft: () => null,

@@ -17,8 +17,11 @@ export default function CommunityScreen(props: CommunityScreenProp) {
   );
 }
 
-CommunityScreen.navigationOptions = ({ navigationOptions }) => {
+CommunityScreen.navigationOptions = ({ navigationOptions, navigation }) => {
+  const { navigationBackButton } = navigation.state;
+
   return {
+    ...navigationBackButton,
     ...navigationOptions,
     headerTitle: () => null,
     headerLeft: () => null,

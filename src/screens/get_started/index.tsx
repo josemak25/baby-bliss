@@ -62,12 +62,12 @@ export default function GetStarted(props: GetStartedProp) {
               fontSize: fonts.MEDIUM_SIZE - 1
             }}
             title="Get Started"
-            onPress={() => props.navigation.navigate('SignUpScreen')}
+            onPress={() => props.navigation.replace('SignUpScreen')}
           />
           <Button
             title="Log in"
             testID="loginButton"
-            onPress={() => props.navigation.navigate('HomeScreen')}
+            onPress={() => props.navigation.replace('SignInScreen')}
             textStyle={{
               color: colors.POST_TIP_COLOR,
               fontFamily: fonts.MONTSERRAT_SEMI_BOLD,

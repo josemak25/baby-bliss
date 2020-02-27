@@ -70,7 +70,12 @@ export default function SignUp({ navigation }: NavigationInterface) {
                 borderTopEndRadius: 10
               }}
             >
-              <UserIcon />
+              <UserIcon
+                fillColor={colors.ACTIVE_TAB_COLOR}
+                width="40%"
+                height="40%"
+                useCase
+              />
             </InputFiled>
             <InputFiled
               placeholder="Email"
