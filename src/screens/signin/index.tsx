@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { KeyboardAvoidingView } from 'react-native';
+import BouncyCheckbox from '../../lib/BouncyCheckbox';
 import { useThemeContext } from '../../theme';
 import { NavigationInterface } from '../../constants';
 
 import Button from '../../components/button';
 import InputFiled from '../../components/inputField';
 
-import UserIcon from '../../../assets/icons/user';
 import MailIcon from '../../../assets/icons/mail';
-import PhoneIcon from '../../../assets/icons/phone';
 import PrivacyIcon from '../../../assets/icons/privacy';
 import boxShadow from '../../utils/boxShadows';
 
@@ -17,22 +15,17 @@ import {
   Logo,
   FormFields,
   FormControls,
-  TermsAndCondition,
-  TermsLabel,
-  TermsLink,
+  Conditions,
+  RememberMe,
   SafeAreaView,
-  HeaderTitle
+  HeaderTitle,
+  KeyboardAvoidingView
 } from './styles';
 
-export default function SignUp({ navigation }: NavigationInterface) {
-  const [values, setValues] = useState({
-    userName: '',
-    email: '',
-    phone: '',
-    password: ''
-  });
-
+export default function SignIn({ navigation }: NavigationInterface) {
   const { colors, fonts } = useThemeContext();
+
+  const [values, setValues] = useState({ email: '', password: '' });
 
   const onHandleChange = (field: string) => (value: string) => {
     setValues({ ...values, [field]: value });
@@ -41,37 +34,20 @@ export default function SignUp({ navigation }: NavigationInterface) {
   const handleSubmit = () => {
     // dispatch action to submit form
 
-    // on success navigate to profile setup screen
-    navigation.navigate('ProfileSetupScreen');
+    // on success navigate to home screen
+    navigation.replace('HomeScreen');
   };
 
   return (
     <SafeAreaView>
       <Container>
-        <KeyboardAvoidingView
-          style={{ alignItems: 'center', width: '100%' }}
-          behavior="padding"
-          keyboardVerticalOffset={100}
-        >
+        <KeyboardAvoidingView behavior="padding" keyboardVerticalOffset={100}>
           <Logo
             testID="appLogo"
             source={require('../../../assets/images/logo.png')}
-            style={{ resizeMode: 'contain' }}
+            style={{ resizeMode: 'contain', margin: 15 }}
           />
           <FormFields>
-            <InputFiled
-              placeholder="Username"
-              testID="userName"
-              onChangeText={onHandleChange('userName')}
-              defaultValue={values.userName}
-              textContentType="name"
-              style={{
-                borderTopStartRadius: 10,
-                borderTopEndRadius: 10
-              }}
-            >
-              <UserIcon />
-            </InputFiled>
             <InputFiled
               placeholder="Email"
               testID="email"
@@ -79,18 +55,12 @@ export default function SignUp({ navigation }: NavigationInterface) {
               defaultValue={values.email}
               textContentType="emailAddress"
               keyboardType="email-address"
+              style={{
+                borderTopStartRadius: 10,
+                borderTopEndRadius: 10
+              }}
             >
               <MailIcon />
-            </InputFiled>
-            <InputFiled
-              placeholder="Phone"
-              testID="phone"
-              onChangeText={onHandleChange('phone')}
-              defaultValue={values.phone}
-              textContentType="telephoneNumber"
-              keyboardType="phone-pad"
-            >
-              <PhoneIcon />
             </InputFiled>
             <InputFiled
               placeholder="Password"
@@ -106,11 +76,33 @@ export default function SignUp({ navigation }: NavigationInterface) {
             >
               <PrivacyIcon />
             </InputFiled>
+            <Conditions>
+              <BouncyCheckbox
+                isChecked
+                fillColor={colors.POST_TIP_COLOR}
+                fontSize={fonts.SMALL_SIZE + 2}
+                fontFamily={fonts.MONTSERRAT_SEMI_BOLD}
+                checkboxSize={20}
+                text="Remember Me"
+              />
+              <RememberMe></RememberMe>
+              <Button
+                title="forgot password?"
+                testID="resetAccount"
+                onPress={() => navigation.navigate('ForgotPasswordScreen')}
+                textStyle={{
+                  color: colors.FONT_LIGHT_COLOR,
+                  fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
+                  fontSize: fonts.SMALL_SIZE + 2,
+                  textTransform: 'capitalize'
+                }}
+              />
+            </Conditions>
           </FormFields>
         </KeyboardAvoidingView>
         <FormControls>
           <Button
-            testID="submitButton"
+            testID="loginButton"
             buttonStyle={[
               {
                 backgroundColor: colors.POST_TIP_COLOR,
@@ -126,26 +118,27 @@ export default function SignUp({ navigation }: NavigationInterface) {
             ]}
             textStyle={{
               color: colors.BG_LIGHT_COLOR,
-              textTransform: 'uppercase',
+              textTransform: 'capitalize',
               fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
-              fontSize: fonts.MEDIUM_SIZE - 1
+              fontSize: fonts.MEDIUM_SIZE + 2
             }}
-            title="Submit"
+            title="login"
             onPress={handleSubmit}
           />
           <Button
-            title="Log in"
-            testID="loginButton"
-            onPress={() => navigation.navigate('SignInScreen')}
+            title="create account"
+            testID="createAccount"
+            onPress={() => navigation.navigate('SignUpScreen')}
             textStyle={{
-              color: colors.POST_TIP_COLOR,
+              color: colors.FONT_DARK_COLOR,
               fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
-              fontSize: fonts.MEDIUM_SIZE,
+              fontSize: fonts.MEDIUM_SIZE + 2,
               textTransform: 'capitalize'
             }}
             buttonStyle={[
               {
-                borderRadius: 2
+                borderRadius: 2,
+                marginTop: 15
               },
               boxShadow({
                 elevation: 0.3,
@@ -157,22 +150,18 @@ export default function SignUp({ navigation }: NavigationInterface) {
             ]}
           />
         </FormControls>
-        <TermsAndCondition>
-          <TermsLabel>By signing up you have agreed to our</TermsLabel>
-          <TermsLink>Terms of Use & Privacy Policy</TermsLink>
-        </TermsAndCondition>
       </Container>
     </SafeAreaView>
   );
 }
 
-SignUp.navigationOptions = ({ navigationOptions, navigation }) => {
+SignIn.navigationOptions = ({ navigation, navigationOptions }) => {
   const { navigationBackButton } = navigation.state;
 
   return {
     ...navigationOptions,
     ...navigationBackButton,
-    headerTitle: () => <HeaderTitle>signup</HeaderTitle>,
+    headerTitle: () => <HeaderTitle>signin</HeaderTitle>,
     headerStyle: { backgroundColor: '#F4F8FB' }
   };
 };

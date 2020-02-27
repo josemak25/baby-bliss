@@ -4,14 +4,6 @@ import {
   NavigationState
 } from 'react-navigation';
 
-// App header custom style
-export const customHeaderStyle = {
-  borderBottomWidth: 0,
-  elevation: 0,
-  shadowOpacity: 0,
-  backgroundColor: '#F4F8FB'
-};
-
 interface NavigationScreenType
   extends NavigationScreenProp<NavigationState, NavigationParams> {
   replace: (T: string) => void;
@@ -46,4 +38,25 @@ export const createNavigationTestProps = (props: object = {}) => ({
 export type IconProps = {
   width?: string;
   height?: string;
+};
+
+// App header custom style
+export const customHeaderStyle = {
+  borderBottomWidth: 0,
+  elevation: 0,
+  shadowOpacity: 0,
+  backgroundColor: '#F4F8FB'
+};
+
+// Navigation Header back button default
+export const navigationBackButton = {
+  headerBackTitle: 'back',
+  headerBackColor: '#0D0E10',
+  headerTintColor: '#0D0E10',
+  headerBackTitleStyle: {
+    color: '#0D0E10',
+    fontFamily: 'montserrat-semi-bold',
+    textTransform: 'capitalize',
+    fontSize: 12
+  }
 };

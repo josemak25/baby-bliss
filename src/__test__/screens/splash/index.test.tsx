@@ -40,7 +40,7 @@ describe('TEST SPLASH COMPONENT(<SplashScreen/>)', () => {
     const { props } = mountComponent();
     act(() => jest.advanceTimersByTime(4000));
     expect(props.navigation.replace).toHaveBeenCalled();
-    expect(props.navigation.replace).toBeCalledWith('HomeScreen');
+    expect(props.navigation.replace).toBeCalledWith('SignInScreen');
     expect(props.navigation.replace).toHaveBeenCalledTimes(1);
   });
 });
