@@ -39,7 +39,6 @@ export type IconProps = {
   width?: string;
   height?: string;
   fillColor?: string;
-  isFilled?: boolean;
 };
 
 // App header custom style
