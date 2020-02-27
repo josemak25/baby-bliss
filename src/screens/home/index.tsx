@@ -14,7 +14,7 @@ interface HomeScreenProp extends NavigationInterface {
 export default function HomeScreen(props: HomeScreenProp) {
   const [store, dispatch] = useStoreContext();
   console.log(store);
-  postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch);
+  // postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch);
   return (
     <Container>
       <Button title="HomeScreen screen button" />
