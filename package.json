@@ -9,8 +9,7 @@
     "test": "jest --runInBand --verbose --detectOpenHandles --forceExit",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "test:coverage": "yarn test --coverage",
-    "report-coverage": "coveralls < ./coverage/lcov.info",
-    "preinstall": "rm -rf .git/hooks/pre-push && rm -rf .git/hooks/pre-commit"
+    "report-coverage": "coveralls < ./coverage/lcov.info"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
