@@ -14,6 +14,14 @@ export enum POST_TYPES {
   COMMENT_ON_POST = 'COMMENT_ON_POST'
 }
 
+// POSTS ACTION TYPES
+export enum POST_ACTION_TYPES {
+  LOAD_POSTS = 'LOAD_POSTS',
+  LIKE_POST = 'LIKE_POST',
+  POST_COMMENT = 'POST_COMMENT',
+  LIKE_COMMENT = 'LIKE_COMMENT'
+}
+
 export type CommentInterface = {
   payload: { postId: string; comment: string };
 };
