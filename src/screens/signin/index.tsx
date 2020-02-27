@@ -23,14 +23,9 @@ import {
 } from './styles';
 
 export default function SignIn({ navigation }: NavigationInterface) {
-  const [values, setValues] = useState({
-    userName: '',
-    email: '',
-    phone: '',
-    password: ''
-  });
-
   const { colors, fonts } = useThemeContext();
+
+  const [values, setValues] = useState({ email: '', password: '' });
 
   const onHandleChange = (field: string) => (value: string) => {
     setValues({ ...values, [field]: value });
@@ -86,7 +81,6 @@ export default function SignIn({ navigation }: NavigationInterface) {
                 isChecked
                 fillColor={colors.POST_TIP_COLOR}
                 fontSize={fonts.SMALL_SIZE + 2}
-                // iconComponent={your - own - component}
                 fontFamily={fonts.MONTSERRAT_SEMI_BOLD}
                 checkboxSize={20}
                 text="Remember Me"
