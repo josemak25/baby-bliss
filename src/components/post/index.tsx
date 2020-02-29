@@ -20,7 +20,11 @@ import {
   PostDivider
 } from './styles';
 
-export default function Post(post: PostInterface) {
+interface PostProps extends PostInterface {
+  postIndex: number;
+}
+
+export default function Post(post: PostProps) {
   const { topic, description, noOfLikes, noOfViews } = post;
 
   const [animation] = useState(new Animated.Value(0));
@@ -41,11 +45,11 @@ export default function Post(post: PostInterface) {
     <Card>
       <Container testID="post-container">
         <Title>{topic}</Title>
-        {/* <ResponsiveImage
+        <ResponsiveImage
           imageUrl="https://bit.ly/2VtcAMJ"
           width={415}
           height={220}
-        /> */}
+        />
         <DescriptionContainer>
           <Description numberOfLines={3}>
             {description.length > 120
