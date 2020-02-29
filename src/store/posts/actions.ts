@@ -2,12 +2,13 @@ import {
   POST_TYPES,
   PostAction,
   CommentInterface,
+  PostInterface,
   POST_ACTION_TYPES
 } from './types';
 
 const loadPostStarted = () => ({ type: POST_TYPES.LOAD_POST_STARTED });
 
-const loadPostSuccess = (payload: any): PostAction => ({
+const loadPostSuccess = (payload: PostInterface[]): PostAction => ({
   type: POST_TYPES.LOAD_POST_SUCCESS,
   payload
 });
