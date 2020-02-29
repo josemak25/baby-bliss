@@ -39,13 +39,13 @@ export default function Post(post: PostInterface) {
 
   return (
     <Card>
-      <Container>
+      <Container testID="post-container">
         <Title>{topic}</Title>
-        <ResponsiveImage
+        {/* <ResponsiveImage
           imageUrl="https://bit.ly/2VtcAMJ"
           width={415}
           height={220}
-        />
+        /> */}
         <DescriptionContainer>
           <Description numberOfLines={3}>
             {description.length > 120
