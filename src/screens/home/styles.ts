@@ -7,13 +7,22 @@ export const SafeAreaView = styled.SafeAreaView`
 
 export const Container = styled.View`
   flex: 1;
-  justify-content: center;
   align-items: center;
+  padding-top: 10px;
 `;
 
-export const Welcome = styled.Text`
-  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE}px;
-  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
-  color: ${({ theme }) => theme.colors.FONT_DARK_COLOR};
-  text-transform: capitalize;
+export const LogoContainer = styled.View`
+  width: 125px;
+  height: 100%;
+`;
+
+export const Logo = styled.Image`
+  width: 100%;
+  height: 100%;
+`;
+
+export const SearchContainer = styled.TouchableOpacity`
+  width: 30px;
+  height: 100%;
+  margin-right: 12px;
 `;
