@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, AsyncStorage } from 'react-native';
 import { NavigationInterface } from '../../constants';
 
 import { Container, ImageContainer, Image } from './styles';
@@ -27,8 +27,21 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
         }),
       2000
     );
-    setTimeout(() => navigation.replace('SignInScreen'), 4000);
+    setTimeout(checkInitialLaunch, 4000);
   }, []);
+
+  const checkInitialLaunch = async () => {
+    try {
+      const firstTimeLaunch = await AsyncStorage.getItem('@FIRST_TIME_LAUNCH');
+      if (!firstTimeLaunch) {
+        await AsyncStorage.setItem('@FIRST_TIME_LAUNCH', '1');
+        return navigation.replace('GetStartedScreen');
+      }
+      navigation.replace('SignInScreen');
+    } catch (error) {
+      console.warn(error);
+    }
+  };
 
   return (
     <Container

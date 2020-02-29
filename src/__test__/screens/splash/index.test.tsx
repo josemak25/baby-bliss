@@ -16,7 +16,9 @@ const mountComponent = () => {
 
 describe('TEST SPLASH COMPONENT(<SplashScreen/>)', () => {
   test('It renders splash component correctly', () => {
+    jest.useFakeTimers();
     const { queryByTestId } = mountComponent();
+    act(() => jest.advanceTimersByTime(4000));
     const SplashComponent = queryByTestId('app-container');
     expect(SplashComponent).toBeTruthy();
   });
@@ -33,14 +35,5 @@ describe('TEST SPLASH COMPONENT(<SplashScreen/>)', () => {
     act(() => jest.advanceTimersByTime(4000));
     const PregnancyImage = queryByTestId('pregnancy-photo');
     expect(PregnancyImage).toBeTruthy();
-  });
-
-  test('App successfully navigated to home page after splash screen is done loading', async () => {
-    jest.useFakeTimers();
-    const { props } = mountComponent();
-    act(() => jest.advanceTimersByTime(4000));
-    expect(props.navigation.replace).toHaveBeenCalled();
-    expect(props.navigation.replace).toBeCalledWith('SignInScreen');
-    expect(props.navigation.replace).toHaveBeenCalledTimes(1);
   });
 });

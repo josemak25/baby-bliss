@@ -1,4 +1,10 @@
-import React, { createContext, useReducer, FunctionComponent } from 'react';
+import React, {
+  createContext,
+  useReducer,
+  FunctionComponent,
+  useContext
+} from 'react';
+
 import useCombinedReducers from '../utils/useCombinedReducers';
 
 import postsReducer, { postInitialState } from './posts/reducer';
@@ -19,4 +25,6 @@ const StoreProvider: FunctionComponent = ({ children }) => {
   );
 };
 
-export { StoreProvider, StoreContext };
+const useStoreContext = () => useContext(StoreContext);
+
+export { StoreProvider, useStoreContext };

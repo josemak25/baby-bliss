@@ -1,4 +1,9 @@
-import { POST_TYPES, PostAction, CommentInterface } from './types';
+import {
+  POST_TYPES,
+  PostAction,
+  CommentInterface,
+  POST_ACTION_TYPES
+} from './types';
 
 const loadPostStarted = () => ({ type: POST_TYPES.LOAD_POST_STARTED });
 
@@ -22,13 +27,84 @@ const likeComment = (commentId: string): PostAction => ({
   payload: commentId
 });
 
-const commentOnPost = (payload: CommentInterface): PostAction => ({
+const postComment = (payload: CommentInterface): PostAction => ({
   type: POST_TYPES.COMMENT_ON_POST,
   payload
 });
 
-export default function postsActions() {
-  return (dispatch: any) => {
+export default function postsActions(type: string) {
+  return async (dispatch: any) => {
     // To unsubscribe to these update, just use the functions:
+    switch (type) {
+      case POST_ACTION_TYPES.LOAD_POSTS:
+        try {
+          dispatch(loadPostStarted());
+          const response = await fetch('');
+
+          if (!response.ok) {
+            throw new Error('Something went wrong');
+          }
+          const responseData = await response.json();
+          dispatch(loadPostSuccess(responseData));
+        } catch (error) {
+          console.log(error);
+          dispatch(loadPostError(error));
+        }
+        break;
+
+      case POST_ACTION_TYPES.LIKE_POST:
+        try {
+          dispatch(loadPostStarted());
+          const response = await fetch('');
+
+          if (!response.ok) {
+            throw new Error('Something went wrong');
+          }
+          const responseData = await response.json();
+          console.log('LIKE_POST', responseData);
+          dispatch(likePost(responseData));
+        } catch (error) {
+          console.log(error);
+          dispatch(loadPostError(error));
+        }
+        break;
+
+      case POST_ACTION_TYPES.POST_COMMENT:
+        try {
+          dispatch(loadPostStarted());
+          const response = await fetch('');
+
+          if (!response.ok) {
+            throw new Error('Something went wrong');
+          }
+          const responseData = await response.json();
+          console.log('POST_COMMENT', responseData);
+          dispatch(postComment(responseData));
+        } catch (error) {
+          console.log(error);
+          dispatch(loadPostError(error));
+        }
+        break;
+
+      case POST_ACTION_TYPES.LIKE_COMMENT:
+        try {
+          dispatch(loadPostStarted());
+          const response = await fetch('');
+
+          if (!response.ok) {
+            throw new Error('Something went wrong');
+          }
+          const responseData = await response.json();
+          console.log('LIKE_COMMENT', responseData);
+          dispatch(likeComment(responseData));
+        } catch (error) {
+          console.log(error);
+          dispatch(loadPostError(error));
+        }
+        break;
+
+      default:
+        break;
+    }
   };
 }

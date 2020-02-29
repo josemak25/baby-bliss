@@ -50,8 +50,8 @@ describe(' TEST GET_STARTED COMPONENT(<GetStarted/>)', () => {
     const loginButton = queryByTestId('loginButton');
     expect(loginButton).toBeTruthy();
     fireEvent.press(queryByTestId('loginButton'));
-    expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
-    expect(props.navigation.navigate).toHaveBeenCalledWith('HomeScreen');
+    expect(props.navigation.replace).toHaveBeenCalledTimes(1);
+    expect(props.navigation.replace).toHaveBeenCalledWith('SignInScreen');
   });
 
   test('That the sigUp button was pressed', () => {
@@ -59,7 +59,7 @@ describe(' TEST GET_STARTED COMPONENT(<GetStarted/>)', () => {
     const signUpButton = queryByTestId('getStartedButton');
     expect(signUpButton).toBeTruthy();
     fireEvent.press(queryByTestId('getStartedButton'));
-    expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
-    expect(props.navigation.navigate).toHaveBeenCalledWith('SignUpScreen');
+    expect(props.navigation.replace).toHaveBeenCalledTimes(1);
+    expect(props.navigation.replace).toHaveBeenCalledWith('SignUpScreen');
   });
 });
