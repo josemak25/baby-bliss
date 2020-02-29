@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Animated, { Easing } from 'react-native-reanimated';
-import applyScale from './applyScale';
+import applyScale from '../../utils/applyScale';
 
 import { Container, Image } from './styles';
 
@@ -12,6 +12,7 @@ type ResponsiveImageProps = {
   resizeMode?: string;
   style?: any;
   imageUrl: string;
+  testID?: string;
   imageFadeDuration?: number;
   thumbnailSource?: object;
   thumbnailFadeDuration?: number;
@@ -55,7 +56,7 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
   };
 
   return (
-    <Container style={[{ width, height }, props.style]}>
+    <Container style={[{ width, height }, props.style]} testID={props.testID}>
       <ProgressiveImage
         style={[{ width, height, resizeMode }, props.style]}
         source={{ uri: thumbnailSource }}
@@ -65,6 +66,7 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
         onError={props.onError}
         onLoadEnd={props.onLoadEnd}
         blurRadius={thumbnailBlurRadius}
+        testID="image-thumbnail"
       />
       <ProgressiveImage
         style={[
@@ -78,6 +80,7 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
         onLoad={onLoadImage}
         onError={props.onError}
         onLoadEnd={props.onLoadEnd}
+        testID="image-data"
       />
     </Container>
   );
