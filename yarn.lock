@@ -5858,6 +5858,14 @@ react-native-screens@2.0.0-alpha.12:
   dependencies:
     debounce "^1.2.0"
 
+react-native-skeleton-content@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/react-native-skeleton-content/-/react-native-skeleton-content-1.0.13.tgz#9f5f43649cd98f86e0cced436effc43867b2ab23"
+  integrity sha512-WgwDnBEdgFNh63BkscV3FRvDKHbIFYxu0MiJkuySHYKIiexYu75tnNBe8ONkM0hQEJ9pO6pg5+c8uuUmY/uoXA==
+  dependencies:
+    expo-linear-gradient "^8.0.0"
+    lodash "^4.17.14"
+
 react-native-svg@9.13.3:
   version "9.13.3"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-9.13.3.tgz#6414b337d55af169ac2487ab70f3108404434446"
@@ -5961,16 +5969,6 @@ react-refresh@^0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.4.2.tgz#54a277a6caaac2803d88f1d6f13c1dcfbd81e334"
   integrity sha512-kv5QlFFSZWo7OlJFNYbxRtY66JImuP2LcrFgyJfQaf85gSP+byzG21UbDQEYjU7f//ny8rwiEkO6py2Y+fEgAQ==
-
-react-test-renderer@^16.13.0:
-  version "16.13.0"
-  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.13.0.tgz#39ba3bf72cedc8210c3f81983f0bb061b14a3014"
-  integrity sha512-NQ2S9gdMUa7rgPGpKGyMcwl1d6D9MCF0lftdI3kts6kkiX+qvpC955jNjAZXlIDTjnN9jwFI8A8XhRh/9v0spA==
-  dependencies:
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    react-is "^16.8.6"
-    scheduler "^0.19.0"
 
 react-test-renderer@~16.9.0:
   version "16.9.0"
@@ -6344,14 +6342,6 @@ scheduler@0.15.0, scheduler@^0.15.0:
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.15.0.tgz#6bfcf80ff850b280fed4aeecc6513bc0b4f17f8e"
   integrity sha512-xAefmSfN6jqAa7Kuq7LIJY0bwAPG3xlCj0HMEBQk1lxYiDKZscY2xJ5U/61ZTrYbmNQbXa+gc7czPkVo11tnCg==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-
-scheduler@^0.19.0:
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.19.0.tgz#a715d56302de403df742f4a9be11975b32f5698d"
-  integrity sha512-xowbVaTPe9r7y7RUejcK73/j8tt2jfiyTednOvHbA8JoClvMYCp+r8QegLwK/n8zWQAtZb1fFnER4XLBZXrCxA==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
