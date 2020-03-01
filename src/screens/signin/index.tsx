@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BouncyCheckbox from '../../lib/BouncyCheckbox';
+import BouncyCheckbox from '../../libs/bouncyCheckbox';
 import { useThemeContext } from '../../theme';
 import { NavigationInterface } from '../../constants';
 

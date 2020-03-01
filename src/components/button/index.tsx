@@ -1,5 +1,4 @@
 import React from 'react';
-import boxShadow from '../../utils/boxShadows';
 
 import { Container, ButtonText } from './styles';
 

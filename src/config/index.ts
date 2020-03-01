@@ -1,8 +1,6 @@
 import Reactotron from 'reactotron-react-native';
 
-import ENV_VARS from 'react-native-dotenv';
-
-const { BABY_BLISS_BASE_URI } = ENV_VARS;
+import { BABY_BLISS_BASE_URI } from 'react-native-dotenv';
 
 if (__DEV__) {
   //connect to tron debugger
