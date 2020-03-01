@@ -6,7 +6,7 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.BD_DARK_COLOR};
 `;
 
-export const Title = styled.Text`
+export const Topic = styled.Text`
   font-size: ${({ theme }) => theme.fonts.LARGE_SIZE}px;
   font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
   color: ${({ theme }) => theme.colors.FONT_DARK_COLOR};
@@ -70,4 +70,9 @@ export const PostDivider = styled.View`
   width: 85%;
   border: 0.5px ${({ theme }) => theme.colors.POST_TIP_COLOR} solid;
   margin: 15px;
+`;
+
+export const ContentLoaderContainer = styled.View`
+  align-items: center;
+  justify-content: center;
 `;

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import LottieView from 'lottie-react-native';
 import { Animated, Easing, TouchableWithoutFeedback } from 'react-native';
-import ResponsiveImage from '../../lib/responsiveImage';
+import ContentLoader from 'react-native-skeleton-content';
+import applyScale from '../../utils/applyScale';
+
+import ResponsiveImage from '../../libs/responsiveImage';
 import Card from '../card';
 import CommentsIcon from '../../../assets/icons/comments';
 
@@ -9,7 +12,7 @@ import { PostInterface } from '../../store/posts/types';
 
 import {
   Container,
-  Title,
+  Topic,
   Description,
   DescriptionContainer,
   ReadMore,
@@ -17,23 +20,28 @@ import {
   LikeContainer,
   LikeCount,
   CommentCount,
-  PostDivider
+  PostDivider,
+  ContentLoaderContainer
 } from './styles';
 
 interface PostProps extends PostInterface {
   postIndex: number;
+  testID?: string;
 }
 
 export default function Post(post: PostProps) {
-  const { topic, description, noOfLikes, noOfViews } = post;
+  const { topic, description, noOfLikes, noOfViews, testID } = post;
 
-  const [animation] = useState(new Animated.Value(0));
+  const [animation, setAnimation] = useState({
+    animateImage: new Animated.Value(0),
+    hideContentLoader: true
+  });
 
   const handleLikePost = () => {};
 
   const startLikeAnimation = () => {
-    animation.setValue(0);
-    Animated.timing(animation, {
+    animation.animateImage.setValue(0);
+    Animated.timing(animation.animateImage, {
       toValue: 1,
       duration: 1300,
       easing: Easing.linear,
@@ -41,15 +49,30 @@ export default function Post(post: PostProps) {
     }).start(() => handleLikePost);
   };
 
+  const handleImageLoading = (error: any) => {
+    if (!error) {
+      setAnimation({ ...animation, hideContentLoader: false });
+    }
+  };
+
   return (
     <Card>
-      <Container testID="post-container">
-        <Title>{topic}</Title>
-        <ResponsiveImage
-          imageUrl="https://bit.ly/2VtcAMJ"
-          width={415}
-          height={220}
-        />
+      <Container testID={testID}>
+        <Topic testID="post-topic">{topic}</Topic>
+        <ContentLoaderContainer>
+          <ContentLoader
+            isLoading={animation.hideContentLoader}
+            containerStyle={{ width: applyScale(414), height: applyScale(220) }}
+            layout={[{ width: applyScale(414), height: applyScale(220) }]}
+          />
+          <ResponsiveImage
+            imageUrl="https://bit.ly/38cCLKf"
+            width={415}
+            height={220}
+            onLoad={handleImageLoading}
+          />
+        </ContentLoaderContainer>
+
         <DescriptionContainer>
           <Description numberOfLines={3}>
             {description.length > 120
@@ -73,7 +96,7 @@ export default function Post(post: PostProps) {
                   top: -27,
                   alignSelf: 'center'
                 }}
-                progress={animation}
+                progress={animation.animateImage}
               />
             </LikeContainer>
           </TouchableWithoutFeedback>
