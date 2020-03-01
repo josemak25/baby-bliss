@@ -1,8 +1,8 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
-import GetStarted from '../../../screens/get_started';
-import Theme from '../../../theme';
-import { createNavigationTestProps } from '../../../constants';
+import GetStarted from '../../../src/screens/get_started';
+import Theme from '../../../src/theme';
+import { createNavigationTestProps } from '../../../src/constants';
 
 const slides = [
   {
@@ -10,13 +10,13 @@ const slides = [
     title: 'GET ANSWERS',
     text:
       'Become a part of pregnancy and parenting tribe and have all your question answered by member and expect',
-    image: require('../../../../assets/images/get-answers.png')
+    image: require('../../../assets/images/get-answers.png')
   },
   {
     key: 'newsFeed',
     title: 'NEWS FEED',
     text: 'Get all Insight on everything Pregnancy and Motherhood',
-    image: require('../../../../assets/images/news.png')
+    image: require('../../../assets/images/news.png')
   }
 ];
 

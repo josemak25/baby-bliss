@@ -1,4 +1,4 @@
-import boxShadows from '../../utils/boxShadows';
+import boxShadows from '../../src/utils/boxShadows';
 
 describe('TEST BOX SHADOW FUNCTIONALITY', () => {
   test('test shadow return shadow default styles when no arguments is passed', () => {

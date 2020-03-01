@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
-import Button from '../../../components/button';
-import Theme from '../../../theme';
+import Button from '../../../src/components/button';
+import Theme from '../../../src/theme';
 
 describe('TEST BUTTON COMPONENT(<Button/>)', () => {
   const onPressMock = jest.fn();

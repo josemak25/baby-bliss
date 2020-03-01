@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import Animated, { Easing } from 'react-native-reanimated';
 import applyScale from '../../utils/applyScale';
 
-import { Container, Image } from './styles';
+import { Image } from './styles';
 
 const ProgressiveImage = Animated.createAnimatedComponent(Image);
 
@@ -17,10 +17,10 @@ type ResponsiveImageProps = {
   thumbnailSource?: object;
   thumbnailFadeDuration?: number;
   thumbnailBlurRadius?: number;
-  onLoadStart?(): void;
-  onLoad?(): void;
-  onError?(): void;
-  onLoadEnd?(): void;
+  onLoadStart?(T: void): void;
+  onLoad?(T: void): void;
+  onError?(T: void): void;
+  onLoadEnd?(T: void): void;
 };
 
 export default function ResponsiveImage(props: ResponsiveImageProps) {
@@ -56,10 +56,10 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
   };
 
   return (
-    <Container style={[{ width, height }, props.style]} testID={props.testID}>
+    <Fragment>
       <ProgressiveImage
         style={[{ width, height, resizeMode }, props.style]}
-        source={{ uri: thumbnailSource }}
+        source={{ uri: thumbnailSource, cache: 'force-cache' }}
         onLoadStart={props.onLoadStart}
         onProgress={props.onLoadStart}
         onLoad={() => onLoadThumbnail}
@@ -74,7 +74,7 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
           { opacity: animation.imageOpacity },
           props.style
         ]}
-        source={{ uri: props.imageUrl }}
+        source={{ uri: props.imageUrl, cache: 'force-cache' }}
         onLoadStart={props.onLoadStart}
         onProgress={props.onLoadStart}
         onLoad={onLoadImage}
@@ -82,6 +82,6 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
         onLoadEnd={props.onLoadEnd}
         testID="image-data"
       />
-    </Container>
+    </Fragment>
   );
 }

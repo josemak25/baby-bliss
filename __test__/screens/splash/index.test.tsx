@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, act } from '@testing-library/react-native';
-import SplashScreen from '../../../screens/splash';
-import Theme from '../../../theme';
-import { createNavigationTestProps } from '../../../constants';
+import SplashScreen from '../../../src/screens/splash';
+import Theme from '../../../src/theme';
+import { createNavigationTestProps } from '../../../src/constants';
 
 const mountComponent = () => {
   const props: any = createNavigationTestProps();

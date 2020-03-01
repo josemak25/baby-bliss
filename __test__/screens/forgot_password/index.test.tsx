@@ -1,8 +1,8 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
-import Theme from '../../../theme';
-import { createNavigationTestProps } from '../../../constants';
-import ForgotPasswordScreen from '../../../screens/forgot_password';
+import Theme from '../../../src/theme';
+import { createNavigationTestProps } from '../../../src/constants';
+import ForgotPasswordScreen from '../../../src/screens/forgot_password';
 
 const mountComponent = () => {
   const props: any = createNavigationTestProps();

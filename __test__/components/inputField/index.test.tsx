@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
-import Theme from '../../../theme';
-import { TextInput } from '../../../components/inputField/styles';
+import Theme from '../../../src/theme';
+import { TextInput } from '../../../src/components/inputField/styles';
 
 describe('TEST INPUT_FILED COMPONENT(<InputFiled/>)', () => {
   const onChangeTextMock = jest.fn();

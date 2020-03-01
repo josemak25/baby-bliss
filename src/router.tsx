@@ -65,7 +65,10 @@ const AppNavigator = createStackNavigator(
     SignInScreen: { screen: Screens.SignInScreen },
 
     // Home Screen Route
-    HomeScreen: AppBottomTabNavigator
+    HomeScreen: {
+      screen: AppBottomTabNavigator,
+      navigationOptions: { headerShown: false }
+    }
   },
 
   {

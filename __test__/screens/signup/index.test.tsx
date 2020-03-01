@@ -1,20 +1,26 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react-native';
-import Theme from '../../../theme';
-import { createNavigationTestProps } from '../../../constants';
-import SignInScreen from '../../../screens/signin';
+import Theme from '../../../src/theme';
+import { createNavigationTestProps } from '../../../src/constants';
+import SignUpScreen from '../../../src/screens/signup';
 
 const mountComponent = () => {
+  const onHandleChange = jest.fn(() => {});
+
   const props: any = createNavigationTestProps();
   const renderedProps = render(
     <Theme>
-      <SignInScreen {...props} />
+      <SignUpScreen {...props} />
     </Theme>
   );
-  return { props, ...renderedProps };
+  return {
+    props,
+    ...renderedProps,
+    onHandleChange
+  };
 };
 
-describe(' TEST SIGN_IN SCREEN (<SignInScreen/>)', () => {
+describe(' TEST GET_SIGNUP SCREEN (<SignUpScreen/>)', () => {
   test('It renders the App logo component', () => {
     const { queryByTestId } = mountComponent();
     expect(queryByTestId('appLogo')).toBeTruthy();
@@ -22,19 +28,10 @@ describe(' TEST SIGN_IN SCREEN (<SignInScreen/>)', () => {
 
   test('That the screen has all the necessary input fields', () => {
     const { getByTestId } = mountComponent();
+    expect(getByTestId('userName')).toBeTruthy();
     expect(getByTestId('email')).toBeTruthy();
+    expect(getByTestId('phone')).toBeTruthy();
     expect(getByTestId('password')).toBeTruthy();
-  });
-
-  test('That the forgot password button was pressed', () => {
-    const { props, queryByTestId } = mountComponent();
-    const signUpButton = queryByTestId('resetAccount');
-    expect(signUpButton).toBeTruthy();
-    fireEvent.press(queryByTestId('resetAccount'));
-    expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
-    expect(props.navigation.navigate).toHaveBeenCalledWith(
-      'ForgotPasswordScreen'
-    );
   });
 
   test('That the login button was pressed', () => {
@@ -42,16 +39,18 @@ describe(' TEST SIGN_IN SCREEN (<SignInScreen/>)', () => {
     const loginButton = queryByTestId('loginButton');
     expect(loginButton).toBeTruthy();
     fireEvent.press(queryByTestId('loginButton'));
-    expect(props.navigation.replace).toHaveBeenCalledTimes(1);
-    expect(props.navigation.replace).toHaveBeenCalledWith('HomeScreen');
+    expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
+    expect(props.navigation.navigate).toHaveBeenCalledWith('SignInScreen');
   });
 
   test('That the sigUp button was pressed', () => {
     const { props, queryByTestId } = mountComponent();
-    const signUpButton = queryByTestId('createAccount');
+    const signUpButton = queryByTestId('submitButton');
     expect(signUpButton).toBeTruthy();
-    fireEvent.press(queryByTestId('createAccount'));
+    fireEvent.press(queryByTestId('submitButton'));
     expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
-    expect(props.navigation.navigate).toHaveBeenCalledWith('SignUpScreen');
+    expect(props.navigation.navigate).toHaveBeenCalledWith(
+      'ProfileSetupScreen'
+    );
   });
 });
