@@ -67,7 +67,7 @@ export const CommentCount = styled.Text`
 `;
 
 export const PostDivider = styled.View`
-  width: 85%;
+  width: 100%;
   border: 0.5px ${({ theme }) => theme.colors.POST_TIP_COLOR} solid;
   margin: 15px;
 `;
