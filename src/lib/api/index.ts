@@ -12,6 +12,7 @@
 
 import { AsyncStorage } from 'react-native';
 import ENV_VARIABLES, { ENV_VARIABLES_TYPES } from '../../config';
+import { AUTH_TOKEN } from '../../constants';
 
 type POST_TYPES = { path: string; payload: any };
 
@@ -27,14 +28,13 @@ class API {
         return API.authToken;
       }
 
-      API.authToken = await AsyncStorage.getItem('@AUTH_TOKEN');
+      API.authToken = await AsyncStorage.getItem(AUTH_TOKEN);
       API.authToken = `Bearer ${API.authToken}`;
     })();
   }
 
   get(path: string): Promise<any> {
     return fetch(`${this.BASE_URL}/${path}`, {
-      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
         Authorization: API.authToken
@@ -50,6 +50,16 @@ class API {
         Authorization: API.authToken
       },
       body: JSON.stringify(request.payload)
+    });
+  }
+
+  putById(path: string): Promise<any> {
+    return fetch(`${this.BASE_URL}/${path}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: API.authToken
+      }
     });
   }
 

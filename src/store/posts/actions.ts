@@ -4,7 +4,8 @@ import {
   CommentInterface,
   PostInterface,
   POST_ACTION_TYPES,
-  ResponseInterface
+  ResponseInterface,
+  LikePostResponse
 } from './types';
 import API from '../../lib/api';
 
@@ -20,9 +21,13 @@ const loadPostError = (error: string): PostAction => ({
   payload: error
 });
 
-const likePost = (postId: string): PostAction => ({
+// const likePostSuccess = (postId: string): PostAction => ({
+//   type: POST_TYPES.LIKE_POST,
+//   payload: postId
+// });
+const likePostSuccess = (likeCount: number, postId: string) => ({
   type: POST_TYPES.LIKE_POST,
-  payload: postId
+  payload: { likeCount, postId }
 });
 
 const likeComment = (commentId: string): PostAction => ({
@@ -36,7 +41,7 @@ const postComment = (payload: CommentInterface): PostAction => ({
 });
 
 export default function postsActions(type: string) {
-  return async (dispatch: any) => {
+  return async (dispatch: any, payload: string) => {
     // To unsubscribe to these update, just use the functions:
     switch (type) {
       case POST_ACTION_TYPES.LOAD_POSTS:
@@ -46,8 +51,10 @@ export default function postsActions(type: string) {
           const request = await API.get('/posts');
 
           const response: ResponseInterface = await request.json();
-
-          dispatch(loadPostSuccess(response.payload));
+          if (response.statusCode === 200) {
+            return dispatch(loadPostSuccess(response.payload));
+          }
+          dispatch(loadPostError(response.message));
         } catch (error) {
           dispatch(loadPostError(error));
         }
@@ -56,16 +63,15 @@ export default function postsActions(type: string) {
       case POST_ACTION_TYPES.LIKE_POST:
         try {
           dispatch(loadPostStarted());
-          const response = await fetch('');
+          const request = await API.putById(`/posts/${payload}/like`);
 
-          if (!response.ok) {
-            throw new Error('Something went wrong');
+          const response: LikePostResponse = await request.json();
+
+          if (response.statusCode === 200) {
+            return dispatch(likePostSuccess(response.payload.likes, payload));
           }
-          const responseData = await response.json();
-          console.log('LIKE_POST', responseData);
-          dispatch(likePost(responseData));
+          dispatch(loadPostError(response.message));
         } catch (error) {
-          console.log(error);
           dispatch(loadPostError(error));
         }
         break;
@@ -79,10 +85,8 @@ export default function postsActions(type: string) {
             throw new Error('Something went wrong');
           }
           const responseData = await response.json();
-          console.log('POST_COMMENT', responseData);
           dispatch(postComment(responseData));
         } catch (error) {
-          console.log(error);
           dispatch(loadPostError(error));
         }
         break;
@@ -96,10 +100,8 @@ export default function postsActions(type: string) {
             throw new Error('Something went wrong');
           }
           const responseData = await response.json();
-          console.log('LIKE_COMMENT', responseData);
           dispatch(likeComment(responseData));
         } catch (error) {
-          console.log(error);
           dispatch(loadPostError(error));
         }
         break;

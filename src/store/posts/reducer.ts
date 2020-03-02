@@ -24,9 +24,29 @@ export default function postReducer(
       };
     }
 
+    case POST_TYPES.LOAD_POST_ERROR: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+    }
+
     case POST_TYPES.LIKE_POST: {
-      const { payload: postId } = action;
-      // send id to backend
+      const clonedPosts = [...state.posts];
+
+      const updatedPostIndex = state.posts.findIndex(
+        post => post._id === action.payload.postId
+      );
+
+      clonedPosts[updatedPostIndex].noOfLikes = action.payload.likeCount;
+
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        posts: [...clonedPosts]
+      };
     }
 
     case POST_TYPES.LIKE_COMMENT: {

@@ -4,7 +4,11 @@ import { useThemeContext } from '../../theme';
 import { useStoreContext } from '../../store';
 import CARD_ITEM from '../../utils/getItemCardSize';
 import ScreenGridSizeActions from '../../store/grid/actions';
-import { NavigationInterface } from '../../constants';
+import {
+  NavigationInterface,
+  AUTH_TOKEN,
+  FIRST_TIME_LAUNCH
+} from '../../constants';
 
 import { Container, ImageContainer, Image } from './styles';
 
@@ -45,13 +49,13 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
   const checkInitialLaunch = async () => {
     try {
       const multiGetStorageValues = await AsyncStorage.multiGet([
-        '@FIRST_TIME_LAUNCH',
-        '@AUTH_TOKEN'
+        FIRST_TIME_LAUNCH,
+        AUTH_TOKEN
       ]);
       const firstTimeLaunch = multiGetStorageValues[0];
 
       if (!firstTimeLaunch[1]) {
-        await AsyncStorage.setItem('@FIRST_TIME_LAUNCH', '1');
+        await AsyncStorage.setItem(FIRST_TIME_LAUNCH, '1');
         return navigation.replace('GetStartedScreen');
       }
       const canContinueToHomePage = multiGetStorageValues[1];

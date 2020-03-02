@@ -29,9 +29,10 @@ interface PostProps extends PostInterface {
   testID?: string;
   width: number;
   navigation(): void;
+  handleLikePost(id: string): void;
 }
 
-export default function Post(props: PostProps) {
+export default function Post(post: PostProps) {
   const {
     topic,
     description,
@@ -39,15 +40,15 @@ export default function Post(props: PostProps) {
     noOfViews,
     testID,
     width,
-    images
-  } = props;
+    images,
+    _id,
+    handleLikePost
+  } = post;
 
   const [animation, setAnimation] = useState({
     animateImage: new Animated.Value(0),
     hideContentLoader: true
   });
-
-  const handleLikePost = () => {};
 
   const startLikeAnimation = () => {
     animation.animateImage.setValue(0);
@@ -56,7 +57,7 @@ export default function Post(props: PostProps) {
       duration: 1300,
       easing: Easing.linear,
       useNativeDriver: true
-    }).start(() => handleLikePost);
+    }).start(() => handleLikePost(_id));
   };
 
   const handleImageLoading = (error: any) => {
@@ -72,7 +73,7 @@ export default function Post(props: PostProps) {
         height: applyScale(417),
         margin: 15
       }}
-      onPress={props.navigation}
+      onPress={post.navigation}
     >
       <Container testID={testID}>
         <Topic testID="post-topic">{topic}</Topic>

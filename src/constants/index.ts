@@ -68,3 +68,6 @@ export const navigationBackButton = {
     fontSize: 12
   }
 };
+
+export const AUTH_TOKEN = '@AUTH_TOKEN3';
+export const FIRST_TIME_LAUNCH = '@FIRST_TIME_LAUNCH';

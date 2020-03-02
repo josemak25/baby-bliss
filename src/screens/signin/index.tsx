@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BouncyCheckbox from '../../libs/bouncyCheckbox';
 import { ActivityIndicator, AsyncStorage } from 'react-native';
 import { useThemeContext } from '../../theme';
-import { NavigationInterface } from '../../constants';
+import { NavigationInterface, AUTH_TOKEN } from '../../constants';
 
 import Button from '../../components/button';
 import InputFiled from '../../components/inputField';
@@ -50,7 +50,7 @@ export default function SignIn({ navigation }: NavigationInterface) {
       showSnackbar(colors.LIKE_POST_COLOR, userState.errorMessage);
       return;
     }
-    await AsyncStorage.setItem('@AUTH_TOKEN', userState.token);
+    await AsyncStorage.setItem(AUTH_TOKEN, userState.token);
     navigation.replace('HomeScreen');
   };
 

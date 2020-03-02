@@ -32,7 +32,7 @@ export default function AppRouter() {
       showSnackbar('#F42850', 'No Internet Connection!', true);
       return;
     }
-    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch);
+    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, null);
     return () => unsubscribe();
   }, []);
   const handleConnectivityChange = (isConnected: boolean) => {

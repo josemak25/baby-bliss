@@ -72,17 +72,26 @@ export type ResponseInterface = {
   payload: PostInterface[];
 };
 
-export type PostInitialState  = {
+export type PostInitialState = {
   isLoading: boolean;
   error?: any;
   posts?: PostInterface[];
+};
+
+export type LikePostResponse = {
+  statusCode: number;
+  message: string;
+  payload: { likes: number };
 };
 
 export type PostAction =
   | { type: POST_TYPES.LOAD_POST_STARTED; payload: null }
   | { type: POST_TYPES.LOAD_POST_SUCCESS; payload: PostInterface[] }
   | { type: POST_TYPES.LOAD_POST_ERROR; payload: string }
-  | { type: POST_TYPES.LIKE_POST; payload: string }
+  | {
+      type: POST_TYPES.LIKE_POST;
+      payload: { likeCount: number; postId: string };
+    }
   | { type: POST_TYPES.LIKE_COMMENT; payload: string }
   | {
       type: POST_TYPES.COMMENT_ON_POST;
