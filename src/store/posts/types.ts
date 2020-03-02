@@ -61,6 +61,8 @@ export enum POST_ACTION_TYPES {
 }
 
 export type CommentInterface = {
+  statusCode: number;
+  message: string;
   payload: { postId: string; comment: string };
 };
 

@@ -21,10 +21,6 @@ const loadPostError = (error: string): PostAction => ({
   payload: error
 });
 
-// const likePostSuccess = (postId: string): PostAction => ({
-//   type: POST_TYPES.LIKE_POST,
-//   payload: postId
-// });
 const likePostSuccess = (likeCount: number, postId: string) => ({
   type: POST_TYPES.LIKE_POST,
   payload: { likeCount, postId }
@@ -79,13 +75,14 @@ export default function postsActions(type: string) {
       case POST_ACTION_TYPES.POST_COMMENT:
         try {
           dispatch(loadPostStarted());
-          const response = await fetch('');
+          const request = await API.putById(``);
 
-          if (!response.ok) {
-            throw new Error('Something went wrong');
+          const response: CommentInterface = await request.json();
+
+          if (response.statusCode === 200) {
+            return dispatch(postComment(response));
           }
-          const responseData = await response.json();
-          dispatch(postComment(responseData));
+          dispatch(loadPostError(response.message));
         } catch (error) {
           dispatch(loadPostError(error));
         }
