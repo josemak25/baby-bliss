@@ -30,9 +30,9 @@ const likePostSuccess = (likeCount: number, postId: string) => ({
   payload: { likeCount, postId }
 });
 
-const likeComment = (commentId: string): PostAction => ({
+const likeComment = (likeCount: number, postId: string) => ({
   type: POST_TYPES.LIKE_COMMENT,
-  payload: commentId
+  payload: { likeCount, postId }
 });
 
 const postComment = (payload: CommentInterface): PostAction => ({
@@ -94,14 +94,14 @@ export default function postsActions(type: string) {
       case POST_ACTION_TYPES.LIKE_COMMENT:
         try {
           dispatch(loadPostStarted());
-          const request = await API.putById(`/posts/${payload}/like`);
+          const request = await API.putById(``);
 
           const response: LikePostResponse = await request.json();
 
           if (response.statusCode === 200) {
-            return dispatch(likePostSuccess(response.payload.likes, payload));
+            return dispatch(likeComment(response.payload.likes, payload));
           }
-          dispatch(likeComment(response.message));
+          dispatch(loadPostError(response.message));
         } catch (error) {
           dispatch(loadPostError(error));
         }
