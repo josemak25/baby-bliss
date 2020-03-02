@@ -50,3 +50,9 @@ export const Conditions = styled.View`
   justify-content: space-between;
   align-items: center;
 `;
+
+export const Spinner = styled.View`
+  position: absolute;
+  align-self: center;
+  top: 15px;
+`;

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BouncyCheckbox from '../../libs/bouncyCheckbox';
+import { ActivityIndicator, AsyncStorage } from 'react-native';
 import { useThemeContext } from '../../theme';
 import { NavigationInterface } from '../../constants';
 
@@ -9,6 +10,10 @@ import InputFiled from '../../components/inputField';
 import MailIcon from '../../../assets/icons/mail';
 import PrivacyIcon from '../../../assets/icons/privacy';
 import boxShadow from '../../utils/boxShadows';
+import userActions from '../../store/user/actions';
+
+import { useStoreContext } from '../../store';
+import { USER_ACTION_TYPES } from '../../store/user/types';
 
 import {
   Container,
@@ -19,23 +24,54 @@ import {
   RememberMe,
   SafeAreaView,
   HeaderTitle,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Spinner
 } from './styles';
+import showSnackbar from '../../components/UI/snackbar';
+import { validateFormFields } from '../../components/inputField/utils';
 
 export default function SignIn({ navigation }: NavigationInterface) {
   const { colors, fonts } = useThemeContext();
+  const [{ userState }, dispatch] = useStoreContext();
 
-  const [values, setValues] = useState({ email: '', password: '' });
+  const [values, setValues] = useState({
+    username: '',
+    password: ''
+  });
+
+  useEffect(() => {
+    (async () => {
+      await storeUserToken();
+    })();
+  }, [userState]);
+
+  const storeUserToken = async () => {
+    if (!userState.token) {
+      showSnackbar(colors.LIKE_POST_COLOR, userState.errorMessage);
+      return;
+    }
+    await AsyncStorage.setItem('@AUTH_TOKEN', userState.token);
+    navigation.replace('HomeScreen');
+  };
 
   const onHandleChange = (field: string) => (value: string) => {
     setValues({ ...values, [field]: value });
   };
 
   const handleSubmit = () => {
-    // dispatch action to submit form
-
-    // on success navigate to home screen
-    navigation.replace('HomeScreen');
+    //validate the form  for empty fields before sending this form.
+    for (let key in values) {
+      if (!values[key]) {
+        showSnackbar(colors.LIKE_POST_COLOR, 'Please all fields are required!');
+        return;
+      }
+      //validate the form fields for incorrect values before sending this form.
+      if (!validateFormFields(key, values[key])) {
+        showSnackbar(colors.LIKE_POST_COLOR, `Please enter a valid ${key}`);
+        return;
+      }
+    }
+    userActions(USER_ACTION_TYPES.LOGIN_USER)(dispatch, values);
   };
 
   return (
@@ -47,14 +83,13 @@ export default function SignIn({ navigation }: NavigationInterface) {
             source={require('../../../assets/images/logo.png')}
             style={{ resizeMode: 'contain', margin: 15 }}
           />
+
           <FormFields>
             <InputFiled
-              placeholder="Email"
-              testID="email"
-              onChangeText={onHandleChange('email')}
-              defaultValue={values.email}
-              textContentType="emailAddress"
-              keyboardType="email-address"
+              placeholder="Username"
+              testID="username"
+              onChangeText={onHandleChange('username')}
+              defaultValue={values.username}
               style={{
                 borderTopStartRadius: 10,
                 borderTopEndRadius: 10
@@ -122,9 +157,15 @@ export default function SignIn({ navigation }: NavigationInterface) {
               fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
               fontSize: fonts.MEDIUM_SIZE + 2
             }}
-            title="login"
+            title={`${userState.isLoading ? '' : 'login'}`}
             onPress={handleSubmit}
+            disabled={userState.isLoading}
           />
+          {userState.isLoading && (
+            <Spinner>
+              <ActivityIndicator size="small" color={colors.BG_LIGHT_COLOR} />
+            </Spinner>
+          )}
           <Button
             title="create account"
             testID="createAccount"
