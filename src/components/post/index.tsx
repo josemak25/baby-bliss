@@ -27,10 +27,11 @@ import {
 interface PostProps extends PostInterface {
   postIndex: number;
   testID?: string;
+  width: number;
 }
 
 export default function Post(post: PostProps) {
-  const { topic, description, noOfLikes, noOfViews, testID } = post;
+  const { topic, description, noOfLikes, noOfViews, testID, width } = post;
 
   const [animation, setAnimation] = useState({
     animateImage: new Animated.Value(0),
@@ -56,18 +57,21 @@ export default function Post(post: PostProps) {
   };
 
   return (
-    <Card>
+    <Card style={{ width: applyScale(width), margin: 5 }}>
       <Container testID={testID}>
         <Topic testID="post-topic">{topic}</Topic>
         <ContentLoaderContainer>
           <ContentLoader
             isLoading={animation.hideContentLoader}
-            containerStyle={{ width: applyScale(414), height: applyScale(220) }}
-            layout={[{ width: applyScale(414), height: applyScale(220) }]}
+            containerStyle={{
+              width: applyScale(width),
+              height: applyScale(220)
+            }}
+            layout={[{ width: applyScale(width), height: applyScale(220) }]}
           />
           <ResponsiveImage
-            imageUrl="https://bit.ly/38cCLKf"
-            width={415}
+            imageUrl="https://bit.ly/38c0U3G"
+            width={width}
             height={220}
             onLoad={handleImageLoading}
           />
