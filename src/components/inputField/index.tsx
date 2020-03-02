@@ -11,6 +11,7 @@ import {
 } from './styles';
 import CheckedIcon from '../../../assets/icons/checked';
 import ErrorIcon from '../../../assets/icons/error';
+import { validateFormFields } from './utils';
 
 type InputFieldProps = {
   placeholder: string;
@@ -73,38 +74,6 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
     });
   }
 
-  const decorateTextFieldOnBlur = () => {
-    switch (placeholder.toLowerCase()) {
-      case 'username':
-        if (inputState.text.trim().length < 5) {
-          return updateFeedBack(false);
-        }
-        updateFeedBack(true);
-        break;
-      case 'email':
-        const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (!EMAIL_PATTERN.test(inputState.text.trim())) {
-          return updateFeedBack(false);
-        }
-        updateFeedBack(true);
-        break;
-      case 'phone':
-        const PHONE_PATTERN = /^(\+234|0)\d{10}$/;
-        if (!PHONE_PATTERN.test(inputState.text)) {
-          return updateFeedBack(false);
-        }
-        updateFeedBack(true);
-      case 'password':
-        if (inputState.text.trim().length < 6) {
-          return updateFeedBack(false);
-        }
-        updateFeedBack(true);
-        break;
-      default:
-        break;
-    }
-  };
-
   const decorateTextFieldOnFocus = () => {
     setInputState({
       ...inputState,
@@ -135,7 +104,9 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
           onChangeText={onChangeText}
           placeholder={placeholder}
           onChange={handleTextChange}
-          onBlur={decorateTextFieldOnBlur}
+          onBlur={() =>
+            updateFeedBack(validateFormFields(placeholder, inputState.text))
+          }
           onFocus={decorateTextFieldOnFocus}
           textContentType={textContentType}
           keyboardType={keyboardType}

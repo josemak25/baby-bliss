@@ -8,6 +8,7 @@ type ButtonProps = {
   testID?: string;
   title: string;
   onPress?(): void;
+  disabled?: boolean;
 };
 
 export default function Button(props: ButtonProps) {

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { enableScreens } from 'react-native-screens';
 import AppLoading from './src/components/AppLoading';
+import { StoreProvider, useStoreContext } from './src/store';
 import AppRouter from './src';
+import './src/config';
+
 import './src/config';
 
 export default function App() {
@@ -10,7 +13,9 @@ export default function App() {
   enableScreens();
 
   return isAppReady ? (
-    <AppRouter />
+    <StoreProvider>
+      <AppRouter />
+    </StoreProvider>
   ) : (
     <AppLoading setIsAppReady={setIsAppReady} />
   );

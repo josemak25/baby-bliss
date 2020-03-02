@@ -1,5 +1,10 @@
-import React, { useState } from 'react';
-import { KeyboardAvoidingView } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import {
+  KeyboardAvoidingView,
+  ActivityIndicator,
+  AsyncStorage
+} from 'react-native';
+
 import { useThemeContext } from '../../theme';
 import { NavigationInterface } from '../../constants';
 
@@ -11,6 +16,12 @@ import MailIcon from '../../../assets/icons/mail';
 import PhoneIcon from '../../../assets/icons/phone';
 import PrivacyIcon from '../../../assets/icons/privacy';
 import boxShadow from '../../utils/boxShadows';
+import { useStoreContext } from '../../store';
+import { USER_ACTION_TYPES } from '../../store/user/types';
+import userActions from '../../store/user/actions';
+import { Spinner } from '../signin/styles';
+import { validateFormFields } from '../../components/inputField/utils';
+import showSnackbar from '../../components/UI/snackbar';
 
 import {
   Container,
@@ -26,23 +37,53 @@ import {
 
 export default function SignUp({ navigation }: NavigationInterface) {
   const [values, setValues] = useState({
-    userName: '',
-    email: '',
-    phone: '',
-    password: ''
+    user: { name: '', username: '', email: '', mobileNumber: '', password: '' },
+    canSubmit: false
   });
 
   const { colors, fonts } = useThemeContext();
+  const [{ userState }, dispatch] = useStoreContext();
 
   const onHandleChange = (field: string) => (value: string) => {
-    setValues({ ...values, [field]: value });
+    setValues({
+      ...values,
+      canSubmit: false,
+      user: { ...values.user, [field]: value }
+    });
+  };
+
+  useEffect(() => {
+    if (!userState.token) {
+      showSnackbar(colors.LIKE_POST_COLOR, userState.errorMessage);
+      return;
+    }
+    (async () => {
+      await storeUserToken();
+    })();
+  }, [userState]);
+
+  const storeUserToken = async () => {
+    await AsyncStorage.setItem('@AUTH_TOKEN', userState.token);
+    navigation.replace('HomeScreen');
   };
 
   const handleSubmit = () => {
-    // dispatch action to submit form
-
-    // on success navigate to profile setup screen
-    navigation.navigate('ProfileSetupScreen');
+    let phoneNumberCase = undefined;
+    //validate the form  for empty fields before sending this form.
+    for (let key in values.user) {
+      if (!values.user[key]) {
+        showSnackbar(colors.LIKE_POST_COLOR, 'Please all fields are required!');
+        return;
+      }
+      phoneNumberCase = key === 'mobileNumber' ? 'mobileNumber' : undefined;
+      key = key === 'mobileNumber' ? 'phone' : key;
+      //validate the form fields for incorrect values before sending this form.
+      if (!validateFormFields(key, values.user[phoneNumberCase || key])) {
+        showSnackbar(colors.LIKE_POST_COLOR, `Please enter a valid ${key}`);
+        return;
+      }
+    }
+    userActions(USER_ACTION_TYPES.REGISTER_USER)(dispatch, values.user);
   };
 
   return (
@@ -60,10 +101,10 @@ export default function SignUp({ navigation }: NavigationInterface) {
           />
           <FormFields>
             <InputFiled
-              placeholder="Username"
-              testID="userName"
-              onChangeText={onHandleChange('userName')}
-              defaultValue={values.userName}
+              placeholder="Name"
+              testID="Name"
+              onChangeText={onHandleChange('name')}
+              defaultValue={values.user.name}
               textContentType="name"
               style={{
                 borderTopStartRadius: 10,
@@ -78,10 +119,24 @@ export default function SignUp({ navigation }: NavigationInterface) {
               />
             </InputFiled>
             <InputFiled
+              placeholder="Username"
+              testID="userName"
+              onChangeText={onHandleChange('username')}
+              defaultValue={values.user.username}
+              textContentType="name"
+            >
+              <UserIcon
+                fillColor={colors.ACTIVE_TAB_COLOR}
+                width="40%"
+                height="40%"
+                useCase
+              />
+            </InputFiled>
+            <InputFiled
               placeholder="Email"
               testID="email"
               onChangeText={onHandleChange('email')}
-              defaultValue={values.email}
+              defaultValue={values.user.email}
               textContentType="emailAddress"
               keyboardType="email-address"
             >
@@ -90,8 +145,8 @@ export default function SignUp({ navigation }: NavigationInterface) {
             <InputFiled
               placeholder="Phone"
               testID="phone"
-              onChangeText={onHandleChange('phone')}
-              defaultValue={values.phone}
+              onChangeText={onHandleChange('mobileNumber')}
+              defaultValue={values.user.mobileNumber}
               textContentType="telephoneNumber"
               keyboardType="phone-pad"
             >
@@ -101,7 +156,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
               placeholder="Password"
               testID="password"
               onChangeText={onHandleChange('password')}
-              defaultValue={values.password}
+              defaultValue={values.user.password}
               secureTextEntry={true}
               returnKeyType="done"
               style={{
@@ -135,9 +190,15 @@ export default function SignUp({ navigation }: NavigationInterface) {
               fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
               fontSize: fonts.MEDIUM_SIZE - 1
             }}
-            title="Submit"
             onPress={handleSubmit}
+            title={`${userState.isLoading ? '' : 'Submit'}`}
+            disabled={userState.isLoading}
           />
+          {userState.isLoading && (
+            <Spinner>
+              <ActivityIndicator size="small" color={colors.BG_LIGHT_COLOR} />
+            </Spinner>
+          )}
           <Button
             title="Log in"
             testID="loginButton"

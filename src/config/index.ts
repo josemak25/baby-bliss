@@ -1,24 +1,9 @@
-import Reactotron from 'reactotron-react-native';
-
 import { BABY_BLISS_BASE_URI } from 'react-native-dotenv';
 
-if (__DEV__) {
-  //connect to tron debugger
-  const tron = Reactotron.configure()
-    .useReactNative()
-    .connect();
+export type ENV_VARIABLES_TYPES = {
+  BABY_BLISS_BASE_URI: string;
+};
 
-  //clean tron memory for possible memory leeks
-  tron.clear();
+const ENV_VARIABLES: ENV_VARIABLES_TYPES = { BABY_BLISS_BASE_URI };
 
-  //attach tron debugger to global
-  console.tron = tron;
-}
-
-declare global {
-  interface Console {
-    tron: any;
-  }
-}
-
-export default { BABY_BLISS_BASE_URI };
+export default ENV_VARIABLES;

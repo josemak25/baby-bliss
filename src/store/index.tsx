@@ -5,12 +5,11 @@ import React, {
   useContext
 } from 'react';
 
-import useCombinedReducers from '../utils/useCombinedReducers';
-
 import postsReducer, { postInitialState } from './posts/reducer';
 import userReducer, { userInitialState } from './user/reducer';
 import gridSizeReducer, { gridInitialState } from './grid/reducer';
 import postCategoryReducer, { categoryInitialState } from './category/reducer';
+import useCombinedReducers from '../lib/useCombineReducer';
 
 const StoreContext = createContext(null);
 
