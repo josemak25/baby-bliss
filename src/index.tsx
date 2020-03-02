@@ -19,8 +19,6 @@ export default function AppRouter() {
   };
 
   const unsubscribe = () => {
-    console.log('unsubscribe');
-
     NetInfo.isConnected.removeEventListener(
       'connectionChange',
       handleConnectivityChange
@@ -34,10 +32,8 @@ export default function AppRouter() {
     }
     postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, null);
     return () => unsubscribe();
-  }, []);
+  });
   const handleConnectivityChange = (isConnected: boolean) => {
-    console.log('handleConnectivityChange', isConnected);
-
     setIsConnected(isConnected);
   };
 

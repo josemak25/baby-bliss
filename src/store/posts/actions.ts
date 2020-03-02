@@ -94,13 +94,14 @@ export default function postsActions(type: string) {
       case POST_ACTION_TYPES.LIKE_COMMENT:
         try {
           dispatch(loadPostStarted());
-          const response = await fetch('');
+          const request = await API.putById(`/posts/${payload}/like`);
 
-          if (!response.ok) {
-            throw new Error('Something went wrong');
+          const response: LikePostResponse = await request.json();
+
+          if (response.statusCode === 200) {
+            return dispatch(likePostSuccess(response.payload.likes, payload));
           }
-          const responseData = await response.json();
-          dispatch(likeComment(responseData));
+          dispatch(likeComment(response.message));
         } catch (error) {
           dispatch(loadPostError(error));
         }
