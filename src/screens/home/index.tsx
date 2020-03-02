@@ -1,12 +1,17 @@
-import React, { Fragment } from 'react';
-import { FlatList } from 'react-native';
+import React, { Fragment, useState } from 'react';
+import { OptimizedFlatList } from 'react-native-optimized-flatlist';
+
+import { useStoreContext } from '../../store';
+
 import Post from '../../components/post';
 import Header from '../../components/header';
 import SearchIcon from '../../../assets/icons/search';
 import post from '../../libs/dummyPost.json';
 
 import { NavigationInterface } from '../../constants';
-import { useStoreContext } from '../../store';
+import { PostInterface } from '../../store/posts/types';
+
+import CARD_ITEM from '../../utils/getItemCardSize';
 
 import {
   Container,
@@ -15,7 +20,6 @@ import {
   LogoContainer,
   SearchContainer
 } from './styles';
-import { PostInterface } from '../../store/posts/types';
 
 interface HomeScreenProp extends NavigationInterface {
   testID?: string;
@@ -24,8 +28,14 @@ interface HomeScreenProp extends NavigationInterface {
 
 export default function HomeScreen(props: HomeScreenProp) {
   const [store, dispatch] = useStoreContext();
+  const [grid, setGrid] = useState({ numOfColumn: 1, cardSize: 320 });
 
   const onEndReached = () => {};
+
+  const onLayout = () => {
+    const { cardSize, numOfColumn } = CARD_ITEM;
+    setGrid({ ...grid, cardSize, numOfColumn });
+  };
 
   return (
     <Fragment>
@@ -41,20 +51,19 @@ export default function HomeScreen(props: HomeScreenProp) {
         </SearchContainer>
       </Header>
       <SafeAreaView testID="HomeScreen">
-        <Container>
-          <FlatList
+        <Container onLayout={onLayout}>
+          <OptimizedFlatList
             data={props.posts}
             renderItem={({ item, index }) => (
-              <Post {...item} postIndex={index} />
+              <Post {...item} postIndex={index} width={grid.cardSize} />
             )}
+            key={grid.numOfColumn}
             keyExtractor={(_, key) => `${key}`}
+            numColumns={grid.numOfColumn}
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 0 }}
-            onEndReachedThreshold={2}
+            contentContainerStyle={{ paddingBottom: 0, alignItems: 'center' }}
+            style={{ width: '100%' }}
             onEndReached={onEndReached}
-            removeClippedSubviews={true}
-            initialNumToRender={2}
-            windowSize={7}
           />
         </Container>
       </SafeAreaView>
@@ -62,6 +71,4 @@ export default function HomeScreen(props: HomeScreenProp) {
   );
 }
 
-HomeScreen.defaultProps = {
-  posts: [...Array(10).fill(post)]
-};
+HomeScreen.defaultProps = { posts: [...Array(10).fill(post)] };
