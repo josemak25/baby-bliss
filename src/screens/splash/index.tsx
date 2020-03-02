@@ -44,15 +44,24 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
 
   const checkInitialLaunch = async () => {
     try {
-      const firstTimeLaunch = await AsyncStorage.getItem('@FIRST_TIME_LAUNCH');
-      if (!firstTimeLaunch) {
+      const multiGetStorageValues = await AsyncStorage.multiGet([
+        '@FIRST_TIME_LAUNCH',
+        '@AUTH_TOKEN'
+      ]);
+      const firstTimeLaunch = multiGetStorageValues[0];
+
+      if (!firstTimeLaunch[1]) {
         await AsyncStorage.setItem('@FIRST_TIME_LAUNCH', '1');
         return navigation.replace('GetStartedScreen');
       }
+      const canContinueToHomePage = multiGetStorageValues[1];
+
+      if (canContinueToHomePage[1]) {
+        //Navigate this user to the home screen if he still has token stored
+        return navigation.replace('HomeScreen');
+      }
       navigation.replace('SignInScreen');
-    } catch (error) {
-      console.warn(error);
-    }
+    } catch (error) {}
   };
 
   return (

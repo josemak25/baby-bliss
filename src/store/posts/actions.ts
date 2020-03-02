@@ -3,8 +3,10 @@ import {
   PostAction,
   CommentInterface,
   PostInterface,
-  POST_ACTION_TYPES
+  POST_ACTION_TYPES,
+  ResponseInterface
 } from './types';
+import API from '../../lib/api';
 
 const loadPostStarted = () => ({ type: POST_TYPES.LOAD_POST_STARTED });
 
@@ -40,15 +42,13 @@ export default function postsActions(type: string) {
       case POST_ACTION_TYPES.LOAD_POSTS:
         try {
           dispatch(loadPostStarted());
-          const response = await fetch('');
 
-          if (!response.ok) {
-            throw new Error('Something went wrong');
-          }
-          const responseData = await response.json();
-          dispatch(loadPostSuccess(responseData));
+          const request = await API.get('/posts');
+
+          const response: ResponseInterface = await request.json();
+
+          dispatch(loadPostSuccess(response.payload));
         } catch (error) {
-          console.log(error);
           dispatch(loadPostError(error));
         }
         break;

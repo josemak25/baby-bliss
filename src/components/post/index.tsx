@@ -32,7 +32,15 @@ interface PostProps extends PostInterface {
 }
 
 export default function Post(props: PostProps) {
-  const { topic, description, noOfLikes, noOfViews, testID, width } = props;
+  const {
+    topic,
+    description,
+    noOfLikes,
+    noOfViews,
+    testID,
+    width,
+    images
+  } = props;
 
   const [animation, setAnimation] = useState({
     animateImage: new Animated.Value(0),
@@ -78,7 +86,7 @@ export default function Post(props: PostProps) {
             layout={[{ width: applyScale(width), height: applyScale(220) }]}
           />
           <ResponsiveImage
-            imageUrl="https://bit.ly/38c0U3G"
+            imageUrl={images.length > 0 ? images[0] : 'https://bit.ly/38cCLKf'}
             width={width}
             height={220}
             onLoad={handleImageLoading}

@@ -20,7 +20,7 @@ export default function postReducer(
         ...state,
         isLoading: false,
         error: null,
-        posts: [...state.posts, action.payload]
+        posts: [...state.posts, ...action.payload]
       };
     }
 

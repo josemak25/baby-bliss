@@ -6,8 +6,8 @@ import Post from '../../components/post';
 import SearchIcon from '../../../assets/icons/search';
 import post from '../../libs/dummyPost.json';
 import { NavigationInterface } from '../../constants';
-
-import { PostInterface } from '../../store/posts/types';
+import { PostInterface, POST_ACTION_TYPES } from '../../store/posts/types';
+import postsActions from '../../store/posts/actions';
 
 import {
   Container,
@@ -23,9 +23,14 @@ interface HomeScreenProp extends NavigationInterface {
 }
 
 export default function HomeScreen(props: HomeScreenProp) {
-  const [{ grid }, dispatch] = useStoreContext();
+  const [{ grid, postState }, dispatch] = useStoreContext();
 
-  const onEndReached = () => {};
+  const onEndReached = () => {
+    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch);
+  };
+  const onRefresh = () => {
+    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch);
+  };
 
   return (
     <SafeAreaView testID="HomeScreen">

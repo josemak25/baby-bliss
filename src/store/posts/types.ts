@@ -65,7 +65,14 @@ export type CommentInterface = {
 };
 
 // TYPESCRIPT TYPES
-export type PostInitialState = {
+
+export type ResponseInterface = {
+  statusCode: number;
+  message: string;
+  payload: PostInterface[];
+};
+
+export type PostInitialState  = {
   isLoading: boolean;
   error?: any;
   posts?: PostInterface[];
