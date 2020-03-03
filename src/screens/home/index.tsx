@@ -55,7 +55,14 @@ export default function HomeScreen(props: HomeScreenProp) {
           <OptimizedFlatList
             data={props.posts}
             renderItem={({ item, index }) => (
-              <Post {...item} postIndex={index} width={grid.cardSize} />
+              <Post
+                {...item}
+                postIndex={index}
+                width={grid.cardSize}
+                navigation={() =>
+                  props.navigation.navigate('BlogDetailsScreen')
+                }
+              />
             )}
             key={grid.numOfColumn}
             keyExtractor={(_, key) => `${key}`}
