@@ -5,10 +5,15 @@ import { Container } from './styles';
 
 type HeaderProps = {
   testID?: string;
+  style?: object;
 };
 
 let HEADER: number | null = null;
-const Header: FunctionComponent<HeaderProps> = ({ children, testID }) => {
+const Header: FunctionComponent<HeaderProps> = ({
+  children,
+  testID,
+  style
+}) => {
   const height = useHeaderHeight();
   useEffect(() => {
     if (HEADER) return;
@@ -16,7 +21,7 @@ const Header: FunctionComponent<HeaderProps> = ({ children, testID }) => {
   }, []);
 
   return (
-    <Container style={{ height: HEADER }} testID={testID}>
+    <Container style={[{ height: HEADER }, style]} testID={testID}>
       {children}
     </Container>
   );
