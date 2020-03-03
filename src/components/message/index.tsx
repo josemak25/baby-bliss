@@ -29,7 +29,7 @@ export default function Message(props: MessageProps) {
   const handleChangeText = (message: string) => setMessage(message);
 
   return (
-    <Container>
+    <Container testID={props.testID}>
       <MediaInsertContainer onPress={handleMediaInsert}>
         <FontAwesome5 name="plus" size={13} color={colors.BG_LIGHT_COLOR} />
       </MediaInsertContainer>
@@ -45,7 +45,7 @@ export default function Message(props: MessageProps) {
           color={colors.INACTIVE_ICON_COLOR}
         />
       </EmojiContainer>
-      <SendContainer onPress={handleSendMessage}>
+      <SendContainer onPress={handleSendMessage} testID="send-message">
         <MaterialCommunityIcons
           name="send"
           size={25}
