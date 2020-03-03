@@ -26,6 +26,7 @@ enum FONTS {
   MONTSERRAT_BOLD = 'montserrat-bold',
   MONTSERRAT_SEMI_BOLD = 'montserrat-semi-bold',
   IBM_SANS_REGULAR = 'IBM-regular',
+  IBM_SANS_BOLD = 'IBM-bold',
   PACIFICO_REGULAR = 'pacifico-regular',
   FONT_WEIGHT_LIGHT = 200,
   FONT_WEIGHT_MEDIUM = 600,
@@ -60,6 +61,7 @@ declare module 'styled-components' {
       MONTSERRAT_BOLD: string;
       MONTSERRAT_SEMI_BOLD: string;
       IBM_SANS_REGULAR: string;
+      IBM_SANS_BOLD: string;
       PACIFICO_REGULAR: string;
       FONT_WEIGHT_LIGHT: number;
       FONT_WEIGHT_MEDIUM: number;
