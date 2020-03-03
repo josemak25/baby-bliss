@@ -54,7 +54,7 @@ export default function Comment(props: CommentProps) {
   };
 
   return (
-    <Container>
+    <Container testID={props.testID}>
       <ImageContainer>
         <ImageWrapper>
           <ResponsiveImage
