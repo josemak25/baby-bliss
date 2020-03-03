@@ -32,9 +32,6 @@ export default function HomeScreen(props: HomeScreenProp) {
   const onEndReached = () => {
     postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, null);
   };
-  const onRefresh = () => {
-    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, null);
-  };
 
   const handleLikePost = (id: string) => {
     postsActions(POST_ACTION_TYPES.LIKE_POST)(dispatch, id);

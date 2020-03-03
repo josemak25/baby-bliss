@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import NetInfo from '@react-native-community/netinfo';
 import Router from './router';
 import ThemeProvider from './theme';
-import NetInfo from '@react-native-community/netinfo';
 import showSnackbar from './components/UI/snackbar';
 import { useStoreContext } from './store';
 import postsActions from './store/posts/actions';
@@ -24,6 +24,7 @@ export default function AppRouter() {
       handleConnectivityChange
     );
   };
+
   useEffect(() => {
     subscribe();
     if (!isConnected) {
@@ -32,7 +33,8 @@ export default function AppRouter() {
     }
     postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, null);
     return () => unsubscribe();
-  });
+  }, [isConnected]);
+
   const handleConnectivityChange = (isConnected: boolean) => {
     setIsConnected(isConnected);
   };
