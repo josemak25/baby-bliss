@@ -28,10 +28,11 @@ interface PostProps extends PostInterface {
   postIndex: number;
   testID?: string;
   width: number;
+  navigation(): void;
 }
 
-export default function Post(post: PostProps) {
-  const { topic, description, noOfLikes, noOfViews, testID, width } = post;
+export default function Post(props: PostProps) {
+  const { topic, description, noOfLikes, noOfViews, testID, width } = props;
 
   const [animation, setAnimation] = useState({
     animateImage: new Animated.Value(0),
@@ -57,7 +58,10 @@ export default function Post(post: PostProps) {
   };
 
   return (
-    <Card style={{ width: applyScale(width), margin: 5 }}>
+    <Card
+      style={{ width: applyScale(width), margin: 5 }}
+      onPress={props.navigation}
+    >
       <Container testID={testID}>
         <Topic testID="post-topic">{topic}</Topic>
         <ContentLoaderContainer>
