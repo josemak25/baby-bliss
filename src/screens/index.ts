@@ -6,6 +6,7 @@ import SignInScreen from './signin';
 import ForgotPasswordScreen from './forgot_password';
 import CommunityScreen from './community';
 import ProfileScreen from './profile';
+import BlogDetailsScreen from './blog_details';
 
 export default {
   SignUpScreen,
@@ -15,5 +16,6 @@ export default {
   CommunityScreen,
   ProfileScreen,
   SignInScreen,
-  ForgotPasswordScreen
+  ForgotPasswordScreen,
+  BlogDetailsScreen
 };

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Svg, { Path } from 'react-native-svg';
 import { IconProps } from '../../src/constants';
 
-export default function LoveIcon(props: IconProps) {
+export default function CommentsIcon(props: IconProps) {
   return (
     <Svg width="10%" height="40%" viewBox="0 0 24 24" fill="none" {...props}>
       <Path

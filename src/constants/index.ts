@@ -41,6 +41,7 @@ export type IconProps = {
   height?: string;
   fillColor?: string;
   useCase?: boolean;
+  style?: object;
 };
 
 // App header custom style
