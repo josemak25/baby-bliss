@@ -28,6 +28,9 @@ export default function AppLoading({ setIsAppReady }) {
         'IBM-regular': require('../../../assets/fonts/IBMPlexSans-Regular.ttf')
       },
       {
+        'IBM-bold': require('../../../assets/fonts/IBMPlexSans-Bold.ttf')
+      },
+      {
         'montserrat-bold': require('../../../assets/fonts/Montserrat-Bold.ttf')
       },
       {
