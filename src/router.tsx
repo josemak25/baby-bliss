@@ -10,11 +10,43 @@ import HomeIcon from '../assets/icons/home';
 import UserIcon from '../assets/icons/user';
 import CommunityIcon from '../assets/icons/community';
 
+// HOME AND POST DETAILS PAGE AUTHORIZATION NAVIGATOR
+const HomeNavigator = createStackNavigator(
+  {
+    // Home Screen Route
+    HomeScreen: { screen: Screens.HomeScreen },
+
+    // BlogDetails Screen Route
+    BlogDetailsScreen: { screen: Screens.BlogDetailsScreen }
+  },
+  {
+    initialRouteName: 'HomeScreen',
+    headerMode: 'screen',
+    defaultNavigationOptions: { headerShown: false }
+  }
+);
+
+// COMMUNITY AND POST DETAILS PAGE AUTHORIZATION NAVIGATOR
+const CommunityNavigator = createStackNavigator(
+  {
+    // Community Screen Route
+    CommunityScreen: { screen: Screens.CommunityScreen },
+
+    // BlogDetails Screen Route
+    BlogDetailsScreen: { screen: Screens.BlogDetailsScreen }
+  },
+  {
+    initialRouteName: 'CommunityScreen',
+    headerMode: 'screen',
+    defaultNavigationOptions: { headerShown: false }
+  }
+);
+
 // APP BOTTOM NAVIGATOR
 export const AppBottomTabNavigator = createMaterialBottomTabNavigator(
   {
     HomeScreen: {
-      screen: Screens.HomeScreen,
+      screen: HomeNavigator,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => {
           return <HomeIcon fillColor={tintColor} />;
@@ -22,7 +54,7 @@ export const AppBottomTabNavigator = createMaterialBottomTabNavigator(
       }
     },
     CommunityScreen: {
-      screen: Screens.CommunityScreen,
+      screen: CommunityNavigator,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => {
           return <CommunityIcon fillColor={tintColor} />;
@@ -46,7 +78,7 @@ export const AppBottomTabNavigator = createMaterialBottomTabNavigator(
   }
 );
 
-// APP AUTH NAVIGATOR
+// APP AUTHENTICATION NAVIGATOR
 const AppNavigator = createStackNavigator(
   {
     // Forgot Password Screen Route
