@@ -11,7 +11,8 @@ export enum USER_TYPES {
   REGISTER_USER_ERROR = 'REGISTER_USER_ERROR',
   LOGIN_USER_STARTED = 'LOGIN_USER_STARTED',
   LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS',
-  LOGIN_USER_ERROR = 'LOGIN_USER_ERROR'
+  LOGIN_USER_ERROR = 'LOGIN_USER_ERROR',
+  LOAD_FROM_STORE = 'LOAD_FROM_STORE'
 }
 
 // POSTS ACTION TYPES
@@ -50,6 +51,11 @@ export interface UserResponseInterface {
   token: string | null;
 }
 
+export interface UserStoredProfileInterface {
+  payload: UserInterface;
+  token: string;
+}
+
 export type RegistrationRequestType = {
   name: string;
   username: string;
@@ -71,4 +77,5 @@ export type UserAction =
   | { type: USER_TYPES.REGISTER_USER_ERROR; payload: any }
   | { type: USER_TYPES.LOGIN_USER_STARTED }
   | { type: USER_TYPES.LOGIN_USER_SUCCESS; payload: UserResponseInterface }
+  | { type: USER_TYPES.LOAD_FROM_STORE; payload: UserStoredProfileInterface }
   | { type: USER_TYPES.LOGIN_USER_ERROR; payload: any }; // add post body when response is identified

@@ -1,15 +1,16 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import { useStoreContext } from '../../store';
 import { useThemeContext } from '../../theme';
+import { ActivityIndicator } from 'react-native';
+
 import Post from '../../components/post';
 import SearchIcon from '../../../assets/icons/search';
 import { NavigationInterface } from '../../constants';
 import { PostInterface, POST_ACTION_TYPES } from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
 import showSnackbar from '../../components/UI/snackbar';
-import post from '../../libs/dummyPost.json';
 
 import {
   Container,
@@ -25,7 +26,7 @@ interface HomeScreenProp extends NavigationInterface {
 }
 
 export default function HomeScreen(props: HomeScreenProp) {
-  const [{ grid, postState }, dispatch] = useStoreContext();
+  const [{ grid, postState, userState }, dispatch] = useStoreContext();
 
   const { colors } = useThemeContext();
 
@@ -38,39 +39,46 @@ export default function HomeScreen(props: HomeScreenProp) {
   };
 
   useEffect(() => {
-    if (postState.error) {
-      showSnackbar(colors.LIKE_POST_COLOR, postState.error, true);
-    }
-  }, []);
+    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, userState.token);
+  }, [userState.isLoading]);
 
   return (
     <SafeAreaView testID="HomeScreen">
       <StatusBar barStyle="dark-content" />
       <Container>
-        <OptimizedFlatList
-          data={props.posts}
-          renderItem={({ item, index }) => (
-            <Post
-              {...item}
-              postIndex={index}
-              width={grid.cardSize}
-              navigation={() => props.navigation.navigate('BlogDetailsScreen')}
-            />
-          )}
-          key={grid.numOfColumn}
-          keyExtractor={(_, key: number) => `${key}`}
-          numColumns={grid.numOfColumn}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 0, alignItems: 'center' }}
-          style={{ width: '100%' }}
-          onEndReached={onEndReached}
-        />
+        {postState.posts.length ? (
+          <OptimizedFlatList
+            data={postState.posts}
+            renderItem={({ item, index }) => (
+              <Post
+                {...item}
+                postIndex={index}
+                width={grid.cardSize}
+                navigation={() =>
+                  props.navigation.navigate('BlogDetailsScreen')
+                }
+              />
+            )}
+            key={grid.numOfColumn}
+            keyExtractor={(_, key: number) => `${key}`}
+            numColumns={grid.numOfColumn}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: 0, alignItems: 'center' }}
+            style={{ width: '100%' }}
+            onEndReached={onEndReached}
+            onRefresh={false}
+          />
+        ) : (
+          <ActivityIndicator
+            size="large"
+            color={colors.POST_TIP_COLOR}
+            style={{ position: 'absolute', top: 100 }}
+          />
+        )}
       </Container>
     </SafeAreaView>
-  )
+  );
 }
-
-HomeScreen.defaultProps = { posts: [...Array(10).fill(post)] };
 
 HomeScreen.navigationOptions = ({ navigation }) => {
   return {

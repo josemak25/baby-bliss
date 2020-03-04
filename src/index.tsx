@@ -3,13 +3,9 @@ import NetInfo from '@react-native-community/netinfo';
 import Router from './router';
 import ThemeProvider from './theme';
 import showSnackbar from './components/UI/snackbar';
-import { useStoreContext } from './store';
-import postsActions from './store/posts/actions';
-import { POST_ACTION_TYPES } from './store/posts/types';
 
 export default function AppRouter() {
   const [isConnected, setIsConnected] = useState(true);
-  const [, dispatch] = useStoreContext();
 
   const subscribe = () => {
     NetInfo.isConnected.addEventListener(
@@ -31,7 +27,6 @@ export default function AppRouter() {
       showSnackbar('#F42850', 'No Internet Connection!', true);
       return;
     }
-    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, null);
     return () => unsubscribe();
   }, [isConnected]);
 

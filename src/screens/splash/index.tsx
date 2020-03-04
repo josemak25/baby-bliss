@@ -4,10 +4,12 @@ import { useThemeContext } from '../../theme';
 import { useStoreContext } from '../../store';
 import CARD_ITEM from '../../utils/getItemCardSize';
 import ScreenGridSizeActions from '../../store/grid/actions';
+import { USER_TYPES } from '../../store/user/types';
+
 import {
   NavigationInterface,
-  AUTH_TOKEN,
-  FIRST_TIME_LAUNCH
+  FIRST_TIME_LAUNCH,
+  USER_PROFILE
 } from '../../constants';
 
 import { Container, ImageContainer, Image } from './styles';
@@ -48,24 +50,31 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
 
   const checkInitialLaunch = async () => {
     try {
-      const multiGetStorageValues = await AsyncStorage.multiGet([
+      const [firstTimeLaunch, storedUserProfile] = await AsyncStorage.multiGet([
         FIRST_TIME_LAUNCH,
-        AUTH_TOKEN
+        USER_PROFILE
       ]);
-      const firstTimeLaunch = multiGetStorageValues[0];
 
-      if (!firstTimeLaunch[1]) {
+      const [, firstTimeLaunchValue] = firstTimeLaunch;
+      const [, storedUserProfileValue] = storedUserProfile;
+
+      if (!firstTimeLaunchValue) {
         await AsyncStorage.setItem(FIRST_TIME_LAUNCH, '1');
         return navigation.replace('GetStartedScreen');
       }
-      const canContinueToHomePage = multiGetStorageValues[1];
 
-      if (canContinueToHomePage[1]) {
+      if (storedUserProfileValue) {
         //Navigate this user to the home screen if he still has token stored
+        dispatch({
+          type: USER_TYPES.LOAD_FROM_STORE,
+          payload: JSON.parse(storedUserProfileValue)
+        });
         return navigation.replace('HomeScreen');
       }
       navigation.replace('SignInScreen');
-    } catch (error) {}
+    } catch (error) {
+      console.warn(error);
+    }
   };
 
   return (

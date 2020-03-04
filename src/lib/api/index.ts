@@ -10,67 +10,46 @@
  * @PUT - send a put request to the server
  */
 
-import { AsyncStorage } from 'react-native';
 import ENV_VARIABLES, { ENV_VARIABLES_TYPES } from '../../config';
-import { AUTH_TOKEN } from '../../constants';
 
-type POST_TYPES = { path: string; payload: any };
+type POST_TYPES = { path: string; payload: any; authToken: string };
 
 class API {
   private BASE_URL: string;
-  static authToken: string;
+  // static authToken: string;
 
   constructor(ENV: ENV_VARIABLES_TYPES) {
     this.BASE_URL = ENV.BABY_BLISS_BASE_URI;
-
-    (async function() {
-      if (API.authToken) {
-        return API.authToken;
-      }
-
-      API.authToken = await AsyncStorage.getItem(AUTH_TOKEN);
-      API.authToken = `Bearer ${API.authToken}`;
-    })();
   }
 
-  get(path: string): Promise<any> {
-    return fetch(`${this.BASE_URL}/${path}`, {
+  get(path: string, authToken: string): Promise<any> {
+    return fetch(`${this.BASE_URL}${path}`, {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: API.authToken
+        Authorization: `Bearer ${authToken}`
       }
     });
   }
 
   post(request: POST_TYPES): Promise<any> {
-    return fetch(`${this.BASE_URL}/${request.path}`, {
+    return fetch(`${this.BASE_URL}${request.path}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: API.authToken
+        Authorization: `Bearer ${request.authToken}`
       },
       body: JSON.stringify(request.payload)
-    });
-  }
-
-  putById(path: string): Promise<any> {
-    return fetch(`${this.BASE_URL}/${path}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: API.authToken
-      }
     });
   }
 
   put(request: POST_TYPES): Promise<any> {
-    return fetch(`${this.BASE_URL}/${request.path}`, {
+    return fetch(`${this.BASE_URL}${request.path}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: API.authToken
+        Authorization: request.authToken
       },
-      body: JSON.stringify(request.payload)
+      body: request.payload ? JSON.stringify(request.payload) : null
     });
   }
 
@@ -79,7 +58,7 @@ class API {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: API.authToken
+        Authorization: request.authToken
       }
     });
   }

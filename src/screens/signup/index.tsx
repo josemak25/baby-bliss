@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 
 import { useThemeContext } from '../../theme';
-import { NavigationInterface } from '../../constants';
+import { NavigationInterface, USER_PROFILE } from '../../constants';
 
 import Button from '../../components/button';
 import InputFiled from '../../components/inputField';
@@ -22,6 +22,8 @@ import userActions from '../../store/user/actions';
 import { Spinner } from '../signin/styles';
 import { validateFormFields } from '../../components/inputField/utils';
 import showSnackbar from '../../components/UI/snackbar';
+import postsActions from '../../store/posts/actions';
+import { POST_ACTION_TYPES } from '../../store/posts/types';
 
 import {
   Container,
@@ -37,8 +39,7 @@ import {
 
 export default function SignUp({ navigation }: NavigationInterface) {
   const [values, setValues] = useState({
-    user: { name: '', username: '', email: '', mobileNumber: '', password: '' },
-    canSubmit: false
+    user: { name: '', username: '', email: '', mobileNumber: '', password: '' }
   });
 
   const { colors, fonts } = useThemeContext();
@@ -47,7 +48,6 @@ export default function SignUp({ navigation }: NavigationInterface) {
   const onHandleChange = (field: string) => (value: string) => {
     setValues({
       ...values,
-      canSubmit: false,
       user: { ...values.user, [field]: value }
     });
   };
@@ -58,12 +58,19 @@ export default function SignUp({ navigation }: NavigationInterface) {
       return;
     }
     (async () => {
-      await storeUserToken();
+      await storeUserProfile();
     })();
   }, [userState]);
 
-  const storeUserToken = async () => {
-    await AsyncStorage.setItem('@AUTH_TOKEN', userState.token);
+  const storeUserProfile = async () => {
+    await AsyncStorage.setItem(
+      USER_PROFILE,
+      JSON.stringify({
+        user: userState.user,
+        token: userState.token
+      })
+    );
+    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, userState.token);
     navigation.replace('HomeScreen');
   };
 

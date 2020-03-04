@@ -69,5 +69,5 @@ export const navigationBackButton = {
   }
 };
 
-export const AUTH_TOKEN = '@AUTH_TOKEN3';
+export const USER_PROFILE = '@USER_PROFILE_DETAIL';
 export const FIRST_TIME_LAUNCH = '@FIRST_TIME_LAUNCH';

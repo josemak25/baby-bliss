@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from 'react';
+
 import BouncyCheckbox from '../../libs/bouncyCheckbox';
 import { ActivityIndicator, AsyncStorage } from 'react-native';
 import { useThemeContext } from '../../theme';
-import { NavigationInterface, AUTH_TOKEN } from '../../constants';
-
+import { NavigationInterface, USER_PROFILE } from '../../constants';
 import Button from '../../components/button';
 import InputFiled from '../../components/inputField';
-
 import MailIcon from '../../../assets/icons/mail';
 import PrivacyIcon from '../../../assets/icons/privacy';
 import boxShadow from '../../utils/boxShadows';
 import userActions from '../../store/user/actions';
-
 import { useStoreContext } from '../../store';
 import { USER_ACTION_TYPES } from '../../store/user/types';
+import showSnackbar from '../../components/UI/snackbar';
+import { validateFormFields } from '../../components/inputField/utils';
 
 import {
   Container,
@@ -27,51 +27,53 @@ import {
   KeyboardAvoidingView,
   Spinner
 } from './styles';
-import showSnackbar from '../../components/UI/snackbar';
-import { validateFormFields } from '../../components/inputField/utils';
 
 export default function SignIn({ navigation }: NavigationInterface) {
   const { colors, fonts } = useThemeContext();
   const [{ userState }, dispatch] = useStoreContext();
 
   const [values, setValues] = useState({
-    username: '',
-    password: ''
+    user: { username: '', password: '' }
   });
 
   useEffect(() => {
-    (async () => {
-      await storeUserToken();
-    })();
-  }, [userState]);
-
-  const storeUserToken = async () => {
-    if (!userState.token) {
-      showSnackbar(colors.LIKE_POST_COLOR, userState.errorMessage);
+    if (userState.token) {
+      storeUserProfile();
       return;
     }
-    await AsyncStorage.setItem(AUTH_TOKEN, userState.token);
+    if (userState.errorMessage && !userState.isLoading) {
+      showSnackbar('#F42850', userState.errorMessage);
+    }
+  }, [userState.token, userState.errorMessage, userState.isLoading]);
+
+  const storeUserProfile = async () => {
+    const { token, user } = userState;
+
+    await AsyncStorage.setItem(
+      USER_PROFILE,
+      JSON.stringify({ token, payload: user })
+    );
     navigation.replace('HomeScreen');
   };
 
   const onHandleChange = (field: string) => (value: string) => {
-    setValues({ ...values, [field]: value });
+    setValues({ ...values, user: { ...values.user, [field]: value } });
   };
 
   const handleSubmit = () => {
     //validate the form  for empty fields before sending this form.
-    for (let key in values) {
-      if (!values[key]) {
+    for (let key in values.user) {
+      if (!values.user[key]) {
         showSnackbar(colors.LIKE_POST_COLOR, 'Please all fields are required!');
         return;
       }
       //validate the form fields for incorrect values before sending this form.
-      if (!validateFormFields(key, values[key])) {
+      if (!validateFormFields(key, values.user[key])) {
         showSnackbar(colors.LIKE_POST_COLOR, `Please enter a valid ${key}`);
         return;
       }
     }
-    userActions(USER_ACTION_TYPES.LOGIN_USER)(dispatch, values);
+    userActions(USER_ACTION_TYPES.LOGIN_USER)(dispatch, values.user);
   };
 
   return (
@@ -89,7 +91,7 @@ export default function SignIn({ navigation }: NavigationInterface) {
               placeholder="Username"
               testID="username"
               onChangeText={onHandleChange('username')}
-              defaultValue={values.username}
+              defaultValue={values.user.username}
               style={{
                 borderTopStartRadius: 10,
                 borderTopEndRadius: 10
@@ -101,7 +103,7 @@ export default function SignIn({ navigation }: NavigationInterface) {
               placeholder="Password"
               testID="password"
               onChangeText={onHandleChange('password')}
-              defaultValue={values.password}
+              defaultValue={values.user.password}
               secureTextEntry={true}
               returnKeyType="done"
               style={{

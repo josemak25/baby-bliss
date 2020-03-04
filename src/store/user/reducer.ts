@@ -35,19 +35,12 @@ export default function userReducer(
     case USER_TYPES.LOGIN_USER_STARTED:
       return { ...state, isLoading: true };
 
-    case USER_TYPES.LOGIN_USER_SUCCESS: {
+    case USER_TYPES.LOGIN_USER_SUCCESS:
+    case USER_TYPES.REGISTER_USER_SUCCESS:
+    case USER_TYPES.LOAD_FROM_STORE: {
       return {
         ...state,
-        errors: null,
-        isLoading: false,
-        user: action.payload.payload,
-        token: action.payload.token
-      };
-    }
-    case USER_TYPES.REGISTER_USER_SUCCESS: {
-      return {
-        ...state,
-        errors: null,
+        errorMessage: null,
         isLoading: false,
         user: action.payload.payload,
         token: action.payload.token

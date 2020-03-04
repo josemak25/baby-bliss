@@ -1,3 +1,5 @@
+import API from '../../lib/api';
+
 import {
   USER_TYPES,
   UserAction,
@@ -5,8 +7,6 @@ import {
   RegistrationRequestType,
   USER_ACTION_TYPES
 } from './types';
-
-import API from '../../lib/api';
 
 const registrationStarted = () => ({ type: USER_TYPES.REGISTER_USER_STARTED });
 
@@ -45,18 +45,15 @@ export default function userActions(type: string) {
       case USER_ACTION_TYPES.LOGIN_USER:
         try {
           dispatch(loginStarted());
-
           const request = await API.post({
             path: '/auth/login',
-            payload
+            payload,
+            authToken: null
           });
-
           const response: UserResponseInterface = await request.json();
-
           if (response.statusCode === 200) {
             return dispatch(loginSuccess(response));
           }
-
           dispatch(loginError(response));
         } catch (error) {
           dispatch(loginError(error));
@@ -68,9 +65,9 @@ export default function userActions(type: string) {
           dispatch(registrationStarted());
           const request = await API.post({
             path: '/users',
-            payload
+            payload,
+            authToken: null
           });
-
           const response: UserResponseInterface = await request.json();
 
           if (response.statusCode === 200) {

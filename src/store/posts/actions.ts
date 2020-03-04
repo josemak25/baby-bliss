@@ -44,7 +44,7 @@ export default function postsActions(type: string) {
         try {
           dispatch(loadPostStarted());
 
-          const request = await API.get('/posts');
+          const request = await API.get('/posts', payload);
 
           const response: ResponseInterface = await request.json();
           if (response.statusCode === 200) {
@@ -59,9 +59,14 @@ export default function postsActions(type: string) {
       case POST_ACTION_TYPES.LIKE_POST:
         try {
           dispatch(loadPostStarted());
-          const request = await API.putById(`/posts/${payload}/like`);
+          const request = await API.put({
+            path: `/posts/${payload}/like`,
+            payload: null,
+            authToken: payload
+          });
 
           const response: LikePostResponse = await request.json();
+          console.log('LIKE', response);
 
           if (response.statusCode === 200) {
             return dispatch(likePostSuccess(response.payload.likes, payload));
@@ -75,7 +80,11 @@ export default function postsActions(type: string) {
       case POST_ACTION_TYPES.POST_COMMENT:
         try {
           dispatch(loadPostStarted());
-          const request = await API.putById(``);
+          const request = await API.put({
+            path: ``,
+            payload: null,
+            authToken: payload
+          });
 
           const response: CommentInterface = await request.json();
 
@@ -91,7 +100,11 @@ export default function postsActions(type: string) {
       case POST_ACTION_TYPES.LIKE_COMMENT:
         try {
           dispatch(loadPostStarted());
-          const request = await API.putById(``);
+          const request = await API.put({
+            path: ``,
+            payload: null,
+            authToken: payload
+          });
 
           const response: LikePostResponse = await request.json();
 
