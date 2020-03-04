@@ -1,3 +1,4 @@
+import API from '../../lib/api';
 import {
   POST_TYPES,
   PostAction,
@@ -5,9 +6,9 @@ import {
   PostInterface,
   POST_ACTION_TYPES,
   ResponseInterface,
-  LikePostResponse
+  LikePostResponse,
+  LikePostType
 } from './types';
-import API from '../../lib/api';
 
 const loadPostStarted = () => ({ type: POST_TYPES.LOAD_POST_STARTED });
 
@@ -21,9 +22,9 @@ const loadPostError = (error: string): PostAction => ({
   payload: error
 });
 
-const likePostSuccess = (likeCount: number, postId: string) => ({
+const likePostSuccess = (payload: LikePostType) => ({
   type: POST_TYPES.LIKE_POST,
-  payload: { likeCount, postId }
+  payload
 });
 
 const likeComment = (likeCount: number, postId: string) => ({
@@ -37,7 +38,7 @@ const postComment = (payload: CommentInterface): PostAction => ({
 });
 
 export default function postsActions(type: string) {
-  return async (dispatch: any, payload: string) => {
+  return async (dispatch: any, payload: any) => {
     // To unsubscribe to these update, just use the functions:
     switch (type) {
       case POST_ACTION_TYPES.LOAD_POSTS:
@@ -60,16 +61,17 @@ export default function postsActions(type: string) {
         try {
           dispatch(loadPostStarted());
           const request = await API.put({
-            path: `/posts/${payload}/like`,
+            path: `/posts/${payload.id}/like`,
             payload: null,
-            authToken: payload
+            authToken: payload.authToken
           });
 
           const response: LikePostResponse = await request.json();
-          console.log('LIKE', response);
 
           if (response.statusCode === 200) {
-            return dispatch(likePostSuccess(response.payload.likes, payload));
+            return dispatch(
+              likePostSuccess({ likeCount: response.payload.likes, ...payload })
+            );
           }
           dispatch(loadPostError(response.message));
         } catch (error) {
@@ -83,7 +85,7 @@ export default function postsActions(type: string) {
           const request = await API.put({
             path: ``,
             payload: null,
-            authToken: payload
+            authToken: payload.authToken
           });
 
           const response: CommentInterface = await request.json();

@@ -86,13 +86,18 @@ export type LikePostResponse = {
   payload: { likes: number };
 };
 
+export type LikePostType = {
+  likeCount: number;
+  postId: string;
+  postIndex: number;
+};
 export type PostAction =
   | { type: POST_TYPES.LOAD_POST_STARTED; payload: null }
   | { type: POST_TYPES.LOAD_POST_SUCCESS; payload: PostInterface[] }
   | { type: POST_TYPES.LOAD_POST_ERROR; payload: string }
   | {
       type: POST_TYPES.LIKE_POST;
-      payload: { likeCount: number; postId: string };
+      payload: LikePostType;
     }
   | { type: POST_TYPES.LIKE_COMMENT; payload: string }
   | {

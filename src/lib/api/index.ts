@@ -47,7 +47,7 @@ class API {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: request.authToken
+        Authorization: `Bearer ${request.authToken}`
       },
       body: request.payload ? JSON.stringify(request.payload) : null
     });
@@ -58,7 +58,7 @@ class API {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: request.authToken
+        Authorization: `Bearer ${request.authToken}`
       }
     });
   }

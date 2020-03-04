@@ -22,7 +22,6 @@ import {
 
 interface HomeScreenProp extends NavigationInterface {
   testID?: string;
-  posts: PostInterface[];
 }
 
 export default function HomeScreen(props: HomeScreenProp) {
@@ -30,17 +29,21 @@ export default function HomeScreen(props: HomeScreenProp) {
 
   const { colors } = useThemeContext();
 
+  useEffect(() => {
+    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, userState.token);
+  }, [userState.isLoading]);
+
   const onEndReached = () => {
     postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, null);
   };
 
-  const handleLikePost = (id: string) => {
-    postsActions(POST_ACTION_TYPES.LIKE_POST)(dispatch, id);
+  const handleLikePost = (id: string, postIndex: number) => {
+    postsActions(POST_ACTION_TYPES.LIKE_POST)(dispatch, {
+      id,
+      postIndex,
+      authToken: userState.token
+    });
   };
-
-  useEffect(() => {
-    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, userState.token);
-  }, [userState.isLoading]);
 
   return (
     <SafeAreaView testID="HomeScreen">
@@ -54,6 +57,7 @@ export default function HomeScreen(props: HomeScreenProp) {
                 {...item}
                 postIndex={index}
                 width={grid.cardSize}
+                handleLikePost={() => handleLikePost(item._id, index)}
                 navigation={() =>
                   props.navigation.navigate('BlogDetailsScreen')
                 }

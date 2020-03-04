@@ -7,7 +7,7 @@ export const validateFormFields = (field: string, value: string) => {
       return true;
 
     case 'username':
-      if (value.trim().length < 5) {
+      if (value.trim().length < 3) {
         return false;
       }
       return true;

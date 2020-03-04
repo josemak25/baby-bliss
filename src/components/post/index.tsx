@@ -29,7 +29,7 @@ interface PostProps extends PostInterface {
   testID?: string;
   width: number;
   navigation(): void;
-  handleLikePost(id: string): void;
+  handleLikePost(): void;
 }
 
 export default function Post(post: PostProps) {
@@ -41,8 +41,7 @@ export default function Post(post: PostProps) {
     testID,
     width,
     images,
-    _id,
-    handleLikePost
+    handleLikePost,
   } = post;
 
   const [animation, setAnimation] = useState({
@@ -57,7 +56,7 @@ export default function Post(post: PostProps) {
       duration: 1300,
       easing: Easing.linear,
       useNativeDriver: true
-    }).start(() => handleLikePost(_id));
+    }).start(() => handleLikePost());
   };
 
   const handleImageLoading = (error: any) => {

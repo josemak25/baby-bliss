@@ -33,19 +33,14 @@ export default function postReducer(
     }
 
     case POST_TYPES.LIKE_POST: {
-      const clonedPosts = [...state.posts];
-
-      const updatedPostIndex = state.posts.findIndex(
-        post => post._id === action.payload.postId
-      );
-
-      clonedPosts[updatedPostIndex].noOfLikes = action.payload.likeCount;
+      state.posts[action.payload.postIndex].noOfLikes =
+        action.payload.likeCount;
 
       return {
         ...state,
         isLoading: false,
         error: null,
-        posts: [...clonedPosts]
+        posts: state.posts
       };
     }
 
