@@ -6,7 +6,8 @@ import {
   PostInterface,
   POST_ACTION_TYPES,
   ResponseInterface,
-  LikeOrUnlikePostResponse
+  LikeOrUnlikePostResponse,
+  CommentResponseInterface
 } from './types';
 
 const loadPostStarted = () => ({ type: POST_TYPES.LOAD_POST_STARTED });
@@ -23,6 +24,11 @@ const loadPostError = (error: string): PostAction => ({
 
 const likeOrUnlikePostSuccess = (payload: LikeOrUnlikePostResponse) => ({
   type: POST_TYPES.LIKE_OR_UNLIKE_POST,
+  payload
+});
+
+const loadCommentsSuccess = (payload: CommentInterface[]): PostAction => ({
+  type: POST_TYPES.LOAD_COMMENT_SUCCESS,
   payload
 });
 
@@ -79,6 +85,24 @@ export default function postsActions(type: string) {
           dispatch(loadPostError(error));
         }
         break;
+      case POST_ACTION_TYPES.LOAD_POST_COMMENTS:
+        try {
+          dispatch(loadPostStarted());
+
+          const request = await API.get(
+            `/posts/${payload.postId}/comments`,
+            payload.authToken
+          );
+          const response: CommentResponseInterface = await request.json();
+
+          if (response.statusCode === 200) {
+            return dispatch(loadCommentsSuccess(response.payload));
+          }
+          dispatch(loadPostError(response.message));
+        } catch (error) {
+          dispatch(loadPostError(error));
+        }
+        break;
 
       case POST_ACTION_TYPES.POST_COMMENT:
         try {
@@ -89,7 +113,7 @@ export default function postsActions(type: string) {
             authToken: payload.authToken
           });
 
-          const response: CommentInterface = await request.json();
+          const response: any = await request.json();
 
           if (response.statusCode === 200) {
             return dispatch(postComment(response));

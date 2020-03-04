@@ -41,7 +41,7 @@ export default function Post(post: PostProps) {
     testID,
     width,
     images,
-    handleLikePost,
+    handleLikePost
   } = post;
 
   const [animation, setAnimation] = useState({

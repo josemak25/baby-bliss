@@ -22,6 +22,7 @@
     "expo-image-picker": "~8.0.1",
     "expo-linear-gradient": "^8.0.0",
     "lottie-react-native": "~2.6.1",
+    "moment-mini": "^2.24.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
@@ -54,9 +55,11 @@
     "testPathIgnorePatterns": [
       "<rootDir>/__tests__/config"
     ],
-    "transform": {"^.+\\.jsx?$": "babel-jest"},
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
     "projects": [
-      { 
+      {
         "preset": "jest-expo/ios",
         "transformIgnorePatterns": [
           "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base|static-container)"
@@ -65,7 +68,7 @@
           "__TEST__": true
         }
       },
-      { 
+      {
         "preset": "jest-expo/android",
         "transformIgnorePatterns": [
           "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base|static-container)"

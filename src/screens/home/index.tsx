@@ -27,7 +27,7 @@ interface HomeScreenProp extends NavigationInterface {
 export default function HomeScreen(props: HomeScreenProp) {
   const [{ grid, postState, userState }, dispatch] = useStoreContext();
 
-  const [state, setState] = useState({isLiked: true,waitTime: 250});
+  const [state, setState] = useState({ isLiked: true, waitTime: 250 });
 
   const { colors } = useThemeContext();
 
@@ -56,6 +56,16 @@ export default function HomeScreen(props: HomeScreenProp) {
     }, state.waitTime);
   };
 
+  const navigateToPost = (postId: string) => {
+    //dispatch action to fetch comments for this post
+    postsActions(POST_ACTION_TYPES.LOAD_POST_COMMENTS)(dispatch, {
+      authToken: userState.token,
+      postId
+    });
+
+    props.navigation.navigate('BlogDetailsScreen');
+  };
+
   return (
     <SafeAreaView testID="HomeScreen">
       <StatusBar barStyle="dark-content" />
@@ -69,9 +79,7 @@ export default function HomeScreen(props: HomeScreenProp) {
                 postIndex={index}
                 width={grid.cardSize}
                 handleLikePost={() => handleLikePost(item._id, index)}
-                navigation={() =>
-                  props.navigation.navigate('BlogDetailsScreen')
-                }
+                navigation={() => navigateToPost(item._id)}
               />
             )}
             key={grid.numOfColumn}

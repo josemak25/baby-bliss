@@ -4,7 +4,8 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  ActivityIndicator,
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -16,6 +17,10 @@ import Comment from '../../components/comments';
 import MessageIcon from '../../../assets/icons/message';
 import Eye from '../../../assets/icons/eye';
 import LoveIcon from '../../../assets/icons/love';
+import Message from '../../components/message';
+import { abbreviateNumber } from '../utils';
+import { useStoreContext } from '../../store';
+import { CommentInterface } from '../../store/posts/types';
 
 import {
   Container,
@@ -33,10 +38,10 @@ import {
   NoOfLikes,
   Description,
   CommentHeader,
-  CommentsContainer
+  CommentsContainer,
+  EmptyComment,
+  EmptyCommentText
 } from './styles';
-
-import Message from '../../components/message';
 
 interface BlogDetailsProp extends NavigationInterface {
   testID?: string;
@@ -44,6 +49,17 @@ interface BlogDetailsProp extends NavigationInterface {
 
 export default function BlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
+  const [{ postState }] = useStoreContext();
+  const {
+    topic,
+    description,
+    noOfLikes,
+    noOfViews,
+    images,
+    _id
+  } = props.navigation.getParam('post');
+
+  const onLikeComment = () => {};
 
   return (
     <KeyboardAvoidingView
@@ -63,7 +79,9 @@ export default function BlogDetails(props: BlogDetailsProp) {
       >
         <Header style={{ height: 400, paddingLeft: 0, paddingRight: 0 }}>
           <HeaderImage
-            source={{ uri: 'https://bit.ly/38c0U3G' }}
+            source={{
+              uri: images.length > 0 ? images[0] : 'https://bit.ly/38c0U3G'
+            }}
             style={{ width: '100%', height: '100%' }}
             resizeMode="cover"
           >
@@ -76,9 +94,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
                 <DetailsTipContainer>
                   <DetailsTip>Baby Tips</DetailsTip>
                 </DetailsTipContainer>
-                <DetailsTitle>
-                  Always Look On The Bright Side Of Life Side Of Life
-                </DetailsTitle>
+                <DetailsTitle>{topic}</DetailsTitle>
               </HeaderTextContainer>
             </HeaderContentContainer>
           </HeaderImage>
@@ -100,33 +116,39 @@ export default function BlogDetails(props: BlogDetailsProp) {
             </FloatingMessageButton>
             <ActionContainer>
               <Eye style={{ position: 'relative', right: 9 }} width="30%" />
-              <NoOfViews>1.6k</NoOfViews>
+              <NoOfViews>{abbreviateNumber(noOfViews)}</NoOfViews>
               <LoveIcon
                 style={{ position: 'relative', right: 10 }}
                 width="30%"
                 height="40%"
               />
-              <NoOfLikes>2.1k</NoOfLikes>
+              <NoOfLikes>{abbreviateNumber(noOfLikes)}</NoOfLikes>
             </ActionContainer>
-            <Description>
-              As conscious traveling Paupers we must always be concerned about
-              our dear Mother Earth. If you think about it, you travel across
-              her face, and She is the host to your journey without Her we could
-              not find the unfolding adventures that attract and feed our souls.
-              I have found some valuable resources for As conscious traveling
-              Paupers we must always be concerned about our dear Mother Earth.
-              If you think about it, you travel across her face, and She is the
-              host to your journey without Her we could not find the unfolding
-              adventures that attract and feed our souls. I have found some
-              valuable resources for
-            </Description>
+            <Description>{description}</Description>
             <CommentHeader>comment</CommentHeader>
             <CommentsContainer>
-              {Array(10)
-                .fill(0)
-                .map((_, i) => (
-                  <Comment key={i} />
-                ))}
+              {postState.isLoading && (
+                <ActivityIndicator
+                  size="large"
+                  color={colors.POST_TIP_COLOR}
+                  style={{ top: 10 }}
+                />
+              )}
+              {postState.comments.length ? (
+                postState.comments.map(
+                  (comment: CommentInterface, index: number) => (
+                    <Comment
+                      key={index}
+                      comment={comment}
+                      onPress={onLikeComment}
+                    />
+                  )
+                )
+              ) : (
+                <EmptyComment>
+                  <EmptyCommentText>No Comment!</EmptyCommentText>
+                </EmptyComment>
+              )}
             </CommentsContainer>
           </Container>
         </TouchableWithoutFeedback>

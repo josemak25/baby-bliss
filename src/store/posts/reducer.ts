@@ -3,7 +3,8 @@ import { POST_TYPES, PostInitialState, PostAction } from './types';
 export const postInitialState: PostInitialState = {
   isLoading: false,
   error: null,
-  posts: []
+  posts: [],
+  comments: []
 };
 
 export default function postReducer(
@@ -20,7 +21,7 @@ export default function postReducer(
         ...state,
         isLoading: false,
         error: null,
-        posts: [...state.posts, ...action.payload]
+        posts: [...action.payload]
       };
     }
 
@@ -44,6 +45,14 @@ export default function postReducer(
       };
     }
 
+    case POST_TYPES.LOAD_COMMENT_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        comments: [...action.payload]
+      };
+    }
     case POST_TYPES.LIKE_COMMENT: {
       const { payload: commentId } = action;
       // send id to backend

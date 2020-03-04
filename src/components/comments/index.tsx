@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Animated, Easing, TouchableWithoutFeedback } from 'react-native';
 import LottieView from 'lottie-react-native';
+import Moment from 'moment-mini';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeContext } from '../../theme';
 import ResponsiveImage from '../../libs/responsiveImage';
+import LoveIcon from '../../../assets/icons/love';
+import { CommentInterface } from '../../store/posts/types';
 
 import {
   Container,
@@ -21,12 +24,12 @@ import {
   ReplyContainer,
   ImageOutlineBar
 } from './styles';
-import LoveIcon from '../../../assets/icons/love';
 
 type CommentProps = {
   style?: {};
   testID?: string;
   onPress?(): void;
+  comment: CommentInterface;
 };
 
 export default function Comment(props: CommentProps) {
@@ -36,6 +39,8 @@ export default function Comment(props: CommentProps) {
     animateImage: new Animated.Value(0),
     likedComment: false
   });
+
+  const { comment, testID } = props;
 
   const handleLikeComment = () => {};
 
@@ -54,7 +59,7 @@ export default function Comment(props: CommentProps) {
   };
 
   return (
-    <Container testID={props.testID}>
+    <Container testID={testID}>
       <ImageContainer>
         <ImageWrapper>
           <ResponsiveImage
@@ -73,12 +78,14 @@ export default function Comment(props: CommentProps) {
       </ImageContainer>
       <CommentDetails>
         <CommentDetailsHeader>
-          <CommenterName>Josephine Damilola</CommenterName>
-          <CommenterTime>54m</CommenterTime>
+          <CommenterName>{comment.user.name}</CommenterName>
+          <CommenterTime>
+            {Moment(comment.createdAt)
+              .startOf('hour')
+              .fromNow()}
+          </CommenterTime>
         </CommentDetailsHeader>
-        <UserComment>
-          Billions are spent each year on cosmetic products to delete wrinkles
-        </UserComment>
+        <UserComment>{comment.content}</UserComment>
         <ActionContainer>
           <TouchableWithoutFeedback
             testID="like-comment-container"
@@ -86,7 +93,11 @@ export default function Comment(props: CommentProps) {
           >
             <LikeContainer>
               <LottieView
-                source={require('../../../assets/animations/twitter-heart.json')}
+                source={
+                  comment.user.avatar
+                    ? comment.user.avatar
+                    : require('../../../assets/animations/twitter-heart.json')
+                }
                 style={{
                   height: 150,
                   width: 150,
