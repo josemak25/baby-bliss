@@ -4,8 +4,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
-  Keyboard,
-  ActivityIndicator,
+  Keyboard
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -58,8 +57,6 @@ export default function BlogDetails(props: BlogDetailsProp) {
     images,
     _id
   } = props.navigation.getParam('post');
-
-  const onLikeComment = () => {};
 
   return (
     <KeyboardAvoidingView
@@ -127,21 +124,10 @@ export default function BlogDetails(props: BlogDetailsProp) {
             <Description>{description}</Description>
             <CommentHeader>comment</CommentHeader>
             <CommentsContainer>
-              {postState.isLoading && (
-                <ActivityIndicator
-                  size="large"
-                  color={colors.POST_TIP_COLOR}
-                  style={{ top: 10 }}
-                />
-              )}
               {postState.comments.length ? (
                 postState.comments.map(
                   (comment: CommentInterface, index: number) => (
-                    <Comment
-                      key={index}
-                      comment={comment}
-                      onPress={onLikeComment}
-                    />
+                    <Comment key={index} comment={comment} />
                   )
                 )
               ) : (
@@ -153,7 +139,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
           </Container>
         </TouchableWithoutFeedback>
       </ScrollView>
-      <Message />
+      <Message postId={_id} />
     </KeyboardAvoidingView>
   );
 }

@@ -59,10 +59,17 @@ export interface CommentInterface {
   parent?: any;
 }
 
-export interface CommentResponseInterface {
+export interface LikeCommentResponseInterface {
   statusCode: number;
   message: string;
   payload: CommentInterface[];
+  error?: any;
+}
+
+export interface PostCommentResponseInterface {
+  statusCode: number;
+  message: string;
+  payload: CommentInterface;
   error?: any;
 }
 
@@ -73,7 +80,7 @@ export enum POST_TYPES {
   LOAD_POST_ERROR = 'LOAD_POST_ERROR',
   LIKE_OR_UNLIKE_POST = 'LIKE_OR_UNLIKE_POST',
   LIKE_COMMENT = 'LIKE_COMMENT',
-  COMMENT_ON_POST = 'COMMENT_ON_POST',
+  POST_COMMENT = 'POST_COMMENT',
   LOAD_COMMENT_SUCCESS = 'LOAD_COMMENT_SUCCESS'
 }
 
@@ -138,7 +145,7 @@ export type PostAction =
     }
   | { type: POST_TYPES.LIKE_COMMENT; payload: LikeCommentType }
   | {
-      type: POST_TYPES.COMMENT_ON_POST;
+      type: POST_TYPES.POST_COMMENT;
       payload: LikeCommentType | any;
     } // add post body when response is identified
   | { type: POST_TYPES.LOAD_COMMENT_SUCCESS; payload: CommentInterface[] };

@@ -28,7 +28,6 @@ import {
 type CommentProps = {
   style?: {};
   testID?: string;
-  onPress?(): void;
   comment: CommentInterface;
 };
 

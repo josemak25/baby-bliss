@@ -64,9 +64,13 @@ export default function postReducer(
       // };
     }
 
-    case POST_TYPES.COMMENT_ON_POST: {
-      const { postId, comment } = action.payload;
-      // send id to backend
+    case POST_TYPES.POST_COMMENT: {
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        comments: [...state.comments, action.payload]
+      };
     }
 
     case POST_TYPES.LOAD_POST_ERROR: {
