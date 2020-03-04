@@ -47,7 +47,7 @@ export enum POST_TYPES {
   LOAD_POST_STARTED = 'LOAD_POST_STARTED',
   LOAD_POST_SUCCESS = 'LOAD_POST_SUCCESS',
   LOAD_POST_ERROR = 'LOAD_POST_ERROR',
-  LIKE_POST = 'LIKE_POST',
+  LIKE_OR_UNLIKE_POST = 'LIKE_OR_UNLIKE_POST',
   LIKE_COMMENT = 'LIKE_COMMENT',
   COMMENT_ON_POST = 'COMMENT_ON_POST'
 }
@@ -56,6 +56,7 @@ export enum POST_TYPES {
 export enum POST_ACTION_TYPES {
   LOAD_POSTS = 'LOAD_POSTS',
   LIKE_POST = 'LIKE_POST',
+  UNLIKE_POST = 'UNLIKE_POST',
   POST_COMMENT = 'POST_COMMENT',
   LIKE_COMMENT = 'LIKE_COMMENT'
 }
@@ -80,13 +81,13 @@ export type PostInitialState = {
   posts?: PostInterface[];
 };
 
-export type LikePostResponse = {
+export type LikeOrUnlikePostResponse = {
   statusCode: number;
   message: string;
   payload: { likes: number };
 };
 
-export type LikePostType = {
+export type LikeOrUnlikePostType = {
   likeCount: number;
   postId: string;
   postIndex: number;
@@ -96,8 +97,8 @@ export type PostAction =
   | { type: POST_TYPES.LOAD_POST_SUCCESS; payload: PostInterface[] }
   | { type: POST_TYPES.LOAD_POST_ERROR; payload: string }
   | {
-      type: POST_TYPES.LIKE_POST;
-      payload: LikePostType;
+      type: POST_TYPES.LIKE_OR_UNLIKE_POST;
+      payload: LikeOrUnlikePostType;
     }
   | { type: POST_TYPES.LIKE_COMMENT; payload: string }
   | {

@@ -5,14 +5,13 @@ import { useStoreContext } from '../../store';
 import CARD_ITEM from '../../utils/getItemCardSize';
 import ScreenGridSizeActions from '../../store/grid/actions';
 import { USER_TYPES } from '../../store/user/types';
+import { Container, ImageContainer, Image } from './styles';
 
 import {
   NavigationInterface,
   FIRST_TIME_LAUNCH,
   USER_PROFILE
 } from '../../constants';
-
-import { Container, ImageContainer, Image } from './styles';
 
 interface SplashScreenProp extends NavigationInterface {
   testID?: string;

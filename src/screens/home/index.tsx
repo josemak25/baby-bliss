@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native';
 import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import { useStoreContext } from '../../store';
@@ -27,6 +27,8 @@ interface HomeScreenProp extends NavigationInterface {
 export default function HomeScreen(props: HomeScreenProp) {
   const [{ grid, postState, userState }, dispatch] = useStoreContext();
 
+  const [state, setState] = useState({isLiked: true,waitTime: 250});
+
   const { colors } = useThemeContext();
 
   useEffect(() => {
@@ -38,11 +40,20 @@ export default function HomeScreen(props: HomeScreenProp) {
   };
 
   const handleLikePost = (id: string, postIndex: number) => {
-    postsActions(POST_ACTION_TYPES.LIKE_POST)(dispatch, {
-      id,
-      postIndex,
-      authToken: userState.token
-    });
+    const waitTimer = setTimeout(() => {
+      postsActions(POST_ACTION_TYPES.LIKE_POST)(dispatch, {
+        id,
+        postIndex,
+        authToken: userState.token,
+        isLiked: state.isLiked
+      });
+      setState({
+        ...state,
+        isLiked: !state.isLiked //toggle the like property
+      });
+
+      clearTimeout(waitTimer);
+    }, state.waitTime);
   };
 
   return (
