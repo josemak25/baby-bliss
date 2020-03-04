@@ -7,7 +7,8 @@ import {
   POST_ACTION_TYPES,
   ResponseInterface,
   LikeOrUnlikePostResponse,
-  CommentResponseInterface
+  CommentResponseInterface,
+  LikeComentResponse
 } from './types';
 
 const loadPostStarted = () => ({ type: POST_TYPES.LOAD_POST_STARTED });
@@ -128,12 +129,12 @@ export default function postsActions(type: string) {
         try {
           dispatch(loadPostStarted());
           const request = await API.put({
-            path: ``,
+            path: `/posts/${payload.id}/like`,
             payload: null,
-            authToken: payload
+            authToken: payload.authToken
           });
 
-          const response: LikeOrUnlikePostResponse = await request.json();
+          const response: LikeComentResponse = await request.json();
 
           if (response.statusCode === 200) {
             return dispatch(likeComment(response.payload.likes, payload));
@@ -143,7 +144,6 @@ export default function postsActions(type: string) {
           dispatch(loadPostError(error));
         }
         break;
-
       default:
         break;
     }

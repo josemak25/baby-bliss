@@ -115,10 +115,18 @@ export type LikeOrUnlikePostResponse = {
   payload: { likes: number };
 };
 
+export type LikeComentResponse = LikeOrUnlikePostResponse;
+
 export type LikeOrUnlikePostType = {
   likeCount: number;
   postId: string;
   postIndex: number;
+};
+
+export type LikeCommentType = {
+  likeCount: number;
+  commentId: string;
+  commentIndex: number;
 };
 export type PostAction =
   | { type: POST_TYPES.LOAD_POST_STARTED; payload: null }
@@ -128,9 +136,9 @@ export type PostAction =
       type: POST_TYPES.LIKE_OR_UNLIKE_POST;
       payload: LikeOrUnlikePostType;
     }
-  | { type: POST_TYPES.LIKE_COMMENT; payload: string }
+  | { type: POST_TYPES.LIKE_COMMENT; payload: LikeCommentType }
   | {
       type: POST_TYPES.COMMENT_ON_POST;
-      payload: CommentInterface | any;
+      payload: LikeCommentType | any;
     } // add post body when response is identified
   | { type: POST_TYPES.LOAD_COMMENT_SUCCESS; payload: CommentInterface[] };

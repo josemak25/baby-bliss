@@ -54,8 +54,14 @@ export default function postReducer(
       };
     }
     case POST_TYPES.LIKE_COMMENT: {
-      const { payload: commentId } = action;
-      // send id to backend
+      // state.comments[action.payload.commentIndex].noOfLikes =
+      //   action.payload.likeCount;
+      // return {
+      //   ...state,
+      //   isLoading: false,
+      //   error: null,
+      //   comments: state.comments
+      // };
     }
 
     case POST_TYPES.COMMENT_ON_POST: {
