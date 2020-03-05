@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StatusBar,
   ScrollView,
@@ -19,7 +19,8 @@ import LoveIcon from '../../../assets/icons/love';
 import Message from '../../components/message';
 import { abbreviateNumber } from '../utils';
 import { useStoreContext } from '../../store';
-import { CommentInterface } from '../../store/posts/types';
+import { CommentInterface, POST_ACTION_TYPES } from '../../store/posts/types';
+import postsActions from '../../store/posts/actions';
 
 import {
   Container,
@@ -48,7 +49,8 @@ interface BlogDetailsProp extends NavigationInterface {
 
 export default function BlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
-  const [{ postState }] = useStoreContext();
+  const [{ postState, userState }, dispatch] = useStoreContext();
+
   const {
     topic,
     description,
@@ -58,6 +60,30 @@ export default function BlogDetails(props: BlogDetailsProp) {
     _id
   } = props.navigation.getParam('post');
 
+  const [state, setState] = useState({
+    focus: false,
+    message: '',
+    contentId: _id,
+    actionType: null
+  });
+
+  const handleOnFocusRequest = (actionType: string, contentId: string) => {
+    setState({ ...state, focus: !state.focus, contentId, actionType });
+  };
+  const dispatchMessage = () => {
+    let { actionType } = state;
+    actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
+
+    postsActions(actionType)(dispatch, {
+      authToken: userState.token,
+      id: state.contentId,
+      content: state.message
+    });
+  };
+
+  const setMessage = (message: string) => {
+    setState({ ...state, message });
+  };
   return (
     <KeyboardAvoidingView
       behavior="height"
@@ -127,7 +153,11 @@ export default function BlogDetails(props: BlogDetailsProp) {
               {postState.comments.length ? (
                 postState.comments.map(
                   (comment: CommentInterface, index: number) => (
-                    <Comment key={index} comment={comment} />
+                    <Comment
+                      key={index}
+                      comment={comment}
+                      handleOnFocusRequest={handleOnFocusRequest}
+                    />
                   )
                 )
               ) : (
@@ -139,7 +169,12 @@ export default function BlogDetails(props: BlogDetailsProp) {
           </Container>
         </TouchableWithoutFeedback>
       </ScrollView>
-      <Message postId={_id} />
+      <Message
+        focus={state.focus}
+        dispatchMessage={dispatchMessage}
+        setNewMessage={setMessage}
+        message={state.message}
+      />
     </KeyboardAvoidingView>
   );
 }

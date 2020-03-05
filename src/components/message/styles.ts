@@ -8,7 +8,7 @@ export const Container = styled.View`
   padding: 10px;
 `;
 
-export const MediaInsertContainer = styled.TouchableHighlight`
+export const MediaInsertContainer = styled.TouchableOpacity`
   width: 25px;
   height: 25px;
   justify-content: center;
@@ -18,7 +18,7 @@ export const MediaInsertContainer = styled.TouchableHighlight`
   margin-right: 5px;
 `;
 
-export const EmojiContainer = styled.TouchableHighlight`
+export const EmojiContainer = styled.TouchableOpacity`
   width: 25px;
   height: 25px;
   justify-content: center;
@@ -29,7 +29,7 @@ export const EmojiContainer = styled.TouchableHighlight`
   margin-left: 5px;
 `;
 
-export const SendContainer = styled.TouchableHighlight`
+export const SendContainer = styled.TouchableOpacity`
   width: 25px;
   height: 25px;
   justify-content: center;

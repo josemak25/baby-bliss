@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeContext } from '../../theme';
-import { useStoreContext } from '../../store';
 import { POST_ACTION_TYPES } from '../../store/posts/types';
-import postsActions from '../../store/posts/actions';
+
 import {
   Container,
   MediaInsertContainer,
@@ -15,31 +14,31 @@ import {
 type MessageProps = {
   style?: {};
   testID?: string;
-  postId: string;
+  focus: boolean;
+  dispatchMessage(): void;
+  setNewMessage(message: string): void;
+  message: string;
 };
 
 export default function Message(props: MessageProps) {
   const { colors } = useThemeContext();
-  const [{ userState }, dispatch] = useStoreContext();
+  const ref = useRef(null);
+  const { testID, focus, dispatchMessage, setNewMessage, message } = props;
 
-  const { testID, postId } = props;
-
-  const [message, setMessage] = useState('');
+  useEffect(() => {
+    ref.current.focus();
+  }, [focus]);
 
   const handleMediaInsert = () => {};
 
-  const handleSendMessage = () => {
-    postsActions(POST_ACTION_TYPES.POST_COMMENT)(dispatch, {
-      authToken: userState.token,
-      id: postId,
-      content: message
-    });
-    setMessage('');
+  const onSendMessage = () => {
+    dispatchMessage();
+    setNewMessage('');
   };
 
   const handleEmoji = () => {};
 
-  const handleChangeText = (message: string) => setMessage(message);
+  const handleChangeText = (message: string) => setNewMessage(message);
 
   return (
     <Container testID={testID}>
@@ -50,6 +49,8 @@ export default function Message(props: MessageProps) {
         placeholder="Write comment here…"
         onChangeText={handleChangeText}
         defaultValue={message}
+        autoFocus={focus}
+        ref={inputField => (ref.current = inputField)}
       />
       <EmojiContainer onPress={handleEmoji}>
         <FontAwesome5
@@ -58,7 +59,7 @@ export default function Message(props: MessageProps) {
           color={colors.INACTIVE_ICON_COLOR}
         />
       </EmojiContainer>
-      <SendContainer onPress={handleSendMessage} testID="send-message">
+      <SendContainer onPress={onSendMessage} testID="send-message">
         <MaterialCommunityIcons
           name="send"
           size={25}

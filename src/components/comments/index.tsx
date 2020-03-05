@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeContext } from '../../theme';
 import ResponsiveImage from '../../libs/responsiveImage';
 import LoveIcon from '../../../assets/icons/love';
-import { CommentInterface } from '../../store/posts/types';
+import { CommentInterface, POST_ACTION_TYPES } from '../../store/posts/types';
 
 import {
   Container,
@@ -29,27 +29,30 @@ type CommentProps = {
   style?: {};
   testID?: string;
   comment: CommentInterface;
+  handleOnFocusRequest(actionType: string, contentId: string): void;
 };
 
 export default function Comment(props: CommentProps) {
   const { colors } = useThemeContext();
 
-  const [animation, setAnimation] = useState({
+  const [state, setState] = useState({
     animateImage: new Animated.Value(0),
     likedComment: false
   });
 
-  const { comment, testID } = props;
+  const { comment, testID, handleOnFocusRequest } = props;
 
   const handleLikeComment = () => {};
 
-  const handleCommentReply = () => {};
+  const handleCommentReply = () => {
+    handleOnFocusRequest(POST_ACTION_TYPES.REPLY_POST_COMMENT, comment._id);
+  };
 
   const startLikeAnimation = () => {
-    if (animation.likedComment) return;
+    if (state.likedComment) return;
 
-    setAnimation({ ...animation, likedComment: true });
-    Animated.timing(animation.animateImage, {
+    setState({ ...state, likedComment: true });
+    Animated.timing(state.animateImage, {
       toValue: 1,
       duration: 1300,
       easing: Easing.linear,
@@ -104,10 +107,10 @@ export default function Comment(props: CommentProps) {
                   top: -19,
                   alignSelf: 'center'
                 }}
-                progress={animation.animateImage}
+                progress={state.animateImage}
               />
 
-              {!animation.likedComment && (
+              {state.likedComment && (
                 <LoveIcon
                   style={{ position: 'relative', right: -8, top: 8 }}
                   width="60%"
@@ -117,10 +120,7 @@ export default function Comment(props: CommentProps) {
             </LikeContainer>
           </TouchableWithoutFeedback>
           <LikeComment>like</LikeComment>
-          <ReplyContainer
-            onPress={handleCommentReply}
-            onPressIn={() => console.log('HELLO')}
-          >
+          <ReplyContainer onPress={handleCommentReply}>
             <MaterialCommunityIcons
               name="reply"
               size={25}

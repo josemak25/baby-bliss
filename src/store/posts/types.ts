@@ -81,6 +81,7 @@ export enum POST_TYPES {
   LIKE_OR_UNLIKE_POST = 'LIKE_OR_UNLIKE_POST',
   LIKE_COMMENT = 'LIKE_COMMENT',
   POST_COMMENT = 'POST_COMMENT',
+  REPLY_POST_COMMENT = 'REPLY_POST_COMMENT',
   LOAD_COMMENT_SUCCESS = 'LOAD_COMMENT_SUCCESS'
 }
 
@@ -90,6 +91,7 @@ export enum POST_ACTION_TYPES {
   LIKE_POST = 'LIKE_POST',
   UNLIKE_POST = 'UNLIKE_POST',
   POST_COMMENT = 'POST_COMMENT',
+  REPLY_POST_COMMENT = 'REPLY_POST_COMMENT',
   LIKE_COMMENT = 'LIKE_COMMENT',
   LOAD_POST_COMMENTS = 'LOAD_POST_COMMENTS'
 }
@@ -122,7 +124,7 @@ export type LikeOrUnlikePostResponse = {
   payload: { likes: number };
 };
 
-export type LikeComentResponse = LikeOrUnlikePostResponse;
+export type LikeCommentResponse = LikeOrUnlikePostResponse;
 
 export type LikeOrUnlikePostType = {
   likeCount: number;
@@ -148,4 +150,5 @@ export type PostAction =
       type: POST_TYPES.POST_COMMENT;
       payload: LikeCommentType | any;
     } // add post body when response is identified
-  | { type: POST_TYPES.LOAD_COMMENT_SUCCESS; payload: CommentInterface[] };
+  | { type: POST_TYPES.LOAD_COMMENT_SUCCESS; payload: CommentInterface[] }
+  | { type: POST_TYPES.REPLY_POST_COMMENT; payload: LikeCommentType };

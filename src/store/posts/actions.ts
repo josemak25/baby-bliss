@@ -8,7 +8,7 @@ import {
   ResponseInterface,
   LikeOrUnlikePostResponse,
   LikeCommentResponseInterface,
-  LikeComentResponse,
+  LikeCommentResponse,
   PostCommentResponseInterface
 } from './types';
 
@@ -134,7 +134,28 @@ export default function postsActions(type: string) {
             authToken: payload.authToken
           });
 
-          const response: LikeComentResponse = await request.json();
+          const response: LikeCommentResponse = await request.json();
+
+          if (response.statusCode === 200) {
+            return dispatch(likeComment(response.payload.likes, payload));
+          }
+          dispatch(loadPostError(response.message));
+        } catch (error) {
+          dispatch(loadPostError(error));
+        }
+        break;
+
+      case POST_ACTION_TYPES.REPLY_POST_COMMENT:
+        try {
+          dispatch(loadPostStarted());
+
+          const request = await API.put({
+            path: ``,
+            payload: { content: payload.content },
+            authToken: payload.authToken
+          });
+
+          const response: LikeCommentResponse = await request.json();
 
           if (response.statusCode === 200) {
             return dispatch(likeComment(response.payload.likes, payload));

@@ -89,7 +89,7 @@ export const LikeContainer = styled.View`
   right: 10px;
 `;
 
-export const ReplyContainer = styled.TouchableHighlight`
+export const ReplyContainer = styled.TouchableOpacity`
   width: 40px;
   height: 40px;
   align-items: center;

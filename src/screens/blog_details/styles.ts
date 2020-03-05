@@ -58,7 +58,7 @@ export const DetailsTitle = styled.Text`
   text-transform: capitalize;
 `;
 
-export const GoBack = styled.TouchableHighlight`
+export const GoBack = styled.TouchableOpacity`
   width: 40px;
   height: 40px;
   border-radius: 20px;
