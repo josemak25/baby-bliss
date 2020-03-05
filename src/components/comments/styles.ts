@@ -46,7 +46,7 @@ export const CommenterName = styled.Text`
 `;
 
 export const CommenterTime = styled.Text`
-  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE}px;
+  font-size: ${({ theme }) => theme.fonts.MEDIUM_SIZE}px;
   font-family: ${({ theme }) => theme.fonts.IBM_SANS_BOLD};
   color: ${({ theme }) => theme.colors.INACTIVE_ICON_COLOR};
   font-weight: ${({ theme }) => theme.fonts.FONT_WEIGHT_HEAVY};

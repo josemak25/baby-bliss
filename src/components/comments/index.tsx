@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Animated, Easing, TouchableWithoutFeedback, Text } from 'react-native';
 import LottieView from 'lottie-react-native';
-import Moment from 'moment-mini';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeContext } from '../../theme';
 import ResponsiveImage from '../../libs/responsiveImage';
 import LoveIcon from '../../../assets/icons/love';
 import { CommentInterface, POST_ACTION_TYPES } from '../../store/posts/types';
+import { simpleDateFormatter } from './utils';
 
 import {
   Container,
@@ -34,7 +34,7 @@ type CommentProps = {
 };
 
 export default function Comment(props: CommentProps) {
-  const { colors } = useThemeContext();
+  const { colors, fonts } = useThemeContext();
 
   const [state, setState] = useState({
     animateImage: new Animated.Value(0),
@@ -42,6 +42,8 @@ export default function Comment(props: CommentProps) {
   });
 
   const { comment, testID, handleOnFocusRequest } = props;
+
+  const commentTime = simpleDateFormatter(comment.createdAt);
 
   const handleLikeComment = () => {};
 
@@ -82,10 +84,12 @@ export default function Comment(props: CommentProps) {
       <CommentDetails>
         <CommentDetailsHeader>
           <CommenterName>{comment.user.name}</CommenterName>
-          <CommenterTime>
-            {Moment(comment.createdAt)
-              .startOf('hour')
-              .fromNow()}
+          <CommenterTime
+            style={{
+              fontSize: commentTime.length > 3 ? fonts.SMALL_SIZE + 2 : null
+            }}
+          >
+            {commentTime}
           </CommenterTime>
         </CommentDetailsHeader>
         <UserComment>
