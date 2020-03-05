@@ -42,9 +42,14 @@ export interface PostInterface {
   userId: string;
 }
 
+export interface ReplyTo {
+  _id: string;
+  content: string;
+  user: User;
+}
 export interface CommentInterface {
   likes: any[];
-  replyTo?: any;
+  replyTo?: ReplyTo;
   isDeleted: boolean;
   isFlagged: boolean;
   _id: string;
@@ -56,7 +61,6 @@ export interface CommentInterface {
   __v: number;
   id: string;
   isLiked: boolean;
-  parent?: any;
 }
 
 export interface LikeCommentResponseInterface {

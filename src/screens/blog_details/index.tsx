@@ -57,18 +57,18 @@ export default function BlogDetails(props: BlogDetailsProp) {
     noOfLikes,
     noOfViews,
     images,
-    _id
+    id
   } = props.navigation.getParam('post');
 
   const [state, setState] = useState({
     focus: false,
     message: '',
-    contentId: _id,
+    commentId: null,
     actionType: null
   });
 
-  const handleOnFocusRequest = (actionType: string, contentId: string) => {
-    setState({ ...state, focus: !state.focus, contentId, actionType });
+  const handleOnFocusRequest = (actionType: string, commentId: string) => {
+    setState({ ...state, focus: !state.focus, commentId, actionType });
   };
   const dispatchMessage = () => {
     let { actionType } = state;
@@ -76,7 +76,8 @@ export default function BlogDetails(props: BlogDetailsProp) {
 
     postsActions(actionType)(dispatch, {
       authToken: userState.token,
-      id: state.contentId,
+      id,
+      commentId: state.commentId,
       content: state.message
     });
   };

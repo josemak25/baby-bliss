@@ -148,17 +148,18 @@ export default function postsActions(type: string) {
       case POST_ACTION_TYPES.REPLY_POST_COMMENT:
         try {
           dispatch(loadPostStarted());
+          const { commentId, id, content, authToken } = payload;
 
-          const request = await API.put({
-            path: ``,
-            payload: { content: payload.content },
-            authToken: payload.authToken
+          const request = await API.post({
+            path: `/posts/${id}/comments`,
+            payload: { content, replyTo: commentId },
+            authToken
           });
 
-          const response: LikeCommentResponse = await request.json();
+          const response: PostCommentResponseInterface = await request.json();
 
           if (response.statusCode === 200) {
-            return dispatch(likeComment(response.payload.likes, payload));
+            return dispatch(postComment(response.payload));
           }
           dispatch(loadPostError(response.message));
         } catch (error) {

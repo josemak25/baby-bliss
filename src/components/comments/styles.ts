@@ -97,3 +97,10 @@ export const ReplyContainer = styled.TouchableOpacity`
   overflow: hidden;
   border-radius: 40px;
 `;
+
+export const ReplyComment = styled.Text`
+  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE}px;
+  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
+  color: ${({ theme }) => theme.colors.POST_TIP_COLOR};
+  text-transform: capitalize;
+`;

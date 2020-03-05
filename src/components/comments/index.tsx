@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Animated, Easing, TouchableWithoutFeedback } from 'react-native';
+import { Animated, Easing, TouchableWithoutFeedback, Text } from 'react-native';
 import LottieView from 'lottie-react-native';
 import Moment from 'moment-mini';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -22,7 +22,8 @@ import {
   LikeComment,
   ReplayComment,
   ReplyContainer,
-  ImageOutlineBar
+  ImageOutlineBar,
+  ReplyComment
 } from './styles';
 
 type CommentProps = {
@@ -87,7 +88,12 @@ export default function Comment(props: CommentProps) {
               .fromNow()}
           </CommenterTime>
         </CommentDetailsHeader>
-        <UserComment>{comment.content}</UserComment>
+        <UserComment>
+          {comment.replyTo && (
+            <ReplyComment>{`@${comment.replyTo.user.name} `}</ReplyComment>
+          )}
+          {comment.content}
+        </UserComment>
         <ActionContainer>
           <TouchableWithoutFeedback
             testID="like-comment-container"
