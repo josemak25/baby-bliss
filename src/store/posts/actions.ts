@@ -9,7 +9,8 @@ import {
   LikeOrUnlikePostResponse,
   LikeCommentResponseInterface,
   LikeCommentResponse,
-  PostCommentResponseInterface
+  PostCommentResponseInterface,
+  LikeCommentType
 } from './types';
 
 const loadPostStarted = () => ({ type: POST_TYPES.LOAD_POST_STARTED });
@@ -34,9 +35,9 @@ const loadCommentsSuccess = (payload: CommentInterface[]): PostAction => ({
   payload
 });
 
-const likeComment = (likeCount: number, postId: string) => ({
+const likeComment = (payload: LikeCommentType) => ({
   type: POST_TYPES.LIKE_COMMENT,
-  payload: { likeCount, postId }
+  payload
 });
 
 const postComment = (payload: CommentInterface): PostAction => ({
@@ -51,9 +52,7 @@ export default function postsActions(type: string) {
       case POST_ACTION_TYPES.LOAD_POSTS:
         try {
           dispatch(loadPostStarted());
-
           const request = await API.get('/posts', payload);
-
           const response: ResponseInterface = await request.json();
           if (response.statusCode === 200) {
             return dispatch(loadPostSuccess(response.payload));
@@ -72,7 +71,6 @@ export default function postsActions(type: string) {
             payload: null,
             authToken: payload.authToken
           });
-
           const response: LikeOrUnlikePostResponse = await request.json();
           if (response.statusCode === 200) {
             return dispatch(
@@ -87,10 +85,10 @@ export default function postsActions(type: string) {
           dispatch(loadPostError(error));
         }
         break;
+
       case POST_ACTION_TYPES.LOAD_POST_COMMENTS:
         try {
           dispatch(loadPostStarted());
-
           const request = await API.get(
             `/posts/${payload.postId}/comments`,
             payload.authToken
@@ -114,7 +112,25 @@ export default function postsActions(type: string) {
             payload: { content: payload.content },
             authToken: payload.authToken
           });
+          const response: PostCommentResponseInterface = await request.json();
+          if (response.statusCode === 200) {
+            return dispatch(postComment(response.payload));
+          }
+          dispatch(loadPostError(response.message));
+        } catch (error) {
+          dispatch(loadPostError(error));
+        }
+        break;
 
+      case POST_ACTION_TYPES.REPLY_COMMENT:
+        try {
+          dispatch(loadPostStarted());
+          const { commentId, id, content, authToken } = payload;
+          const request = await API.post({
+            path: `/posts/${id}/comments`,
+            payload: { content, replyTo: commentId },
+            authToken
+          });
           const response: PostCommentResponseInterface = await request.json();
           if (response.statusCode === 200) {
             return dispatch(postComment(response.payload));
@@ -129,37 +145,16 @@ export default function postsActions(type: string) {
         try {
           dispatch(loadPostStarted());
           const request = await API.put({
-            path: `/posts/${payload.id}/like`,
+            path: `/comments/${payload.id}/like`,
             payload: null,
             authToken: payload.authToken
           });
-
           const response: LikeCommentResponse = await request.json();
 
           if (response.statusCode === 200) {
-            return dispatch(likeComment(response.payload.likes, payload));
-          }
-          dispatch(loadPostError(response.message));
-        } catch (error) {
-          dispatch(loadPostError(error));
-        }
-        break;
-
-      case POST_ACTION_TYPES.REPLY_POST_COMMENT:
-        try {
-          dispatch(loadPostStarted());
-          const { commentId, id, content, authToken } = payload;
-
-          const request = await API.post({
-            path: `/posts/${id}/comments`,
-            payload: { content, replyTo: commentId },
-            authToken
-          });
-
-          const response: PostCommentResponseInterface = await request.json();
-
-          if (response.statusCode === 200) {
-            return dispatch(postComment(response.payload));
+            return dispatch(
+              likeComment({ likeCount: response.payload.likes, ...payload })
+            );
           }
           dispatch(loadPostError(response.message));
         } catch (error) {

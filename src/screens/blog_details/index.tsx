@@ -64,12 +64,15 @@ export default function BlogDetails(props: BlogDetailsProp) {
     focus: false,
     message: '',
     commentId: null,
-    actionType: null
+    actionType: null,
+    waitTime: 250
   });
+  console.log();
 
   const handleOnFocusRequest = (actionType: string, commentId: string) => {
     setState({ ...state, focus: !state.focus, commentId, actionType });
   };
+
   const dispatchMessage = () => {
     let { actionType } = state;
     actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
@@ -85,6 +88,20 @@ export default function BlogDetails(props: BlogDetailsProp) {
   const setMessage = (message: string) => {
     setState({ ...state, message });
   };
+
+  const handleLikeComment = (id: string, commentIndex: number) => {
+    const waitTimer = setTimeout(() => {
+      postsActions(POST_ACTION_TYPES.LIKE_COMMENT)(dispatch, {
+        id,
+        authToken: userState.token,
+        commentIndex,
+        userId: userState.user.id
+      });
+
+      clearTimeout(waitTimer);
+    }, state.waitTime);
+  };
+
   return (
     <KeyboardAvoidingView
       behavior="height"
@@ -157,7 +174,9 @@ export default function BlogDetails(props: BlogDetailsProp) {
                     <Comment
                       key={index}
                       comment={comment}
+                      commentIndex={index}
                       handleOnFocusRequest={handleOnFocusRequest}
+                      handleLikeComment={handleLikeComment}
                     />
                   )
                 )

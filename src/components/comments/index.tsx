@@ -31,6 +31,8 @@ type CommentProps = {
   testID?: string;
   comment: CommentInterface;
   handleOnFocusRequest(actionType: string, contentId: string): void;
+  handleLikeComment(id: string, commentIndex: number): void;
+  commentIndex: number;
 };
 
 export default function Comment(props: CommentProps) {
@@ -41,17 +43,21 @@ export default function Comment(props: CommentProps) {
     likedComment: false
   });
 
-  const { comment, testID, handleOnFocusRequest } = props;
+  const {
+    comment,
+    testID,
+    handleOnFocusRequest,
+    handleLikeComment,
+    commentIndex
+  } = props;
 
   const commentTime = simpleDateFormatter(comment.createdAt);
 
-  const handleLikeComment = () => {};
-
   const handleCommentReply = () => {
-    handleOnFocusRequest(POST_ACTION_TYPES.REPLY_POST_COMMENT, comment._id);
+    handleOnFocusRequest(POST_ACTION_TYPES.REPLY_COMMENT, comment._id);
   };
 
-  const startLikeAnimation = () => {
+  const startLikeAnimation = (id: string) => {
     if (state.likedComment) return;
 
     setState({ ...state, likedComment: true });
@@ -60,7 +66,7 @@ export default function Comment(props: CommentProps) {
       duration: 1300,
       easing: Easing.linear,
       useNativeDriver: true
-    }).start(() => handleLikeComment());
+    }).start(() => handleLikeComment(id, commentIndex));
   };
 
   return (
@@ -101,7 +107,7 @@ export default function Comment(props: CommentProps) {
         <ActionContainer>
           <TouchableWithoutFeedback
             testID="like-comment-container"
-            onPress={startLikeAnimation}
+            onPress={() => startLikeAnimation(comment._id)}
           >
             <LikeContainer>
               <LottieView

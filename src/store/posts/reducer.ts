@@ -54,14 +54,14 @@ export default function postReducer(
       };
     }
     case POST_TYPES.LIKE_COMMENT: {
-      // state.comments[action.payload.commentIndex].noOfLikes =
-      //   action.payload.likeCount;
-      // return {
-      //   ...state,
-      //   isLoading: false,
-      //   error: null,
-      //   comments: state.comments
-      // };
+      const { userId, commentIndex } = action.payload;
+      state.comments[commentIndex].likes.push(userId);
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        comments: state.comments
+      };
     }
 
     case POST_TYPES.POST_COMMENT: {
