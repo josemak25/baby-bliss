@@ -7,9 +7,26 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.BD_DARK_COLOR};
 `;
 
-export const Welcome = styled.Text`
-  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE}px;
-  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
-  color: ${({ theme }) => theme.colors.FONT_DARK_COLOR};
-  text-transform: capitalize;
+export const LogoContainer = styled.View`
+  width: 100px;
+  height: 90%;
+  padding-left: 15px;
+`;
+
+export const Logo = styled.Image`
+  width: 100%;
+  height: 100%;
+`;
+
+export const AskQuestion = styled.TouchableOpacity`
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  background-color: ${({ theme }) => theme.colors.BG_LIGHT_COLOR};
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
 `;

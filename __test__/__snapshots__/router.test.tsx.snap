@@ -209,193 +209,6 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                 }
                               }
                             >
-                              <View
-                                style={
-                                  Array [
-                                    Object {
-                                      "alignItems": "flex-end",
-                                      "backgroundColor": "#F4F8FB",
-                                      "flexDirection": "row",
-                                      "height": 80,
-                                      "justifyContent": "space-between",
-                                      "paddingBottom": 0,
-                                      "paddingLeft": 20,
-                                      "paddingRight": 20,
-                                      "paddingTop": 0,
-                                      "width": "100%",
-                                    },
-                                    Object {
-                                      "height": null,
-                                    },
-                                    undefined,
-                                  ]
-                                }
-                              >
-                                <View
-                                  style={
-                                    Array [
-                                      Object {
-                                        "height": "55%",
-                                        "width": 100,
-                                      },
-                                    ]
-                                  }
-                                >
-                                  <Image
-                                    source={1}
-                                    style={
-                                      Array [
-                                        Object {
-                                          "height": "100%",
-                                          "width": "100%",
-                                        },
-                                        Object {
-                                          "resizeMode": "cover",
-                                        },
-                                      ]
-                                    }
-                                  />
-                                </View>
-                                <View
-                                  accessible={true}
-                                  focusable={false}
-                                  isTVSelectable={true}
-                                  style={
-                                    Object {
-                                      "height": "50%",
-                                      "opacity": 1,
-                                      "width": 30,
-                                    }
-                                  }
-                                >
-                                  <RNSVGSvgView
-                                    align="xMidYMid"
-                                    bbHeight="100%"
-                                    bbWidth="100%"
-                                    fill="none"
-                                    focusable={false}
-                                    height="100%"
-                                    meetOrSlice={0}
-                                    minX={0}
-                                    minY={0}
-                                    style={
-                                      Array [
-                                        Object {
-                                          "backgroundColor": "transparent",
-                                          "borderWidth": 0,
-                                        },
-                                        undefined,
-                                        Object {
-                                          "opacity": 1,
-                                        },
-                                        Object {
-                                          "flex": 0,
-                                          "height": "100%",
-                                          "width": "100%",
-                                        },
-                                      ]
-                                    }
-                                    vbHeight={24}
-                                    vbWidth={24}
-                                    width="100%"
-                                  >
-                                    <RNSVGGroup
-                                      fill={null}
-                                      fillOpacity={1}
-                                      fillRule={1}
-                                      font={Object {}}
-                                      matrix={
-                                        Array [
-                                          1,
-                                          0,
-                                          0,
-                                          1,
-                                          0,
-                                          0,
-                                        ]
-                                      }
-                                      opacity={1}
-                                      originX={0}
-                                      originY={0}
-                                      propList={
-                                        Array [
-                                          "fill",
-                                        ]
-                                      }
-                                      rotation={0}
-                                      scaleX={1}
-                                      scaleY={1}
-                                      skewX={0}
-                                      skewY={0}
-                                      stroke={null}
-                                      strokeDasharray={null}
-                                      strokeDashoffset={null}
-                                      strokeLinecap={0}
-                                      strokeLinejoin={0}
-                                      strokeMiterlimit={4}
-                                      strokeOpacity={1}
-                                      strokeWidth={1}
-                                      vectorEffect={0}
-                                      x={0}
-                                      y={0}
-                                    >
-                                      <RNSVGPath
-                                        d="M20 20l-4.904-4.904m0 0a6.5 6.5 0 10-9.192-9.192 6.5 6.5 0 009.192 9.192z"
-                                        fill={
-                                          Array [
-                                            0,
-                                            4278190080,
-                                          ]
-                                        }
-                                        fillOpacity={1}
-                                        fillRule={1}
-                                        matrix={
-                                          Array [
-                                            1,
-                                            0,
-                                            0,
-                                            1,
-                                            0,
-                                            0,
-                                          ]
-                                        }
-                                        opacity={1}
-                                        originX={0}
-                                        originY={0}
-                                        propList={
-                                          Array [
-                                            "stroke",
-                                            "strokeWidth",
-                                            "strokeLinecap",
-                                            "strokeLinejoin",
-                                          ]
-                                        }
-                                        rotation={0}
-                                        scaleX={1}
-                                        scaleY={1}
-                                        skewX={0}
-                                        skewY={0}
-                                        stroke={
-                                          Array [
-                                            0,
-                                            4285032815,
-                                          ]
-                                        }
-                                        strokeDasharray={null}
-                                        strokeDashoffset={null}
-                                        strokeLinecap={1}
-                                        strokeLinejoin={1}
-                                        strokeMiterlimit={4}
-                                        strokeOpacity={1}
-                                        strokeWidth={1.8}
-                                        vectorEffect={0}
-                                        x={0}
-                                        y={0}
-                                      />
-                                    </RNSVGGroup>
-                                  </RNSVGSvgView>
-                                </View>
-                              </View>
                               <RCTSafeAreaView
                                 emulateUnlessSupported={true}
                                 style={
@@ -783,8 +596,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                               Object {
                                                 "alignItems": "center",
                                                 "backgroundColor": "#F4F8FB",
-                                                "margin": 5,
-                                                "minHeight": 300,
+                                                "height": 417,
+                                                "margin": 15,
                                                 "opacity": 1,
                                                 "width": 320,
                                               }
@@ -806,8 +619,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   Array [
                                                     Object {
                                                       "color": "#0D0E10",
-                                                      "fontFamily": "montserrat-semi-bold",
-                                                      "fontSize": 15,
+                                                      "fontFamily": "IBM-bold",
+                                                      "fontSize": 17,
                                                       "paddingBottom": 10,
                                                       "paddingLeft": 20,
                                                       "paddingRight": 20,
@@ -968,8 +781,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                     Array [
                                                       Object {
                                                         "color": "#68696F",
-                                                        "fontFamily": "montserrat-regular",
-                                                        "fontSize": 12,
+                                                        "fontFamily": "IBM-regular",
+                                                        "fontSize": 15,
                                                       },
                                                     ]
                                                   }
@@ -980,7 +793,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "bottom": 0,
+                                                        "bottom": -10,
                                                         "color": "#0D0E10",
                                                         "fontFamily": "montserrat-semi-bold",
                                                         "fontSize": 12,
@@ -1293,8 +1106,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                               Object {
                                                 "alignItems": "center",
                                                 "backgroundColor": "#F4F8FB",
-                                                "margin": 5,
-                                                "minHeight": 300,
+                                                "height": 417,
+                                                "margin": 15,
                                                 "opacity": 1,
                                                 "width": 320,
                                               }
@@ -1316,8 +1129,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   Array [
                                                     Object {
                                                       "color": "#0D0E10",
-                                                      "fontFamily": "montserrat-semi-bold",
-                                                      "fontSize": 15,
+                                                      "fontFamily": "IBM-bold",
+                                                      "fontSize": 17,
                                                       "paddingBottom": 10,
                                                       "paddingLeft": 20,
                                                       "paddingRight": 20,
@@ -1478,8 +1291,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                     Array [
                                                       Object {
                                                         "color": "#68696F",
-                                                        "fontFamily": "montserrat-regular",
-                                                        "fontSize": 12,
+                                                        "fontFamily": "IBM-regular",
+                                                        "fontSize": 15,
                                                       },
                                                     ]
                                                   }
@@ -1490,7 +1303,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "bottom": 0,
+                                                        "bottom": -10,
                                                         "color": "#0D0E10",
                                                         "fontFamily": "montserrat-semi-bold",
                                                         "fontSize": 12,
@@ -1803,8 +1616,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                               Object {
                                                 "alignItems": "center",
                                                 "backgroundColor": "#F4F8FB",
-                                                "margin": 5,
-                                                "minHeight": 300,
+                                                "height": 417,
+                                                "margin": 15,
                                                 "opacity": 1,
                                                 "width": 320,
                                               }
@@ -1826,8 +1639,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   Array [
                                                     Object {
                                                       "color": "#0D0E10",
-                                                      "fontFamily": "montserrat-semi-bold",
-                                                      "fontSize": 15,
+                                                      "fontFamily": "IBM-bold",
+                                                      "fontSize": 17,
                                                       "paddingBottom": 10,
                                                       "paddingLeft": 20,
                                                       "paddingRight": 20,
@@ -1988,8 +1801,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                     Array [
                                                       Object {
                                                         "color": "#68696F",
-                                                        "fontFamily": "montserrat-regular",
-                                                        "fontSize": 12,
+                                                        "fontFamily": "IBM-regular",
+                                                        "fontSize": 15,
                                                       },
                                                     ]
                                                   }
@@ -2000,7 +1813,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "bottom": 0,
+                                                        "bottom": -10,
                                                         "color": "#0D0E10",
                                                         "fontFamily": "montserrat-semi-bold",
                                                         "fontSize": 12,
@@ -2313,8 +2126,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                               Object {
                                                 "alignItems": "center",
                                                 "backgroundColor": "#F4F8FB",
-                                                "margin": 5,
-                                                "minHeight": 300,
+                                                "height": 417,
+                                                "margin": 15,
                                                 "opacity": 1,
                                                 "width": 320,
                                               }
@@ -2336,8 +2149,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   Array [
                                                     Object {
                                                       "color": "#0D0E10",
-                                                      "fontFamily": "montserrat-semi-bold",
-                                                      "fontSize": 15,
+                                                      "fontFamily": "IBM-bold",
+                                                      "fontSize": 17,
                                                       "paddingBottom": 10,
                                                       "paddingLeft": 20,
                                                       "paddingRight": 20,
@@ -2498,8 +2311,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                     Array [
                                                       Object {
                                                         "color": "#68696F",
-                                                        "fontFamily": "montserrat-regular",
-                                                        "fontSize": 12,
+                                                        "fontFamily": "IBM-regular",
+                                                        "fontSize": 15,
                                                       },
                                                     ]
                                                   }
@@ -2510,7 +2323,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "bottom": 0,
+                                                        "bottom": -10,
                                                         "color": "#0D0E10",
                                                         "fontFamily": "montserrat-semi-bold",
                                                         "fontSize": 12,
@@ -2823,8 +2636,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                               Object {
                                                 "alignItems": "center",
                                                 "backgroundColor": "#F4F8FB",
-                                                "margin": 5,
-                                                "minHeight": 300,
+                                                "height": 417,
+                                                "margin": 15,
                                                 "opacity": 1,
                                                 "width": 320,
                                               }
@@ -2846,8 +2659,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   Array [
                                                     Object {
                                                       "color": "#0D0E10",
-                                                      "fontFamily": "montserrat-semi-bold",
-                                                      "fontSize": 15,
+                                                      "fontFamily": "IBM-bold",
+                                                      "fontSize": 17,
                                                       "paddingBottom": 10,
                                                       "paddingLeft": 20,
                                                       "paddingRight": 20,
@@ -3008,8 +2821,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                     Array [
                                                       Object {
                                                         "color": "#68696F",
-                                                        "fontFamily": "montserrat-regular",
-                                                        "fontSize": 12,
+                                                        "fontFamily": "IBM-regular",
+                                                        "fontSize": 15,
                                                       },
                                                     ]
                                                   }
@@ -3020,7 +2833,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "bottom": 0,
+                                                        "bottom": -10,
                                                         "color": "#0D0E10",
                                                         "fontFamily": "montserrat-semi-bold",
                                                         "fontSize": 12,
@@ -3333,8 +3146,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                               Object {
                                                 "alignItems": "center",
                                                 "backgroundColor": "#F4F8FB",
-                                                "margin": 5,
-                                                "minHeight": 300,
+                                                "height": 417,
+                                                "margin": 15,
                                                 "opacity": 1,
                                                 "width": 320,
                                               }
@@ -3356,8 +3169,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   Array [
                                                     Object {
                                                       "color": "#0D0E10",
-                                                      "fontFamily": "montserrat-semi-bold",
-                                                      "fontSize": 15,
+                                                      "fontFamily": "IBM-bold",
+                                                      "fontSize": 17,
                                                       "paddingBottom": 10,
                                                       "paddingLeft": 20,
                                                       "paddingRight": 20,
@@ -3518,8 +3331,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                     Array [
                                                       Object {
                                                         "color": "#68696F",
-                                                        "fontFamily": "montserrat-regular",
-                                                        "fontSize": 12,
+                                                        "fontFamily": "IBM-regular",
+                                                        "fontSize": 15,
                                                       },
                                                     ]
                                                   }
@@ -3530,7 +3343,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "bottom": 0,
+                                                        "bottom": -10,
                                                         "color": "#0D0E10",
                                                         "fontFamily": "montserrat-semi-bold",
                                                         "fontSize": 12,
@@ -3843,8 +3656,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                               Object {
                                                 "alignItems": "center",
                                                 "backgroundColor": "#F4F8FB",
-                                                "margin": 5,
-                                                "minHeight": 300,
+                                                "height": 417,
+                                                "margin": 15,
                                                 "opacity": 1,
                                                 "width": 320,
                                               }
@@ -3866,8 +3679,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   Array [
                                                     Object {
                                                       "color": "#0D0E10",
-                                                      "fontFamily": "montserrat-semi-bold",
-                                                      "fontSize": 15,
+                                                      "fontFamily": "IBM-bold",
+                                                      "fontSize": 17,
                                                       "paddingBottom": 10,
                                                       "paddingLeft": 20,
                                                       "paddingRight": 20,
@@ -4028,8 +3841,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                     Array [
                                                       Object {
                                                         "color": "#68696F",
-                                                        "fontFamily": "montserrat-regular",
-                                                        "fontSize": 12,
+                                                        "fontFamily": "IBM-regular",
+                                                        "fontSize": 15,
                                                       },
                                                     ]
                                                   }
@@ -4040,7 +3853,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "bottom": 0,
+                                                        "bottom": -10,
                                                         "color": "#0D0E10",
                                                         "fontFamily": "montserrat-semi-bold",
                                                         "fontSize": 12,
@@ -4353,8 +4166,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                               Object {
                                                 "alignItems": "center",
                                                 "backgroundColor": "#F4F8FB",
-                                                "margin": 5,
-                                                "minHeight": 300,
+                                                "height": 417,
+                                                "margin": 15,
                                                 "opacity": 1,
                                                 "width": 320,
                                               }
@@ -4376,8 +4189,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   Array [
                                                     Object {
                                                       "color": "#0D0E10",
-                                                      "fontFamily": "montserrat-semi-bold",
-                                                      "fontSize": 15,
+                                                      "fontFamily": "IBM-bold",
+                                                      "fontSize": 17,
                                                       "paddingBottom": 10,
                                                       "paddingLeft": 20,
                                                       "paddingRight": 20,
@@ -4538,8 +4351,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                     Array [
                                                       Object {
                                                         "color": "#68696F",
-                                                        "fontFamily": "montserrat-regular",
-                                                        "fontSize": 12,
+                                                        "fontFamily": "IBM-regular",
+                                                        "fontSize": 15,
                                                       },
                                                     ]
                                                   }
@@ -4550,7 +4363,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "bottom": 0,
+                                                        "bottom": -10,
                                                         "color": "#0D0E10",
                                                         "fontFamily": "montserrat-semi-bold",
                                                         "fontSize": 12,
@@ -4863,8 +4676,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                               Object {
                                                 "alignItems": "center",
                                                 "backgroundColor": "#F4F8FB",
-                                                "margin": 5,
-                                                "minHeight": 300,
+                                                "height": 417,
+                                                "margin": 15,
                                                 "opacity": 1,
                                                 "width": 320,
                                               }
@@ -4886,8 +4699,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   Array [
                                                     Object {
                                                       "color": "#0D0E10",
-                                                      "fontFamily": "montserrat-semi-bold",
-                                                      "fontSize": 15,
+                                                      "fontFamily": "IBM-bold",
+                                                      "fontSize": 17,
                                                       "paddingBottom": 10,
                                                       "paddingLeft": 20,
                                                       "paddingRight": 20,
@@ -5048,8 +4861,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                     Array [
                                                       Object {
                                                         "color": "#68696F",
-                                                        "fontFamily": "montserrat-regular",
-                                                        "fontSize": 12,
+                                                        "fontFamily": "IBM-regular",
+                                                        "fontSize": 15,
                                                       },
                                                     ]
                                                   }
@@ -5060,7 +4873,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "bottom": 0,
+                                                        "bottom": -10,
                                                         "color": "#0D0E10",
                                                         "fontFamily": "montserrat-semi-bold",
                                                         "fontSize": 12,
@@ -5373,8 +5186,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                               Object {
                                                 "alignItems": "center",
                                                 "backgroundColor": "#F4F8FB",
-                                                "margin": 5,
-                                                "minHeight": 300,
+                                                "height": 417,
+                                                "margin": 15,
                                                 "opacity": 1,
                                                 "width": 320,
                                               }
@@ -5396,8 +5209,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   Array [
                                                     Object {
                                                       "color": "#0D0E10",
-                                                      "fontFamily": "montserrat-semi-bold",
-                                                      "fontSize": 15,
+                                                      "fontFamily": "IBM-bold",
+                                                      "fontSize": 17,
                                                       "paddingBottom": 10,
                                                       "paddingLeft": 20,
                                                       "paddingRight": 20,
@@ -5558,8 +5371,8 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                     Array [
                                                       Object {
                                                         "color": "#68696F",
-                                                        "fontFamily": "montserrat-regular",
-                                                        "fontSize": 12,
+                                                        "fontFamily": "IBM-regular",
+                                                        "fontSize": 15,
                                                       },
                                                     ]
                                                   }
@@ -5570,7 +5383,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                                   style={
                                                     Array [
                                                       Object {
-                                                        "bottom": 0,
+                                                        "bottom": -10,
                                                         "color": "#0D0E10",
                                                         "fontFamily": "montserrat-semi-bold",
                                                         "fontSize": 12,
@@ -5884,7 +5697,274 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                 importantForAccessibility="auto"
                                 pointerEvents="box-none"
                                 style={null}
-                              />
+                              >
+                                <View
+                                  pointerEvents="none"
+                                  style={
+                                    Object {
+                                      "bottom": 0,
+                                      "left": 0,
+                                      "position": "absolute",
+                                      "right": 0,
+                                      "top": 0,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      Object {
+                                        "backgroundColor": "#F4F8FB",
+                                        "borderBottomColor": "#a7a7aa",
+                                        "borderBottomWidth": 0,
+                                        "elevation": 0,
+                                        "flex": 1,
+                                        "shadowColor": "#a7a7aa",
+                                        "shadowOffset": Object {
+                                          "height": 0.5,
+                                          "width": 0,
+                                        },
+                                        "shadowOpacity": 0,
+                                        "shadowRadius": 0,
+                                      }
+                                    }
+                                  />
+                                </View>
+                                <View
+                                  pointerEvents="box-none"
+                                  style={
+                                    Object {
+                                      "height": 64,
+                                      "maxHeight": undefined,
+                                      "minHeight": undefined,
+                                      "opacity": undefined,
+                                      "transform": undefined,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    pointerEvents="none"
+                                    style={
+                                      Object {
+                                        "height": 20,
+                                      }
+                                    }
+                                  />
+                                  <View
+                                    pointerEvents="box-none"
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "flex": 1,
+                                        "flexDirection": "row",
+                                        "justifyContent": "center",
+                                      }
+                                    }
+                                  >
+                                    <View
+                                      pointerEvents="box-none"
+                                      style={
+                                        Object {
+                                          "alignItems": "flex-start",
+                                          "bottom": 0,
+                                          "justifyContent": "center",
+                                          "left": 0,
+                                          "position": "absolute",
+                                          "top": 0,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          Array [
+                                            Object {
+                                              "height": "90%",
+                                              "paddingLeft": 15,
+                                              "width": 100,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <Image
+                                          source={1}
+                                          style={
+                                            Array [
+                                              Object {
+                                                "height": "100%",
+                                                "width": "100%",
+                                              },
+                                              Object {
+                                                "resizeMode": "contain",
+                                              },
+                                            ]
+                                          }
+                                        />
+                                      </View>
+                                    </View>
+                                    <View
+                                      pointerEvents="box-none"
+                                      style={
+                                        Object {
+                                          "marginHorizontal": 18,
+                                        }
+                                      }
+                                    />
+                                    <View
+                                      pointerEvents="box-none"
+                                      style={
+                                        Object {
+                                          "alignItems": "flex-end",
+                                          "bottom": 0,
+                                          "justifyContent": "center",
+                                          "position": "absolute",
+                                          "right": 0,
+                                          "top": 0,
+                                        }
+                                      }
+                                    >
+                                      <View
+                                        accessible={true}
+                                        focusable={false}
+                                        isTVSelectable={true}
+                                        style={
+                                          Object {
+                                            "height": "70%",
+                                            "opacity": 1,
+                                            "right": 20,
+                                            "width": 40,
+                                          }
+                                        }
+                                      >
+                                        <RNSVGSvgView
+                                          align="xMidYMid"
+                                          bbHeight="100%"
+                                          bbWidth="100%"
+                                          fill="none"
+                                          focusable={false}
+                                          height="100%"
+                                          meetOrSlice={0}
+                                          minX={0}
+                                          minY={0}
+                                          style={
+                                            Array [
+                                              Object {
+                                                "backgroundColor": "transparent",
+                                                "borderWidth": 0,
+                                              },
+                                              undefined,
+                                              Object {
+                                                "opacity": 1,
+                                              },
+                                              Object {
+                                                "flex": 0,
+                                                "height": "100%",
+                                                "width": "100%",
+                                              },
+                                            ]
+                                          }
+                                          vbHeight={24}
+                                          vbWidth={24}
+                                          width="100%"
+                                        >
+                                          <RNSVGGroup
+                                            fill={null}
+                                            fillOpacity={1}
+                                            fillRule={1}
+                                            font={Object {}}
+                                            matrix={
+                                              Array [
+                                                1,
+                                                0,
+                                                0,
+                                                1,
+                                                0,
+                                                0,
+                                              ]
+                                            }
+                                            opacity={1}
+                                            originX={0}
+                                            originY={0}
+                                            propList={
+                                              Array [
+                                                "fill",
+                                              ]
+                                            }
+                                            rotation={0}
+                                            scaleX={1}
+                                            scaleY={1}
+                                            skewX={0}
+                                            skewY={0}
+                                            stroke={null}
+                                            strokeDasharray={null}
+                                            strokeDashoffset={null}
+                                            strokeLinecap={0}
+                                            strokeLinejoin={0}
+                                            strokeMiterlimit={4}
+                                            strokeOpacity={1}
+                                            strokeWidth={1}
+                                            vectorEffect={0}
+                                            x={0}
+                                            y={0}
+                                          >
+                                            <RNSVGPath
+                                              d="M20 20l-4.904-4.904m0 0a6.5 6.5 0 10-9.192-9.192 6.5 6.5 0 009.192 9.192z"
+                                              fill={
+                                                Array [
+                                                  0,
+                                                  4278190080,
+                                                ]
+                                              }
+                                              fillOpacity={1}
+                                              fillRule={1}
+                                              matrix={
+                                                Array [
+                                                  1,
+                                                  0,
+                                                  0,
+                                                  1,
+                                                  0,
+                                                  0,
+                                                ]
+                                              }
+                                              opacity={1}
+                                              originX={0}
+                                              originY={0}
+                                              propList={
+                                                Array [
+                                                  "stroke",
+                                                  "strokeWidth",
+                                                  "strokeLinecap",
+                                                  "strokeLinejoin",
+                                                ]
+                                              }
+                                              rotation={0}
+                                              scaleX={1}
+                                              scaleY={1}
+                                              skewX={0}
+                                              skewY={0}
+                                              stroke={
+                                                Array [
+                                                  0,
+                                                  4285032815,
+                                                ]
+                                              }
+                                              strokeDasharray={null}
+                                              strokeDashoffset={null}
+                                              strokeLinecap={1}
+                                              strokeLinejoin={1}
+                                              strokeMiterlimit={4}
+                                              strokeOpacity={1}
+                                              strokeWidth={1.8}
+                                              vectorEffect={0}
+                                              x={0}
+                                              y={0}
+                                            />
+                                          </RNSVGGroup>
+                                        </RNSVGSvgView>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
                             </View>
                           </View>
                         </View>

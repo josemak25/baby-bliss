@@ -3,13 +3,16 @@ import { render, act } from '@testing-library/react-native';
 import SplashScreen from '../../../src/screens/splash';
 import Theme from '../../../src/theme';
 import { createNavigationTestProps } from '../../../src/constants';
+import { StoreProvider } from '../../../src/store';
 
 const mountComponent = () => {
   const props: any = createNavigationTestProps();
   const renderedProps = render(
-    <Theme>
-      <SplashScreen {...props} />
-    </Theme>
+    <StoreProvider>
+      <Theme>
+        <SplashScreen {...props} />
+      </Theme>
+    </StoreProvider>
   );
   return { props, ...renderedProps };
 };

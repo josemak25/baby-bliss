@@ -1,0 +1,100 @@
+{
+  "category": [
+    {
+      "categoryOf": "community",
+      "_id": "5d5e640247fda3145df0d912",
+      "title": "First trimester",
+      "createdAt": "2019-08-22T09:44:34.933Z",
+      "__v": 0,
+      "id": "5d5e640247fda3145df0d912"
+    },
+    {
+      "categoryOf": "community",
+      "_id": "5d5e640247fda3145df0d913",
+      "title": "Second trimester",
+      "createdAt": "2019-08-22T09:44:34.934Z",
+      "__v": 0,
+      "id": "5d5e640247fda3145df0d913"
+    },
+    {
+      "categoryOf": "community",
+      "_id": "5d5e640247fda3145df0d914",
+      "title": "Third trimester",
+      "createdAt": "2019-08-22T09:44:34.935Z",
+      "__v": 0,
+      "id": "5d5e640247fda3145df0d914"
+    },
+    {
+      "categoryOf": "community",
+      "_id": "5d5e640247fda3145df0d915",
+      "title": "Post pregnancy",
+      "createdAt": "2019-08-22T09:44:34.937Z",
+      "__v": 0,
+      "id": "5d5e640247fda3145df0d915"
+    },
+    {
+      "categoryOf": "community",
+      "_id": "5d5e640247fda3145df0d916",
+      "title": "Labor & delivery",
+      "createdAt": "2019-08-22T09:44:34.938Z",
+      "__v": 0,
+      "id": "5d5e640247fda3145df0d916"
+    },
+    {
+      "categoryOf": "community",
+      "_id": "5d5e640247fda3145df0d917",
+      "title": "Birth story",
+      "createdAt": "2019-08-22T09:44:34.939Z",
+      "__v": 0,
+      "id": "5d5e640247fda3145df0d917"
+    },
+    {
+      "categoryOf": "community",
+      "_id": "5d5e640247fda3145df0d918",
+      "title": "Parenting",
+      "createdAt": "2019-08-22T09:44:34.940Z",
+      "__v": 0,
+      "id": "5d5e640247fda3145df0d918"
+    },
+    {
+      "categoryOf": "community",
+      "_id": "5d5e640247fda3145df0d919",
+      "title": "Health",
+      "createdAt": "2019-08-22T09:44:34.941Z",
+      "__v": 0,
+      "id": "5d5e640247fda3145df0d919"
+    },
+    {
+      "categoryOf": "community",
+      "_id": "5d5e640247fda3145df0d91a",
+      "title": "Relationships",
+      "createdAt": "2019-08-22T09:44:34.942Z",
+      "__v": 0,
+      "id": "5d5e640247fda3145df0d91a"
+    },
+    {
+      "categoryOf": "community",
+      "_id": "5d5e640247fda3145df0d91b",
+      "title": "Breastfeeding",
+      "createdAt": "2019-08-22T09:44:34.943Z",
+      "__v": 0,
+      "id": "5d5e640247fda3145df0d91b"
+    },
+    {
+      "categoryOf": "community",
+      "_id": "5d5e640247fda3145df0d91c",
+      "title": "Depression",
+      "createdAt": "2019-08-22T09:44:34.944Z",
+      "__v": 0,
+      "id": "5d5e640247fda3145df0d91c"
+    },
+    {
+      "categoryOf": "community",
+      "_id": "5d5e640247fda3145df0d91d",
+      "title": "Miscarriage",
+      "createdAt": "2019-08-22T09:44:34.945Z",
+      "__v": 0,
+      "id": "5d5e640247fda3145df0d91d"
+    }
+  ]
+}

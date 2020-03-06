@@ -7,10 +7,9 @@ export const Container = styled.View`
   background-color: ${({ theme }) => theme.colors.BD_DARK_COLOR};
 `;
 
-export const HeaderImage = styled.ImageBackground`
+export const PostImage = styled.Image`
   width: 100%;
-  height: 100%;
-  position: relative;
+  height: 50%;
 `;
 
 export const HeaderOverLay = styled.View`
@@ -37,7 +36,7 @@ export const DetailsTipContainer = styled.View`
   width: 150px;
   height: 50px;
   margin-bottom: 15px;
-  background-color: ${({ theme }) => theme.colors.POST_TIP_COLOR};
+  background-color: ${({ theme }) => theme.colors.USER_POST_COLOR};
   justify-content: center;
   align-items: center;
   border-radius: 25px;
@@ -51,14 +50,14 @@ export const DetailsTip = styled.Text`
 `;
 
 export const DetailsTitle = styled.Text`
-  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE + 8}px;
-  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
-  color: ${({ theme }) => theme.colors.BG_LIGHT_COLOR};
+  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE + 10}px;
+  font-family: ${({ theme }) => theme.fonts.IBM_SANS_BOLD};
+  color: ${({ theme }) => theme.colors.FONT_DARK_COLOR};
   width: 80%;
   text-transform: capitalize;
 `;
 
-export const GoBack = styled.TouchableHighlight`
+export const GoBack = styled.TouchableOpacity`
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -83,7 +82,6 @@ export const ActionContainer = styled.View`
   height: 50px;
   flex-direction: row;
   align-items: center;
-  overflow: hidden;
 `;
 
 export const NoOfViews = styled.Text`

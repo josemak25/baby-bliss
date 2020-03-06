@@ -1,5 +1,4 @@
 import { USER_TYPES, UserAction } from './types';
-import { Dispatch } from 'react';
 
 const registrationStarted = () => ({ type: USER_TYPES.REGISTER_USER_STARTED });
 

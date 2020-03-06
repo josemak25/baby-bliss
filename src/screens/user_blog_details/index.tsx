@@ -4,7 +4,8 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  Dimensions
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -13,7 +14,6 @@ import { NavigationInterface } from '../../constants';
 import { useThemeContext } from '../../theme';
 
 import Comment from '../../components/comments';
-import MessageIcon from '../../../assets/icons/message';
 import Eye from '../../../assets/icons/eye';
 import LoveIcon from '../../../assets/icons/love';
 
@@ -21,19 +21,17 @@ import {
   Container,
   DetailsTip,
   DetailsTipContainer,
-  HeaderImage,
-  HeaderOverLay,
   HeaderContentContainer,
   DetailsTitle,
   HeaderTextContainer,
   GoBack,
-  FloatingMessageButton,
   ActionContainer,
   NoOfViews,
   NoOfLikes,
   Description,
   CommentHeader,
-  CommentsContainer
+  CommentsContainer,
+  PostImage
 } from './styles';
 
 import Message from '../../components/message';
@@ -42,7 +40,9 @@ interface BlogDetailsProp extends NavigationInterface {
   testID?: string;
 }
 
-export default function BlogDetails(props: BlogDetailsProp) {
+const { width: DEVICE_WIDTH } = Dimensions.get('window');
+
+export default function UserBlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
 
   return (
@@ -53,7 +53,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
         backgroundColor: colors.BD_DARK_COLOR
       }}
     >
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="dark-content" />
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
@@ -61,27 +61,34 @@ export default function BlogDetails(props: BlogDetailsProp) {
         }}
         showsVerticalScrollIndicator={false}
       >
-        <Header style={{ height: 400, paddingLeft: 0, paddingRight: 0 }}>
-          <HeaderImage
-            source={{ uri: 'https://bit.ly/38c0U3G' }}
-            style={{ width: '100%', height: '100%' }}
-            resizeMode="cover"
-          >
-            <HeaderOverLay />
-            <HeaderContentContainer>
-              <GoBack onPress={() => props.navigation.goBack()}>
-                <Ionicons name="ios-arrow-back" size={25} color="white" />
-              </GoBack>
-              <HeaderTextContainer>
-                <DetailsTipContainer>
-                  <DetailsTip>Baby Tips</DetailsTip>
-                </DetailsTipContainer>
-                <DetailsTitle>
-                  Always Look On The Bright Side Of Life Side Of Life
-                </DetailsTitle>
-              </HeaderTextContainer>
-            </HeaderContentContainer>
-          </HeaderImage>
+        <Header style={{ height: 350, paddingLeft: 0, paddingRight: 0 }}>
+          <HeaderContentContainer>
+            <GoBack onPress={() => props.navigation.goBack()}>
+              <Ionicons
+                name="ios-arrow-back"
+                size={25}
+                color={colors.FONT_LIGHT_COLOR}
+              />
+            </GoBack>
+            <HeaderTextContainer>
+              <DetailsTipContainer>
+                <DetailsTip>Baby Tips</DetailsTip>
+              </DetailsTipContainer>
+              <DetailsTitle>
+                Always Look On The Bright Side Of Life
+              </DetailsTitle>
+              <ActionContainer>
+                <Eye style={{ position: 'relative', right: 9 }} width="30%" />
+                <NoOfViews>1.6k</NoOfViews>
+                <LoveIcon
+                  style={{ position: 'relative', right: 10 }}
+                  width="30%"
+                  height="40%"
+                />
+                <NoOfLikes>2.1k</NoOfLikes>
+              </ActionContainer>
+            </HeaderTextContainer>
+          </HeaderContentContainer>
         </Header>
         <TouchableWithoutFeedback
           onPress={Keyboard.dismiss}
@@ -91,23 +98,14 @@ export default function BlogDetails(props: BlogDetailsProp) {
           }}
         >
           <Container testID="blog-details">
-            <FloatingMessageButton
-              start={{ x: 0, y: 1 }}
-              end={{ x: 0, y: 0 }}
-              colors={[colors.GRADIENT_COLOR_FROM, colors.GRADIENT_COLOR_TO]}
-            >
-              <MessageIcon />
-            </FloatingMessageButton>
-            <ActionContainer>
-              <Eye style={{ position: 'relative', right: 9 }} width="30%" />
-              <NoOfViews>1.6k</NoOfViews>
-              <LoveIcon
-                style={{ position: 'relative', right: 10 }}
-                width="30%"
-                height="40%"
-              />
-              <NoOfLikes>2.1k</NoOfLikes>
-            </ActionContainer>
+            <PostImage
+              source={{ uri: 'https://bit.ly/2THZ4SC' }}
+              style={{
+                height: DEVICE_WIDTH > 414 ? 400 : 250,
+                borderRadius: 2
+              }}
+              resizeMode="cover"
+            />
             <Description>
               As conscious traveling Paupers we must always be concerned about
               our dear Mother Earth. If you think about it, you travel across
@@ -116,9 +114,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
               I have found some valuable resources for As conscious traveling
               Paupers we must always be concerned about our dear Mother Earth.
               If you think about it, you travel across her face, and She is the
-              host to your journey without Her we could not find the unfolding
-              adventures that attract and feed our souls. I have found some
-              valuable resources for
+              host to your journey without
             </Description>
             <CommentHeader>comment</CommentHeader>
             <CommentsContainer>
@@ -136,4 +132,4 @@ export default function BlogDetails(props: BlogDetailsProp) {
   );
 }
 
-BlogDetails.navigationOptions = { headerShown: false };
+UserBlogDetails.navigationOptions = { headerShown: false };

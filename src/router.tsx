@@ -16,13 +16,22 @@ const HomeNavigator = createStackNavigator(
     // Home Screen Route
     HomeScreen: { screen: Screens.HomeScreen },
 
-    // BlogDetails Screen Route
-    BlogDetailsScreen: { screen: Screens.BlogDetailsScreen }
+    // Blog Details Screen Route
+    BlogDetailsScreen: { screen: Screens.BlogDetailsScreen },
+
+    // Post Question Screen Route
+    PostQuestionScreen: { screen: Screens.PostQuestionScreen },
+
+    // User Blog Details Screen Route
+    UserBlogDetailsScreen: { screen: Screens.UserBlogDetailsScreen }
   },
   {
     initialRouteName: 'HomeScreen',
     headerMode: 'screen',
-    defaultNavigationOptions: { headerShown: false }
+    defaultNavigationOptions: ({ navigation }) => {
+      navigation.state['navigationBackButton'] = navigationBackButton;
+      return { headerStyle: customHeaderStyle };
+    }
   }
 );
 
@@ -38,7 +47,7 @@ const CommunityNavigator = createStackNavigator(
   {
     initialRouteName: 'CommunityScreen',
     headerMode: 'screen',
-    defaultNavigationOptions: { headerShown: false }
+    defaultNavigationOptions: { headerStyle: customHeaderStyle }
   }
 );
 
@@ -99,10 +108,9 @@ const AppNavigator = createStackNavigator(
     // Home Screen Route
     HomeScreen: {
       screen: AppBottomTabNavigator,
-      navigationOptions: { headerShown: false }
+      navigationOptions: { headerStyle: customHeaderStyle, headerShown: false }
     }
   },
-
   {
     initialRouteName: 'SplashScreen',
     headerMode: 'screen',

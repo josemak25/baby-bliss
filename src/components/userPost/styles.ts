@@ -3,7 +3,8 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   width: 100%;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.BD_DARK_COLOR};
+  height: 250px;
+  background-color: ${({ theme }) => theme.colors.BG_LIGHT_COLOR};
 `;
 
 export const Topic = styled.Text`
@@ -17,25 +18,13 @@ export const Topic = styled.Text`
 export const DescriptionContainer = styled.View`
   width: 100%;
   height: 50px;
-  flex-direction: row;
-  padding: 0 30px;
-  margin-top: 10px;
+  padding: 0 20px;
 `;
 
 export const Description = styled.Text`
   font-size: ${({ theme }) => theme.fonts.MEDIUM_SIZE + 3}px;
   font-family: ${({ theme }) => theme.fonts.IBM_SANS_REGULAR};
   color: ${({ theme }) => theme.colors.FONT_LIGHT_COLOR};
-`;
-
-export const ReadMore = styled.Text`
-  font-size: ${({ theme }) => theme.fonts.MEDIUM_SIZE}px;
-  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
-  color: ${({ theme }) => theme.colors.FONT_DARK_COLOR};
-  text-transform: capitalize;
-  position: absolute;
-  bottom: -10px;
-  right: 30px;
 `;
 
 export const ActionContainer = styled.View`
@@ -45,6 +34,7 @@ export const ActionContainer = styled.View`
   align-items: center;
   justify-content: flex-start;
   padding: 0 10px;
+  bottom: 15px;
 `;
 
 export const LikeContainer = styled.View`
@@ -73,6 +63,28 @@ export const PostDivider = styled.View`
 `;
 
 export const ContentLoaderContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
   align-items: center;
+  padding: 10px 20px;
+  align-self: flex-start;
+`;
+
+export const PostHeader = styled.View`
+  flex: 1;
   justify-content: center;
+  padding-left: 10px;
+  z-index: 1;
+`;
+
+export const PostUserName = styled.Text`
+  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE + 3}px;
+  font-family: ${({ theme }) => theme.fonts.IBM_SANS_BOLD};
+  color: ${({ theme }) => theme.colors.FONT_DARK_COLOR};
+`;
+
+export const PostTime = styled.Text`
+  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE + 3}px;
+  font-family: ${({ theme }) => theme.fonts.IBM_SANS_REGULAR};
+  color: ${({ theme }) => theme.colors.FONT_LIGHT_COLOR};
 `;

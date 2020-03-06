@@ -1,10 +1,7 @@
 import { Dimensions, Platform } from 'react-native';
 const DEVICE = Dimensions.get('window');
 
-type CardItem = {
-  cardSize: number;
-  numOfColumn: number;
-};
+type CardItem = { cardSize: number; numOfColumn: number };
 
 const CARD_ITEM: CardItem = { cardSize: 320, numOfColumn: 1 };
 
