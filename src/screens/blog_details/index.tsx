@@ -53,6 +53,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
         backgroundColor: colors.BD_DARK_COLOR
       }}
     >
+      <StatusBar barStyle="light-content" />
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
@@ -60,11 +61,6 @@ export default function BlogDetails(props: BlogDetailsProp) {
         }}
         showsVerticalScrollIndicator={false}
       >
-        <StatusBar
-          translucent
-          backgroundColor={colors.POST_TIP_COLOR}
-          barStyle="light-content"
-        />
         <Header style={{ height: 400, paddingLeft: 0, paddingRight: 0 }}>
           <HeaderImage
             source={{ uri: 'https://bit.ly/38c0U3G' }}
@@ -87,7 +83,13 @@ export default function BlogDetails(props: BlogDetailsProp) {
             </HeaderContentContainer>
           </HeaderImage>
         </Header>
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <TouchableWithoutFeedback
+          onPress={Keyboard.dismiss}
+          style={{
+            flex: 1,
+            backgroundColor: colors.BD_DARK_COLOR
+          }}
+        >
           <Container testID="blog-details">
             <FloatingMessageButton
               start={{ x: 0, y: 1 }}
@@ -133,3 +135,5 @@ export default function BlogDetails(props: BlogDetailsProp) {
     </KeyboardAvoidingView>
   );
 }
+
+BlogDetails.navigationOptions = { headerShown: false };
