@@ -58,8 +58,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
     focus: false,
     message: '',
     commentId: null,
-    actionType: null,
-    waitTime: 250
+    actionType: null
   });
 
   const handleOnFocusRequest = (actionType: string, commentId: string) => {
@@ -83,16 +82,12 @@ export default function BlogDetails(props: BlogDetailsProp) {
   };
 
   const handleLikeComment = (id: string, commentIndex: number) => {
-    const waitTimer = setTimeout(() => {
-      postsActions(POST_ACTION_TYPES.LIKE_COMMENT)(dispatch, {
-        id,
-        authToken: userState.token,
-        commentIndex,
-        userId: userState.user.id
-      });
-
-      clearTimeout(waitTimer);
-    }, state.waitTime);
+    postsActions(POST_ACTION_TYPES.LIKE_COMMENT)(dispatch, {
+      id,
+      authToken: userState.token,
+      commentIndex,
+      userId: userState.user.id
+    });
   };
 
   return (

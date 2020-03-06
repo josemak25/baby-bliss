@@ -26,7 +26,7 @@ interface HomeScreenProp extends NavigationInterface {
 export default function HomeScreen(props: HomeScreenProp) {
   const [{ grid, postState, userState }, dispatch] = useStoreContext();
 
-  const [state, setState] = useState({ isLiked: true, waitTime: 250 });
+  const [state, setState] = useState({ isLiked: true });
 
   const { colors } = useThemeContext();
 
@@ -39,20 +39,16 @@ export default function HomeScreen(props: HomeScreenProp) {
   };
 
   const handleLikePost = (id: string, postIndex: number) => {
-    const waitTimer = setTimeout(() => {
-      postsActions(POST_ACTION_TYPES.LIKE_POST)(dispatch, {
-        id,
-        postIndex,
-        authToken: userState.token,
-        isLiked: state.isLiked
-      });
-      setState({
-        ...state,
-        isLiked: !state.isLiked //toggle the like property
-      });
-
-      clearTimeout(waitTimer);
-    }, state.waitTime);
+    postsActions(POST_ACTION_TYPES.LIKE_POST)(dispatch, {
+      id,
+      postIndex,
+      authToken: userState.token,
+      isLiked: state.isLiked
+    });
+    setState({
+      ...state,
+      isLiked: !state.isLiked //toggle the like property
+    });
   };
 
   const navigateToPost = (post: PostInterface) => {
