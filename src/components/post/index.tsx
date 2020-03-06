@@ -59,7 +59,11 @@ export default function Post(props: PostProps) {
 
   return (
     <Card
-      style={{ width: applyScale(width), margin: 5 }}
+      style={{
+        width: applyScale(width),
+        height: applyScale(417),
+        margin: 15
+      }}
       onPress={props.navigation}
     >
       <Container testID={testID}>
