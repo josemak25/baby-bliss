@@ -16,6 +16,7 @@ import Card from '../card';
 import CommentsIcon from '../../../assets/icons/comments';
 
 import { PostInterface } from '../../store/posts/types';
+import { simpleDateFormatter } from '../comments/utils';
 
 import {
   Container,
@@ -44,7 +45,16 @@ const { width: DEVICE_WIDTH } = Dimensions.get('window');
 export default function UserPost(props: UserPostProps) {
   const { colors } = useThemeContext();
 
-  const { topic, description, noOfLikes, noOfViews, testID, width } = props;
+  const {
+    topic,
+    description,
+    noOfLikes,
+    noOfViews,
+    testID,
+    width,
+    user: { name, avatar },
+    createdAt
+  } = props;
 
   const postDescription =
     description.length > 120
@@ -135,7 +145,7 @@ export default function UserPost(props: UserPostProps) {
             ]}
           />
           <ResponsiveImage
-            imageUrl="https://bit.ly/38c0U3G"
+            imageUrl={avatar ? avatar : 'https://bit.ly/38c0U3G'}
             width={70}
             height={70}
             onLoad={handleImageLoading}
@@ -143,10 +153,12 @@ export default function UserPost(props: UserPostProps) {
           />
           <PostHeader>
             <PostUserName>
-              {!animation.hideContentLoader ? 'Nnena Okereke Nnena' : null}
+              {!animation.hideContentLoader ? name : null}
             </PostUserName>
             <PostTime>
-              {!animation.hideContentLoader ? '14 mins ago' : null}
+              {!animation.hideContentLoader
+                ? simpleDateFormatter(createdAt)
+                : null}
             </PostTime>
           </PostHeader>
         </ContentLoaderContainer>

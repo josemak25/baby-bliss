@@ -31,8 +31,8 @@ export interface PostInterface {
   topic: string;
   description: string;
   user: User;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
   __v: number;
   id: string;
   noOfComments: number;

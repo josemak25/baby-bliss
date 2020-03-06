@@ -1,32 +1,27 @@
 import React from 'react';
 import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import { useStoreContext } from '../../store';
-import UserPost from '../../components/userPost';
-
 import { NavigationInterface } from '../../constants';
-import { PostInterface } from '../../store/posts/types';
-import post from '../../libs/dummyPost.json';
-
 import { Container } from './styles';
 import { ActivityIndicator } from 'react-native';
 import { useThemeContext } from '../../theme';
+import UserPost from '../../components/userPost';
 
 interface RouteContainerProp extends NavigationInterface {
   testID?: string;
-  posts: PostInterface[];
 }
 
 const RouteContainer = (props: RouteContainerProp) => {
-  const [{ grid }] = useStoreContext();
+  const [{ grid, postState, userState }, dispatch] = useStoreContext();
   const { colors } = useThemeContext();
 
   const onEndReached = () => {};
 
   return (
     <Container>
-      {props.posts.length ? (
+      {postState.posts.length ? (
         <OptimizedFlatList
-          data={props.posts}
+          data={postState.posts}
           renderItem={({ item, index }) => (
             <UserPost
               {...item}
@@ -58,7 +53,5 @@ const RouteContainer = (props: RouteContainerProp) => {
     </Container>
   );
 };
-
-RouteContainer.defaultProps = { posts: [...Array(10).fill(post)] };
 
 export default React.memo(RouteContainer);
