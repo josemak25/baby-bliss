@@ -19,7 +19,11 @@ import LoveIcon from '../../../assets/icons/love';
 import Message from '../../components/message';
 import { abbreviateNumber } from '../utils';
 import { useStoreContext } from '../../store';
-import { CommentInterface, POST_ACTION_TYPES } from '../../store/posts/types';
+import {
+  CommentInterface,
+  POST_ACTION_TYPES,
+  PostInterface
+} from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
 
 import {
@@ -50,9 +54,17 @@ interface BlogDetailsProp extends NavigationInterface {
 export default function BlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
   const [{ postState, userState }, dispatch] = useStoreContext();
-  const post = props.navigation.getParam('post');
+  const post: PostInterface = props.navigation.getParam('post');
 
-  const { topic, description, noOfLikes, noOfViews, images, id } = post;
+  const {
+    topic,
+    description,
+    noOfLikes,
+    noOfViews,
+    images,
+    id,
+    user: { avatar }
+  } = post;
 
   const [state, setState] = useState({
     focus: false,
@@ -165,6 +177,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
                       commentIndex={index}
                       handleOnFocusRequest={handleOnFocusRequest}
                       handleLikeComment={handleLikeComment}
+                      avatar={avatar}
                     />
                   )
                 )

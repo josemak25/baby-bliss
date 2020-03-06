@@ -33,6 +33,7 @@ type CommentProps = {
   handleOnFocusRequest(actionType: string, contentId: string): void;
   handleLikeComment(id: string, commentIndex: number): void;
   commentIndex: number;
+  avatar: string;
 };
 
 export default function Comment(props: CommentProps) {
@@ -48,7 +49,8 @@ export default function Comment(props: CommentProps) {
     testID,
     handleOnFocusRequest,
     handleLikeComment,
-    commentIndex
+    commentIndex,
+    avatar
   } = props;
 
   const commentTime = simpleDateFormatter(comment.createdAt);
@@ -74,7 +76,7 @@ export default function Comment(props: CommentProps) {
       <ImageContainer>
         <ImageWrapper>
           <ResponsiveImage
-            imageUrl="https://bit.ly/2TcUWv4"
+            imageUrl={avatar ? avatar : 'https://bit.ly/2TcUWv4'}
             width={60}
             height={60}
             resizeMode="contain"

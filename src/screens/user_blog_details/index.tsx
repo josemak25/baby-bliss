@@ -11,7 +11,11 @@ import {
 import { useThemeContext } from '../../theme';
 import { useStoreContext } from '../../store';
 import Message from '../../components/message';
-import { POST_ACTION_TYPES, CommentInterface } from '../../store/posts/types';
+import {
+  POST_ACTION_TYPES,
+  CommentInterface,
+  PostInterface
+} from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
 import { Ionicons } from '@expo/vector-icons';
 import Header from '../../components/header';
@@ -51,9 +55,17 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
 
   const [{ postState, userState }, dispatch] = useStoreContext();
-  const post = props.navigation.getParam('post');
+  const post: PostInterface = props.navigation.getParam('post');
 
-  const { topic, description, noOfLikes, noOfViews, images, id } = post;
+  const {
+    topic,
+    description,
+    noOfLikes,
+    noOfViews,
+    images,
+    id,
+    user: { avatar }
+  } = post;
 
   const [state, setState] = useState({
     focus: false,
@@ -162,6 +174,7 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
                       commentIndex={index}
                       handleOnFocusRequest={handleOnFocusRequest}
                       handleLikeComment={handleLikeComment}
+                      avatar={avatar}
                     />
                   )
                 )
