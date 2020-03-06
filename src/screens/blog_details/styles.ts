@@ -104,7 +104,7 @@ export const NoOfLikes = styled.Text`
 
 export const Description = styled.Text`
   font-size: ${({ theme }) => theme.fonts.LARGE_SIZE + 2}px;
-  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_MEDIUM};
+  font-family: ${({ theme }) => theme.fonts.IBM_SANS_REGULAR};
   color: ${({ theme }) => theme.colors.FONT_LIGHT_COLOR};
   margin: 20px 0px;
 `;
