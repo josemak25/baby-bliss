@@ -13,7 +13,8 @@ enum COLORS {
   IDLE_INPUT_COLOR = '#e6ebee',
   GRADIENT_COLOR_FROM = '#53AF7E',
   GRADIENT_COLOR_TO = '#3CB6AB',
-  ACTIVE_TAB_COLOR = '#262F56'
+  ACTIVE_TAB_COLOR = '#262F56',
+  USER_POST_COLOR = '#F6A93B'
 }
 
 // All app font sizes
@@ -49,6 +50,7 @@ declare module 'styled-components' {
       GRADIENT_COLOR_FROM: string;
       GRADIENT_COLOR_TO: string;
       ACTIVE_TAB_COLOR: string;
+      USER_POST_COLOR: string;
     };
 
     // All Global App Font Sizes
