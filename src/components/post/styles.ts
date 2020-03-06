@@ -7,8 +7,8 @@ export const Container = styled.View`
 `;
 
 export const Topic = styled.Text`
-  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE}px;
-  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
+  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE + 2}px;
+  font-family: ${({ theme }) => theme.fonts.IBM_SANS_BOLD};
   color: ${({ theme }) => theme.colors.FONT_DARK_COLOR};
   text-transform: capitalize;
   padding: 10px 20px;
@@ -23,8 +23,8 @@ export const DescriptionContainer = styled.View`
 `;
 
 export const Description = styled.Text`
-  font-size: ${({ theme }) => theme.fonts.MEDIUM_SIZE}px;
-  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_REGULAR};
+  font-size: ${({ theme }) => theme.fonts.MEDIUM_SIZE + 3}px;
+  font-family: ${({ theme }) => theme.fonts.IBM_SANS_REGULAR};
   color: ${({ theme }) => theme.colors.FONT_LIGHT_COLOR};
 `;
 
@@ -34,7 +34,7 @@ export const ReadMore = styled.Text`
   color: ${({ theme }) => theme.colors.FONT_DARK_COLOR};
   text-transform: capitalize;
   position: absolute;
-  bottom: 0;
+  bottom: -10px;
   right: 30px;
 `;
 
