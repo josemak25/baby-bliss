@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, AsyncStorage } from 'react-native';
+import { useThemeContext } from '../../theme';
+import { useStoreContext } from '../../store';
+import CARD_ITEM from '../../utils/getItemCardSize';
+import ScreenGridSizeActions from '../../store/grid/actions';
 import { NavigationInterface } from '../../constants';
 
 import { Container, ImageContainer, Image } from './styles';
-import { useThemeContext } from '../../theme';
 
 interface SplashScreenProp extends NavigationInterface {
   testID?: string;
@@ -11,13 +14,16 @@ interface SplashScreenProp extends NavigationInterface {
 
 export default function SplashScreen({ navigation }: SplashScreenProp) {
   const { colors } = useThemeContext();
+  const [, dispatch] = useStoreContext();
 
   const [splash, setSplash] = useState({
     appLogoLoaded: true,
-    pregnancyLogoLoaded: false
+    pregnancyLogoLoaded: false,
+    mobileGridSize: { cardSize: 320, numOfColumn: 1 }
   });
 
   useEffect(() => {
+    handleAppLayout();
     setTimeout(
       () =>
         setSplash({
@@ -29,6 +35,12 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
     );
     setTimeout(checkInitialLaunch, 4000);
   }, []);
+
+  const handleAppLayout = () => {
+    const { cardSize, numOfColumn } = CARD_ITEM;
+    setSplash({ ...splash, mobileGridSize: { cardSize, numOfColumn } });
+    ScreenGridSizeActions(dispatch, CARD_ITEM);
+  };
 
   const checkInitialLaunch = async () => {
     try {
