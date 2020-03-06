@@ -13,7 +13,8 @@ export const Container = styled.View`
 
 export const LogoContainer = styled.View`
   width: 100px;
-  height: 55%;
+  height: 90%;
+  padding-left: 15px;
 `;
 
 export const Logo = styled.Image`
@@ -22,6 +23,7 @@ export const Logo = styled.Image`
 `;
 
 export const SearchContainer = styled.TouchableOpacity`
-  width: 30px;
-  height: 50%;
+  width: 40px;
+  height: 70%;
+  right: 20px;
 `;
