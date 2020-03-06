@@ -17,13 +17,7 @@ const HomeNavigator = createStackNavigator(
     HomeScreen: { screen: Screens.HomeScreen },
 
     // Blog Details Screen Route
-    BlogDetailsScreen: { screen: Screens.BlogDetailsScreen },
-
-    // Post Question Screen Route
-    PostQuestionScreen: { screen: Screens.PostQuestionScreen },
-
-    // User Blog Details Screen Route
-    UserBlogDetailsScreen: { screen: Screens.UserBlogDetailsScreen }
+    BlogDetailsScreen: { screen: Screens.BlogDetailsScreen }
   },
   {
     initialRouteName: 'HomeScreen',
@@ -42,7 +36,13 @@ const CommunityNavigator = createStackNavigator(
     CommunityScreen: { screen: Screens.CommunityScreen },
 
     // BlogDetails Screen Route
-    BlogDetailsScreen: { screen: Screens.BlogDetailsScreen }
+    BlogDetailsScreen: { screen: Screens.BlogDetailsScreen },
+
+    // Post Question Screen Route
+    PostQuestionScreen: { screen: Screens.PostQuestionScreen },
+
+    // User Blog Details Screen Route
+    UserBlogDetailsScreen: { screen: Screens.UserBlogDetailsScreen }
   },
   {
     initialRouteName: 'CommunityScreen',
