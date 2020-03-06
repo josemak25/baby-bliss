@@ -8,9 +8,8 @@ import { ActivityIndicator } from 'react-native';
 import Post from '../../components/post';
 import SearchIcon from '../../../assets/icons/search';
 import { NavigationInterface } from '../../constants';
-import { PostInterface, POST_ACTION_TYPES } from '../../store/posts/types';
+import { POST_ACTION_TYPES } from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
-import showSnackbar from '../../components/UI/snackbar';
 
 import {
   Container,
