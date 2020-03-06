@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StatusBar,
   ScrollView,
@@ -8,14 +8,19 @@ import {
   Dimensions
 } from 'react-native';
 
+import { useThemeContext } from '../../theme';
+import { useStoreContext } from '../../store';
+import Message from '../../components/message';
+import { POST_ACTION_TYPES, CommentInterface } from '../../store/posts/types';
+import postsActions from '../../store/posts/actions';
 import { Ionicons } from '@expo/vector-icons';
 import Header from '../../components/header';
 import { NavigationInterface } from '../../constants';
-import { useThemeContext } from '../../theme';
 
 import Comment from '../../components/comments';
 import Eye from '../../../assets/icons/eye';
 import LoveIcon from '../../../assets/icons/love';
+import { abbreviateNumber } from '../utils';
 
 import {
   Container,
@@ -31,10 +36,10 @@ import {
   Description,
   CommentHeader,
   CommentsContainer,
-  PostImage
+  PostImage,
+  EmptyComment,
+  EmptyCommentText
 } from './styles';
-
-import Message from '../../components/message';
 
 interface BlogDetailsProp extends NavigationInterface {
   testID?: string;
@@ -44,6 +49,50 @@ const { width: DEVICE_WIDTH } = Dimensions.get('window');
 
 export default function UserBlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
+
+  const [{ postState, userState }, dispatch] = useStoreContext();
+  const post = props.navigation.getParam('post');
+
+  const { topic, description, noOfLikes, noOfViews, images, id } = post;
+
+  const [state, setState] = useState({
+    focus: false,
+    message: '',
+    commentId: null,
+    actionType: null,
+    waitTime: 250
+  });
+
+  const handleOnFocusRequest = (actionType: string, commentId: string) => {
+    setState({ ...state, focus: !state.focus, commentId, actionType });
+  };
+
+  const dispatchMessage = () => {
+    let { actionType } = state;
+    actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
+
+    postsActions(actionType)(dispatch, {
+      id,
+      authToken: userState.token,
+      commentId: state.commentId,
+      content: state.message
+    });
+  };
+
+  const setMessage = (message: string) => setState({ ...state, message });
+
+  const handleLikeComment = (id: string, commentIndex: number) => {
+    const waitTimer = setTimeout(() => {
+      postsActions(POST_ACTION_TYPES.LIKE_COMMENT)(dispatch, {
+        id,
+        authToken: userState.token,
+        commentIndex,
+        userId: userState.user.id
+      });
+
+      clearTimeout(waitTimer);
+    }, state.waitTime);
+  };
 
   return (
     <KeyboardAvoidingView
@@ -74,18 +123,16 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
               <DetailsTipContainer>
                 <DetailsTip>Baby Tips</DetailsTip>
               </DetailsTipContainer>
-              <DetailsTitle>
-                Always Look On The Bright Side Of Life
-              </DetailsTitle>
+              <DetailsTitle>{topic}</DetailsTitle>
               <ActionContainer>
                 <Eye style={{ position: 'relative', right: 9 }} width="30%" />
-                <NoOfViews>1.6k</NoOfViews>
+                <NoOfViews>{abbreviateNumber(noOfViews)}</NoOfViews>
                 <LoveIcon
                   style={{ position: 'relative', right: 10 }}
                   width="30%"
                   height="40%"
                 />
-                <NoOfLikes>2.1k</NoOfLikes>
+                <NoOfLikes>{abbreviateNumber(noOfLikes)}</NoOfLikes>
               </ActionContainer>
             </HeaderTextContainer>
           </HeaderContentContainer>
@@ -99,35 +146,45 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
         >
           <Container testID="blog-details">
             <PostImage
-              source={{ uri: 'https://bit.ly/2THZ4SC' }}
+              source={{
+                uri: images.length > 0 ? images[0] : 'https://bit.ly/2THZ4SC'
+              }}
               style={{
                 height: DEVICE_WIDTH > 414 ? 400 : 250,
                 borderRadius: 2
               }}
               resizeMode="cover"
             />
-            <Description>
-              As conscious traveling Paupers we must always be concerned about
-              our dear Mother Earth. If you think about it, you travel across
-              her face, and She is the host to your journey without Her we could
-              not find the unfolding adventures that attract and feed our souls.
-              I have found some valuable resources for As conscious traveling
-              Paupers we must always be concerned about our dear Mother Earth.
-              If you think about it, you travel across her face, and She is the
-              host to your journey without
-            </Description>
+            <Description>{description}</Description>
             <CommentHeader>comment</CommentHeader>
             <CommentsContainer>
-              {Array(10)
-                .fill(0)
-                .map((_, i) => (
-                  <Comment key={i} />
-                ))}
+              {postState.comments.length ? (
+                postState.comments.map(
+                  (comment: CommentInterface, index: number) => (
+                    <Comment
+                      key={index}
+                      comment={comment}
+                      commentIndex={index}
+                      handleOnFocusRequest={handleOnFocusRequest}
+                      handleLikeComment={handleLikeComment}
+                    />
+                  )
+                )
+              ) : (
+                <EmptyComment>
+                  <EmptyCommentText>No Comment!</EmptyCommentText>
+                </EmptyComment>
+              )}
             </CommentsContainer>
           </Container>
         </TouchableWithoutFeedback>
       </ScrollView>
-      <Message />
+      <Message
+        focus={state.focus}
+        dispatchMessage={dispatchMessage}
+        setNewMessage={setMessage}
+        message={state.message}
+      />
     </KeyboardAvoidingView>
   );
 }

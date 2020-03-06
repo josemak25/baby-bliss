@@ -29,7 +29,9 @@ const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
             postIndex={index}
             width={grid.cardSize}
             navigation={() =>
-              props.navigation.navigate('UserBlogDetailsScreen')
+              props.navigation.navigate('UserBlogDetailsScreen', {
+                post: item
+              })
             }
           />
         )}

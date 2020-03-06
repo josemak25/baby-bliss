@@ -50,15 +50,9 @@ interface BlogDetailsProp extends NavigationInterface {
 export default function BlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
   const [{ postState, userState }, dispatch] = useStoreContext();
+  const post = props.navigation.getParam('post');
 
-  const {
-    topic,
-    description,
-    noOfLikes,
-    noOfViews,
-    images,
-    id
-  } = props.navigation.getParam('post');
+  const { topic, description, noOfLikes, noOfViews, images, id } = post;
 
   const [state, setState] = useState({
     focus: false,
@@ -67,7 +61,6 @@ export default function BlogDetails(props: BlogDetailsProp) {
     actionType: null,
     waitTime: 250
   });
-  console.log();
 
   const handleOnFocusRequest = (actionType: string, commentId: string) => {
     setState({ ...state, focus: !state.focus, commentId, actionType });

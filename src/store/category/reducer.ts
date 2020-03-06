@@ -6,7 +6,7 @@ import {
   POST_CATEGORY_TYPES
 } from './types';
 
-const category = dummyCategory.category.map(category => {
+const categories = dummyCategory.category.map(category => {
   category['key'] = category.title;
   return category;
 });
@@ -14,7 +14,7 @@ const category = dummyCategory.category.map(category => {
 export const categoryInitialState: CategoryInitialState = {
   isLoading: false,
   error: null,
-  category
+  categories
 };
 
 export default function PostCategoryReducer(
@@ -31,7 +31,7 @@ export default function PostCategoryReducer(
         ...state,
         isLoading: false,
         error: null,
-        category: [...state.category, action.payload]
+        category: [...state.categories, action.payload]
       };
     }
 

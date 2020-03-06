@@ -29,7 +29,7 @@ export default function CommunityScreen(props: CommunityScreenProp) {
     currentRoute: 0,
     communityRoutes: [
       { key: 'general', title: 'general' },
-      ...categoryState.category
+      ...categoryState.categories
     ]
   });
 

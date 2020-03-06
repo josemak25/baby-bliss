@@ -26,7 +26,7 @@ export interface CategoryInterface {
 export type CategoryInitialState = {
   isLoading: boolean;
   error?: string | null;
-  category: CategoryInterface[];
+  categories: CategoryInterface[];
 };
 
 export interface PostCategoryResponse {

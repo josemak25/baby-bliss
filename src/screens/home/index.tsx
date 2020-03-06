@@ -8,7 +8,7 @@ import { ActivityIndicator } from 'react-native';
 import Post from '../../components/post';
 import SearchIcon from '../../../assets/icons/search';
 import { NavigationInterface } from '../../constants';
-import { POST_ACTION_TYPES } from '../../store/posts/types';
+import { POST_ACTION_TYPES, PostInterface } from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
 
 import {
@@ -55,14 +55,14 @@ export default function HomeScreen(props: HomeScreenProp) {
     }, state.waitTime);
   };
 
-  const navigateToPost = (postId: string) => {
+  const navigateToPost = (post: PostInterface) => {
     //dispatch action to fetch comments for this post
     postsActions(POST_ACTION_TYPES.LOAD_POST_COMMENTS)(dispatch, {
       authToken: userState.token,
-      postId
+      postId: post._id
     });
 
-    props.navigation.navigate('BlogDetailsScreen');
+    props.navigation.navigate('BlogDetailsScreen', { post });
   };
 
   return (
@@ -78,7 +78,7 @@ export default function HomeScreen(props: HomeScreenProp) {
                 postIndex={index}
                 width={grid.cardSize}
                 handleLikePost={() => handleLikePost(item._id, index)}
-                navigation={() => navigateToPost(item._id)}
+                navigation={() => navigateToPost(item)}
               />
             )}
             key={grid.numOfColumn}
