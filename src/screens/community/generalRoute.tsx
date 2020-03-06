@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import { useStoreContext } from '../../store';
 import UserPost from '../../components/userPost';
@@ -6,6 +6,8 @@ import { Container } from './styles';
 import { NavigationInterface } from '../../constants';
 import { ActivityIndicator } from 'react-native';
 import { useThemeContext } from '../../theme';
+import postsActions from '../../store/posts/actions';
+import { POST_ACTION_TYPES } from '../../store/posts/types';
 
 interface GeneralRouteContainerProp extends NavigationInterface {
   testID?: string;
@@ -14,8 +16,22 @@ interface GeneralRouteContainerProp extends NavigationInterface {
 const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
   const [{ grid, postState, userState }, dispatch] = useStoreContext();
   const { colors } = useThemeContext();
+  const [state, setState] = useState({ isLiked: true });
 
   const onEndReached = () => {};
+
+  const handleLikePost = (id: string, postIndex: number) => {
+    postsActions(POST_ACTION_TYPES.LIKE_POST)(dispatch, {
+      id,
+      postIndex,
+      authToken: userState.token,
+      isLiked: state.isLiked
+    });
+    setState({
+      ...state,
+      isLiked: !state.isLiked //toggle the like property
+    });
+  };
 
   return (
     <Container>
@@ -32,6 +48,7 @@ const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
                   post: item
                 })
               }
+              handleLikePost={() => handleLikePost(item._id, index)}
             />
           )}
           key={grid.numOfColumn}

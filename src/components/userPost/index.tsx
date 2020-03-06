@@ -38,6 +38,7 @@ interface UserPostProps extends PostInterface {
   testID?: string;
   width: number;
   navigation(): void;
+  handleLikePost(): void;
 }
 
 const { width: DEVICE_WIDTH } = Dimensions.get('window');
@@ -53,7 +54,8 @@ export default function UserPost(props: UserPostProps) {
     testID,
     width,
     user: { name, avatar },
-    createdAt
+    createdAt,
+    handleLikePost
   } = props;
 
   const postDescription =
@@ -66,8 +68,6 @@ export default function UserPost(props: UserPostProps) {
     hideContentLoader: true
   });
 
-  const handleLikePost = () => {};
-
   const startLikeAnimation = () => {
     animation.animateImage.setValue(0);
     Animated.timing(animation.animateImage, {
@@ -75,7 +75,7 @@ export default function UserPost(props: UserPostProps) {
       duration: 1300,
       easing: Easing.linear,
       useNativeDriver: true
-    }).start(() => handleLikePost);
+    }).start(() => handleLikePost());
   };
 
   const handleImageLoading = (error: any) => {
