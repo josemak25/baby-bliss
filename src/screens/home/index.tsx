@@ -1,17 +1,13 @@
-import React, { Fragment, useState } from 'react';
+import React from 'react';
+import { StatusBar } from 'react-native';
 import { OptimizedFlatList } from 'react-native-optimized-flatlist';
-
 import { useStoreContext } from '../../store';
-
 import Post from '../../components/post';
-import Header from '../../components/header';
 import SearchIcon from '../../../assets/icons/search';
 import post from '../../libs/dummyPost.json';
-
 import { NavigationInterface } from '../../constants';
-import { PostInterface } from '../../store/posts/types';
 
-import CARD_ITEM from '../../utils/getItemCardSize';
+import { PostInterface } from '../../store/posts/types';
 
 import {
   Container,
@@ -27,55 +23,54 @@ interface HomeScreenProp extends NavigationInterface {
 }
 
 export default function HomeScreen(props: HomeScreenProp) {
-  const [store, dispatch] = useStoreContext();
-  const [grid, setGrid] = useState({ numOfColumn: 1, cardSize: 320 });
+  const [{ grid }, dispatch] = useStoreContext();
 
   const onEndReached = () => {};
 
-  const onLayout = () => {
-    const { cardSize, numOfColumn } = CARD_ITEM;
-    setGrid({ ...grid, cardSize, numOfColumn });
-  };
-
   return (
-    <Fragment>
-      <Header>
-        <LogoContainer>
-          <Logo
-            source={require('../../../assets/images/logo.png')}
-            style={{ resizeMode: 'cover' }}
-          />
-        </LogoContainer>
-        <SearchContainer>
-          <SearchIcon />
-        </SearchContainer>
-      </Header>
-      <SafeAreaView testID="HomeScreen">
-        <Container onLayout={onLayout}>
-          <OptimizedFlatList
-            data={props.posts}
-            renderItem={({ item, index }) => (
-              <Post
-                {...item}
-                postIndex={index}
-                width={grid.cardSize}
-                navigation={() =>
-                  props.navigation.navigate('BlogDetailsScreen')
-                }
-              />
-            )}
-            key={grid.numOfColumn}
-            keyExtractor={(_, key) => `${key}`}
-            numColumns={grid.numOfColumn}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 0, alignItems: 'center' }}
-            style={{ width: '100%' }}
-            onEndReached={onEndReached}
-          />
-        </Container>
-      </SafeAreaView>
-    </Fragment>
+    <SafeAreaView testID="HomeScreen">
+      <StatusBar barStyle="dark-content" />
+      <Container>
+        <OptimizedFlatList
+          data={props.posts}
+          renderItem={({ item, index }) => (
+            <Post
+              {...item}
+              postIndex={index}
+              width={grid.cardSize}
+              navigation={() => props.navigation.navigate('BlogDetailsScreen')}
+            />
+          )}
+          key={grid.numOfColumn}
+          keyExtractor={(_, key) => `${key}`}
+          numColumns={grid.numOfColumn}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 0, alignItems: 'center' }}
+          style={{ width: '100%' }}
+          onEndReached={onEndReached}
+        />
+      </Container>
+    </SafeAreaView>
   );
 }
 
 HomeScreen.defaultProps = { posts: [...Array(10).fill(post)] };
+
+HomeScreen.navigationOptions = ({ navigation }) => {
+  return {
+    headerTitle: () => null,
+    headerRight: () => (
+      <SearchContainer>
+        <SearchIcon />
+      </SearchContainer>
+    ),
+    headerLeft: () => (
+      <LogoContainer>
+        <Logo
+          source={require('../../../assets/images/logo.png')}
+          style={{ resizeMode: 'contain' }}
+        />
+      </LogoContainer>
+    )
+  };
+};
