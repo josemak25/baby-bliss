@@ -10,7 +10,6 @@ import { useThemeContext } from '../../theme';
 import { NavigationInterface } from '../../constants';
 
 import { LogoContainer, Logo, AskQuestion } from './styles';
-import { CategoryInterface } from '../../store/category/types';
 
 interface CommunityScreenProp extends NavigationInterface {
   testID?: string;

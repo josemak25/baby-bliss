@@ -24,10 +24,11 @@ class BouncyCheckbox extends Component {
       Animated.spring(springValue, {
         toValue: 1,
         friction: 3
-      }).start();
-      // Outside of the onPress function
-      const { onPress } = this.props;
-      if (onPress) onPress(this.state.checked);
+      }).start(() => {
+        // Outside of the onPress function
+        const { onPress } = this.props;
+        if (onPress) onPress(this.state.checked);
+      });
     });
   };
 
@@ -57,23 +58,18 @@ class BouncyCheckbox extends Component {
       >
         {iconComponent ||
           (this.state.checked ? (
-            <Ionicons
-              {...this.props}
-              name="ios-checkmark"
-              size={20}
-              color="white"
-            />
+            <Ionicons name="ios-checkmark" size={20} color="white" />
           ) : null)}
       </Animated.View>
     );
   };
 
   render() {
-    const { text, textColor, fontFamily, fontSize } = this.props;
+    const { text, textColor, fontFamily, fontSize, style } = this.props;
 
     return (
       <TouchableOpacity
-        style={styles.container}
+        style={[styles.container, style]}
         onPress={this.spring.bind(this, Easing.bounce)}
       >
         {this.renderCheckIcon()}
