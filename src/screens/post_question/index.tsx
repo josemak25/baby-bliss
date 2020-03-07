@@ -30,7 +30,7 @@ import {
   SelectImageContainer,
   SelectImageTitle,
   PostButtonContainer,
-  SelectedImageContanier
+  SelectedImageContainer
 } from './styles';
 
 interface PostQuestionScreenProp extends NavigationInterface {
@@ -116,12 +116,13 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                     color: colors.FONT_LIGHT_COLOR,
                     textTransform: 'capitalize'
                   }}
+                  doneText="Close"
                 />
               </PostCategoryContainer>
               <PostCategoryTitle>attach image</PostCategoryTitle>
               <SelectImageContainer onPress={handleImage}>
                 <Fragment>
-                  <SelectImageTitle>Click to attach image(s)</SelectImageTitle>
+                  <SelectImageTitle>Click to attach image</SelectImageTitle>
                   <Entypo
                     name="attachment"
                     size={20}
@@ -130,14 +131,14 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                 </Fragment>
               </SelectImageContainer>
               {question.image ? (
-                <SelectedImageContanier>
+                <SelectedImageContainer>
                   <ResponsiveImage
                     imageUrl={question.image}
                     width={350}
                     height={200}
                     style={{ borderRadius: 5 }}
                   />
-                </SelectedImageContanier>
+                </SelectedImageContainer>
               ) : null}
             </QuestionContainer>
             <PostButtonContainer>

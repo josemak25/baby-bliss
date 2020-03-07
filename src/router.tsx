@@ -47,7 +47,10 @@ const CommunityNavigator = createStackNavigator(
   {
     initialRouteName: 'CommunityScreen',
     headerMode: 'screen',
-    defaultNavigationOptions: { headerStyle: customHeaderStyle }
+    defaultNavigationOptions: ({ navigation }) => {
+      navigation.state['navigationBackButton'] = navigationBackButton;
+      return { headerStyle: customHeaderStyle };
+    }
   }
 );
 
