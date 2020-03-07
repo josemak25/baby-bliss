@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import { useStoreContext } from '../../store';
 import UserPost from '../../components/userPost';
@@ -6,8 +6,6 @@ import { Container } from './styles';
 import { NavigationInterface } from '../../constants';
 import { ActivityIndicator } from 'react-native';
 import { useThemeContext } from '../../theme';
-import postsActions from '../../store/posts/actions';
-import { POST_ACTION_TYPES } from '../../store/posts/types';
 
 interface GeneralRouteContainerProp extends NavigationInterface {
   testID?: string;
@@ -15,16 +13,25 @@ interface GeneralRouteContainerProp extends NavigationInterface {
 }
 
 const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
-  const [{ grid, postState, userState }, dispatch] = useStoreContext();
+  const [{ grid, categoryState }] = useStoreContext();
   const { colors } = useThemeContext();
+  const [state, setState] = useState([]);
+
+  useEffect(() => {
+    let posts = [];
+    for (const key in categoryState.communityPosts) {
+      posts = [...posts, ...categoryState.communityPosts[key]];
+    }
+    setState(posts);
+  }, [categoryState.communityPosts]);
 
   const onEndReached = () => {};
 
   return (
     <Container>
-      {postState.posts.length ? (
+      {state.length ? (
         <OptimizedFlatList
-          data={postState.posts}
+          data={state}
           renderItem={({ item, index }) => (
             <UserPost
               {...item}
