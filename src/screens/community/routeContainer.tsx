@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import { useStoreContext } from '../../store';
 import { NavigationInterface } from '../../constants';
@@ -9,19 +9,22 @@ import UserPost from '../../components/userPost';
 
 interface RouteContainerProp extends NavigationInterface {
   testID?: string;
+  categoryId: string;
+  handleLikePost(id: string, postIndex: number): void;
 }
 
 const RouteContainer = (props: RouteContainerProp) => {
-  const [{ grid, postState, userState }, dispatch] = useStoreContext();
+  const [{ grid, categoryState }, dispatch] = useStoreContext();
   const { colors } = useThemeContext();
+  const posts = categoryState.communityPosts[props.categoryId];
 
   const onEndReached = () => {};
 
   return (
     <Container>
-      {postState.posts.length ? (
+      {posts ? (
         <OptimizedFlatList
-          data={postState.posts}
+          data={posts}
           renderItem={({ item, index }) => (
             <UserPost
               {...item}
@@ -32,6 +35,7 @@ const RouteContainer = (props: RouteContainerProp) => {
                   post: item
                 })
               }
+              handleLikePost={props.handleLikePost}
             />
           )}
           key={grid.numOfColumn}

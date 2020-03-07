@@ -3,13 +3,16 @@ import { Animated, Easing, Dimensions, StatusBar } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { TabView, TabBar } from 'react-native-tab-view';
 import { useStoreContext } from '../../store';
-
 import GeneralRouteContainer from './generalRoute';
 import RouteContainer from './routeContainer';
 import { useThemeContext } from '../../theme';
 import { NavigationInterface } from '../../constants';
 
 import { LogoContainer, Logo, AskQuestion } from './styles';
+import postCategoryActions from '../../store/category/actions';
+import { CATEGORY_ACTION_TYPES } from '../../store/category/types';
+import postsActions from '../../store/posts/actions';
+import { POST_ACTION_TYPES } from '../../store/posts/types';
 
 interface CommunityScreenProp extends NavigationInterface {
   testID?: string;
@@ -18,11 +21,7 @@ interface CommunityScreenProp extends NavigationInterface {
 export default function CommunityScreen(props: CommunityScreenProp) {
   const { colors, fonts } = useThemeContext();
 
-  const [{ categoryState }] = useStoreContext();
-
-  useEffect(() => {
-    startLikeAnimation(null);
-  }, []);
+  const [{ categoryState, userState }, dispatch] = useStoreContext();
 
   const [state, setState] = useState({
     animateMessageIcon: new Animated.Value(0),
@@ -30,8 +29,30 @@ export default function CommunityScreen(props: CommunityScreenProp) {
     communityRoutes: [
       { key: 'general', title: 'general' },
       ...categoryState.categories
-    ]
+    ],
+    isLiked: true
   });
+
+  const handleLikePost = (id: string, postIndex: number) => {
+    postCategoryActions(CATEGORY_ACTION_TYPES.LIKE_POST)(dispatch, {
+      id,
+      postIndex,
+      authToken: userState.token,
+      isLiked: state.isLiked
+    });
+    setState({
+      ...state,
+      isLiked: !state.isLiked //toggle the like property
+    });
+  };
+
+  useEffect(() => {
+    startLikeAnimation(null);
+    postCategoryActions(CATEGORY_ACTION_TYPES.FETCH_CATEGORY_POSTS)(dispatch, {
+      authToken: userState.token,
+      categories: [...state.communityRoutes.slice(1)]
+    });
+  }, []);
 
   const startLikeAnimation = (userPressed: string | null) => {
     state.animateMessageIcon.setValue(0);
@@ -71,9 +92,20 @@ export default function CommunityScreen(props: CommunityScreenProp) {
   const renderScene = ({ route }) => {
     switch (route.key) {
       case 'general':
-        return <GeneralRouteContainer navigation={props.navigation} />;
+        return (
+          <GeneralRouteContainer
+            navigation={props.navigation}
+            handleLikePost={handleLikePost}
+          />
+        );
       default:
-        return <RouteContainer navigation={props.navigation} />;
+        return (
+          <RouteContainer
+            navigation={props.navigation}
+            categoryId={route._id}
+            handleLikePost={handleLikePost}
+          />
+        );
     }
   };
 

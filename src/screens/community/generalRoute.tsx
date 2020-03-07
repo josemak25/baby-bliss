@@ -11,27 +11,14 @@ import { POST_ACTION_TYPES } from '../../store/posts/types';
 
 interface GeneralRouteContainerProp extends NavigationInterface {
   testID?: string;
+  handleLikePost(id: string, postIndex: number): void;
 }
 
 const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
   const [{ grid, postState, userState }, dispatch] = useStoreContext();
   const { colors } = useThemeContext();
-  const [state, setState] = useState({ isLiked: true });
 
   const onEndReached = () => {};
-
-  const handleLikePost = (id: string, postIndex: number) => {
-    postsActions(POST_ACTION_TYPES.LIKE_POST)(dispatch, {
-      id,
-      postIndex,
-      authToken: userState.token,
-      isLiked: state.isLiked
-    });
-    setState({
-      ...state,
-      isLiked: !state.isLiked //toggle the like property
-    });
-  };
 
   return (
     <Container>
@@ -48,7 +35,7 @@ const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
                   post: item
                 })
               }
-              handleLikePost={() => handleLikePost(item._id, index)}
+              handleLikePost={props.handleLikePost}
             />
           )}
           key={grid.numOfColumn}
