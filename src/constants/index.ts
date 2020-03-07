@@ -9,10 +9,13 @@ interface NavigationScreenType
   replace: (T: string) => void;
 }
 
+// App Navigation prop types
+
 export interface NavigationInterface {
   navigation: NavigationScreenType;
 }
 
+// App Navigation test prop types
 export const createNavigationTestProps = (props: object = {}) => ({
   navigation: {
     state: { params: {} },
@@ -35,6 +38,7 @@ export const createNavigationTestProps = (props: object = {}) => ({
   ...props
 });
 
+// App Icons prop types
 export type IconProps = {
   testID?: string;
   width?: string;

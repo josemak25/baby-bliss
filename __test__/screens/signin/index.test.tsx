@@ -4,6 +4,8 @@ import Theme from '../../../src/theme';
 import { createNavigationTestProps } from '../../../src/constants';
 import SignInScreen from '../../../src/screens/signin';
 
+jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
+
 const mountComponent = () => {
   const props: any = createNavigationTestProps();
   const renderedProps = render(
