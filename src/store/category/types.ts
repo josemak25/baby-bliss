@@ -52,6 +52,13 @@ export type LikeOrUnlikePostType = {
   postIndex: number;
 };
 
+export type QuestionType = {
+  title: string;
+  description: string;
+  category: string;
+  image: string;
+};
+
 export interface PostCategoryResponse {
   statusCode: number;
   message: string;
@@ -78,7 +85,7 @@ export type PostCategoryAction =
     }
   | {
       type: POST_CATEGORY_TYPES.POST_QUESTION;
-      payload: object;
+      payload: QuestionType;
     }
   | {
       type: POST_CATEGORY_TYPES.GET_POST_CATEGORY_ERROR;

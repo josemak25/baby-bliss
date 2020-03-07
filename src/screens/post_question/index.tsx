@@ -15,6 +15,9 @@ import { NavigationInterface } from '../../constants';
 import boxShadow from '../../utils/boxShadows';
 import ResponsiveImage from '../../libs/responsiveImage';
 import { category as postCategories } from '../../libs/postCategories.json';
+import { useStoreContext } from '../../store';
+import postCategoryActions from '../../store/category/actions';
+import { CATEGORY_ACTION_TYPES } from '../../store/category/types';
 
 import {
   Container,
@@ -39,17 +42,17 @@ interface PostQuestionScreenProp extends NavigationInterface {
 
 export default function PostQuestionScreen(props: PostQuestionScreenProp) {
   const { colors, fonts } = useThemeContext();
+  const [{ userState, categoryState }, dispatch] = useStoreContext();
 
   const [question, setQuestion] = useState({
     title: '',
     description: '',
     category: 'First Trimester',
-    image: '',
-    isModalVisible: false
+    image: ''
   });
 
-  const handleCategory = (category: string) => {
-    setQuestion({ ...question, category });
+  const handleTextChange = (key: string, value: string) => {
+    setQuestion({ ...question, [key]: value });
   };
 
   const handleImage = async () => {
@@ -66,7 +69,12 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
     setQuestion({ ...question, image: response.uri });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    postCategoryActions(CATEGORY_ACTION_TYPES.POST_QUESTION)(
+      dispatch,
+      question
+    );
+  };
 
   return (
     <ScrollView
@@ -82,11 +90,13 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
               <PostTitleInput
                 placeholder="When is it ok to give into food cravings during pregnancy?"
                 multiline={true}
+                onChangeText={text => handleTextChange('title', text)}
               />
               <PostDescriptionTitle>description</PostDescriptionTitle>
               <PostDescriptionInput
                 placeholder="Within the realms of food safety and common sense it is always ok to give in to your food cravings! You’ve had to give up..."
                 multiline={true}
+                onChangeText={text => handleTextChange('description', text)}
               />
               <PostCategoryTitle>category</PostCategoryTitle>
               <PostCategoryContainer>
@@ -97,7 +107,7 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                     color: 'red',
                     key: 'Select a category...'
                   }}
-                  onValueChange={handleCategory}
+                  onValueChange={value => handleTextChange('category', value)}
                   value={question.category}
                   items={postCategories.map(({ title, id }) => ({
                     label: title,

@@ -95,6 +95,7 @@ export default function postCategoryActions(type: string) {
       case CATEGORY_ACTION_TYPES.POST_QUESTION:
         try {
           dispatch(getPostCategoryStarted());
+          console.log(payload);
           const request = await API.post({
             path: ``,
             payload: { content: payload.content },
