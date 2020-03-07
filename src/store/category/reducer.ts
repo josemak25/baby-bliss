@@ -46,11 +46,16 @@ export default function PostCategoryReducer(
       };
     }
 
+    case POST_CATEGORY_TYPES.POST_QUESTION: {
+      return {
+        ...state,
+        isLoading: false,
+        error: null
+      };
+    }
+
     case POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_POST: {
       const posts: PostInterface[] = state.communityPosts[action.payload.id];
-      console.log('action.payload.id', action.payload.id);
-      console.log(state.communityPosts);
-
       posts[action.payload.postIndex].noOfLikes = action.payload.likeCount;
 
       return {

@@ -10,13 +10,15 @@ export enum POST_CATEGORY_TYPES {
   GET_POST_CATEGORY_SUCCESS = 'GET_POST_CATEGORY_SUCCESS',
   FETCH_CATEGORIES_POST_SUCCESS = 'FETCH_CATEGORIES_POST_SUCCESS',
   LIKE_OR_UNLIKE_POST = 'LIKE_OR_UNLIKE_POST',
+  POST_QUESTION = 'POST_QUESTION',
   GET_POST_CATEGORY_ERROR = 'GET_POST_CATEGORY_ERROR'
 }
 
 export enum CATEGORY_ACTION_TYPES {
   LOAD_CATEGORIES_ACTION = 'LOAD_CATEGORY_ACTION',
   FETCH_CATEGORY_POSTS = 'FETCH_CATEGORY_POSTS',
-  LIKE_POST = 'LIKE_POST'
+  LIKE_POST = 'LIKE_POST',
+  POST_QUESTION = 'POST_QUESTION'
 }
 
 //  POST CATEGORY ACTION TYPES
@@ -35,9 +37,7 @@ export type CategoryInitialState = {
   isLoading: boolean;
   error?: string | null;
   categories: CategoryInterface[];
-  communityPosts: {
-    // ['key']: CategoryInterface[];
-  };
+  communityPosts: {};
 };
 
 export type LikeOrUnlikePostResponse = {
@@ -75,6 +75,10 @@ export type PostCategoryAction =
   | {
       type: POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_POST;
       payload: LikeOrUnlikePostType;
+    }
+  | {
+      type: POST_CATEGORY_TYPES.POST_QUESTION;
+      payload: object;
     }
   | {
       type: POST_CATEGORY_TYPES.GET_POST_CATEGORY_ERROR;

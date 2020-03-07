@@ -1,6 +1,4 @@
 import {
-  CategoryInitialState,
-  PostCategoryAction,
   POST_CATEGORY_TYPES,
   CategoryInterface,
   PostCategoryResponse,
@@ -26,6 +24,10 @@ const fetchCategoriesPostSuccess = (categoryPosts: any) => ({
 const likeOrUnlikePostSuccess = (payload: LikeOrUnlikePostResponse) => ({
   type: POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_POST,
   payload
+});
+
+const postQuestion = () => ({
+  type: POST_CATEGORY_TYPES.POST_QUESTION
 });
 
 const getPostCategoryError = (error: string) => ({
@@ -83,6 +85,24 @@ export default function postCategoryActions(type: string) {
                 ...payload
               })
             );
+          }
+          dispatch(getPostCategoryError(response.message));
+        } catch (error) {
+          dispatch(getPostCategoryError(error));
+        }
+        break;
+
+      case CATEGORY_ACTION_TYPES.POST_QUESTION:
+        try {
+          dispatch(getPostCategoryStarted());
+          const request = await API.post({
+            path: ``,
+            payload: { content: payload.content },
+            authToken: payload.authToken
+          });
+          const response: LikeOrUnlikePostResponse = await request.json();
+          if (response.statusCode === 200) {
+            return dispatch(postQuestion());
           }
           dispatch(getPostCategoryError(response.message));
         } catch (error) {
