@@ -96,6 +96,9 @@ const AppNavigator = createStackNavigator(
     // Splash Screen Route
     SplashScreen: { screen: Screens.SplashScreen },
 
+    // Profile Setup Screen Route
+    ProfileSetupScreen: { screen: Screens.ProfileSetupScreen },
+
     // Get started Screen Route
     GetStartedScreen: { screen: Screens.GetStartedScreen },
 

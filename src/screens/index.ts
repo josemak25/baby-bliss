@@ -9,6 +9,7 @@ import ProfileScreen from './profile';
 import BlogDetailsScreen from './blog_details';
 import UserBlogDetailsScreen from './user_blog_details';
 import PostQuestionScreen from './post_question';
+import ProfileSetupScreen from './profile_setup';
 
 export default {
   SignUpScreen,
@@ -21,5 +22,6 @@ export default {
   ForgotPasswordScreen,
   BlogDetailsScreen,
   UserBlogDetailsScreen,
-  PostQuestionScreen
+  PostQuestionScreen,
+  ProfileSetupScreen
 };
