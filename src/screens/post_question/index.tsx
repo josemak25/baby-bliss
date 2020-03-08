@@ -1,9 +1,10 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import {
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
-  ScrollView
+  ScrollView,
+  ActivityIndicator
 } from 'react-native';
 
 import * as ImagePicker from 'expo-image-picker';
@@ -18,6 +19,7 @@ import { category as postCategories } from '../../libs/postCategories.json';
 import { useStoreContext } from '../../store';
 import postCategoryActions from '../../store/category/actions';
 import { CATEGORY_ACTION_TYPES } from '../../store/category/types';
+import showSnackbar from '../../components/UI/snackbar';
 
 import {
   Container,
@@ -33,7 +35,8 @@ import {
   SelectImageContainer,
   SelectImageTitle,
   PostButtonContainer,
-  SelectedImageContainer
+  SelectedImageContainer,
+  Spinner
 } from './styles';
 
 interface PostQuestionScreenProp extends NavigationInterface {
@@ -45,14 +48,27 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
   const [{ userState, categoryState }, dispatch] = useStoreContext();
 
   const [question, setQuestion] = useState({
-    title: '',
+    topic: '',
     description: '',
     category: 'First Trimester',
+    categoryId: '',
     image: ''
   });
 
-  const handleTextChange = (key: string, value: string) => {
-    setQuestion({ ...question, [key]: value });
+  useEffect(() => {
+    if (categoryState.error && !categoryState.isLoading) {
+      showSnackbar('#F42850', categoryState.error);
+    }
+  }, [categoryState.error, categoryState.isLoading]);
+
+  const handleTextChange = (key: string, value: string, index: number) => {
+    const categoryId = index ? postCategories[index]._id : question.categoryId;
+
+    setQuestion({
+      ...question,
+      [key]: value,
+      categoryId
+    });
   };
 
   const handleImage = async () => {
@@ -70,10 +86,16 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
   };
 
   const handleSubmit = () => {
-    postCategoryActions(CATEGORY_ACTION_TYPES.POST_QUESTION)(
-      dispatch,
-      question
-    );
+    const userQuestion = {
+      topic: question.topic,
+      description: question.description,
+      category: question.categoryId,
+      images: [question.image]
+    };
+    postCategoryActions(CATEGORY_ACTION_TYPES.POST_QUESTION)(dispatch, {
+      userQuestion,
+      authToken: userState.token
+    });
   };
 
   return (
@@ -86,17 +108,19 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
           <Container testID="PostQuestionScreen">
             <Title>ask question</Title>
             <QuestionContainer>
-              <PostTitle>title</PostTitle>
+              <PostTitle>Topic</PostTitle>
               <PostTitleInput
                 placeholder="When is it ok to give into food cravings during pregnancy?"
                 multiline={true}
-                onChangeText={text => handleTextChange('title', text)}
+                onChangeText={text => handleTextChange('topic', text, null)}
               />
               <PostDescriptionTitle>description</PostDescriptionTitle>
               <PostDescriptionInput
                 placeholder="Within the realms of food safety and common sense it is always ok to give in to your food cravings! You’ve had to give up..."
                 multiline={true}
-                onChangeText={text => handleTextChange('description', text)}
+                onChangeText={text =>
+                  handleTextChange('description', text, null)
+                }
               />
               <PostCategoryTitle>category</PostCategoryTitle>
               <PostCategoryContainer>
@@ -107,7 +131,9 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                     color: 'red',
                     key: 'Select a category...'
                   }}
-                  onValueChange={value => handleTextChange('category', value)}
+                  onValueChange={(value, key) =>
+                    handleTextChange('category', value, key)
+                  }
                   value={question.category}
                   items={postCategories.map(({ title, id }) => ({
                     label: title,
@@ -174,9 +200,18 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                   fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
                   fontSize: fonts.MEDIUM_SIZE + 2
                 }}
-                title="create post"
                 onPress={handleSubmit}
+                title={`${categoryState.isLoading ? '' : 'create post'}`}
+                disabled={categoryState.isLoading}
               />
+              {categoryState.isLoading && (
+                <Spinner>
+                  <ActivityIndicator
+                    size="small"
+                    color={colors.BG_LIGHT_COLOR}
+                  />
+                </Spinner>
+              )}
             </PostButtonContainer>
           </Container>
         </KeyboardAvoidingView>

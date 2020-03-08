@@ -69,5 +69,5 @@ export const navigationBackButton = {
   }
 };
 
-export const USER_PROFILE = '@USERUUUUUCCCDFB<TALLIOOOO';
+export const USER_PROFILE = '@USERUUUUUCCCDFB<TALLIOOOMMMO';
 export const FIRST_TIME_LAUNCH = '@FIRST_TIME_LAUNCH';

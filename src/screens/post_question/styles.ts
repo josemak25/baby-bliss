@@ -106,3 +106,7 @@ export const SelectedImageContainer = styled.View`
   align-items: center;
   margin-top: 5px;
 `;
+export const Spinner = styled.View`
+  position: absolute;
+  align-self: center;
+`;

@@ -69,8 +69,7 @@ export default function postCategoryActions(type: string) {
           dispatch(getPostCategoryStarted());
 
           const request = await API.put({
-            // path: `/posts/${payload.id}/${payload.isLiked ? 'like' : 'unlike'}`,
-            path: ``,
+            path: `/posts/${payload.id}/${payload.isLiked ? 'like' : 'unlike'}`,
             payload: null,
             authToken: payload.authToken
           });
@@ -95,13 +94,15 @@ export default function postCategoryActions(type: string) {
       case CATEGORY_ACTION_TYPES.POST_QUESTION:
         try {
           dispatch(getPostCategoryStarted());
-          console.log(payload);
+          console.log('POST_QUESTION', payload);
           const request = await API.post({
-            path: ``,
-            payload: { content: payload.content },
+            path: `/posts`,
+            payload: payload.userQuestion,
             authToken: payload.authToken
           });
           const response: LikeOrUnlikePostResponse = await request.json();
+          console.log(response);
+
           if (response.statusCode === 200) {
             return dispatch(postQuestion());
           }
