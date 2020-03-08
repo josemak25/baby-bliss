@@ -86,6 +86,17 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
   };
 
   const handleSubmit = () => {
+    //validate the form  for empty fields before sending this form.
+    for (let key in question) {
+      if (!question[key]) {
+        showSnackbar(
+          colors.LIKE_POST_COLOR,
+          'Please all entries are required!'
+        );
+        return;
+      }
+    }
+
     const userQuestion = {
       topic: question.topic,
       description: question.description,

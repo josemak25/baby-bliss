@@ -5156,17 +5156,15 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-<<<<<<< HEAD
-moment@^2.22.0:
-  version "2.24.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
-  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
-=======
 moment-mini@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment-mini/-/moment-mini-2.24.0.tgz#fa68d98f7fe93ae65bf1262f6abb5fb6983d8d18"
   integrity sha512-9ARkWHBs+6YJIvrIp0Ik5tyTTtP9PoV0Ssu2Ocq5y9v8+NOOpWiRshAp8c4rZVWTOe+157on/5G+zj5pwIQFEQ==
->>>>>>> ft-load-post-comments
+
+moment@^2.22.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
 morgan@^1.9.0:
   version "1.9.1"
@@ -5965,23 +5963,6 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-react-addons-shallow-compare@15.6.2:
-  version "15.6.2"
-  resolved "https://registry.yarnpkg.com/react-addons-shallow-compare/-/react-addons-shallow-compare-15.6.2.tgz#198a00b91fc37623db64a28fd17b596ba362702f"
-  integrity sha1-GYoAuR/DdiPbZKKP0XtZa6NicC8=
-  dependencies:
-    fbjs "^0.8.4"
-    object-assign "^4.1.0"
-=======
-=======
->>>>>>> ft-add-implementation-for-liking-post
-=======
->>>>>>> rf-merge remote changes
 rc@^1.2.7:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
@@ -5991,20 +5972,15 @@ rc@^1.2.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> rf-minor-refactor
 
-=======
->>>>>>> ft-populate-post-items-on-home-screen
-=======
+react-addons-shallow-compare@15.6.2:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/react-addons-shallow-compare/-/react-addons-shallow-compare-15.6.2.tgz#198a00b91fc37623db64a28fd17b596ba362702f"
+  integrity sha1-GYoAuR/DdiPbZKKP0XtZa6NicC8=
+  dependencies:
+    fbjs "^0.8.4"
+    object-assign "^4.1.0"
 
->>>>>>> ft-add-implementation-for-liking-post
-=======
->>>>>>> ft-load-post-comments
-=======
-
->>>>>>> rf-merge remote changes
 react-devtools-core@^3.6.3:
   version "3.6.3"
   resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-3.6.3.tgz#977d95b684c6ad28205f0c62e1e12c5f16675814"
@@ -6133,7 +6109,13 @@ react-native-skeleton-content@^1.0.13:
     expo-linear-gradient "^8.0.0"
     lodash "^4.17.14"
 
-<<<<<<< HEAD
+react-native-smart-tip@^2.0.1:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-native-smart-tip/-/react-native-smart-tip-2.0.3.tgz#985fae80ca33b4a1d9a4c129db34aae5e1cbed0a"
+  integrity sha512-V3vMuuexKyEddmn0IobWJfxAx+tZOque6r0XPirvWeS7+FRmQhLgXPpqFMzu9ERPrO9rAtx7U/1fYXbzKPa4FA==
+  dependencies:
+    react-native-root-siblings "^3.2.3"
+
 react-native-snap-carousel@^3.8.4:
   version "3.8.4"
   resolved "https://registry.yarnpkg.com/react-native-snap-carousel/-/react-native-snap-carousel-3.8.4.tgz#4c749c6a714d46ed82de527233850cb5da41bc62"
@@ -6141,14 +6123,6 @@ react-native-snap-carousel@^3.8.4:
   dependencies:
     prop-types "^15.6.1"
     react-addons-shallow-compare "15.6.2"
-=======
-react-native-smart-tip@^2.0.1:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/react-native-smart-tip/-/react-native-smart-tip-2.0.3.tgz#985fae80ca33b4a1d9a4c129db34aae5e1cbed0a"
-  integrity sha512-V3vMuuexKyEddmn0IobWJfxAx+tZOque6r0XPirvWeS7+FRmQhLgXPpqFMzu9ERPrO9rAtx7U/1fYXbzKPa4FA==
-  dependencies:
-    react-native-root-siblings "^3.2.3"
->>>>>>> rf-minor-refactor
 
 react-native-svg@9.13.3:
   version "9.13.3"
