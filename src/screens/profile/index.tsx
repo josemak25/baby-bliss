@@ -1,10 +1,11 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import {
   SafeAreaView,
   ScrollView,
   TouchableWithoutFeedback,
   Keyboard,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  AsyncStorage
 } from 'react-native';
 import ContentLoader from 'react-native-skeleton-content';
 import Animated, { Easing } from 'react-native-reanimated';
@@ -42,6 +43,9 @@ import {
   RecordsTitle,
   RecordsResult
 } from './styles';
+import { useStoreContext } from '../../store';
+import userActions from '../../store/user/actions';
+import { USER_TYPES } from '../../store/user/types';
 
 const AnimatedOptionContainer = Animated.createAnimatedComponent(
   OptionContainer
@@ -59,6 +63,7 @@ const SCALED_WIDTH = applyScale(120);
 
 export default function ProfileScreen(props: ProfileScreenProp) {
   const { colors, fonts } = useThemeContext();
+  const [{ userState }, dispatch] = useStoreContext();
 
   const [animation, setAnimation] = useState({
     animateContentHeightOne: new Animated.Value(applyScale(70)),
@@ -84,6 +89,15 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     selected: ''
   });
 
+  useEffect(() => {
+    (async () => {
+      if (!userState.token) {
+        await AsyncStorage.removeItem('@USER_PROFILE_TESTS_');
+        props.navigation.replace('SignInScreen');
+      }
+    })();
+  }, [userState.token]);
+
   const onHandleChange = (field: string) => (value: string) => {
     setAnimation({ ...animation, [field]: value });
   };
@@ -98,8 +112,9 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     // handle user logout logic here
+    dispatch({ type: USER_TYPES.LOGOUT });
   };
 
   const startEditAnimation = (buttonType: string) => {

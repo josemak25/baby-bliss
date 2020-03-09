@@ -12,7 +12,8 @@ export enum USER_TYPES {
   LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS',
   ERROR = 'ERROR',
   LOAD_FROM_STORE = 'LOAD_FROM_STORE',
-  COMPLETE_PROFILE = 'COMPLETE_PROFILE'
+  COMPLETE_PROFILE = 'COMPLETE_PROFILE',
+  LOGOUT = 'LOGOUT'
 }
 
 // POSTS ACTION TYPES
@@ -79,4 +80,5 @@ export type UserAction =
   | { type: USER_TYPES.LOGIN_USER_SUCCESS; payload: UserResponseInterface }
   | { type: USER_TYPES.COMPLETE_PROFILE; payload: UserResponseInterface }
   | { type: USER_TYPES.LOAD_FROM_STORE; payload: UserStoredProfileInterface }
-  | { type: USER_TYPES.ERROR; payload: any }; // add post body when response is identified
+  | { type: USER_TYPES.ERROR; payload: any }
+  | { type: USER_TYPES.LOGOUT };

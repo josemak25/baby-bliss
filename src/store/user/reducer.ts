@@ -64,6 +64,16 @@ export default function userReducer(
       };
     }
 
+    case USER_TYPES.LOGOUT: {
+      return {
+        ...state,
+        errorMessage: null,
+        isLoading: false,
+        user: null,
+        token: null
+      };
+    }
+
     default:
       return state;
   }

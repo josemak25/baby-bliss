@@ -47,12 +47,11 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
     try {
       const [firstTimeLaunch, storedUserProfile] = await AsyncStorage.multiGet([
         '@FIRST_TIME_LAUNCH=',
-        '@STORED_USER_PROFILE_TEST'
+        '@USER_PROFILE_TESTS_'
       ]);
 
       const [, firstTimeLaunchValue] = firstTimeLaunch;
       const [, storedUserProfileValue] = storedUserProfile;
-
       if (!firstTimeLaunchValue) {
         await AsyncStorage.setItem('@FIRST_TIME_LAUNCH=', '1');
         return navigation.replace('GetStartedScreen');
@@ -60,18 +59,19 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
 
       if (storedUserProfileValue) {
         //Navigate this user to the home screen if he still has token stored
-        const { user: payload, token } = JSON.parse(storedUserProfileValue);
+        const { payload, token } = JSON.parse(storedUserProfileValue);
 
-        dispatch({
-          type: USER_TYPES.LOAD_FROM_STORE,
-          payload: { payload, token }
-        });
+        if (payload) {
+          dispatch({
+            type: USER_TYPES.LOAD_FROM_STORE,
+            payload: { payload, token }
+          });
 
-        if (payload.isApproved) {
-          return navigation.replace('HomeScreen');
+          if (payload.isApproved) {
+            return navigation.replace('HomeScreen');
+          }
+          return navigation.replace('ProfileSetupScreen');
         }
-
-        return navigation.replace('ProfileSetupScreen');
       }
       navigation.replace('SignInScreen');
     } catch (error) {

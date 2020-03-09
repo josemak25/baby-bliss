@@ -66,9 +66,9 @@ export default function SignUp({ navigation }: NavigationInterface) {
 
   const storeUserProfile = async () => {
     await AsyncStorage.setItem(
-      '@STORED_USER_PROFILE_TEST',
+      '@USER_PROFILE_TESTS_',
       JSON.stringify({
-        user: userState.user,
+        payload: userState.user,
         token: userState.token
       })
     );
