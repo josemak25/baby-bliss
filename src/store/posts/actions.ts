@@ -49,9 +49,11 @@ export default function postsActions(type: string) {
           dispatch(loadPostStarted());
           const request = await API.get('/posts', payload);
           const response: ResponseInterface = await request.json();
+
           if (response.statusCode === 200) {
             return dispatch(loadPostSuccess(response.payload));
           }
+
           dispatch(loadPostError(response.message));
         } catch (error) {
           dispatch(loadPostError(error));

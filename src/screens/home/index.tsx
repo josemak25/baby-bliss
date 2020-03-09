@@ -36,7 +36,7 @@ export default function HomeScreen(props: HomeScreenProp) {
 
   useEffect(() => {
     postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, userState.token);
-  }, [userState.isLoading]);
+  }, [userState.token]);
 
   const onEndReached = () => {
     postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, null);
@@ -58,6 +58,7 @@ export default function HomeScreen(props: HomeScreenProp) {
       authToken: userState.token,
       isLiked: state.isLiked
     });
+
     setState({
       ...state,
       isLiked: !state.isLiked //toggle the like property

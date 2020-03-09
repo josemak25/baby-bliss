@@ -25,7 +25,7 @@ export default function PageFive({ handleNavigation, handleChange }) {
     selected: ''
   });
 
-  const startButtonAnimation = (buttonType: string, answer: string) => {
+  const startButtonAnimation = (buttonType: string, answer: boolean) => {
     if (buttonType === animation.selected) {
       return setTimeout(handleNavigation, 500);
     }
@@ -45,7 +45,7 @@ export default function PageFive({ handleNavigation, handleChange }) {
       duration: 500,
       easing: Easing.elastic(0.7)
     }).start(() => {
-      handleChange({ key: 'hasHMO', data: answer });
+      handleChange({ key: 'hasHealthMaintenanceOrg', data: answer });
       setTimeout(handleNavigation, 500);
     });
   };
@@ -69,7 +69,7 @@ export default function PageFive({ handleNavigation, handleChange }) {
 
         <SelectQuestionButton
           style={{ backgroundColor: 'transparent' }}
-          onPress={() => startButtonAnimation('buttonWidthOne', 'yes')}
+          onPress={() => startButtonAnimation('buttonWidthOne', true)}
         >
           <AnswerOption
             style={{
@@ -109,7 +109,7 @@ export default function PageFive({ handleNavigation, handleChange }) {
         />
         <SelectQuestionButton
           style={{ backgroundColor: 'transparent' }}
-          onPress={() => startButtonAnimation('buttonWidthTwo', 'no')}
+          onPress={() => startButtonAnimation('buttonWidthTwo', false)}
         >
           <AnswerOption
             style={{

@@ -12,6 +12,7 @@ import applyScale from '../../utils/applyScale';
 import userActions from '../../store/user/actions';
 import { USER_ACTION_TYPES } from '../../store/user/types';
 import showSnackbar from '../../components/UI/snackbar';
+import interestActions from '../../store/interest/actions';
 
 import {
   Container,
@@ -49,7 +50,7 @@ export default function ProfileSetupScreen({
   const MAX_SLIDES = 6;
 
   const { colors } = useThemeContext();
-  const [{ userState }, dispatch] = useStoreContext();
+  const [{ interestState, userState }, dispatch] = useStoreContext();
   let questionRef = useRef(null);
 
   const [profile, setProfile] = useState({
@@ -57,17 +58,19 @@ export default function ProfileSetupScreen({
     animation: new Animated.Value(62.1),
     userScrolled: false,
     payload: {
-      birthDueDate: new Date().toDateString(),
-      address: '',
-      birthHospital: '',
-      hasHMO: '',
-      antenatalInterest: '',
-      userInterest: ''
+      state: null,
+      dueDateStart: null,
+      hasBirthHospital: false,
+      hasHealthMaintenanceOrg: false,
+      hasInterestInAntenatalServices: false,
+      userInterest: []
     }
   });
 
   useEffect(() => {
     if (profile.userScrolled) startScrollBarAnimation();
+
+    if (!profile.scrollIndex) interestActions(dispatch);
   }, [profile.scrollIndex]);
 
   // @ts-ignore
@@ -86,19 +89,38 @@ export default function ProfileSetupScreen({
   };
 
   const handleSubmit = async () => {
-    //validate the form  for empty fields before sending this form.
-    for (let key in profile.payload) {
-      if (!profile.payload[key]) {
-        showSnackbar(
-          colors.LIKE_POST_COLOR,
-          'Please all entries are required!'
-        );
-        return;
-      }
+    if (profile.payload['dueDateStart'] === null) {
+      delete profile.payload['dueDateStart'];
     }
 
+    if (profile.payload['state'] === null) {
+      delete profile.payload['state'];
+    }
+
+    const payload = {
+      ...profile.payload,
+      userInterest: interestState.interests.reduce((acc, { title, id }) => {
+        if (title === profile.payload.userInterest) acc.push(id);
+        return acc;
+      }, [])
+    };
+
     // dispatch user profile setup here
-    userActions(USER_ACTION_TYPES.COMPLETE_PROFILE)(dispatch, profile.payload);
+    await userActions(USER_ACTION_TYPES.COMPLETE_PROFILE)(dispatch, {
+      payload,
+      id: userState.user.id,
+      token: userState.token
+    });
+
+    await AsyncStorage.setItem(
+      '@STORED_USER_PROFILE_TEST',
+      JSON.stringify({
+        user: userState.user,
+        token: userState.token
+      })
+    );
+
+    navigation.replace('HomeScreen');
   };
 
   return (

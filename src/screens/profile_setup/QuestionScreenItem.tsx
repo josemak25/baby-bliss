@@ -36,11 +36,17 @@ export default function QuestionScreenItem({
 
   const handleChange = ({ data, key }: handleDataType) => {
     console.log(data, key);
-
-    setProfile(prev => ({
-      ...prev,
-      payload: { ...prev.payload, [key]: data }
-    }));
+    if (Array.isArray(data)) {
+      setProfile(prev => ({
+        ...prev,
+        payload: { ...prev.payload, [key]: [...profile[key], ...data] }
+      }));
+    } else {
+      setProfile(prev => ({
+        ...prev,
+        payload: { ...prev.payload, [key]: data }
+      }));
+    }
   };
 
   return (
@@ -86,7 +92,6 @@ export default function QuestionScreenItem({
           <PageSix
             handleNavigation={handleNavigation}
             handleChange={handleChange}
-            profile={profile}
             handleSubmit={handleSubmit}
           />
         ) : null}

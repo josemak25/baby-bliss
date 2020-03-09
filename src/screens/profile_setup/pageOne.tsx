@@ -52,7 +52,9 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
   };
 
   const handleDate = (date: string) => {
-    handleChange({ key: 'birthDueDate', data: date });
+    console.log({ date });
+
+    handleChange({ key: 'dueDateStart', data: date });
     setTimeout(handleNavigation, 500);
   };
 
@@ -153,7 +155,7 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
                   : colors.BG_LIGHT_COLOR,
               zIndex: 999
             }}
-            onPress={() => handleDate('Am Not Pregnant')}
+            onPress={() => handleDate(null)}
           >
             Am Not Pregnant
           </AnswerOptionText>

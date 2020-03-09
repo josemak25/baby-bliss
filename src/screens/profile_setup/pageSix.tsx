@@ -3,6 +3,7 @@ import Animated, { Easing } from 'react-native-reanimated';
 import RNPickerSelect from 'react-native-picker-select';
 import { useThemeContext } from '../../theme';
 import applyScale from '../../utils/applyScale';
+import { useStoreContext } from '../../store';
 
 import {
   PageOneContainer,
@@ -22,7 +23,11 @@ export default function PageSix({
   handleSubmit
 }) {
   const { colors } = useThemeContext();
+
+  const [{ interestState }] = useStoreContext();
+
   const [state, setState] = useState('');
+
   const [animation, setAnimation] = useState({
     buttonWidthOne: new Animated.Value(applyScale(5)),
     buttonWidthTwo: new Animated.Value(applyScale(5)),
@@ -106,15 +111,13 @@ export default function PageSix({
               color: 'red',
               key: 'Select an interest...'
             }}
-            onValueChange={value => {
-              setState(value);
-            }}
+            onValueChange={value => setState(value)}
             onDonePress={handleState}
             value={state}
-            items={allStates.map((title: string, index: number) => ({
+            items={interestState.interests.map(({ title, id }) => ({
               label: title,
               value: title,
-              key: index
+              key: id
             }))}
             textInputProps={{
               color:
@@ -193,5 +196,3 @@ export default function PageSix({
     </PageOneContainer>
   );
 }
-
-const allStates = ['Parenting', 'Health', 'Contraceptives', 'IVF'];

@@ -52,7 +52,7 @@ export default function PageTwo({ handleNavigation, handleChange }) {
   };
 
   const handleState = () => {
-    handleChange({ key: 'address', data: state });
+    handleChange({ key: 'state', data: state });
   };
 
   const handleRNPickerSelect = () => {

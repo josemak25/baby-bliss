@@ -74,19 +74,22 @@ export default function userActions(type: string) {
       case USER_ACTION_TYPES.COMPLETE_PROFILE:
         try {
           dispatch(actionStarted());
-          console.log('PAYLOAD: ', payload);
+          const { id, token, ...rest } = payload;
 
-          const request = await API.post({
-            path: `/users/profile-setup/${payload.id}`,
-            payload,
-            authToken: null
+          const request = await API.put({
+            path: `/users/profile-setup/${id}`,
+            payload: rest.payload,
+            authToken: token
           });
+
           const response: UserResponseInterface = await request.json();
-          console.log('response', response);
+
+          console.log(response);
 
           if (response.statusCode === 200) {
             return dispatch(profileSetupSuccess(response));
           }
+
           dispatch(onError(response));
         } catch (error) {
           dispatch(onError(error));

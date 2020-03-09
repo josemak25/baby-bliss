@@ -47,7 +47,7 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
     try {
       const [firstTimeLaunch, storedUserProfile] = await AsyncStorage.multiGet([
         '@FIRST_TIME_LAUNCH=',
-        '@STORED_USER_PROFILE=op'
+        '@STORED_USER_PROFILE_TEST'
       ]);
 
       const [, firstTimeLaunchValue] = firstTimeLaunch;
@@ -60,11 +60,18 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
 
       if (storedUserProfileValue) {
         //Navigate this user to the home screen if he still has token stored
+        const { user: payload, token } = JSON.parse(storedUserProfileValue);
+
         dispatch({
           type: USER_TYPES.LOAD_FROM_STORE,
-          payload: JSON.parse(storedUserProfileValue)
+          payload: { payload, token }
         });
-        return navigation.replace('HomeScreen');
+
+        if (payload.isApproved) {
+          return navigation.replace('HomeScreen');
+        }
+
+        return navigation.replace('ProfileSetupScreen');
       }
       navigation.replace('SignInScreen');
     } catch (error) {

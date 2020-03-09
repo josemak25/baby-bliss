@@ -66,12 +66,13 @@ export default function SignUp({ navigation }: NavigationInterface) {
 
   const storeUserProfile = async () => {
     await AsyncStorage.setItem(
-      '@STORED_USER_PROFILE',
+      '@STORED_USER_PROFILE_TEST',
       JSON.stringify({
         user: userState.user,
         token: userState.token
       })
     );
+
     postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, userState.token);
 
     const goToProfileSetup = StackActions.reset({
@@ -80,7 +81,6 @@ export default function SignUp({ navigation }: NavigationInterface) {
     });
 
     navigation.dispatch(goToProfileSetup);
-    // navigation.push('ProfileSetupScreen');
   };
 
   const handleSubmit = () => {

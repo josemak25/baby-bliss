@@ -41,7 +41,7 @@ export default function userReducer(
       return {
         ...state,
         errorMessage: null,
-        // isLoading: false,
+        isLoading: false,
         user: action.payload.payload,
         token: action.payload.token
       };
@@ -51,7 +51,8 @@ export default function userReducer(
       return {
         ...state,
         errorMessage: null,
-        isLoading: false
+        isLoading: false,
+        user: action.payload.payload
       };
     }
 
