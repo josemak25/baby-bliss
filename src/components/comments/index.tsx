@@ -39,9 +39,8 @@ type CommentProps = {
 export default function Comment(props: CommentProps) {
   const { colors, fonts } = useThemeContext();
 
-  const [state, setState] = useState({
-    animateImage: new Animated.Value(0),
-    likedComment: false
+  const [state] = useState({
+    animateImage: new Animated.Value(0)
   });
 
   const {
@@ -60,9 +59,7 @@ export default function Comment(props: CommentProps) {
   };
 
   const startLikeAnimation = (id: string) => {
-    if (state.likedComment) return;
-
-    setState({ ...state, likedComment: true });
+    state.animateImage.setValue(0);
     Animated.timing(state.animateImage, {
       toValue: 1,
       duration: 1300,
@@ -128,13 +125,11 @@ export default function Comment(props: CommentProps) {
                 progress={state.animateImage}
               />
 
-              {state.likedComment && (
-                <LoveIcon
-                  style={{ position: 'relative', right: -8, top: 8 }}
-                  width="60%"
-                  height="60%"
-                />
-              )}
+              <LoveIcon
+                style={{ position: 'relative', right: -8, top: 8 }}
+                width="60%"
+                height="60%"
+              />
             </LikeContainer>
           </TouchableWithoutFeedback>
           <LikeComment>like</LikeComment>

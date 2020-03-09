@@ -132,20 +132,15 @@ export default function postsActions(type: string) {
 
       case POST_ACTION_TYPES.LIKE_COMMENT:
         try {
-          console.log({ payload });
-
-          dispatch(
-            likeComment({
-              likeCount: payload.isLiked ? 1 : -1,
-              ...payload
-            })
-          );
           const request = await API.put({
-            path: `/posts/${payload.id}/${payload.isLiked ? 'like' : 'unlike'}`,
+            path: `/comments/${payload.id}/${
+              payload.isLiked ? 'like' : 'unlike'
+            }`,
             payload: null,
             authToken: payload.authToken
           });
           const response: LikeCommentResponse = await request.json();
+          console.log(response);
 
           if (response.statusCode === 200) {
             return dispatch(

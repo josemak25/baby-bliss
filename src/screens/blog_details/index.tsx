@@ -22,7 +22,8 @@ import { useStoreContext } from '../../store';
 import {
   CommentInterface,
   POST_ACTION_TYPES,
-  PostInterface
+  PostInterface,
+  POST_TYPES
 } from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
 
@@ -70,7 +71,8 @@ export default function BlogDetails(props: BlogDetailsProp) {
     focus: false,
     message: '',
     commentId: null,
-    actionType: null
+    actionType: null,
+    isLiked: true
   });
 
   const handleOnFocusRequest = (actionType: string, commentId: string) => {
@@ -94,11 +96,24 @@ export default function BlogDetails(props: BlogDetailsProp) {
   };
 
   const handleLikeComment = (id: string, commentIndex: number) => {
+    dispatch({
+      type: POST_TYPES.LIKE_COMMENT,
+      payload: {
+        commentIndex,
+        userId: id
+      }
+    });
+
     postsActions(POST_ACTION_TYPES.LIKE_COMMENT)(dispatch, {
       id,
       authToken: userState.token,
       commentIndex,
-      userId: userState.user.id
+      userId: userState.user.id,
+      isLiked: state.isLiked
+    });
+    setState({
+      ...state,
+      isLiked: !state.isLiked //toggle the like property
     });
   };
 
