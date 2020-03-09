@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Animated, { Easing } from 'react-native-reanimated';
-import RNPickerSelect from 'react-native-picker-select';
 import { useThemeContext } from '../../theme';
 import applyScale from '../../utils/applyScale';
 
@@ -16,7 +15,7 @@ const SelectQuestionButtonOverlay = Animated.createAnimatedComponent(
   SelectQuestionButton
 );
 
-export default function PageFive({ handleNavigation, handleChange }) {
+export default function PageFour({ handleNavigation, handleChange }) {
   const { colors } = useThemeContext();
 
   const [animation, setAnimation] = useState({
@@ -45,7 +44,7 @@ export default function PageFive({ handleNavigation, handleChange }) {
       duration: 500,
       easing: Easing.elastic(0.7)
     }).start(() => {
-      handleChange({ type: 'hasHMO', data: answer });
+      handleChange({ key: 'antenatalInterest', data: answer });
       setTimeout(handleNavigation, 500);
     });
   };

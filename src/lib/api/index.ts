@@ -32,8 +32,6 @@ class API {
   }
 
   post(request: POST_TYPES): Promise<any> {
-    console.log('POST: ', request);
-
     return fetch(`${this.BASE_URL}${request.path}`, {
       method: 'POST',
       headers: {

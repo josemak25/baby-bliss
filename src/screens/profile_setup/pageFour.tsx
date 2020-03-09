@@ -16,7 +16,7 @@ const SelectQuestionButtonOverlay = Animated.createAnimatedComponent(
   SelectQuestionButton
 );
 
-export default function PageFour({ handleNavigation, handleChange }) {
+export default function PageFive({ handleNavigation, handleChange }) {
   const { colors } = useThemeContext();
 
   const [animation, setAnimation] = useState({
@@ -45,7 +45,7 @@ export default function PageFour({ handleNavigation, handleChange }) {
       duration: 500,
       easing: Easing.elastic(0.7)
     }).start(() => {
-      handleChange({ type: 'antenatalInterest', data: answer });
+      handleChange({ key: 'hasHMO', data: answer });
       setTimeout(handleNavigation, 500);
     });
   };

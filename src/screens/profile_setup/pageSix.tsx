@@ -16,9 +16,13 @@ const SelectQuestionButtonOverlay = Animated.createAnimatedComponent(
   SelectQuestionButton
 );
 
-export default function PageSix({ handleNavigation, handleChange, profile }) {
+export default function PageSix({
+  handleNavigation,
+  handleChange,
+  handleSubmit
+}) {
   const { colors } = useThemeContext();
-
+  const [state, setState] = useState('');
   const [animation, setAnimation] = useState({
     buttonWidthOne: new Animated.Value(applyScale(5)),
     buttonWidthTwo: new Animated.Value(applyScale(5)),
@@ -51,8 +55,8 @@ export default function PageSix({ handleNavigation, handleChange, profile }) {
     });
   };
 
-  const handleState = (userInterest: string) => {
-    handleChange({ type: 'antenatalInterest', data: userInterest });
+  const handleState = () => {
+    handleChange({ key: 'userInterest', data: state });
   };
 
   const handleRNPickerSelect = () => {
@@ -102,8 +106,11 @@ export default function PageSix({ handleNavigation, handleChange, profile }) {
               color: 'red',
               key: 'Select an interest...'
             }}
-            onValueChange={handleState}
-            value={profile.userInterest}
+            onValueChange={value => {
+              setState(value);
+            }}
+            onDonePress={handleState}
+            value={state}
             items={allStates.map((title: string, index: number) => ({
               label: title,
               value: title,
@@ -144,7 +151,7 @@ export default function PageSix({ handleNavigation, handleChange, profile }) {
       <SelectQuestionButtonContainer>
         <SelectQuestionButton>
           <AnswerOption>b</AnswerOption>
-          <AnswerOptionText>Continue</AnswerOptionText>
+          <AnswerOptionText>Submit</AnswerOptionText>
         </SelectQuestionButton>
         <SelectQuestionButtonOverlay
           style={{
@@ -177,8 +184,9 @@ export default function PageSix({ handleNavigation, handleChange, profile }) {
                   : colors.BG_LIGHT_COLOR,
               zIndex: 999
             }}
+            onPress={handleSubmit}
           >
-            Continue
+            Submit
           </AnswerOptionText>
         </SelectQuestionButton>
       </SelectQuestionButtonContainer>

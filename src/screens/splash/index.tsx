@@ -7,11 +7,7 @@ import ScreenGridSizeActions from '../../store/grid/actions';
 import { USER_TYPES } from '../../store/user/types';
 import { Container, ImageContainer, Image } from './styles';
 
-import {
-  NavigationInterface,
-  FIRST_TIME_LAUNCH,
-  USER_PROFILE
-} from '../../constants';
+import { NavigationInterface } from '../../constants';
 
 interface SplashScreenProp extends NavigationInterface {
   testID?: string;
@@ -50,15 +46,15 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
   const checkInitialLaunch = async () => {
     try {
       const [firstTimeLaunch, storedUserProfile] = await AsyncStorage.multiGet([
-        FIRST_TIME_LAUNCH,
-        USER_PROFILE
+        '@FIRST_TIME_LAUNCH',
+        '@STORED_USER_PROFILE'
       ]);
 
       const [, firstTimeLaunchValue] = firstTimeLaunch;
       const [, storedUserProfileValue] = storedUserProfile;
 
       if (!firstTimeLaunchValue) {
-        await AsyncStorage.setItem(FIRST_TIME_LAUNCH, '1');
+        await AsyncStorage.setItem('@FIRST_TIME_LAUNCH', '1');
         return navigation.replace('GetStartedScreen');
       }
 

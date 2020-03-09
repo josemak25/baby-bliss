@@ -5,8 +5,10 @@ import {
   AsyncStorage
 } from 'react-native';
 
+import { StackActions, NavigationActions } from 'react-navigation';
+
 import { useThemeContext } from '../../theme';
-import { NavigationInterface, USER_PROFILE } from '../../constants';
+import { NavigationInterface } from '../../constants';
 
 import Button from '../../components/button';
 import InputFiled from '../../components/inputField';
@@ -64,14 +66,21 @@ export default function SignUp({ navigation }: NavigationInterface) {
 
   const storeUserProfile = async () => {
     await AsyncStorage.setItem(
-      USER_PROFILE,
+      '@STORED_USER_PROFILE',
       JSON.stringify({
         user: userState.user,
         token: userState.token
       })
     );
     postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, userState.token);
-    navigation.replace('HomeScreen');
+
+    const goToProfileSetup = StackActions.reset({
+      index: 0,
+      actions: [NavigationActions.navigate({ routeName: 'ProfileSetupScreen' })]
+    });
+
+    navigation.dispatch(goToProfileSetup);
+    // navigation.push('ProfileSetupScreen');
   };
 
   const handleSubmit = () => {

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { AsyncStorage, Dimensions, StatusBar } from 'react-native';
+import { Dimensions, StatusBar, AsyncStorage } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, { Easing } from 'react-native-reanimated';
@@ -9,6 +9,9 @@ import { useStoreContext } from '../../store';
 import { NavigationInterface } from '../../constants';
 import { questions as profileSetupQuestion } from '../../libs/profileSetupQuestion.json';
 import applyScale from '../../utils/applyScale';
+import userActions from '../../store/user/actions';
+import { USER_ACTION_TYPES } from '../../store/user/types';
+import showSnackbar from '../../components/UI/snackbar';
 
 import {
   Container,
@@ -43,14 +46,16 @@ export default function ProfileSetupScreen({
   testID,
   questions
 }: ProfileSetupScreenProp) {
-  const { colors } = useThemeContext();
-  const [, dispatch] = useStoreContext();
+  const MAX_SLIDES = 6;
 
+  const { colors } = useThemeContext();
+  const [{ userState }, dispatch] = useStoreContext();
   let questionRef = useRef(null);
 
   const [profile, setProfile] = useState({
     scrollIndex: 0,
-    animation: new Animated.Value(0),
+    animation: new Animated.Value(62.1),
+    userScrolled: false,
     payload: {
       birthDueDate: new Date().toDateString(),
       address: '',
@@ -62,7 +67,7 @@ export default function ProfileSetupScreen({
   });
 
   useEffect(() => {
-    startScrollBarAnimation();
+    if (profile.userScrolled) startScrollBarAnimation();
   }, [profile.scrollIndex]);
 
   // @ts-ignore
@@ -77,11 +82,23 @@ export default function ProfileSetupScreen({
   };
 
   const handleStateChange = (scrollIndex: number) => {
-    setProfile({ ...profile, scrollIndex });
+    setProfile({ ...profile, userScrolled: true, scrollIndex });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    //validate the form  for empty fields before sending this form.
+    for (let key in profile.payload) {
+      if (!profile.payload[key]) {
+        showSnackbar(
+          colors.LIKE_POST_COLOR,
+          'Please all entries are required!'
+        );
+        return;
+      }
+    }
+
     // dispatch user profile setup here
+    userActions(USER_ACTION_TYPES.COMPLETE_PROFILE)(dispatch, profile.payload);
   };
 
   return (
@@ -99,10 +116,15 @@ export default function ProfileSetupScreen({
             )}
           </GoBack>
           <SlideNumberContainer>
-            <SlideNumber>0{++profile.scrollIndex} </SlideNumber>
-            <SlideNumberLength>
-              / 0{profileSetupQuestion.length}
-            </SlideNumberLength>
+            <SlideNumber>
+              0
+              {profile.userScrolled
+                ? profile.scrollIndex < MAX_SLIDES
+                  ? ++profile.scrollIndex
+                  : MAX_SLIDES
+                : 1}
+            </SlideNumber>
+            <SlideNumberLength>/ 0{MAX_SLIDES}</SlideNumberLength>
           </SlideNumberContainer>
         </QuestionHeaderContent>
         <ProgressBarContainer>
@@ -127,6 +149,7 @@ export default function ProfileSetupScreen({
               questionRef={questionRef}
               setProfile={setProfile}
               profile={profile.payload}
+              handleSubmit={handleSubmit}
             />
           )}
           sliderWidth={sliderWidth}

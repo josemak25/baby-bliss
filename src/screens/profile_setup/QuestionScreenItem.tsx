@@ -18,14 +18,15 @@ import {
 
 type handleDataType = {
   data: string;
-  type: string;
+  key: string;
 };
 
 export default function QuestionScreenItem({
   item,
   questionRef,
   setProfile,
-  profile
+  profile,
+  handleSubmit
 }) {
   const { key, question, id }: SlideItem = item;
 
@@ -33,8 +34,13 @@ export default function QuestionScreenItem({
 
   const handleNavigation = () => navigation.snapToNext();
 
-  const handleChange = ({ data, type }: handleDataType) => {
-    setProfile(prev => ({ ...prev, payload: { [type]: data } }));
+  const handleChange = ({ data, key }: handleDataType) => {
+    console.log(data, key);
+
+    setProfile(prev => ({
+      ...prev,
+      payload: { ...prev.payload, [key]: data }
+    }));
   };
 
   return (
@@ -55,7 +61,7 @@ export default function QuestionScreenItem({
           <PageTwo
             handleNavigation={handleNavigation}
             handleChange={handleChange}
-            profile={profile}
+            // profile={profile}
           />
         ) : null}
         {id === 3 ? (
@@ -81,6 +87,7 @@ export default function QuestionScreenItem({
             handleNavigation={handleNavigation}
             handleChange={handleChange}
             profile={profile}
+            handleSubmit={handleSubmit}
           />
         ) : null}
       </SlideAnswersContainer>

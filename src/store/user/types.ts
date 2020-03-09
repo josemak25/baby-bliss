@@ -6,19 +6,20 @@
 
 // USER TYPES
 export enum USER_TYPES {
-  REGISTER_USER_STARTED = 'REGISTER_USER_STARTED',
+  STARTED = 'STARTED',
   REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS',
-  REGISTER_USER_ERROR = 'REGISTER_USER_ERROR',
   LOGIN_USER_STARTED = 'LOGIN_USER_STARTED',
   LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS',
-  LOGIN_USER_ERROR = 'LOGIN_USER_ERROR',
-  LOAD_FROM_STORE = 'LOAD_FROM_STORE'
+  ERROR = 'ERROR',
+  LOAD_FROM_STORE = 'LOAD_FROM_STORE',
+  COMPLETE_PROFILE = 'COMPLETE_PROFILE'
 }
 
 // POSTS ACTION TYPES
 export enum USER_ACTION_TYPES {
   LOGIN_USER = 'LOGIN_USER',
-  REGISTER_USER = 'REGISTER_USER'
+  REGISTER_USER = 'REGISTER_USER',
+  COMPLETE_PROFILE = 'COMPLETE_PROFILE'
 }
 
 export interface UserInterface {
@@ -48,7 +49,7 @@ export interface UserResponseInterface {
   message: string;
   payload: UserInterface;
   errors?: any;
-  token: string | null;
+  token?: string | null;
 }
 
 export interface UserStoredProfileInterface {
@@ -72,10 +73,10 @@ export type UserInitialState = {
   user: UserInterface;
 };
 export type UserAction =
-  | { type: USER_TYPES.REGISTER_USER_STARTED }
+  | { type: USER_TYPES.STARTED }
   | { type: USER_TYPES.REGISTER_USER_SUCCESS; payload: UserResponseInterface } // add user object interface type here when response of structure is defined
-  | { type: USER_TYPES.REGISTER_USER_ERROR; payload: any }
   | { type: USER_TYPES.LOGIN_USER_STARTED }
   | { type: USER_TYPES.LOGIN_USER_SUCCESS; payload: UserResponseInterface }
+  | { type: USER_TYPES.COMPLETE_PROFILE; payload: UserResponseInterface }
   | { type: USER_TYPES.LOAD_FROM_STORE; payload: UserStoredProfileInterface }
-  | { type: USER_TYPES.LOGIN_USER_ERROR; payload: any }; // add post body when response is identified
+  | { type: USER_TYPES.ERROR; payload: any }; // add post body when response is identified

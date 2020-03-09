@@ -4,47 +4,39 @@ import {
   USER_TYPES,
   UserAction,
   UserResponseInterface,
-  RegistrationRequestType,
   USER_ACTION_TYPES
 } from './types';
 
-const registrationStarted = () => ({ type: USER_TYPES.REGISTER_USER_STARTED });
+const actionStarted = () => ({ type: USER_TYPES.STARTED });
 
 const registrationSuccess = (payload: UserResponseInterface): UserAction => ({
   type: USER_TYPES.REGISTER_USER_SUCCESS,
   payload
 });
 
-const registrationError = (errors: UserResponseInterface): UserAction => ({
-  type: USER_TYPES.REGISTER_USER_ERROR,
-  payload: errors
-});
-
-const loginStarted = () => ({ type: USER_TYPES.LOGIN_USER_STARTED });
-
 const loginSuccess = (payload: UserResponseInterface): UserAction => ({
   type: USER_TYPES.LOGIN_USER_SUCCESS,
   payload
 });
 
-const loginError = (error: UserResponseInterface): UserAction => ({
-  type: USER_TYPES.LOGIN_USER_ERROR,
+const profileSetupSuccess = (payload: UserResponseInterface): UserAction => ({
+  type: USER_TYPES.COMPLETE_PROFILE,
+  payload
+});
+
+const onError = (error: UserResponseInterface): UserAction => ({
+  type: USER_TYPES.ERROR,
   payload: error
 });
 
 export default function userActions(type: string) {
-  type UserLoginType = { username: string; password: string };
-
-  return async (
-    dispatch: any,
-    payload: UserLoginType | RegistrationRequestType
-  ) => {
+  return async (dispatch: any, payload: any) => {
     // To unsubscribe to these update, just use the functions:
 
     switch (type) {
       case USER_ACTION_TYPES.LOGIN_USER:
         try {
-          dispatch(loginStarted());
+          dispatch(actionStarted());
           const request = await API.post({
             path: '/auth/login',
             payload,
@@ -54,15 +46,15 @@ export default function userActions(type: string) {
           if (response.statusCode === 200) {
             return dispatch(loginSuccess(response));
           }
-          dispatch(loginError(response));
+          dispatch(onError(response));
         } catch (error) {
-          dispatch(loginError(error));
+          dispatch(onError(error));
         }
         break;
 
       case USER_ACTION_TYPES.REGISTER_USER:
         try {
-          dispatch(registrationStarted());
+          dispatch(actionStarted());
           const request = await API.post({
             path: '/users',
             payload,
@@ -73,9 +65,31 @@ export default function userActions(type: string) {
           if (response.statusCode === 200) {
             return dispatch(registrationSuccess(response));
           }
-          dispatch(registrationError(response));
+          dispatch(onError(response));
         } catch (error) {
-          dispatch(registrationError(error));
+          dispatch(onError(error));
+        }
+        break;
+
+      case USER_ACTION_TYPES.COMPLETE_PROFILE:
+        try {
+          dispatch(actionStarted());
+          console.log('PAYLOAD: ', payload);
+
+          const request = await API.post({
+            path: `/users/profile-setup/${payload.id}`,
+            payload,
+            authToken: null
+          });
+          const response: UserResponseInterface = await request.json();
+          console.log('response', response);
+
+          if (response.statusCode === 200) {
+            return dispatch(profileSetupSuccess(response));
+          }
+          dispatch(onError(response));
+        } catch (error) {
+          dispatch(onError(error));
         }
         break;
       default:

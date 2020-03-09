@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Animated, { Easing } from 'react-native-reanimated';
-import RNPickerSelect from 'react-native-picker-select';
 import { useThemeContext } from '../../theme';
 import applyScale from '../../utils/applyScale';
 
@@ -45,7 +44,7 @@ export default function PageThree({ handleNavigation, handleChange }) {
       duration: 500,
       easing: Easing.elastic(0.7)
     }).start(() => {
-      handleChange({ type: 'birthHospital', data: answer });
+      handleChange({ key: 'birthHospital', data: answer });
       setTimeout(handleNavigation, 500);
     });
   };

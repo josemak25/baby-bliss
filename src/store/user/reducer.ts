@@ -32,7 +32,7 @@ export default function userReducer(
   action: UserAction
 ) {
   switch (action.type) {
-    case USER_TYPES.LOGIN_USER_STARTED:
+    case USER_TYPES.STARTED:
       return { ...state, isLoading: true };
 
     case USER_TYPES.LOGIN_USER_SUCCESS:
@@ -41,20 +41,21 @@ export default function userReducer(
       return {
         ...state,
         errorMessage: null,
-        isLoading: false,
+        // isLoading: false,
         user: action.payload.payload,
         token: action.payload.token
       };
     }
 
-    case USER_TYPES.REGISTER_USER_ERROR: {
+    case USER_TYPES.COMPLETE_PROFILE: {
       return {
         ...state,
-        isLoading: false,
-        errorMessage: action.payload.message
+        errorMessage: null,
+        isLoading: false
       };
     }
-    case USER_TYPES.LOGIN_USER_ERROR: {
+
+    case USER_TYPES.ERROR: {
       return {
         ...state,
         isLoading: false,
