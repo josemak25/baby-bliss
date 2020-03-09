@@ -22,6 +22,8 @@ type InputFieldProps = {
   returnKeyType?: any;
   secureTextEntry?: boolean;
   style?: object;
+  disable?: boolean;
+  activeColor?: string;
 };
 
 const InputFiled: FunctionComponent<InputFieldProps> = props => {
@@ -37,7 +39,8 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
     returnKeyType = 'next',
     secureTextEntry = false,
     style,
-    testID
+    testID,
+    disable = false
   } = props;
 
   const [inputState, setInputState] = useState({
@@ -116,7 +119,7 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
         style,
         {
           backgroundColor: inputState.activateColor
-            ? colors.IDLE_INPUT_COLOR
+            ? props.activeColor || colors.IDLE_INPUT_COLOR
             : colors.BG_LIGHT_COLOR
         }
       ]}
@@ -138,6 +141,7 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
           keyboardType={keyboardType}
           returnKeyType={returnKeyType}
           secureTextEntry={secureTextEntry}
+          editable={!disable}
         />
         {inputState.canShowIsValid && (
           <CheckedContainer>

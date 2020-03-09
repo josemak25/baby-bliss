@@ -9,8 +9,8 @@ type PostProps = {
   onLayout?(): void;
 };
 
-const Post: FunctionComponent<PostProps> = props => {
+const Card: FunctionComponent<PostProps> = props => {
   return <Container {...props}>{props.children}</Container>;
 };
 
-export default Post;
+export default Card;

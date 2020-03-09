@@ -7,6 +7,8 @@ import {
   Dimensions
 } from 'react-native';
 import ContentLoader from 'react-native-skeleton-content';
+import boxShadow from '../../utils/boxShadows';
+import { useThemeContext } from '../../theme';
 import applyScale from '../../utils/applyScale';
 
 import ResponsiveImage from '../../libs/responsiveImage';
@@ -40,6 +42,8 @@ interface UserPostProps extends PostInterface {
 const { width: DEVICE_WIDTH } = Dimensions.get('window');
 
 export default function UserPost(props: UserPostProps) {
+  const { colors } = useThemeContext();
+
   const { topic, description, noOfLikes, noOfViews, testID, width } = props;
 
   const postDescription =
@@ -72,11 +76,21 @@ export default function UserPost(props: UserPostProps) {
 
   return (
     <Card
-      style={{
-        width: applyScale(width),
-        margin: 10,
-        height: DEVICE_WIDTH <= 375 ? applyScale(280) : applyScale(250)
-      }}
+      style={[
+        {
+          width: applyScale(width),
+          margin: 10,
+          height: DEVICE_WIDTH <= 375 ? applyScale(280) : applyScale(250)
+        },
+        boxShadow({
+          width: 0,
+          height: 0,
+          color: colors.IDLE_INPUT_COLOR,
+          opacity: 0.3,
+          radius: 1,
+          elevation: 2
+        })
+      ]}
       onPress={props.navigation}
     >
       <Container testID={testID} style={{}}>

@@ -12,20 +12,17 @@ interface BoxShadowInterface {
 function createBoxShadowStyle({
   elevation,
   color,
-  opacity,
-  radius,
-  width,
-  height
+  opacity = 0.4,
+  radius = Math.floor((0.8 * elevation) / 2),
+  width = 0,
+  height = 0.5 * elevation
 }: BoxShadowInterface) {
   return {
     elevation,
     shadowColor: color,
-    shadowOffset: {
-      width: width || 0,
-      height: height || 0.5 * elevation
-    },
-    shadowOpacity: opacity || 0.4,
-    shadowRadius: radius || Math.floor((0.8 * elevation) / 2)
+    shadowOffset: { width, height },
+    shadowOpacity: opacity,
+    shadowRadius: radius
   };
 }
 
