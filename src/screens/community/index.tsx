@@ -10,9 +10,10 @@ import { NavigationInterface } from '../../constants';
 
 import { LogoContainer, Logo, AskQuestion } from './styles';
 import postCategoryActions from '../../store/category/actions';
-import { CATEGORY_ACTION_TYPES } from '../../store/category/types';
-import postsActions from '../../store/posts/actions';
-import { POST_ACTION_TYPES } from '../../store/posts/types';
+import {
+  CATEGORY_ACTION_TYPES,
+  POST_CATEGORY_TYPES
+} from '../../store/category/types';
 
 interface CommunityScreenProp extends NavigationInterface {
   testID?: string;
@@ -33,12 +34,27 @@ export default function CommunityScreen(props: CommunityScreenProp) {
     isLiked: true
   });
 
-  const handleLikePost = (id: string, postIndex: number) => {
+  const handleLikePost = (
+    id: string,
+    postIndex: number,
+    categoryId: string
+  ) => {
+    dispatch({
+      type: POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_USER_POST,
+      payload: {
+        likeCount: state.isLiked ? 1 : -1,
+        categoryId,
+        id,
+        postIndex
+      }
+    });
+
     postCategoryActions(CATEGORY_ACTION_TYPES.LIKE_POST)(dispatch, {
       id,
       postIndex,
       authToken: userState.token,
-      isLiked: state.isLiked
+      isLiked: state.isLiked,
+      categoryId
     });
     setState({
       ...state,

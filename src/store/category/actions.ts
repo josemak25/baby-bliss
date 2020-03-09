@@ -1,3 +1,4 @@
+import API from '../../lib/api';
 import {
   POST_CATEGORY_TYPES,
   CategoryInterface,
@@ -5,25 +6,14 @@ import {
   CATEGORY_ACTION_TYPES,
   LikeOrUnlikePostResponse
 } from './types';
-import API from '../../lib/api';
 
 const getPostCategoryStarted = () => ({
   type: POST_CATEGORY_TYPES.GET_POST_CATEGORY_STARTED
 });
 
-const getPostCategorySuccess = (payload: CategoryInterface[]) => ({
-  type: POST_CATEGORY_TYPES.GET_POST_CATEGORY_SUCCESS,
-  payload
-});
-
 const fetchCategoriesPostSuccess = (categoryPosts: any) => ({
   type: POST_CATEGORY_TYPES.FETCH_CATEGORIES_POST_SUCCESS,
   payload: categoryPosts
-});
-
-const likeOrUnlikePostSuccess = (payload: LikeOrUnlikePostResponse) => ({
-  type: POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_POST,
-  payload
 });
 
 const postQuestion = () => ({
@@ -66,8 +56,6 @@ export default function postCategoryActions(type: string) {
 
       case CATEGORY_ACTION_TYPES.LIKE_POST:
         try {
-          dispatch(getPostCategoryStarted());
-
           const request = await API.put({
             path: `/posts/${payload.id}/${payload.isLiked ? 'like' : 'unlike'}`,
             payload: null,
@@ -75,15 +63,8 @@ export default function postCategoryActions(type: string) {
           });
 
           const response: LikeOrUnlikePostResponse = await request.json();
-          console.log(response);
-
           if (response.statusCode === 200) {
-            return dispatch(
-              likeOrUnlikePostSuccess({
-                likeCount: response.payload.likes,
-                ...payload
-              })
-            );
+            return;
           }
           dispatch(getPostCategoryError(response.message));
         } catch (error) {

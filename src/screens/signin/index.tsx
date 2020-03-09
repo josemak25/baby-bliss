@@ -50,7 +50,7 @@ export default function SignIn({ navigation }: NavigationInterface) {
     const { token, user } = userState;
 
     await AsyncStorage.setItem(
-      '@STORED_USER_PROFILE',
+      '@STORED_USER_PROFILE=op',
       JSON.stringify({ token, payload: user })
     );
     navigation.replace('HomeScreen');

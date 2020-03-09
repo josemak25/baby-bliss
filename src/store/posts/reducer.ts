@@ -34,7 +34,7 @@ export default function postReducer(
     }
 
     case POST_TYPES.LIKE_OR_UNLIKE_POST: {
-      state.posts[action.payload.postIndex].noOfLikes =
+      state.posts[action.payload.postIndex].noOfLikes +=
         action.payload.likeCount;
 
       return {

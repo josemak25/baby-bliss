@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import { useStoreContext } from '../../store';
 import { NavigationInterface } from '../../constants';
@@ -10,7 +10,7 @@ import UserPost from '../../components/userPost';
 interface RouteContainerProp extends NavigationInterface {
   testID?: string;
   categoryId: string;
-  handleLikePost(id: string, postIndex: number): void;
+  handleLikePost(id: string, postIndex: number, categoryId: string): void;
 }
 
 const RouteContainer = (props: RouteContainerProp) => {

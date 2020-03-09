@@ -5,7 +5,6 @@ import {
   PostCategoryAction,
   POST_CATEGORY_TYPES
 } from './types';
-import { PostInterface } from '../posts/types.js';
 
 const categories = dummyCategory.category.map(category => {
   category['key'] = category.title;
@@ -28,15 +27,6 @@ export default function PostCategoryReducer(
       return { ...state, isLoading: true };
     }
 
-    case POST_CATEGORY_TYPES.GET_POST_CATEGORY_SUCCESS: {
-      return {
-        ...state,
-        isLoading: false,
-        error: null,
-        category: [...state.categories, action.payload]
-      };
-    }
-
     case POST_CATEGORY_TYPES.FETCH_CATEGORIES_POST_SUCCESS: {
       return {
         ...state,
@@ -54,9 +44,9 @@ export default function PostCategoryReducer(
       };
     }
 
-    case POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_POST: {
-      const posts: PostInterface[] = state.communityPosts[action.payload.id];
-      posts[action.payload.postIndex].noOfLikes = action.payload.likeCount;
+    case POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_USER_POST: {
+      const posts = state.communityPosts[action.payload.categoryId];
+      posts[action.payload.postIndex].noOfLikes += action.payload.likeCount;
 
       return {
         ...state,
@@ -64,7 +54,7 @@ export default function PostCategoryReducer(
         error: null,
         communityPosts: {
           ...state.communityPosts,
-          ...state.communityPosts[action.payload.id]
+          [action.payload.categoryId]: posts
         }
       };
     }

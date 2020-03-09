@@ -8,7 +8,11 @@ import { ActivityIndicator } from 'react-native';
 import Post from '../../components/post';
 import SearchIcon from '../../../assets/icons/search';
 import { NavigationInterface } from '../../constants';
-import { POST_ACTION_TYPES, PostInterface } from '../../store/posts/types';
+import {
+  POST_ACTION_TYPES,
+  PostInterface,
+  POST_TYPES
+} from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
 
 import {
@@ -39,6 +43,15 @@ export default function HomeScreen(props: HomeScreenProp) {
   };
 
   const handleLikePost = (id: string, postIndex: number) => {
+    dispatch({
+      type: POST_TYPES.LIKE_OR_UNLIKE_POST,
+      payload: {
+        likeCount: state.isLiked ? 1 : -1,
+        id,
+        postIndex
+      }
+    });
+
     postsActions(POST_ACTION_TYPES.LIKE_POST)(dispatch, {
       id,
       postIndex,

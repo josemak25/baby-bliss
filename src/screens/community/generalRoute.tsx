@@ -9,7 +9,7 @@ import { useThemeContext } from '../../theme';
 
 interface GeneralRouteContainerProp extends NavigationInterface {
   testID?: string;
-  handleLikePost(id: string, postIndex: number): void;
+  handleLikePost(id: string, postIndex: number,categoryId:string ): void;
 }
 
 const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {

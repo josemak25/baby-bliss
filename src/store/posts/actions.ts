@@ -25,11 +25,6 @@ const loadPostError = (error: string): PostAction => ({
   payload: error
 });
 
-const likeOrUnlikePostSuccess = (payload: LikeOrUnlikePostResponse) => ({
-  type: POST_TYPES.LIKE_OR_UNLIKE_POST,
-  payload
-});
-
 const loadCommentsSuccess = (payload: CommentInterface[]): PostAction => ({
   type: POST_TYPES.LOAD_COMMENT_SUCCESS,
   payload
@@ -65,7 +60,6 @@ export default function postsActions(type: string) {
 
       case POST_ACTION_TYPES.LIKE_POST:
         try {
-          dispatch(loadPostStarted());
           const request = await API.put({
             path: `/posts/${payload.id}/${payload.isLiked ? 'like' : 'unlike'}`,
             payload: null,
@@ -73,12 +67,7 @@ export default function postsActions(type: string) {
           });
           const response: LikeOrUnlikePostResponse = await request.json();
           if (response.statusCode === 200) {
-            return dispatch(
-              likeOrUnlikePostSuccess({
-                likeCount: response.payload.likes,
-                ...payload
-              })
-            );
+            return;
           }
           dispatch(loadPostError(response.message));
         } catch (error) {
@@ -143,9 +132,16 @@ export default function postsActions(type: string) {
 
       case POST_ACTION_TYPES.LIKE_COMMENT:
         try {
-          dispatch(loadPostStarted());
+          console.log({ payload });
+
+          dispatch(
+            likeComment({
+              likeCount: payload.isLiked ? 1 : -1,
+              ...payload
+            })
+          );
           const request = await API.put({
-            path: `/comments/${payload.id}/like`,
+            path: `/posts/${payload.id}/${payload.isLiked ? 'like' : 'unlike'}`,
             payload: null,
             authToken: payload.authToken
           });

@@ -9,7 +9,7 @@ export enum POST_CATEGORY_TYPES {
   GET_POST_CATEGORY_STARTED = 'GET_POST_CATEGORY_STARTED',
   GET_POST_CATEGORY_SUCCESS = 'GET_POST_CATEGORY_SUCCESS',
   FETCH_CATEGORIES_POST_SUCCESS = 'FETCH_CATEGORIES_POST_SUCCESS',
-  LIKE_OR_UNLIKE_POST = 'LIKE_OR_UNLIKE_POST',
+  LIKE_OR_UNLIKE_USER_POST = 'LIKE_OR_UNLIKE_USER_POST',
   POST_QUESTION = 'POST_QUESTION',
   GET_POST_CATEGORY_ERROR = 'GET_POST_CATEGORY_ERROR'
 }
@@ -48,7 +48,7 @@ export type LikeOrUnlikePostResponse = {
 
 export type LikeOrUnlikePostType = {
   likeCount: number;
-  id: string;
+  categoryId: string;
   postIndex: number;
 };
 
@@ -80,7 +80,7 @@ export type PostCategoryAction =
       payload: { categoryPosts: CategoryInterface[]; categoryId: string };
     }
   | {
-      type: POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_POST;
+      type: POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_USER_POST;
       payload: LikeOrUnlikePostType;
     }
   | {
