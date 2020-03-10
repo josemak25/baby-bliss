@@ -279,9 +279,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                 ]}
               />
               <ResponsiveImage
-                imageUrl={
-                  user && user.avatar ? user.avatar : 'https://bit.ly/38taXRW'
-                }
+                imageUrl={user && user.avatar ? user.avatar : 'url'}
                 height={SCALED_WIDTH}
                 width={SCALED_WIDTH}
                 onLoad={handleImageLoading}
@@ -392,66 +390,6 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                         </InputFiled>
                       </AnimatedOptionContainerFooter>
                     </AnimatedOptionContainer>
-                    {/* <AnimatedOptionContainer
-                      style={{
-                        height: state.animateContentHeightTwo,
-                        borderWidth: 1,
-                        borderLeftWidth: 0,
-                        borderRightWidth: 0,
-                        borderColor: colors.INACTIVE_ICON_COLOR
-                      }}
-                    > */}
-                    {/* <OptionContainerHeader
-                        activeOpacity={0.8}
-                        onPress={() =>
-                          startEditAnimation('animateContentHeightTwo')
-                        }
-                      >
-                        <IconContainer
-                          activeOpacity={1}
-                          disabled
-                          style={{
-                            height: applyScale(35),
-                            width: applyScale(35),
-                            borderRadius: 3,
-                            backgroundColor: colors.USER_POST_COLOR
-                          }}
-                        >
-                          <Ionicons
-                            name="ios-key"
-                            size={20}
-                            color={colors.BG_LIGHT_COLOR}
-                          />
-                        </IconContainer>
-                        <OptionTitle>change password</OptionTitle>
-                        <Ionicons
-                          name="ios-arrow-down"
-                          size={20}
-                          color={colors.INACTIVE_ICON_COLOR}
-                        />
-                      </OptionContainerHeader> */}
-                    {/* <AnimatedOptionContainerFooter
-                        style={{
-                          opacity: state.animateInputsTwo.value,
-                          display: !state.animateInputsTwo.showInputsModal
-                            ? 'flex'
-                            : 'none'
-                        }}
-                      > */}
-                    {/* <InputFiled
-                          placeholder="Password"
-                          testID="password"
-                          onChangeText={onHandleChange('password')}
-                          defaultValue={state.userProfile.password}
-                          secureTextEntry={true}
-                          returnKeyType="done"
-                          activeColor={colors.BG_LIGHT_COLOR}
-                          style={{ borderRadius: 5 }}
-                        >
-                          <PrivacyIcon /> */}
-                    {/* </InputFiled> */}
-                    {/* </AnimatedOptionContainerFooter> */}
-                    {/* </AnimatedOptionContainer> */}
                     <AnimatedOptionContainer
                       style={{ height: state.animateContentHeightThree }}
                     >
