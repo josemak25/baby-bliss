@@ -155,3 +155,9 @@ export const AnswerOptionText = styled.Text`
   color: ${({ theme }) => theme.colors.BG_LIGHT_COLOR};
   flex: 1;
 `;
+
+export const Spinner = styled.View`
+  position: absolute;
+  align-self: center;
+  top: 105px;
+`;
