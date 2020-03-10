@@ -6,12 +6,11 @@ import Animated, { Easing } from 'react-native-reanimated';
 import QuestionScreenItem from './QuestionScreenItem';
 import { useThemeContext } from '../../theme';
 import { useStoreContext } from '../../store';
-import { NavigationInterface } from '../../constants';
+import { NavigationInterface, STORE_USER_PROFILE } from '../../constants';
 import { questions as profileSetupQuestion } from '../../libs/profileSetupQuestion.json';
 import applyScale from '../../utils/applyScale';
 import userActions from '../../store/user/actions';
 import { USER_ACTION_TYPES } from '../../store/user/types';
-import showSnackbar from '../../components/UI/snackbar';
 import interestActions from '../../store/interest/actions';
 
 import {
@@ -113,7 +112,7 @@ export default function ProfileSetupScreen({
     });
 
     await AsyncStorage.setItem(
-      '@STORED_USER_PROFILE_TEST',
+      STORE_USER_PROFILE,
       JSON.stringify({
         user: userState.user,
         token: userState.token
