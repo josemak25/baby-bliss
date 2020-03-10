@@ -83,6 +83,7 @@ export default function userActions(type: string) {
           });
 
           const response: UserResponseInterface = await request.json();
+          console.log(response);
 
           if (response.statusCode === 200) {
             return dispatch(profileSetupSuccess(response));
