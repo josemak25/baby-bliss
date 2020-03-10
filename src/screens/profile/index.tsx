@@ -98,8 +98,11 @@ export default function ProfileScreen(props: ProfileScreenProp) {
 
   useEffect(() => {
     (async () => {
-      //update user profile in async storage  after user has finish updating profile
-      storeUserProfile();
+      if (state.hasSubmitted) {
+        //update user profile in async storage  after user has finish updating profile
+        await storeUserProfile();
+        showSnackbar(colors.POST_TIP_COLOR, 'Profile updated successfully!');
+      }
       if (!userState.token) {
         //remove this user profile from the async storage if the user has logged out of the app
         await AsyncStorage.removeItem(STORE_USER_PROFILE);
@@ -125,9 +128,6 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       STORE_USER_PROFILE,
       JSON.stringify({ token, payload: user })
     );
-    if (state.hasSubmitted) {
-      showSnackbar(colors.POST_TIP_COLOR, 'Profile updated successfully!');
-    }
   };
 
   const handleSubmit = () => {
@@ -163,6 +163,10 @@ export default function ProfileScreen(props: ProfileScreenProp) {
 
   const handleLogout = async () => {
     dispatch({ type: USER_TYPES.LOGOUT });
+    setState({
+      ...state,
+      hasSubmitted: false
+    });
   };
 
   async function fetchProfile() {

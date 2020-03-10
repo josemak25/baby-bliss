@@ -38,12 +38,12 @@ export const FormControls = styled.View`
   width: 100%;
 `;
 
-export const RememberMe = styled.Text`
-  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
-  font-size: ${({ theme }) => theme.fonts.SMALL_SIZE + 2}px;
-  color: ${({ theme }) => theme.colors.FONT_LIGHT_COLOR};
-  text-transform: capitalize;
-`;
+// export const RememberMe = styled.Text`
+//   font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
+//   font-size: ${({ theme }) => theme.fonts.SMALL_SIZE + 2}px;
+//   color: ${({ theme }) => theme.colors.FONT_LIGHT_COLOR};
+//   text-transform: capitalize;
+// `;
 
 export const Conditions = styled.View`
   flex-direction: row;

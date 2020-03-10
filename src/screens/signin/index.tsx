@@ -6,7 +6,6 @@ import { useThemeContext } from '../../theme';
 import { NavigationInterface, STORE_USER_PROFILE } from '../../constants';
 import Button from '../../components/button';
 import InputFiled from '../../components/inputField';
-import MailIcon from '../../../assets/icons/mail';
 import PrivacyIcon from '../../../assets/icons/privacy';
 import boxShadow from '../../utils/boxShadows';
 import userActions from '../../store/user/actions';
@@ -14,6 +13,7 @@ import { useStoreContext } from '../../store';
 import { USER_ACTION_TYPES } from '../../store/user/types';
 import showSnackbar from '../../components/UI/snackbar';
 import { validateFormFields } from '../../components/inputField/utils';
+import UserIcon from '../../../assets/icons/user';
 
 import {
   Container,
@@ -21,7 +21,6 @@ import {
   FormFields,
   FormControls,
   Conditions,
-  RememberMe,
   SafeAreaView,
   HeaderTitle,
   KeyboardAvoidingView,
@@ -33,17 +32,18 @@ export default function SignIn({ navigation }: NavigationInterface) {
   const [{ userState }, dispatch] = useStoreContext();
 
   const [values, setValues] = useState({
-    user: { username: '', password: '' }
+    user: { username: '', password: '' },
+    rememberMe: true
   });
 
   useEffect(() => {
-    if (userState.token) {
+    if (userState.token && values.rememberMe) {
       storeUserProfile();
-      return;
     }
     if (userState.errorMessage && !userState.isLoading) {
       showSnackbar('#F42850', userState.errorMessage);
     }
+    if (userState.token) navigation.replace('HomeScreen');
   }, [userState.token, userState.errorMessage, userState.isLoading]);
 
   const storeUserProfile = async () => {
@@ -97,7 +97,7 @@ export default function SignIn({ navigation }: NavigationInterface) {
                 borderTopEndRadius: 10
               }}
             >
-              <MailIcon />
+              <UserIcon width="40%" height="40%" />
             </InputFiled>
             <InputFiled
               placeholder="Password"
@@ -121,8 +121,11 @@ export default function SignIn({ navigation }: NavigationInterface) {
                 fontFamily={fonts.MONTSERRAT_SEMI_BOLD}
                 checkboxSize={20}
                 text="Remember Me"
+                onPress={(rememberMe: boolean) =>
+                  setValues({ ...values, rememberMe })
+                }
               />
-              <RememberMe></RememberMe>
+
               <Button
                 title="forgot password?"
                 testID="resetAccount"

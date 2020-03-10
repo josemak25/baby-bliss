@@ -213,7 +213,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
               fontSize: fonts.MEDIUM_SIZE - 1
             }}
             onPress={handleSubmit}
-            title={`${userState.isLoading ? '' : 'Submit'}`}
+            title={`${userState.isLoading ? '' : 'Signup'}`}
             disabled={userState.isLoading}
           />
           {userState.isLoading && (

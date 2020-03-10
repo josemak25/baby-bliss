@@ -116,6 +116,7 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
           returnKeyType={returnKeyType}
           secureTextEntry={secureTextEntry}
           editable={!disable}
+          autoCapitalize="none"
         />
         {inputState.canShowIsValid && (
           <CheckedContainer>
