@@ -1,7 +1,7 @@
 export const validateFormFields = (field: string, value: string) => {
   switch (field.toLowerCase()) {
     case 'name':
-      if (value.trim().length < 5) {
+      if (value.trim().length < 4) {
         return false;
       }
       return true;
