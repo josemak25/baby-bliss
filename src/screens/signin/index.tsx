@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import BouncyCheckbox from '../../libs/bouncyCheckbox';
 import { ActivityIndicator, AsyncStorage } from 'react-native';
 import { useThemeContext } from '../../theme';
-import { NavigationInterface } from '../../constants';
+import { NavigationInterface, STORE_USER_PROFILE } from '../../constants';
 import Button from '../../components/button';
 import InputFiled from '../../components/inputField';
 import MailIcon from '../../../assets/icons/mail';
@@ -50,7 +50,7 @@ export default function SignIn({ navigation }: NavigationInterface) {
     const { token, user } = userState;
 
     await AsyncStorage.setItem(
-      '@USER_PROFILE_TESTS_',
+      STORE_USER_PROFILE,
       JSON.stringify({ token, payload: user })
     );
     navigation.replace('HomeScreen');
