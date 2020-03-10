@@ -25,6 +25,7 @@ type InputFieldProps = {
   style?: object;
   disable?: boolean;
   activeColor?: string;
+  ignoreValidation?: boolean;
 };
 
 const InputFiled: FunctionComponent<InputFieldProps> = props => {
@@ -41,7 +42,8 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
     secureTextEntry = false,
     style,
     testID,
-    disable = false
+    disable = false,
+    ignoreValidation = false
   } = props;
 
   const [inputState, setInputState] = useState({
@@ -104,9 +106,10 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
           onChangeText={onChangeText}
           placeholder={placeholder}
           onChange={handleTextChange}
-          onBlur={() =>
-            updateFeedBack(validateFormFields(placeholder, inputState.text))
-          }
+          onBlur={() => {
+            if (!ignoreValidation)
+              updateFeedBack(validateFormFields(placeholder, inputState.text));
+          }}
           onFocus={decorateTextFieldOnFocus}
           textContentType={textContentType}
           keyboardType={keyboardType}

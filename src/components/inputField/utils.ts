@@ -31,6 +31,12 @@ export const validateFormFields = (field: string, value: string) => {
       }
       return true;
 
+    case 'address':
+      if (value.trim().length < 5) {
+        return false;
+      }
+      return true;
+
     default:
       break;
   }

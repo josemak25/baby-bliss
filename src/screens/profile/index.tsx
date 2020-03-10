@@ -5,7 +5,8 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
-  AsyncStorage
+  AsyncStorage,
+  ActivityIndicator
 } from 'react-native';
 import ContentLoader from 'react-native-skeleton-content';
 import Animated, { Easing } from 'react-native-reanimated';
@@ -19,8 +20,11 @@ import ResponsiveImage from '../../libs/responsiveImage';
 import boxShadow from '../../utils/boxShadows';
 import InputFiled from '../../components/inputField';
 import MailIcon from '../../../assets/icons/mail';
-import PrivacyIcon from '../../../assets/icons/privacy';
 import PhoneIcon from '../../../assets/icons/phone';
+import { useStoreContext } from '../../store';
+import { USER_TYPES, USER_ACTION_TYPES } from '../../store/user/types';
+import userActions from '../../store/user/actions';
+import showSnackbar from '../../components/UI/snackbar';
 
 import {
   StatusBar,
@@ -41,11 +45,9 @@ import {
   ProfileRecordsContainer,
   ProfileResultsContainer,
   RecordsTitle,
-  RecordsResult
+  RecordsResult,
+  Spinner
 } from './styles';
-import { useStoreContext } from '../../store';
-import userActions from '../../store/user/actions';
-import { USER_TYPES } from '../../store/user/types';
 
 const AnimatedOptionContainer = Animated.createAnimatedComponent(
   OptionContainer
@@ -64,8 +66,9 @@ const SCALED_WIDTH = applyScale(120);
 export default function ProfileScreen(props: ProfileScreenProp) {
   const { colors, fonts } = useThemeContext();
   const [{ userState }, dispatch] = useStoreContext();
+  const { user } = userState;
 
-  const [animation, setAnimation] = useState({
+  const [state, setState] = useState({
     animateContentHeightOne: new Animated.Value(applyScale(70)),
     animateContentHeightTwo: new Animated.Value(applyScale(70)),
     animateContentHeightThree: new Animated.Value(applyScale(70)),
@@ -82,43 +85,81 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       showInputsModal: true
     },
     hideContentLoader: true,
-    email: '',
-    password: '',
-    address: '',
-    phone: '',
-    selected: ''
+    selected: '',
+    userProfile: {
+      address: user ? user.address : '',
+      phone: user ? user.mobileNumber : ''
+    },
+    hasSubmitted: false
   });
 
   useEffect(() => {
     (async () => {
+      //update user profile in async storage  after user has finish updating profile
+      storeUserProfile();
       if (!userState.token) {
+        //remove this user profile from the async storage if the user has logged out of the app
         await AsyncStorage.removeItem('@USER_PROFILE_TESTS_');
         props.navigation.replace('SignInScreen');
       }
     })();
-  }, [userState.token]);
+  }, [userState.token, user]);
 
   const onHandleChange = (field: string) => (value: string) => {
-    setAnimation({ ...animation, [field]: value });
+    setState({
+      ...state,
+      userProfile: { ...state.userProfile, [field]: value }
+    });
+  };
+
+  const storeUserProfile = async () => {
+    const { token, user } = userState;
+    await AsyncStorage.setItem(
+      '@USER_PROFILE_TESTS_',
+      JSON.stringify({ token, payload: user })
+    );
+    if (state.hasSubmitted) {
+      showSnackbar(colors.POST_TIP_COLOR, 'Profile Updated Successfully!');
+    }
   };
 
   const handleSubmit = () => {
     // dispatch action to submit form
+    //make sure we don't submit completely empty form
+    for (const key in state.userProfile) {
+      if (!state.userProfile[key]) {
+        showSnackbar(colors.LIKE_POST_COLOR, 'Please all fields are required!');
+        return;
+      }
+    }
+    //submit our form
+    const { phone, ...rest } = state.userProfile;
+    userActions(USER_ACTION_TYPES.UPDATE_PROFILE)(dispatch, {
+      payload: {
+        mobileNumber: phone,
+        ...rest
+      },
+      token: userState.token,
+      id: user.id
+    });
+    setState({
+      ...state,
+      hasSubmitted: true
+    });
   };
 
   const handleImageLoading = (error: any) => {
     if (!error) {
-      setAnimation({ ...animation, hideContentLoader: false });
+      setState({ ...state, hideContentLoader: false });
     }
   };
 
   const handleLogout = async () => {
-    // handle user logout logic here
     dispatch({ type: USER_TYPES.LOGOUT });
   };
 
   const startEditAnimation = (buttonType: string) => {
-    setAnimation({ ...animation, selected: buttonType });
+    setState({ ...state, selected: buttonType });
 
     let animateInputs = 'animateInputsOne';
 
@@ -139,7 +180,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
         break;
     }
 
-    const { showInputsModal } = animation[animateInputs];
+    const { showInputsModal } = state[animateInputs];
 
     if (showInputsModal) {
       return showInputModal(animateInputs, buttonType);
@@ -148,20 +189,20 @@ export default function ProfileScreen(props: ProfileScreenProp) {
   };
 
   const closeInputModal = (animateInputs: string, buttonType: string) => {
-    const animationProps = animation[animateInputs];
+    const animationProps = state[animateInputs];
 
     Animated.timing(animationProps.value, {
       toValue: 0,
       duration: 50,
       easing: Easing.elastic(0.7)
     }).start(() => {
-      Animated.timing(animation[buttonType], {
+      Animated.timing(state[buttonType], {
         toValue: 70,
         duration: 500,
         easing: Easing.elastic(0.7)
       }).start(() => {
-        setAnimation({
-          ...animation,
+        setState({
+          ...state,
           [animateInputs]: { ...animationProps, showInputsModal: true }
         });
       });
@@ -169,9 +210,9 @@ export default function ProfileScreen(props: ProfileScreenProp) {
   };
 
   const showInputModal = (animateInputs: string, buttonType: string) => {
-    const animationProps = animation[animateInputs];
+    const animationProps = state[animateInputs];
 
-    Animated.timing(animation[buttonType], {
+    Animated.timing(state[buttonType], {
       toValue: buttonType === 'animateContentHeightThree' ? 220 : 150,
       duration: 500,
       easing: Easing.elastic(0.7)
@@ -181,8 +222,8 @@ export default function ProfileScreen(props: ProfileScreenProp) {
         duration: 50,
         easing: Easing.elastic(0.4)
       }).start(() => {
-        setAnimation({
-          ...animation,
+        setState({
+          ...state,
           [animateInputs]: { ...animationProps, showInputsModal: false }
         });
       });
@@ -224,7 +265,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
             />
             <ProfileImageContainer>
               <ContentLoader
-                isLoading={animation.hideContentLoader}
+                isLoading={state.hideContentLoader}
                 containerStyle={{
                   width: SCALED_WIDTH,
                   height: SCALED_WIDTH
@@ -238,7 +279,9 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                 ]}
               />
               <ResponsiveImage
-                imageUrl="https://bit.ly/38taXRW"
+                imageUrl={
+                  user && user.avatar ? user.avatar : 'https://bit.ly/38taXRW'
+                }
                 height={SCALED_WIDTH}
                 width={SCALED_WIDTH}
                 onLoad={handleImageLoading}
@@ -257,8 +300,8 @@ export default function ProfileScreen(props: ProfileScreenProp) {
               </IconContainer>
             </ProfileImageContainer>
             <ProfileDetailsContainer>
-              <UserName>Ethel Ford Ethel</UserName>
-              <UserEmail>ethel.ford@example.com</UserEmail>
+              <UserName>{user ? user.name : ''}</UserName>
+              <UserEmail>{user ? user.email : ''}</UserEmail>
             </ProfileDetailsContainer>
             <ProfileRecordsContainer>
               <ProfileResultsContainer>
@@ -293,7 +336,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                   >
                     <AnimatedOptionContainer
                       activeOpacity={0.8}
-                      style={{ height: animation.animateContentHeightOne }}
+                      style={{ height: state.animateContentHeightOne }}
                       onPress={() =>
                         startEditAnimation('animateContentHeightOne')
                       }
@@ -329,17 +372,17 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                       </OptionContainerHeader>
                       <AnimatedOptionContainerFooter
                         style={{
-                          opacity: animation.animateInputsOne.value,
-                          display: !animation.animateInputsOne.showInputsModal
+                          opacity: state.animateInputsOne.value,
+                          display: !state.animateInputsOne.showInputsModal
                             ? 'flex'
                             : 'none'
                         }}
                       >
                         <InputFiled
-                          placeholder="Ethel.ford@example.com"
+                          placeholder={user ? user.email : ''}
                           testID="email"
                           onChangeText={onHandleChange('email')}
-                          defaultValue={animation.email}
+                          defaultValue=""
                           textContentType="emailAddress"
                           keyboardType="email-address"
                           disable={true}
@@ -349,16 +392,16 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                         </InputFiled>
                       </AnimatedOptionContainerFooter>
                     </AnimatedOptionContainer>
-                    <AnimatedOptionContainer
+                    {/* <AnimatedOptionContainer
                       style={{
-                        height: animation.animateContentHeightTwo,
+                        height: state.animateContentHeightTwo,
                         borderWidth: 1,
                         borderLeftWidth: 0,
                         borderRightWidth: 0,
                         borderColor: colors.INACTIVE_ICON_COLOR
                       }}
-                    >
-                      <OptionContainerHeader
+                    > */}
+                    {/* <OptionContainerHeader
                         activeOpacity={0.8}
                         onPress={() =>
                           startEditAnimation('animateContentHeightTwo')
@@ -386,31 +429,31 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                           size={20}
                           color={colors.INACTIVE_ICON_COLOR}
                         />
-                      </OptionContainerHeader>
-                      <AnimatedOptionContainerFooter
+                      </OptionContainerHeader> */}
+                    {/* <AnimatedOptionContainerFooter
                         style={{
-                          opacity: animation.animateInputsTwo.value,
-                          display: !animation.animateInputsTwo.showInputsModal
+                          opacity: state.animateInputsTwo.value,
+                          display: !state.animateInputsTwo.showInputsModal
                             ? 'flex'
                             : 'none'
                         }}
-                      >
-                        <InputFiled
+                      > */}
+                    {/* <InputFiled
                           placeholder="Password"
                           testID="password"
                           onChangeText={onHandleChange('password')}
-                          defaultValue={animation.password}
+                          defaultValue={state.userProfile.password}
                           secureTextEntry={true}
                           returnKeyType="done"
                           activeColor={colors.BG_LIGHT_COLOR}
                           style={{ borderRadius: 5 }}
                         >
-                          <PrivacyIcon />
-                        </InputFiled>
-                      </AnimatedOptionContainerFooter>
-                    </AnimatedOptionContainer>
+                          <PrivacyIcon /> */}
+                    {/* </InputFiled> */}
+                    {/* </AnimatedOptionContainerFooter> */}
+                    {/* </AnimatedOptionContainer> */}
                     <AnimatedOptionContainer
-                      style={{ height: animation.animateContentHeightThree }}
+                      style={{ height: state.animateContentHeightThree }}
                     >
                       <OptionContainerHeader
                         activeOpacity={0.8}
@@ -442,8 +485,8 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                       </OptionContainerHeader>
                       <AnimatedOptionContainerFooter
                         style={{
-                          opacity: animation.animateInputsThree.value,
-                          display: !animation.animateInputsThree.showInputsModal
+                          opacity: state.animateInputsThree.value,
+                          display: !state.animateInputsThree.showInputsModal
                             ? 'flex'
                             : 'none'
                         }}
@@ -452,11 +495,11 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                           placeholder="Phone"
                           testID="phone"
                           onChangeText={onHandleChange('phone')}
-                          defaultValue={animation.phone}
-                          secureTextEntry={true}
+                          defaultValue={state.userProfile.phone}
                           returnKeyType="done"
                           activeColor={colors.BG_LIGHT_COLOR}
                           style={{ borderRadius: 5 }}
+                          ignoreValidation={true}
                         >
                           <PhoneIcon />
                         </InputFiled>
@@ -464,11 +507,11 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                           placeholder="Address"
                           testID="address"
                           onChangeText={onHandleChange('address')}
-                          defaultValue={animation.address}
-                          secureTextEntry={true}
+                          defaultValue={state.userProfile.address}
                           returnKeyType="done"
                           activeColor={colors.BG_LIGHT_COLOR}
                           style={{ borderRadius: 5 }}
+                          ignoreValidation={true}
                         >
                           <Entypo name="address" size={20} />
                         </InputFiled>
@@ -476,7 +519,8 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                     </AnimatedOptionContainer>
                   </AccountSettingContainer>
                   <Button
-                    title="update"
+                    title={`${userState.isLoading ? '' : 'update'}`}
+                    disabled={userState.isLoading}
                     buttonStyle={{
                       backgroundColor: colors.FLOATING_MESSAGE_COLOR,
                       marginTop: 20
@@ -487,6 +531,14 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                     }}
                     onPress={handleSubmit}
                   />
+                  {userState.isLoading && (
+                    <Spinner>
+                      <ActivityIndicator
+                        size="small"
+                        color={colors.BG_LIGHT_COLOR}
+                      />
+                    </Spinner>
+                  )}
                 </ScrollViewContainer>
               </Container>
             </ScrollView>
