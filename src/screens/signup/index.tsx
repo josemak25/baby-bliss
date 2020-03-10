@@ -8,7 +8,7 @@ import {
 import { StackActions, NavigationActions } from 'react-navigation';
 
 import { useThemeContext } from '../../theme';
-import { NavigationInterface } from '../../constants';
+import { NavigationInterface, STORE_USER_PROFILE } from '../../constants';
 
 import Button from '../../components/button';
 import InputFiled from '../../components/inputField';
@@ -66,7 +66,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
 
   const storeUserProfile = async () => {
     await AsyncStorage.setItem(
-      '@USER_PROFILE_TESTS_',
+      STORE_USER_PROFILE,
       JSON.stringify({
         payload: userState.user,
         token: userState.token
