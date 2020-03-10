@@ -34,8 +34,11 @@ export default function postReducer(
     }
 
     case POST_TYPES.LIKE_OR_UNLIKE_POST: {
-      state.posts[action.payload.postIndex].noOfLikes +=
-        action.payload.likeCount;
+      const oldNoOfLikes = state.posts[action.payload.postIndex].noOfLikes;
+      const newNoOfLikes = oldNoOfLikes + action.payload.likeCount;
+
+      state.posts[action.payload.postIndex].noOfLikes =
+        newNoOfLikes < 0 ? 1 : newNoOfLikes;
 
       return {
         ...state,
@@ -53,6 +56,7 @@ export default function postReducer(
         comments: [...action.payload]
       };
     }
+
     case POST_TYPES.LIKE_COMMENT: {
       const { userId, commentIndex } = action.payload;
       state.comments[commentIndex].likes.push(userId);

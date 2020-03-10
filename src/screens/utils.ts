@@ -32,3 +32,31 @@ export const abbreviateNumber = (value: any, decPlaces = 2) => {
 
   return value;
 };
+
+declare global {
+  interface FormDataValue {
+    uri: string;
+    name: string;
+    type: string;
+  }
+
+  interface FormData {
+    append(name: string, value: FormDataValue, fileName?: string): void;
+    set(name: string, value: FormDataValue, fileName?: string): void;
+  }
+}
+export const createFormData = (photo: {
+  fileName: string;
+  type: string;
+  uri: string;
+}) => {
+  const data = new FormData();
+
+  data.append('images', {
+    name: photo.fileName,
+    type: photo.type,
+    uri: photo.uri
+  });
+
+  return data;
+};

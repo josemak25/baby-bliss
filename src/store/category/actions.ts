@@ -75,14 +75,12 @@ export default function postCategoryActions(type: string) {
       case CATEGORY_ACTION_TYPES.POST_QUESTION:
         try {
           dispatch(getPostCategoryStarted());
-          console.log('POST_QUESTION', payload);
           const request = await API.post({
             path: `/posts`,
             payload: payload.userQuestion,
             authToken: payload.authToken
           });
           const response: LikeOrUnlikePostResponse = await request.json();
-          console.log(response);
 
           if (response.statusCode === 200) {
             return dispatch(postQuestion());

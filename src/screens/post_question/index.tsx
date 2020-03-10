@@ -20,6 +20,7 @@ import { useStoreContext } from '../../store';
 import postCategoryActions from '../../store/category/actions';
 import { CATEGORY_ACTION_TYPES } from '../../store/category/types';
 import showSnackbar from '../../components/UI/snackbar';
+import { createFormData } from '../utils';
 
 import {
   Container,
@@ -47,27 +48,38 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
   const { colors, fonts } = useThemeContext();
   const [{ userState, categoryState }, dispatch] = useStoreContext();
 
-  const [question, setQuestion] = useState({
-    topic: '',
-    description: '',
-    category: 'First Trimester',
-    categoryId: '',
-    image: ''
+  const [state, setState] = useState({
+    question: {
+      topic: '',
+      description: '',
+      category: 'First Trimester',
+      categoryId: '',
+      image: null
+    },
+    hasSubmitted: false
   });
 
   useEffect(() => {
     if (categoryState.error && !categoryState.isLoading) {
       showSnackbar('#F42850', categoryState.error);
     }
-  }, [categoryState.error, categoryState.isLoading]);
+    if (
+      state.hasSubmitted &&
+      !categoryState.error &&
+      !categoryState.isLoading
+    ) {
+      showSnackbar(colors.POST_TIP_COLOR, 'Profile updated successfully!');
+    }
+  }, [categoryState.error, categoryState.isLoading, state.hasSubmitted]);
 
   const handleTextChange = (key: string, value: string, index: number) => {
-    const categoryId = index ? postCategories[index]._id : question.categoryId;
+    const categoryId = index
+      ? postCategories[index]._id
+      : state.question.categoryId;
 
-    setQuestion({
-      ...question,
-      [key]: value,
-      categoryId
+    setState({
+      ...state,
+      question: { ...state.question, [key]: value, categoryId }
     });
   };
 
@@ -82,13 +94,13 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
 
     if (response.cancelled === true) return;
 
-    setQuestion({ ...question, image: response.uri });
+    setState({ ...state, question: { ...state.question, image: response } });
   };
 
   const handleSubmit = () => {
     //validate the form  for empty fields before sending this form.
-    for (let key in question) {
-      if (!question[key]) {
+    for (let key in state.question) {
+      if (!state.question[key]) {
         showSnackbar(
           colors.LIKE_POST_COLOR,
           'Please all entries are required!'
@@ -98,14 +110,21 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
     }
 
     const userQuestion = {
-      topic: question.topic,
-      description: question.description,
-      category: question.categoryId,
-      images: [question.image]
+      topic: state.question.topic,
+      description: state.question.description,
+      category: state.question.categoryId
     };
+    const images = createFormData(state.question.image);
+
     postCategoryActions(CATEGORY_ACTION_TYPES.POST_QUESTION)(dispatch, {
+      images,
       userQuestion,
       authToken: userState.token
+    });
+
+    setState({
+      ...state,
+      hasSubmitted: true
     });
   };
 
@@ -145,7 +164,7 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                   onValueChange={(value, key) =>
                     handleTextChange('category', value, key)
                   }
-                  value={question.category}
+                  value={state.question.category}
                   items={postCategories.map(({ title, id }) => ({
                     label: title,
                     value: title,
@@ -177,10 +196,10 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                   />
                 </Fragment>
               </SelectImageContainer>
-              {question.image ? (
+              {state.question.image ? (
                 <SelectedImageContainer>
                   <ResponsiveImage
-                    imageUrl={question.image}
+                    imageUrl={state.question.image.uri}
                     width={350}
                     height={200}
                     style={{ borderRadius: 5 }}

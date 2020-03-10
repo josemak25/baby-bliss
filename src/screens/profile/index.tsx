@@ -11,7 +11,7 @@ import {
 import ContentLoader from 'react-native-skeleton-content';
 import Animated, { Easing } from 'react-native-reanimated';
 import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { NavigationInterface } from '../../constants';
+import { NavigationInterface, STORE_USER_PROFILE } from '../../constants';
 import { useThemeContext } from '../../theme';
 
 import Button from '../../components/button';
@@ -25,6 +25,7 @@ import { useStoreContext } from '../../store';
 import { USER_TYPES, USER_ACTION_TYPES } from '../../store/user/types';
 import userActions from '../../store/user/actions';
 import showSnackbar from '../../components/UI/snackbar';
+import API from '../../lib/api';
 
 import {
   StatusBar,
@@ -90,7 +91,9 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       address: user ? user.address : '',
       phone: user ? user.mobileNumber : ''
     },
-    hasSubmitted: false
+    hasSubmitted: false,
+    noOfComments: 0,
+    noOfPosts: 0
   });
 
   useEffect(() => {
@@ -99,9 +102,13 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       storeUserProfile();
       if (!userState.token) {
         //remove this user profile from the async storage if the user has logged out of the app
-        await AsyncStorage.removeItem('@USER_PROFILE_TESTS_');
+        await AsyncStorage.removeItem(STORE_USER_PROFILE);
         props.navigation.replace('SignInScreen');
       }
+    })();
+    //fetch user data from the server
+    (async () => {
+      if (userState.token) await fetchProfile();
     })();
   }, [userState.token, user]);
 
@@ -115,11 +122,11 @@ export default function ProfileScreen(props: ProfileScreenProp) {
   const storeUserProfile = async () => {
     const { token, user } = userState;
     await AsyncStorage.setItem(
-      '@USER_PROFILE_TESTS_',
+      STORE_USER_PROFILE,
       JSON.stringify({ token, payload: user })
     );
     if (state.hasSubmitted) {
-      showSnackbar(colors.POST_TIP_COLOR, 'Profile Updated Successfully!');
+      showSnackbar(colors.POST_TIP_COLOR, 'Profile updated successfully!');
     }
   };
 
@@ -157,6 +164,24 @@ export default function ProfileScreen(props: ProfileScreenProp) {
   const handleLogout = async () => {
     dispatch({ type: USER_TYPES.LOGOUT });
   };
+
+  async function fetchProfile() {
+    try {
+      const request = await API.get(`/users/${user.id}`, userState.token);
+
+      const response: any = await request.json();
+
+      if (response.statusCode === 200) {
+        const { noOfComments, noOfPosts } = response.payload;
+
+        return setState({
+          ...state,
+          noOfComments,
+          noOfPosts
+        });
+      }
+    } catch (error) {}
+  }
 
   const startEditAnimation = (buttonType: string) => {
     setState({ ...state, selected: buttonType });
@@ -303,11 +328,11 @@ export default function ProfileScreen(props: ProfileScreenProp) {
             </ProfileDetailsContainer>
             <ProfileRecordsContainer>
               <ProfileResultsContainer>
-                <RecordsResult>12</RecordsResult>
+                <RecordsResult>{state.noOfPosts}</RecordsResult>
                 <RecordsTitle>posts</RecordsTitle>
               </ProfileResultsContainer>
               <ProfileResultsContainer>
-                <RecordsResult>63</RecordsResult>
+                <RecordsResult>{state.noOfComments}</RecordsResult>
                 <RecordsTitle>comments</RecordsTitle>
               </ProfileResultsContainer>
             </ProfileRecordsContainer>

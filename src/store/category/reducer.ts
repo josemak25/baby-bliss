@@ -46,7 +46,11 @@ export default function PostCategoryReducer(
 
     case POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_USER_POST: {
       const posts = state.communityPosts[action.payload.categoryId];
-      posts[action.payload.postIndex].noOfLikes += action.payload.likeCount;
+      const oldNoOfLikes = posts[action.payload.postIndex].noOfLikes;
+      const newNoOfLikes = oldNoOfLikes + action.payload.likeCount;
+
+      posts[action.payload.postIndex].noOfLikes =
+        newNoOfLikes < 0 ? 1 : newNoOfLikes;
 
       return {
         ...state,
