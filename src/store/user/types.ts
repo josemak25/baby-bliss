@@ -14,7 +14,8 @@ export enum USER_TYPES {
   LOAD_FROM_STORE = 'LOAD_FROM_STORE',
   COMPLETE_PROFILE = 'COMPLETE_PROFILE',
   LOGOUT = 'LOGOUT',
-  UPDATE_PROFILE = 'UPDATE_PROFILE'
+  UPDATE_PROFILE = 'UPDATE_PROFILE',
+  FORGOT_PASSWORD = 'FORGOT_PASSWORD'
 }
 
 // POSTS ACTION TYPES
@@ -22,7 +23,8 @@ export enum USER_ACTION_TYPES {
   LOGIN_USER = 'LOGIN_USER',
   REGISTER_USER = 'REGISTER_USER',
   COMPLETE_PROFILE = 'COMPLETE_PROFILE',
-  UPDATE_PROFILE = 'UPDATE_PROFILE'
+  UPDATE_PROFILE = 'UPDATE_PROFILE',
+  FORGOT_PASSWORD = 'FORGOT_PASSWORD'
 }
 
 export interface UserInterface {
@@ -84,4 +86,7 @@ export type UserAction =
   | { type: USER_TYPES.LOAD_FROM_STORE; payload: UserStoredProfileInterface }
   | { type: USER_TYPES.ERROR; payload: any }
   | { type: USER_TYPES.LOGOUT }
+  | {
+      type: USER_TYPES.FORGOT_PASSWORD;
+    }
   | { type: USER_TYPES.UPDATE_PROFILE; payload: UserResponseInterface };

@@ -56,3 +56,9 @@ export const FormField = styled.View`
   flex: 1;
   padding: 0 20px;
 `;
+
+export const Spinner = styled.View`
+  position: absolute;
+  align-self: center;
+  bottom: 145px;
+`;

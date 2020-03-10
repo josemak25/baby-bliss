@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LottieView from 'lottie-react-native';
 import { useThemeContext } from '../../theme';
 import { NavigationInterface } from '../../constants';
@@ -14,11 +14,18 @@ import {
   TitleContainer,
   FormField,
   KeyboardAvoidingView,
-  SafeAreaView
+  SafeAreaView,
+  Spinner
 } from './styles';
 
 import MailIcon from '../../../assets/icons/mail';
 import Button from '../../components/button';
+import userActions from '../../store/user/actions';
+import { USER_ACTION_TYPES } from '../../store/user/types';
+import { useStoreContext } from '../../store';
+import showSnackbar from '../../components/UI/snackbar';
+import { validateFormFields } from '../../components/inputField/utils';
+import { ActivityIndicator } from 'react-native';
 
 interface SplashScreenProp extends NavigationInterface {
   testID?: string;
@@ -26,13 +33,25 @@ interface SplashScreenProp extends NavigationInterface {
 
 export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
   const { colors, fonts } = useThemeContext();
+  const [{ userState }, dispatch] = useStoreContext();
 
   const [email, setEmail] = useState('');
 
   const onHandleChange = (value: string) => setEmail(value);
 
+  useEffect(() => {
+    if (userState.errorMessage) {
+      showSnackbar(colors.LIKE_POST_COLOR, userState.errorMessage);
+      return;
+    }
+  }, [userState]);
+
   const handleSubmit = () => {
-    // dispatch action to submit form
+    if (!validateFormFields('email', email)) {
+      showSnackbar(colors.LIKE_POST_COLOR, 'Please enter a valid email');
+      return;
+    }
+    userActions(USER_ACTION_TYPES.FORGOT_PASSWORD)(dispatch, { email });
 
     // on success navigate to reset password screen
     navigation.navigate('ResetPasswordScreen');
@@ -87,9 +106,14 @@ export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
                 fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
                 fontSize: fonts.MEDIUM_SIZE - 1
               }}
-              title="reset password"
+              title={`${userState.isLoading ? '' : 'reset password'}`}
               onPress={handleSubmit}
             />
+            {userState.isLoading && (
+              <Spinner>
+                <ActivityIndicator size="small" color={colors.BG_LIGHT_COLOR} />
+              </Spinner>
+            )}
           </FormField>
         </Container>
       </KeyboardAvoidingView>

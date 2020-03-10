@@ -40,29 +40,32 @@ import {
 } from './styles';
 
 export default function SignUp({ navigation }: NavigationInterface) {
-  const [values, setValues] = useState({
-    user: { name: '', username: '', email: '', mobileNumber: '', password: '' }
+  const [state, setState] = useState({
+    user: { name: '', username: '', email: '', mobileNumber: '', password: '' },
+    hasSubmitted: false
   });
 
   const { colors, fonts } = useThemeContext();
   const [{ userState }, dispatch] = useStoreContext();
 
   const onHandleChange = (field: string) => (value: string) => {
-    setValues({
-      ...values,
-      user: { ...values.user, [field]: value }
+    setState({
+      ...state,
+      user: { ...state.user, [field]: value }
     });
   };
 
   useEffect(() => {
-    if (!userState.token) {
+    if (!userState.token && state.hasSubmitted) {
       showSnackbar(colors.LIKE_POST_COLOR, userState.errorMessage);
       return;
     }
     (async () => {
-      await storeUserProfile();
+      if (state.hasSubmitted) {
+        await storeUserProfile();
+      }
     })();
-  }, [userState]);
+  }, [userState.errorMessage, userState.token]);
 
   const storeUserProfile = async () => {
     await AsyncStorage.setItem(
@@ -72,7 +75,6 @@ export default function SignUp({ navigation }: NavigationInterface) {
         token: userState.token
       })
     );
-
     postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, userState.token);
 
     const goToProfileSetup = StackActions.reset({
@@ -86,20 +88,24 @@ export default function SignUp({ navigation }: NavigationInterface) {
   const handleSubmit = () => {
     let phoneNumberCase = undefined;
     //validate the form  for empty fields before sending this form.
-    for (let key in values.user) {
-      if (!values.user[key]) {
+    for (let key in state.user) {
+      if (!state.user[key]) {
         showSnackbar(colors.LIKE_POST_COLOR, 'Please all fields are required!');
         return;
       }
       phoneNumberCase = key === 'mobileNumber' ? 'mobileNumber' : undefined;
       key = key === 'mobileNumber' ? 'phone' : key;
-      //validate the form fields for incorrect values before sending this form.
-      if (!validateFormFields(key, values.user[phoneNumberCase || key])) {
+      //validate the form fields for incorrect state before sending this form.
+      if (!validateFormFields(key, state.user[phoneNumberCase || key])) {
         showSnackbar(colors.LIKE_POST_COLOR, `Please enter a valid ${key}`);
         return;
       }
     }
-    userActions(USER_ACTION_TYPES.REGISTER_USER)(dispatch, values.user);
+    userActions(USER_ACTION_TYPES.REGISTER_USER)(dispatch, state.user);
+    setState({
+      ...state,
+      hasSubmitted: true
+    });
   };
 
   return (
@@ -120,7 +126,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
               placeholder="Name"
               testID="Name"
               onChangeText={onHandleChange('name')}
-              defaultValue={values.user.name}
+              defaultValue={state.user.name}
               textContentType="name"
               style={{
                 borderTopStartRadius: 10,
@@ -138,7 +144,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
               placeholder="Username"
               testID="userName"
               onChangeText={onHandleChange('username')}
-              defaultValue={values.user.username}
+              defaultValue={state.user.username}
               textContentType="name"
             >
               <UserIcon
@@ -152,7 +158,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
               placeholder="Email"
               testID="email"
               onChangeText={onHandleChange('email')}
-              defaultValue={values.user.email}
+              defaultValue={state.user.email}
               textContentType="emailAddress"
               keyboardType="email-address"
             >
@@ -162,7 +168,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
               placeholder="Phone"
               testID="phone"
               onChangeText={onHandleChange('mobileNumber')}
-              defaultValue={values.user.mobileNumber}
+              defaultValue={state.user.mobileNumber}
               textContentType="telephoneNumber"
               keyboardType="phone-pad"
             >
@@ -172,7 +178,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
               placeholder="Password"
               testID="password"
               onChangeText={onHandleChange('password')}
-              defaultValue={values.user.password}
+              defaultValue={state.user.password}
               secureTextEntry={true}
               returnKeyType="done"
               style={{

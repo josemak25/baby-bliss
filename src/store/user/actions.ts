@@ -24,7 +24,11 @@ const profileSetupSuccess = (payload: UserResponseInterface): UserAction => ({
   payload
 });
 
-const onError = (error: UserResponseInterface): UserAction => ({
+const forgotPasswordSuccess = (): UserAction => ({
+  type: USER_TYPES.FORGOT_PASSWORD
+});
+
+const onError = (error: string): UserAction => ({
   type: USER_TYPES.ERROR,
   payload: error
 });
@@ -46,7 +50,8 @@ export default function userActions(type: string) {
           if (response.statusCode === 200) {
             return dispatch(loginSuccess(response));
           }
-          dispatch(onError(response));
+
+          dispatch(onError(response.message));
         } catch (error) {
           dispatch(onError(error));
         }
@@ -65,7 +70,7 @@ export default function userActions(type: string) {
           if (response.statusCode === 200) {
             return dispatch(registrationSuccess(response));
           }
-          dispatch(onError(response));
+          dispatch(onError(response.message));
         } catch (error) {
           dispatch(onError(error));
         }
@@ -83,13 +88,12 @@ export default function userActions(type: string) {
           });
 
           const response: UserResponseInterface = await request.json();
-          console.log(response);
 
           if (response.statusCode === 200) {
             return dispatch(profileSetupSuccess(response));
           }
 
-          dispatch(onError(response));
+          dispatch(onError(response.message));
         } catch (error) {
           dispatch(onError(error));
         }
@@ -113,7 +117,30 @@ export default function userActions(type: string) {
             return dispatch(profileSetupSuccess(response));
           }
 
-          dispatch(onError(response));
+          dispatch(onError(response.message));
+        } catch (error) {
+          dispatch(onError(error));
+        }
+        break;
+
+      case USER_ACTION_TYPES.FORGOT_PASSWORD:
+        try {
+          dispatch(actionStarted());
+
+          const request = await API.post({
+            path: '/auth/forgot-password',
+            payload,
+            authToken: null
+          });
+          const response: {
+            statusCode: number;
+            message: string;
+          } = await request.json();
+
+          if (response.statusCode === 200) {
+            return dispatch(forgotPasswordSuccess());
+          }
+          dispatch(onError(response.message));
         } catch (error) {
           dispatch(onError(error));
         }

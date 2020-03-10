@@ -56,14 +56,6 @@ export default function userReducer(
       };
     }
 
-    case USER_TYPES.ERROR: {
-      return {
-        ...state,
-        isLoading: false,
-        errorMessage: action.payload.message
-      };
-    }
-
     case USER_TYPES.LOGOUT: {
       return {
         ...state,
@@ -71,6 +63,21 @@ export default function userReducer(
         isLoading: false,
         user: null,
         token: null
+      };
+    }
+
+    case USER_TYPES.FORGOT_PASSWORD: {
+      return {
+        ...state,
+        isLoading: false
+      };
+    }
+
+    case USER_TYPES.ERROR: {
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: action.payload
       };
     }
 
