@@ -52,8 +52,6 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
   };
 
   const handleDate = (date: string) => {
-    console.log({ date });
-
     handleChange({ key: 'dueDateStart', data: date });
     setTimeout(handleNavigation, 500);
   };
