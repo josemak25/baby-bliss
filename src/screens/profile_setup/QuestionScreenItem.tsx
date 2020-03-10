@@ -35,7 +35,6 @@ export default function QuestionScreenItem({
   const handleNavigation = () => navigation.snapToNext();
 
   const handleChange = ({ data, key }: handleDataType) => {
-    console.log(data, key);
     if (Array.isArray(data)) {
       setProfile(prev => ({
         ...prev,
