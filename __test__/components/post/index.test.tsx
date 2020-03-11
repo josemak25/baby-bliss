@@ -12,7 +12,8 @@ jest.mock('react-native-reanimated', () =>
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
 
 const mountComponent = () => {
-  const props: any = createNavigationTestProps();
+  const handleLikePost = jest.fn();
+  const props: any = createNavigationTestProps({ handleLikePost });
   const renderedProps = render(
     <Theme>
       <Post testID="post-container" {...post} postIndex={0} {...props} />

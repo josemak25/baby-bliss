@@ -4,9 +4,16 @@ import Theme from '../../../src/theme';
 import Message from '../../../src/components/message';
 
 const mountComponent = () => {
+  const messageProps = {
+    dispatchMessage: jest.fn(),
+    setNewMessage: jest.fn(),
+    focus: false,
+    message: 'hello world'
+  };
+
   const renderedProps = render(
     <Theme>
-      <Message testID="message-container" />
+      <Message testID="message-container" {...messageProps} />
     </Theme>
   );
   return { ...renderedProps };

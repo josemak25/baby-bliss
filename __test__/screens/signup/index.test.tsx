@@ -3,15 +3,18 @@ import { fireEvent, render } from '@testing-library/react-native';
 import Theme from '../../../src/theme';
 import { createNavigationTestProps } from '../../../src/constants';
 import SignUpScreen from '../../../src/screens/signup';
+import { StoreProvider } from '../../../src/store';
 
 const mountComponent = () => {
   const onHandleChange = jest.fn(() => {});
 
   const props: any = createNavigationTestProps();
   const renderedProps = render(
-    <Theme>
-      <SignUpScreen {...props} />
-    </Theme>
+    <StoreProvider>
+      <Theme>
+        <SignUpScreen {...props} />
+      </Theme>
+    </StoreProvider>
   );
   return {
     props,
@@ -44,13 +47,9 @@ describe(' TEST GET_SIGNUP SCREEN (<SignUpScreen/>)', () => {
   });
 
   test('That the sigUp button was pressed', () => {
-    const { props, queryByTestId } = mountComponent();
+    const { queryByTestId } = mountComponent();
     const signUpButton = queryByTestId('submitButton');
     expect(signUpButton).toBeTruthy();
-    fireEvent.press(queryByTestId('submitButton'));
-    expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
-    expect(props.navigation.navigate).toHaveBeenCalledWith(
-      'ProfileSetupScreen'
-    );
+    fireEvent.press(signUpButton);
   });
 });

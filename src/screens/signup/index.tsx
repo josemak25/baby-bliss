@@ -75,7 +75,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
         token: userState.token
       })
     );
-    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, userState.token);
+    postsActions(POST_ACTION_TYPES.LOAD_BLOG_POSTS)(dispatch, userState.token);
 
     const goToProfileSetup = StackActions.reset({
       index: 0,
