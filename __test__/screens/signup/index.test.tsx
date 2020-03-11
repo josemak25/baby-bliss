@@ -5,6 +5,10 @@ import { createNavigationTestProps } from '../../../src/constants';
 import SignUpScreen from '../../../src/screens/signup';
 import { StoreProvider } from '../../../src/store';
 
+jest.mock('react-native-dotenv', () => {
+  return 'BABY_BLISS_BASE_URI';
+});
+
 const mountComponent = () => {
   const onHandleChange = jest.fn(() => {});
 
