@@ -52,7 +52,8 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
     activateColor: false,
     isValid: true,
     canShowIsValid: false,
-    isTouched: false
+    isTouched: false,
+    validationMessage: ''
   });
 
   useEffect(() => {
@@ -80,7 +81,7 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
     setInputState({
       ...inputState,
       activateColor: false,
-      canShowIsValid: !inputState.isValid
+      canShowIsValid: false
     });
   };
 

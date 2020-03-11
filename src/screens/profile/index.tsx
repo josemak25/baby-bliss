@@ -50,6 +50,7 @@ import {
   RecordsResult,
   Spinner
 } from './styles';
+import { validateFormFields } from '../../components/inputField/utils';
 
 const AnimatedOptionContainer = Animated.createAnimatedComponent(
   OptionContainer
@@ -136,8 +137,12 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     // dispatch action to submit form
     //make sure we don't submit completely empty form
     for (const key in state.userProfile) {
-      if (!state.userProfile[key]) {
-        showSnackbar(colors.LIKE_POST_COLOR, 'Please all fields are required!');
+      //validate the phone number before sending this form.
+      if (!validateFormFields('phone', state.userProfile.phone)) {
+        showSnackbar(
+          colors.LIKE_POST_COLOR,
+          `Please enter a valid phone number!`
+        );
         return;
       }
     }
