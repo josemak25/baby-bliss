@@ -19,7 +19,7 @@ jobs:
     steps:
       - checkout
 
-      - run: export 'BABY_BLISS_BASE_URI = "BABY_BLISS_BASE_URI"' >> $BASH_ENV
+      - run: echo 'export BABY_BLISS_BASE_URI = "BABY_BLISS_BASE_URI"' >> $BASH_ENV
 
       # Download and cache dependencies
       - restore_cache:
