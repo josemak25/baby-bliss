@@ -358,7 +358,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
             >
               <Container testID={props.testID}>
                 <ScrollViewContainer>
-                  <AccountSettingTitle>account setting</AccountSettingTitle>
+                  <AccountSettingTitle>Account setting</AccountSettingTitle>
                   <AccountSettingContainer
                     style={[
                       boxShadow({
@@ -400,7 +400,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                             color={colors.BG_LIGHT_COLOR}
                           />
                         </IconContainer>
-                        <OptionTitle>update email address</OptionTitle>
+                        <OptionTitle>Email address</OptionTitle>
                         <Ionicons
                           name="ios-arrow-down"
                           size={20}
@@ -453,7 +453,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                             color={colors.BG_LIGHT_COLOR}
                           />
                         </IconContainer>
-                        <OptionTitle>update my details</OptionTitle>
+                        <OptionTitle>Update my details</OptionTitle>
                         <Ionicons
                           name="ios-arrow-down"
                           size={20}
