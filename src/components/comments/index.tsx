@@ -6,7 +6,7 @@ import { useThemeContext } from '../../theme';
 import ResponsiveImage from '../../libs/responsiveImage';
 import LoveIcon from '../../../assets/icons/love';
 import { CommentInterface, POST_ACTION_TYPES } from '../../store/posts/types';
-import { simpleDateFormatter } from '../../lib/timeSince';
+import { timeSince } from '../../lib/timeSince';
 
 import {
   Container,
@@ -53,7 +53,7 @@ export default function Comment(props: CommentProps) {
     avatar
   } = props;
 
-  const commentTime = simpleDateFormatter(comment.createdAt);
+  const commentTime = timeSince(comment.createdAt);
 
   const handleCommentReply = () => {
     handleOnFocusRequest(POST_ACTION_TYPES.REPLY_COMMENT, comment._id);
