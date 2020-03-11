@@ -1,4 +1,4 @@
-export const timeSince = (date: Date) => {
+export default (date: Date) => {
   if (!date) return undefined;
 
   const timestamp = new Date(date);

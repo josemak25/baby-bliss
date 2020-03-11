@@ -16,7 +16,7 @@ import Card from '../card';
 import CommentsIcon from '../../../assets/icons/comments';
 
 import { PostInterface } from '../../store/posts/types';
-import { simpleDateFormatter } from '../comments/utils';
+import timeSince from '../../lib/timeSince';
 
 import {
   Container,
@@ -160,9 +160,7 @@ export default function UserPost(props: UserPostProps) {
               {!animation.hideContentLoader ? name : null}
             </PostUserName>
             <PostTime>
-              {!animation.hideContentLoader
-                ? simpleDateFormatter(createdAt)
-                : null}
+              {!animation.hideContentLoader ? timeSince(createdAt) : null}
             </PostTime>
           </PostHeader>
         </ContentLoaderContainer>
