@@ -6,7 +6,7 @@ import { useThemeContext } from '../../theme';
 import ResponsiveImage from '../../libs/responsiveImage';
 import LoveIcon from '../../../assets/icons/love';
 import { CommentInterface, POST_ACTION_TYPES } from '../../store/posts/types';
-import { simpleDateFormatter } from './utils';
+import { simpleDateFormatter } from '../../lib/timeSince';
 
 import {
   Container,
@@ -39,8 +39,9 @@ type CommentProps = {
 export default function Comment(props: CommentProps) {
   const { colors, fonts } = useThemeContext();
 
-  const [state] = useState({
-    animateImage: new Animated.Value(0)
+  const [state, setState] = useState({
+    animateImage: new Animated.Value(0),
+    likedComment: false
   });
 
   const {
@@ -59,13 +60,19 @@ export default function Comment(props: CommentProps) {
   };
 
   const startLikeAnimation = (id: string) => {
-    state.animateImage.setValue(0);
-    Animated.timing(state.animateImage, {
-      toValue: 1,
-      duration: 1300,
-      easing: Easing.linear,
-      useNativeDriver: true
-    }).start(() => handleLikeComment(id, commentIndex));
+    setState({ ...state, likedComment: !state.likedComment });
+
+    if (!state.likedComment) {
+      state.animateImage.setValue(0);
+      return Animated.timing(state.animateImage, {
+        toValue: 1,
+        duration: 1300,
+        easing: Easing.linear,
+        useNativeDriver: true
+      }).start(() => handleLikeComment(id, commentIndex));
+    }
+
+    handleLikeComment(id, commentIndex);
   };
 
   return (
@@ -110,11 +117,7 @@ export default function Comment(props: CommentProps) {
           >
             <LikeContainer>
               <LottieView
-                source={
-                  comment.user.avatar
-                    ? comment.user.avatar
-                    : require('../../../assets/animations/twitter-heart.json')
-                }
+                source={require('../../../assets/animations/twitter-heart.json')}
                 style={{
                   height: 150,
                   width: 150,
@@ -124,12 +127,13 @@ export default function Comment(props: CommentProps) {
                 }}
                 progress={state.animateImage}
               />
-
-              <LoveIcon
-                style={{ position: 'relative', right: -8, top: 8 }}
-                width="60%"
-                height="60%"
-              />
+              {!state.likedComment && (
+                <LoveIcon
+                  style={{ position: 'relative', right: -8, top: 8 }}
+                  width="60%"
+                  height="60%"
+                />
+              )}
             </LikeContainer>
           </TouchableWithoutFeedback>
           <LikeComment>like</LikeComment>
