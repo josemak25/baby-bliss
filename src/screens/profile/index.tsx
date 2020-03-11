@@ -8,7 +8,6 @@ import {
   AsyncStorage,
   ActivityIndicator
 } from 'react-native';
-import ContentLoader from 'react-native-skeleton-content';
 import Animated, { Easing } from 'react-native-reanimated';
 import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
@@ -27,6 +26,7 @@ import { USER_TYPES, USER_ACTION_TYPES } from '../../store/user/types';
 import userActions from '../../store/user/actions';
 import showSnackbar from '../../components/UI/snackbar';
 import API from '../../lib/api';
+import { createFormData } from '../utils';
 
 import {
   StatusBar,
@@ -50,7 +50,6 @@ import {
   RecordsResult,
   Spinner
 } from './styles';
-import { createFormData } from '../utils';
 
 const AnimatedOptionContainer = Animated.createAnimatedComponent(
   OptionContainer
@@ -87,7 +86,6 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       value: new Animated.Value(0),
       showInputsModal: true
     },
-    hideContentLoader: true,
     selected: '',
     userProfile: {
       address: user ? user.address : '',
@@ -162,12 +160,6 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     });
   };
 
-  const handleImageLoading = (error: any) => {
-    if (!error) {
-      setState({ ...state, hideContentLoader: false });
-    }
-  };
-
   const handleLogout = async () => {
     dispatch({ type: USER_TYPES.LOGOUT });
     setState({
@@ -178,7 +170,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
 
   async function fetchProfile() {
     try {
-      const request = await API.get(`/users/${user.id}`, userState.token);
+      const request = await API.get(`/users/${user.id}`, userState.token, '');
 
       const response: any = await request.json();
 
@@ -321,25 +313,10 @@ export default function ProfileScreen(props: ProfileScreenProp) {
               onPress={handleLogout}
             />
             <ProfileImageContainer>
-              <ContentLoader
-                isLoading={state.hideContentLoader}
-                containerStyle={{
-                  width: SCALED_WIDTH,
-                  height: SCALED_WIDTH
-                }}
-                layout={[
-                  {
-                    width: SCALED_WIDTH,
-                    height: SCALED_WIDTH,
-                    borderRadius: 120 / 2
-                  }
-                ]}
-              />
               <ResponsiveImage
                 imageUrl={state.userProfile.imageUri}
                 height={SCALED_WIDTH}
                 width={SCALED_WIDTH}
-                onLoad={handleImageLoading}
                 style={{ borderRadius: 120 / 2 }}
               />
               <IconContainer
