@@ -8,6 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:12
+        environment: 
+          BABY_BLISS_BASE_URI: http://ci.level5.digital:9005/api
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -18,8 +20,6 @@ jobs:
 
     steps:
       - checkout
-
-      - run: echo 'export BABY_BLISS_BASE_URI = "BABY_BLISS_BASE_URI"' >> $BASH_ENV
 
       # Download and cache dependencies
       - restore_cache:
