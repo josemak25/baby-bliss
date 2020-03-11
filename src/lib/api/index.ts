@@ -12,53 +12,80 @@
 
 import ENV_VARIABLES, { ENV_VARIABLES_TYPES } from '../../config';
 
-type POST_TYPES = { path: string; payload: any; authToken: string };
+type POST_TYPES = {
+  path: string;
+  payload: any;
+  authToken: string;
+  apiVersion?: string;
+};
 
 class API {
   private BASE_URL: string;
-  // static authToken: string;
+  private API_VERSION: string;
 
   constructor(ENV: ENV_VARIABLES_TYPES) {
     this.BASE_URL = ENV.BABY_BLISS_BASE_URI;
+    this.API_VERSION = 'v1';
   }
 
-  get(path: string, authToken: string): Promise<any> {
-    return fetch(`${this.BASE_URL}${path}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${authToken}`
+  get(path: string, authToken: string, apiVersion: string): Promise<any> {
+    return fetch(
+      `${this.BASE_URL}/${apiVersion ? apiVersion : this.API_VERSION}/${path}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`
+        }
       }
-    });
+    );
   }
 
   post(request: POST_TYPES): Promise<any> {
-    return fetch(`${this.BASE_URL}${request.path}`, {
+    const { apiVersion, path, payload, authToken } = request;
+
+    const URI = `${this.BASE_URL}/${
+      apiVersion ? apiVersion : this.API_VERSION
+    }/${path}`;
+
+    return fetch(URI, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${request.authToken}`
+        Authorization: `Bearer ${authToken}`
       },
-      body: JSON.stringify(request.payload)
+      body: JSON.stringify(payload)
     });
   }
 
   put(request: POST_TYPES): Promise<any> {
-    return fetch(`${this.BASE_URL}${request.path}`, {
+    const { apiVersion, path, payload, authToken } = request;
+
+    const URI = `${this.BASE_URL}/${
+      apiVersion ? apiVersion : this.API_VERSION
+    }/${path}`;
+
+    return fetch(URI, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${request.authToken}`
+        Authorization: `Bearer ${authToken}`
       },
-      body: request.payload ? JSON.stringify(request.payload) : null
+      body: payload ? JSON.stringify(payload) : null
     });
   }
 
   delete(request: POST_TYPES): Promise<any> {
-    return fetch(`${this.BASE_URL}/${request.path}/${request.payload.id}`, {
+    const { apiVersion, path, payload, authToken } = request;
+
+    const URI = `${this.BASE_URL}/${
+      apiVersion ? apiVersion : this.API_VERSION
+    }/${path}`;
+
+    return fetch(`${URI}/${payload.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${request.authToken}`
+        Authorization: `Bearer ${authToken}`
       }
     });
   }
