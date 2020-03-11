@@ -27,6 +27,7 @@ import userActions from '../../store/user/actions';
 import showSnackbar from '../../components/UI/snackbar';
 import API from '../../lib/api';
 import { createFormData } from '../utils';
+import { validateFormFields } from '../../components/inputField/utils';
 
 import {
   StatusBar,
@@ -50,7 +51,6 @@ import {
   RecordsResult,
   Spinner
 } from './styles';
-import { validateFormFields } from '../../components/inputField/utils';
 
 const AnimatedOptionContainer = Animated.createAnimatedComponent(
   OptionContainer
@@ -134,20 +134,22 @@ export default function ProfileScreen(props: ProfileScreenProp) {
   };
 
   const handleSubmit = () => {
-    // dispatch action to submit form
-    //make sure we don't submit completely empty form
-    for (const key in state.userProfile) {
-      //validate the phone number before sending this form.
-      if (!validateFormFields('phone', state.userProfile.phone)) {
-        showSnackbar(
-          colors.LIKE_POST_COLOR,
-          `Please enter a valid phone number!`
-        );
-        return;
-      }
+    //validate the phone number before sending this form.
+    const phoneNotValid = validateFormFields('phone', state.userProfile.phone);
+    if (phoneNotValid) {
+      showSnackbar(colors.LIKE_POST_COLOR, phoneNotValid);
+      return;
     }
-    //submit our form
-    const images = createFormData(state.userProfile.image);
+    const addressNotValid = validateFormFields(
+      'address',
+      state.userProfile.address
+    );
+    if (addressNotValid) {
+      showSnackbar(colors.LIKE_POST_COLOR, addressNotValid);
+      return;
+    }
+
+    // const images = createFormData(state.userProfile.image);
 
     const { phone, imageUri, image, ...rest } = state.userProfile;
     userActions(USER_ACTION_TYPES.UPDATE_PROFILE)(dispatch, {
@@ -282,6 +284,10 @@ export default function ProfileScreen(props: ProfileScreenProp) {
         imageUri: response.uri
       }
     });
+  };
+
+  const setValidationError = (error: string) => {
+    showSnackbar('#F42850', error);
   };
 
   return (
@@ -429,6 +435,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                           keyboardType="email-address"
                           disable={true}
                           style={{ borderRadius: 5 }}
+                          setValidationError={setValidationError}
                         >
                           <MailIcon />
                         </InputFiled>
@@ -482,6 +489,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                           activeColor={colors.BG_LIGHT_COLOR}
                           style={{ borderRadius: 5 }}
                           ignoreValidation={true}
+                          setValidationError={setValidationError}
                         >
                           <PhoneIcon />
                         </InputFiled>
@@ -494,6 +502,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                           activeColor={colors.BG_LIGHT_COLOR}
                           style={{ borderRadius: 5 }}
                           ignoreValidation={true}
+                          setValidationError={setValidationError}
                         >
                           <Entypo name="address" size={20} />
                         </InputFiled>

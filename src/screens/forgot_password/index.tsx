@@ -35,26 +35,38 @@ export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
   const { colors, fonts } = useThemeContext();
   const [{ userState }, dispatch] = useStoreContext();
 
-  const [email, setEmail] = useState('');
+  const [state, setState] = useState({ email: '', canShow: true });
 
-  const onHandleChange = (value: string) => setEmail(value);
+  const onHandleChange = (value: string) =>
+    setState({ ...state, email: value });
 
   useEffect(() => {
-    if (userState.errorMessage) {
+    if (userState.errorMessage && !state.canShow) {
       showSnackbar(colors.LIKE_POST_COLOR, userState.errorMessage);
       return;
     }
-  }, [userState]);
+  }, [userState.errorMessage]);
 
   const handleSubmit = () => {
-    if (!validateFormFields('email', email)) {
-      showSnackbar(colors.LIKE_POST_COLOR, 'Please enter a valid email');
+    //validate the email address before sending this form.
+    const status = validateFormFields('email', state.email);
+    if (status) {
+      showSnackbar(colors.LIKE_POST_COLOR, status);
       return;
     }
-    userActions(USER_ACTION_TYPES.FORGOT_PASSWORD)(dispatch, { email });
+    userActions(USER_ACTION_TYPES.FORGOT_PASSWORD)(dispatch, {
+      email: state.email
+    });
 
     // on success navigate to reset password screen
     navigation.navigate('ResetPasswordScreen');
+  };
+
+  const setValidationError = (error: string) => {
+    if (state.canShow) {
+      showSnackbar('#F42850', error);
+      setState({ ...state, canShow: false });
+    }
   };
 
   return (
@@ -78,9 +90,10 @@ export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
               placeholder="Email"
               testID="email-input"
               onChangeText={onHandleChange}
-              defaultValue={email}
+              defaultValue={state.email}
               textContentType="emailAddress"
               keyboardType="email-address"
+              setValidationError={setValidationError}
             >
               <MailIcon />
             </InputField>

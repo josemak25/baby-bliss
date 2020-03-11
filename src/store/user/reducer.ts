@@ -69,7 +69,8 @@ export default function userReducer(
     case USER_TYPES.FORGOT_PASSWORD: {
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
+        errorMessage: null
       };
     }
 

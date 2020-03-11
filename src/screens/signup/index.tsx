@@ -42,7 +42,8 @@ import {
 export default function SignUp({ navigation }: NavigationInterface) {
   const [state, setState] = useState({
     user: { name: '', username: '', email: '', mobileNumber: '', password: '' },
-    hasSubmitted: false
+    hasSubmitted: false,
+    canShow: true
   });
 
   const { colors, fonts } = useThemeContext();
@@ -96,8 +97,12 @@ export default function SignUp({ navigation }: NavigationInterface) {
       phoneNumberCase = key === 'mobileNumber' ? 'mobileNumber' : undefined;
       key = key === 'mobileNumber' ? 'phone' : key;
       //validate the form fields for incorrect state before sending this form.
-      if (!validateFormFields(key, state.user[phoneNumberCase || key])) {
-        showSnackbar(colors.LIKE_POST_COLOR, `Please enter a valid ${key}`);
+      const status = validateFormFields(
+        key,
+        state.user[phoneNumberCase || key]
+      );
+      if (status) {
+        showSnackbar(colors.LIKE_POST_COLOR, status);
         return;
       }
     }
@@ -106,6 +111,10 @@ export default function SignUp({ navigation }: NavigationInterface) {
       ...state,
       hasSubmitted: true
     });
+  };
+
+  const setValidationError = (error: string) => {
+    if (state.canShow) showSnackbar('#F42850', error);
   };
 
   return (
@@ -128,6 +137,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
               onChangeText={onHandleChange('name')}
               defaultValue={state.user.name}
               textContentType="name"
+              setValidationError={setValidationError}
               style={{
                 borderTopStartRadius: 10,
                 borderTopEndRadius: 10
@@ -146,6 +156,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
               onChangeText={onHandleChange('username')}
               defaultValue={state.user.username}
               textContentType="name"
+              setValidationError={setValidationError}
             >
               <UserIcon
                 fillColor={colors.ACTIVE_TAB_COLOR}
@@ -161,6 +172,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
               defaultValue={state.user.email}
               textContentType="emailAddress"
               keyboardType="email-address"
+              setValidationError={setValidationError}
             >
               <MailIcon />
             </InputFiled>
@@ -171,6 +183,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
               defaultValue={state.user.mobileNumber}
               textContentType="telephoneNumber"
               keyboardType="phone-pad"
+              setValidationError={setValidationError}
             >
               <PhoneIcon />
             </InputFiled>
@@ -181,6 +194,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
               defaultValue={state.user.password}
               secureTextEntry={true}
               returnKeyType="done"
+              setValidationError={setValidationError}
               style={{
                 borderBottomStartRadius: 10,
                 borderBottomEndRadius: 10

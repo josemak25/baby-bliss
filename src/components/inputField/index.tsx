@@ -1,5 +1,8 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { useThemeContext } from '../../theme';
+import CheckedIcon from '../../../assets/icons/checked';
+import ErrorIcon from '../../../assets/icons/error';
+import { validateFormFields } from './utils';
 
 import {
   Container,
@@ -9,9 +12,6 @@ import {
   Placeholder,
   CheckedContainer
 } from './styles';
-import CheckedIcon from '../../../assets/icons/checked';
-import ErrorIcon from '../../../assets/icons/error';
-import { validateFormFields } from './utils';
 
 type InputFieldProps = {
   placeholder: string;
@@ -26,6 +26,7 @@ type InputFieldProps = {
   disable?: boolean;
   activeColor?: string;
   ignoreValidation?: boolean;
+  setValidationError(error: string): void;
 };
 
 const InputFiled: FunctionComponent<InputFieldProps> = props => {
@@ -43,7 +44,8 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
     style,
     testID,
     disable = false,
-    ignoreValidation = false
+    ignoreValidation = false,
+    setValidationError
   } = props;
 
   const [inputState, setInputState] = useState({
@@ -52,8 +54,7 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
     activateColor: false,
     isValid: true,
     canShowIsValid: false,
-    isTouched: false,
-    validationMessage: ''
+    isTouched: false
   });
 
   useEffect(() => {
@@ -68,13 +69,16 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
     setInputState({ ...inputState, text });
   };
 
-  function updateFeedBack(value: boolean) {
+  function updateFeedBack(value: string) {
     setInputState({
       ...inputState,
-      isValid: value,
+      isValid: value ? false : true,
       activateColor: true,
       canShowIsValid: true
     });
+
+    //if this value is not empty, it means there is error in validation
+    if (value) setValidationError(value);
   }
 
   const decorateTextFieldOnFocus = () => {

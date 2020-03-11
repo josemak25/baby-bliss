@@ -2,40 +2,40 @@ export const validateFormFields = (field: string, value: string) => {
   switch (field.toLowerCase()) {
     case 'name':
       if (value.trim().length < 4) {
-        return false;
+        return 'Name too short!';
       }
-      return true;
+      return;
 
     case 'username':
       if (value.trim().length < 3) {
-        return false;
+        return 'Username too short!';
       }
-      return true;
+      return;
 
     case 'email':
       const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if (!EMAIL_PATTERN.test(value.trim())) {
-        return false;
+        return 'Invalid email address!';
       }
-      return true;
+      return;
 
     case 'phone':
       const PHONE_PATTERN = /^(\+234|0)\d{10}$/;
       if (!PHONE_PATTERN.test(value)) {
-        return false;
+        return 'Invalid phone number!';
       }
-      return true;
+      return;
     case 'password':
       if (value.trim().length < 6) {
-        return false;
+        return 'Password too short!';
       }
-      return true;
+      return;
 
     case 'address':
       if (value.trim().length < 5) {
-        return false;
+        return 'Address to short.';
       }
-      return true;
+      return;
 
     default:
       break;

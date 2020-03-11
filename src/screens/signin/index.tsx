@@ -12,8 +12,8 @@ import userActions from '../../store/user/actions';
 import { useStoreContext } from '../../store';
 import { USER_ACTION_TYPES } from '../../store/user/types';
 import showSnackbar from '../../components/UI/snackbar';
-import { validateFormFields } from '../../components/inputField/utils';
 import UserIcon from '../../../assets/icons/user';
+import { validateFormFields } from '../../components/inputField/utils';
 
 import {
   Container,
@@ -33,7 +33,8 @@ export default function SignIn({ navigation }: NavigationInterface) {
 
   const [values, setValues] = useState({
     user: { username: '', password: '' },
-    rememberMe: true
+    rememberMe: true,
+    canShow: true
   });
 
   useEffect(() => {
@@ -60,6 +61,10 @@ export default function SignIn({ navigation }: NavigationInterface) {
     setValues({ ...values, user: { ...values.user, [field]: value } });
   };
 
+  const setValidationError = (error: string) => {
+    if (values.canShow) showSnackbar('#F42850', error);
+  };
+
   const handleSubmit = () => {
     //validate the form  for empty fields before sending this form.
     for (let key in values.user) {
@@ -67,9 +72,10 @@ export default function SignIn({ navigation }: NavigationInterface) {
         showSnackbar(colors.LIKE_POST_COLOR, 'Please all fields are required!');
         return;
       }
-      //validate the form fields for incorrect values before sending this form.
-      if (!validateFormFields(key, values.user[key])) {
-        showSnackbar(colors.LIKE_POST_COLOR, `Please enter a valid ${key}`);
+      //validate the form fields for incorrect state before sending this form.
+      const status = validateFormFields(key, values.user[key]);
+      if (status) {
+        showSnackbar(colors.LIKE_POST_COLOR, status);
         return;
       }
     }
@@ -92,6 +98,7 @@ export default function SignIn({ navigation }: NavigationInterface) {
               testID="username"
               onChangeText={onHandleChange('username')}
               defaultValue={values.user.username}
+              setValidationError={setValidationError}
               style={{
                 borderTopStartRadius: 10,
                 borderTopEndRadius: 10
@@ -106,6 +113,7 @@ export default function SignIn({ navigation }: NavigationInterface) {
               defaultValue={values.user.password}
               secureTextEntry={true}
               returnKeyType="done"
+              setValidationError={setValidationError}
               style={{
                 borderBottomStartRadius: 10,
                 borderBottomEndRadius: 10
@@ -174,7 +182,10 @@ export default function SignIn({ navigation }: NavigationInterface) {
           <Button
             title="create account"
             testID="createAccount"
-            onPress={() => navigation.navigate('SignUpScreen')}
+            onPress={() => {
+              setValues({ ...values, canShow: false });
+              navigation.navigate('SignUpScreen');
+            }}
             textStyle={{
               color: colors.FONT_DARK_COLOR,
               fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
