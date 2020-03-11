@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeContext } from '../../theme';
-import { POST_ACTION_TYPES } from '../../store/posts/types';
 
 import {
   Container,
-  MediaInsertContainer,
   EmojiContainer,
   SendContainer,
   MessageInput
@@ -29,8 +27,6 @@ export default function Message(props: MessageProps) {
     ref.current.focus();
   }, [focus]);
 
-  const handleMediaInsert = () => {};
-
   const onSendMessage = () => {
     dispatchMessage();
     setNewMessage('');
@@ -42,9 +38,6 @@ export default function Message(props: MessageProps) {
 
   return (
     <Container testID={testID}>
-      <MediaInsertContainer onPress={handleMediaInsert}>
-        <FontAwesome5 name="plus" size={13} color={colors.BG_LIGHT_COLOR} />
-      </MediaInsertContainer>
       <MessageInput
         placeholder="Write comment here…"
         onChangeText={handleChangeText}

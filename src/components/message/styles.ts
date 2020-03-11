@@ -8,16 +8,6 @@ export const Container = styled.View`
   padding: 10px;
 `;
 
-export const MediaInsertContainer = styled.TouchableOpacity`
-  width: 25px;
-  height: 25px;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.INACTIVE_ICON_COLOR};
-  border-radius: ${25 / 2}px;
-  margin-right: 5px;
-`;
-
 export const EmojiContainer = styled.TouchableOpacity`
   width: 25px;
   height: 25px;
