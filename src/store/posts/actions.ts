@@ -44,10 +44,10 @@ export default function postsActions(type: string) {
   return async (dispatch: any, payload: any) => {
     // To unsubscribe to these update, just use the functions:
     switch (type) {
-      case POST_ACTION_TYPES.LOAD_POSTS:
+      case POST_ACTION_TYPES.LOAD_BLOG_POSTS:
         try {
           dispatch(loadPostStarted());
-          const request = await API.get('/posts', payload);
+          const request = await API.get('posts/blog', payload, 'v2');
           const response: ResponseInterface = await request.json();
 
           if (response.statusCode === 200) {
@@ -82,7 +82,8 @@ export default function postsActions(type: string) {
           dispatch(loadPostStarted());
           const request = await API.get(
             `/posts/${payload.postId}/comments`,
-            payload.authToken
+            payload.authToken,
+            ''
           );
           const response: LikeCommentResponseInterface = await request.json();
 
@@ -142,7 +143,6 @@ export default function postsActions(type: string) {
             authToken: payload.authToken
           });
           const response: LikeCommentResponse = await request.json();
-          console.log(response);
 
           if (response.statusCode === 200) {
             return dispatch(

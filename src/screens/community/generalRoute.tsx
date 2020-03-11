@@ -6,6 +6,8 @@ import { Container } from './styles';
 import { NavigationInterface } from '../../constants';
 import { ActivityIndicator } from 'react-native';
 import { useThemeContext } from '../../theme';
+import API from '../../lib/api';
+import { ResponseInterface } from '../../store/posts/types';
 
 interface GeneralRouteContainerProp extends NavigationInterface {
   testID?: string;
@@ -13,25 +15,44 @@ interface GeneralRouteContainerProp extends NavigationInterface {
 }
 
 const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
-  const [{ grid, categoryState }] = useStoreContext();
+  const [{ grid, userState }] = useStoreContext();
   const { colors } = useThemeContext();
-  const [state, setState] = useState([]);
+  const [state, setState] = useState({
+    posts: [],
+    isLoading: true
+  });
 
   useEffect(() => {
-    let posts = [];
-    for (const key in categoryState.communityPosts) {
-      posts = [...posts, ...categoryState.communityPosts[key]];
-    }
-    setState(posts);
-  }, [categoryState.communityPosts]);
+    fetchGeneralPosts();
+  }, []);
 
   const onEndReached = () => {};
 
+  async function fetchGeneralPosts() {
+    try {
+      const request = await API.get(`/posts`, userState.token, '');
+
+      const response: ResponseInterface = await request.json();
+
+      if (response.statusCode === 200) {
+        setState({ ...state, posts: response.payload, isLoading: false });
+      }
+    } catch (error) {
+      console.warn(error);
+    }
+  }
+
   return (
     <Container>
-      {state.length ? (
+      {state.isLoading ? (
+        <ActivityIndicator
+          size="large"
+          color={colors.POST_TIP_COLOR}
+          style={{ position: 'absolute', top: 100 }}
+        />
+      ) : (
         <OptimizedFlatList
-          data={state}
+          data={state.posts}
           renderItem={({ item, index }) => (
             <UserPost
               {...item}
@@ -53,12 +74,6 @@ const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
           style={{ width: '100%' }}
           onEndReached={onEndReached}
           onRefresh={false}
-        />
-      ) : (
-        <ActivityIndicator
-          size="large"
-          color={colors.POST_TIP_COLOR}
-          style={{ position: 'absolute', top: 100 }}
         />
       )}
     </Container>

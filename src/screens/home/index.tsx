@@ -4,6 +4,7 @@ import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import { useStoreContext } from '../../store';
 import { useThemeContext } from '../../theme';
 import { ActivityIndicator } from 'react-native';
+import postsActions from '../../store/posts/actions';
 
 import Post from '../../components/post';
 import SearchIcon from '../../../assets/icons/search';
@@ -13,7 +14,6 @@ import {
   PostInterface,
   POST_TYPES
 } from '../../store/posts/types';
-import postsActions from '../../store/posts/actions';
 
 import {
   Container,
@@ -35,11 +35,11 @@ export default function HomeScreen(props: HomeScreenProp) {
   const { colors } = useThemeContext();
 
   useEffect(() => {
-    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, userState.token);
+    postsActions(POST_ACTION_TYPES.LOAD_BLOG_POSTS)(dispatch, userState.token);
   }, [userState.token]);
 
   const onEndReached = () => {
-    postsActions(POST_ACTION_TYPES.LOAD_POSTS)(dispatch, null);
+    postsActions(POST_ACTION_TYPES.LOAD_BLOG_POSTS)(dispatch, null);
   };
 
   const handleLikePost = (id: string, postIndex: number) => {
