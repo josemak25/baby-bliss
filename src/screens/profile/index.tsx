@@ -11,6 +11,7 @@ import {
 import ContentLoader from 'react-native-skeleton-content';
 import Animated, { Easing } from 'react-native-reanimated';
 import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 import { NavigationInterface, STORE_USER_PROFILE } from '../../constants';
 import { useThemeContext } from '../../theme';
 
@@ -49,6 +50,7 @@ import {
   RecordsResult,
   Spinner
 } from './styles';
+import { createFormData } from '../utils';
 
 const AnimatedOptionContainer = Animated.createAnimatedComponent(
   OptionContainer
@@ -89,7 +91,9 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     selected: '',
     userProfile: {
       address: user ? user.address : '',
-      phone: user ? user.mobileNumber : ''
+      phone: user ? user.mobileNumber : '',
+      image: user && user.avatar ? user.avatar : 'url',
+      imageUri: user && user.avatar ? user.avatar : 'url'
     },
     hasSubmitted: false,
     noOfComments: 0,
@@ -140,10 +144,13 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       }
     }
     //submit our form
-    const { phone, ...rest } = state.userProfile;
+    const images = createFormData(state.userProfile.image);
+
+    const { phone, imageUri, image, ...rest } = state.userProfile;
     userActions(USER_ACTION_TYPES.UPDATE_PROFILE)(dispatch, {
       payload: {
         mobileNumber: phone,
+        // avatar: images,
         ...rest
       },
       token: userState.token,
@@ -259,6 +266,27 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     });
   };
 
+  const handleImage = async () => {
+    const permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
+
+    if (permissionResult.granted === false) {
+      return alert('Permission to access camera roll is required!');
+    }
+
+    const response = await ImagePicker.launchImageLibraryAsync();
+
+    if (response.cancelled === true) return;
+
+    setState({
+      ...state,
+      userProfile: {
+        ...state.userProfile,
+        image: response,
+        imageUri: response.uri
+      }
+    });
+  };
+
   return (
     <Fragment>
       <StatusBar />
@@ -308,7 +336,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                 ]}
               />
               <ResponsiveImage
-                imageUrl={user && user.avatar ? user.avatar : 'url'}
+                imageUrl={state.userProfile.imageUri}
                 height={SCALED_WIDTH}
                 width={SCALED_WIDTH}
                 onLoad={handleImageLoading}
@@ -323,7 +351,12 @@ export default function ProfileScreen(props: ProfileScreenProp) {
                   right: 0
                 }}
               >
-                <Entypo name="camera" size={20} color={colors.BD_DARK_COLOR} />
+                <Entypo
+                  name="camera"
+                  size={20}
+                  color={colors.BD_DARK_COLOR}
+                  onPress={handleImage}
+                />
               </IconContainer>
             </ProfileImageContainer>
             <ProfileDetailsContainer>
