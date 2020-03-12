@@ -69,6 +69,16 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
       !categoryState.isLoading
     ) {
       showSnackbar(colors.POST_TIP_COLOR, 'Profile updated successfully!');
+      setState({
+        ...state,
+        question: {
+          topic: '',
+          description: '',
+          category: 'First Trimester',
+          categoryId: '',
+          image: null
+        }
+      });
     }
   }, [categoryState.error, categoryState.isLoading, state.hasSubmitted]);
 
@@ -87,7 +97,7 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
     const permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
     if (permissionResult.granted === false) {
-      return alert('Permission to access camera roll is required!');
+      alert('Permission to access camera roll is required!');
     }
 
     const response = await ImagePicker.launchImageLibraryAsync();
@@ -108,13 +118,12 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
         return;
       }
     }
-
     const userQuestion = {
       topic: state.question.topic,
       description: state.question.description,
       category: state.question.categoryId
     };
-    const images = createFormData(state.question.image);
+    const images = createFormData(state.question.image, {});
 
     postCategoryActions(CATEGORY_ACTION_TYPES.POST_QUESTION)(dispatch, {
       images,
@@ -143,6 +152,7 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                 placeholder="When is it ok to give into food cravings during pregnancy?"
                 multiline={true}
                 onChangeText={text => handleTextChange('topic', text, null)}
+                value={state.question.topic}
               />
               <PostDescriptionTitle>description</PostDescriptionTitle>
               <PostDescriptionInput
@@ -151,6 +161,7 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                 onChangeText={text =>
                   handleTextChange('description', text, null)
                 }
+                value={state.question.description}
               />
               <PostCategoryTitle>category</PostCategoryTitle>
               <PostCategoryContainer>
