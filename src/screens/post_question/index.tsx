@@ -110,10 +110,10 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
   const handleSubmit = () => {
     //validate the form  for empty fields before sending this form.
     for (let key in state.question) {
-      if (!state.question[key]) {
+      if (!state.question[key] && key !== 'image') {
         showSnackbar(
           colors.LIKE_POST_COLOR,
-          'Please all entries are required!'
+          'Please some entries are required!'
         );
         return;
       }
@@ -126,7 +126,7 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
     const images = createFormData(state.question.image, {});
 
     postCategoryActions(CATEGORY_ACTION_TYPES.POST_QUESTION)(dispatch, {
-      images,
+      image: images,
       userQuestion,
       authToken: userState.token
     });
