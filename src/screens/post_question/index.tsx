@@ -83,6 +83,7 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
   }, [categoryState.error, categoryState.isLoading, state.hasSubmitted]);
 
   const handleTextChange = (key: string, value: string, index: number) => {
+    index = index > 0 ? index : 0;
     const categoryId = index
       ? postCategories[index]._id
       : state.question.categoryId;
@@ -172,9 +173,9 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                     color: 'red',
                     key: 'Select a category...'
                   }}
-                  onValueChange={(value, key) =>
-                    handleTextChange('category', value, key)
-                  }
+                  onValueChange={(value, key) => {
+                    handleTextChange('category', value, --key);
+                  }}
                   value={state.question.category}
                   items={postCategories.map(({ title, id }) => ({
                     label: title,
