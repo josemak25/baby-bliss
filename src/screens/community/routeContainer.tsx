@@ -10,7 +10,12 @@ import UserPost from '../../components/userPost';
 interface RouteContainerProp extends NavigationInterface {
   testID?: string;
   categoryId: string;
-  handleLikePost(id: string, postIndex: number, categoryId: string,oldLikeState:boolean): void;
+  handleLikePost(
+    id: string,
+    postIndex: number,
+    categoryId: string,
+    oldLikeState: boolean
+  ): void;
 }
 
 const RouteContainer = (props: RouteContainerProp) => {

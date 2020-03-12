@@ -26,7 +26,6 @@ import { USER_TYPES, USER_ACTION_TYPES } from '../../store/user/types';
 import userActions from '../../store/user/actions';
 import showSnackbar from '../../components/UI/snackbar';
 import API from '../../lib/api';
-import { createFormData } from '../utils';
 import { validateFormFields } from '../../components/inputField/utils';
 
 import {
@@ -106,11 +105,6 @@ export default function ProfileScreen(props: ProfileScreenProp) {
         await storeUserProfile();
         showSnackbar(colors.POST_TIP_COLOR, 'Profile updated successfully!');
       }
-      if (!userState.token) {
-        //remove this user profile from the async storage if the user has logged out of the app
-        await AsyncStorage.removeItem(STORE_USER_PROFILE);
-        props.navigation.replace('SignInScreen');
-      }
     })();
     //fetch user data from the server
     (async () => {
@@ -149,15 +143,15 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       return;
     }
 
-    // const images = createFormData(state.userProfile.image);
+    const { phone, address } = state.userProfile;
+    // const payload = createFormData(state.userProfile.image, {
+    //   mobileNumber: phone,
+    //   address
+    // });
+    // console.log(payload);
 
-    const { phone, imageUri, image, ...rest } = state.userProfile;
     userActions(USER_ACTION_TYPES.UPDATE_PROFILE)(dispatch, {
-      payload: {
-        mobileNumber: phone,
-        // avatar: images,
-        ...rest
-      },
+      payload: { mobileNumber: phone, address },
       token: userState.token,
       id: user.id
     });
@@ -168,11 +162,10 @@ export default function ProfileScreen(props: ProfileScreenProp) {
   };
 
   const handleLogout = async () => {
+    //remove this user profile from the async storage if the user has logged out of the app
+    await AsyncStorage.removeItem(STORE_USER_PROFILE);
     dispatch({ type: USER_TYPES.LOGOUT });
-    setState({
-      ...state,
-      hasSubmitted: false
-    });
+    props.navigation.replace('SignInScreen');
   };
 
   async function fetchProfile() {

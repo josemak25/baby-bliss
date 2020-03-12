@@ -45,11 +45,14 @@ declare global {
     set(name: string, value: FormDataValue, fileName?: string): void;
   }
 }
-export const createFormData = (photo: {
-  fileName: string;
-  type: string;
-  uri: string;
-}) => {
+export const createFormData = (
+  photo: {
+    fileName: string;
+    type: string;
+    uri: string;
+  },
+  otherData: any
+) => {
   const data = new FormData();
 
   data.append('images', {
@@ -58,5 +61,10 @@ export const createFormData = (photo: {
     uri: photo.uri
   });
 
+  //append other data
+  const keys = Object.keys(otherData);
+  if (keys.length) {
+    keys.forEach(key => data.append(key, otherData[key]));
+  }
   return data;
 };

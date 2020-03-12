@@ -25,8 +25,6 @@ const profileSetupSuccess = (payload: UserResponseInterface): UserAction => ({
 });
 
 const forgotPasswordSuccess = (): UserAction => {
-  console.log('kkkkkkk');
-
   return {
     type: USER_TYPES.FORGOT_PASSWORD
   };
