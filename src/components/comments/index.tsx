@@ -30,7 +30,10 @@ type CommentProps = {
   style?: {};
   testID?: string;
   comment: CommentInterface;
-  handleOnFocusRequest(actionType: string, contentId: string): void;
+  handleOnFocusRequest(
+    actionType: string,
+    replyTo: { userName: string; contentId: string }
+  ): void;
   handleLikeComment(id: string, commentIndex: number): void;
   commentIndex: number;
   avatar: string;
@@ -56,7 +59,10 @@ export default function Comment(props: CommentProps) {
   const commentTime = timeSince(comment.createdAt);
 
   const handleCommentReply = () => {
-    handleOnFocusRequest(POST_ACTION_TYPES.REPLY_COMMENT, comment._id);
+    handleOnFocusRequest(POST_ACTION_TYPES.REPLY_COMMENT, {
+      userName: comment.user.name,
+      contentId: comment._id
+    });
   };
 
   const startLikeAnimation = (id: string) => {

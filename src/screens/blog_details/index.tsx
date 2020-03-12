@@ -52,6 +52,13 @@ interface BlogDetailsProp extends NavigationInterface {
   testID?: string;
 }
 
+type messageType = {
+  authToken: string;
+  id: string;
+  commentId?: string;
+  content?: string;
+};
+
 export default function BlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
   const [{ postState, userState }, dispatch] = useStoreContext();
@@ -72,27 +79,61 @@ export default function BlogDetails(props: BlogDetailsProp) {
     message: '',
     commentId: null,
     actionType: null,
-    isLiked: true
+    isLiked: true,
+    replyToName: '',
+    text: ''
   });
 
-  const handleOnFocusRequest = (actionType: string, commentId: string) => {
-    setState({ ...state, focus: !state.focus, commentId, actionType });
-  };
+  useEffect(() => {
+    if (!state.text) {
+      setState({
+        ...state,
+        replyToName: ''
+      });
+    }
+  }, [state.text]);
 
-  const dispatchMessage = () => {
-    let { actionType } = state;
-    actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
+  const handleOnFocusRequest = (
+    actionType: string,
+    replyTo: { userName: string; contentId: string }
+  ) => {
+    const { userName, contentId: commentId } = replyTo;
 
-    postsActions(actionType)(dispatch, {
-      authToken: userState.token,
-      id,
-      commentId: state.commentId,
-      content: state.message
+    setState({
+      ...state,
+      // focus: !state.focus,
+      commentId,
+      actionType,
+      replyToName: `@${userName} `,
+      text: `@${userName} `
     });
   };
 
+  const dispatchMessage = () => {
+    let message: messageType = {
+      authToken: userState.token,
+      id
+    };
+    let { actionType } = state;
+    actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
+    if (state.replyToName) {
+      message = {
+        ...message,
+        content: state.text.replace(state.replyToName, ''),
+        commentId: state.commentId
+      };
+    } else {
+      message = {
+        ...message,
+        content: state.text
+      };
+    }
+
+    postsActions(actionType)(dispatch, message);
+  };
+
   const setMessage = (message: string) => {
-    setState({ ...state, message });
+    setState({ ...state, text: message });
   };
 
   const handleLikeComment = (id: string, commentIndex: number) => {
@@ -209,7 +250,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
         focus={state.focus}
         dispatchMessage={dispatchMessage}
         setNewMessage={setMessage}
-        message={state.message}
+        message={state.text}
       />
     </KeyboardAvoidingView>
   );
