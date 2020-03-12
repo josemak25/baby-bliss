@@ -42,11 +42,6 @@ type CommentProps = {
 export default function Comment(props: CommentProps) {
   const { colors, fonts } = useThemeContext();
 
-  const [state, setState] = useState({
-    animateImage: new Animated.Value(0),
-    likedComment: false
-  });
-
   const {
     comment,
     testID,
@@ -55,6 +50,11 @@ export default function Comment(props: CommentProps) {
     commentIndex,
     avatar
   } = props;
+
+  const [state, setState] = useState({
+    animateImage: new Animated.Value(0),
+    likedComment: comment.isLiked
+  });
 
   const commentTime = timeSince(comment.createdAt);
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import { useStoreContext } from '../../store';
 import UserPost from '../../components/userPost';
@@ -6,45 +6,26 @@ import { Container } from './styles';
 import { NavigationInterface } from '../../constants';
 import { ActivityIndicator } from 'react-native';
 import { useThemeContext } from '../../theme';
-import API from '../../lib/api';
-import { ResponseInterface } from '../../store/posts/types';
-
 interface GeneralRouteContainerProp extends NavigationInterface {
   testID?: string;
-  handleLikePost(id: string, postIndex: number, categoryId: string): void;
+  handleLikePost(
+    id: string,
+    postIndex: number,
+    categoryId: string,
+    oldLikeState: boolean
+  ): void;
 }
 
 const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
-  const [{ grid, userState }] = useStoreContext();
+  const [{ grid, categoryState }] = useStoreContext();
   const { colors } = useThemeContext();
-  const [state, setState] = useState({
-    posts: [],
-    isLoading: true
-  });
-
-  useEffect(() => {
-    fetchGeneralPosts();
-  }, []);
+  const posts = categoryState.generalPosts;
 
   const onEndReached = () => {};
 
-  async function fetchGeneralPosts() {
-    try {
-      const request = await API.get(`/posts`, userState.token, '');
-
-      const response: ResponseInterface = await request.json();
-
-      if (response.statusCode === 200) {
-        setState({ ...state, posts: response.payload, isLoading: false });
-      }
-    } catch (error) {
-      console.warn(error);
-    }
-  }
-
   return (
     <Container>
-      {state.isLoading ? (
+      {categoryState.isLoading ? (
         <ActivityIndicator
           size="large"
           color={colors.POST_TIP_COLOR}
@@ -52,7 +33,7 @@ const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
         />
       ) : (
         <OptimizedFlatList
-          data={state.posts}
+          data={posts}
           renderItem={({ item, index }) => (
             <UserPost
               {...item}
@@ -63,7 +44,9 @@ const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
                   post: item
                 })
               }
-              handleLikePost={props.handleLikePost}
+              handleLikePost={(id, postIndex, categoryId, oldLikeState) =>
+                props.handleLikePost(id, postIndex, null, oldLikeState)
+              }
             />
           )}
           key={grid.numOfColumn}

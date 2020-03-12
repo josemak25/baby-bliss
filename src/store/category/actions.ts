@@ -1,4 +1,5 @@
 import API from '../../lib/api';
+import { ResponseInterface, PostInterface } from '../posts/types';
 import {
   POST_CATEGORY_TYPES,
   CategoryInterface,
@@ -25,6 +26,11 @@ const getPostCategoryError = (error: string) => ({
   payload: error
 });
 
+const loadPostSuccess = (payload: PostInterface[]) => ({
+  type: POST_CATEGORY_TYPES.LOAD_GENERAL_POSTS_SUCCESS,
+  payload
+});
+
 export default function postCategoryActions(type: string) {
   return async (dispatch: any, payload: any) => {
     switch (type) {
@@ -35,19 +41,15 @@ export default function postCategoryActions(type: string) {
           const requestPromises: Promise<
             any
           >[] = payload.categories.map((category: CategoryInterface) =>
-            API.get(`/posts?categories=${category._id}`, payload.authToken)
+            API.get(`/posts?categories=${category._id}`, payload.authToken, '')
           );
-
           const requests: any[] = await Promise.all(requestPromises);
-
           const dispatchPayload = {};
-
           for (let index = 0; index < payload.categories.length; index++) {
             const response: PostCategoryResponse = await requests[index].json();
             const { id: categoryId } = payload.categories[index];
             dispatchPayload[categoryId] = response.payload;
           }
-
           dispatch(fetchCategoriesPostSuccess(dispatchPayload));
         } catch (error) {
           dispatch(getPostCategoryError(error));
@@ -61,7 +63,6 @@ export default function postCategoryActions(type: string) {
             payload: null,
             authToken: payload.authToken
           });
-
           const response: LikeOrUnlikePostResponse = await request.json();
           if (response.statusCode === 200) {
             return;
@@ -81,7 +82,6 @@ export default function postCategoryActions(type: string) {
             authToken: payload.authToken
           });
           const response: LikeOrUnlikePostResponse = await request.json();
-
           if (response.statusCode === 200) {
             return dispatch(postQuestion());
           }
@@ -91,6 +91,19 @@ export default function postCategoryActions(type: string) {
         }
         break;
 
+      case CATEGORY_ACTION_TYPES.LOAD_GENERAL_POSTS:
+        try {
+          dispatch(getPostCategoryStarted());
+          const request = await API.get(`/posts`, payload, '');
+          const response: ResponseInterface = await request.json();
+          if (response.statusCode === 200) {
+            return dispatch(loadPostSuccess(response.payload));
+          }
+          dispatch(getPostCategoryError(response.message));
+        } catch (error) {
+          dispatch(getPostCategoryError(error));
+        }
+        break;
       default:
         break;
     }

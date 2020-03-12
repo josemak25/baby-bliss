@@ -1,3 +1,5 @@
+import { ResponseInterface, PostInterface } from '../posts/types';
+
 /*
  **************************************************************
  ****************** POST CATEGORY TYPES ***********************
@@ -11,14 +13,16 @@ export enum POST_CATEGORY_TYPES {
   FETCH_CATEGORIES_POST_SUCCESS = 'FETCH_CATEGORIES_POST_SUCCESS',
   LIKE_OR_UNLIKE_USER_POST = 'LIKE_OR_UNLIKE_USER_POST',
   POST_QUESTION = 'POST_QUESTION',
-  GET_POST_CATEGORY_ERROR = 'GET_POST_CATEGORY_ERROR'
+  GET_POST_CATEGORY_ERROR = 'GET_POST_CATEGORY_ERROR',
+  LOAD_GENERAL_POSTS_SUCCESS = 'LOAD_GENERAL_POSTS_SUCCESS '
 }
 
 export enum CATEGORY_ACTION_TYPES {
   LOAD_CATEGORIES_ACTION = 'LOAD_CATEGORY_ACTION',
   FETCH_CATEGORY_POSTS = 'FETCH_CATEGORY_POSTS',
   LIKE_POST = 'LIKE_POST',
-  POST_QUESTION = 'POST_QUESTION'
+  POST_QUESTION = 'POST_QUESTION',
+  LOAD_GENERAL_POSTS = 'LOAD_GENERAL_POSTS'
 }
 
 //  POST CATEGORY ACTION TYPES
@@ -38,6 +42,7 @@ export type CategoryInitialState = {
   error?: string | null;
   categories: CategoryInterface[];
   communityPosts: {};
+  generalPosts: PostInterface[];
 };
 
 export type LikeOrUnlikePostResponse = {
@@ -78,6 +83,10 @@ export type PostCategoryAction =
   | {
       type: POST_CATEGORY_TYPES.FETCH_CATEGORIES_POST_SUCCESS;
       payload: { categoryPosts: CategoryInterface[]; categoryId: string };
+    }
+  | {
+      type: POST_CATEGORY_TYPES.LOAD_GENERAL_POSTS_SUCCESS;
+      payload: ResponseInterface[];
     }
   | {
       type: POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_USER_POST;

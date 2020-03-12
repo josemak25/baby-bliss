@@ -79,7 +79,6 @@ export default function BlogDetails(props: BlogDetailsProp) {
     message: '',
     commentId: null,
     actionType: null,
-    isLiked: true,
     replyToName: '',
     text: ''
   });
@@ -136,7 +135,11 @@ export default function BlogDetails(props: BlogDetailsProp) {
     setState({ ...state, text: message });
   };
 
-  const handleLikeComment = (id: string, commentIndex: number) => {
+  const handleLikeComment = (
+    id: string,
+    commentIndex: number,
+    oldLikeState: boolean
+  ) => {
     dispatch({
       type: POST_TYPES.LIKE_COMMENT,
       payload: {
@@ -150,11 +153,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
       authToken: userState.token,
       commentIndex,
       userId: userState.user.id,
-      isLiked: state.isLiked
-    });
-    setState({
-      ...state,
-      isLiked: !state.isLiked //toggle the like property
+      isLiked: !oldLikeState
     });
   };
 
@@ -232,7 +231,9 @@ export default function BlogDetails(props: BlogDetailsProp) {
                       comment={comment}
                       commentIndex={index}
                       handleOnFocusRequest={handleOnFocusRequest}
-                      handleLikeComment={handleLikeComment}
+                      handleLikeComment={() =>
+                        handleLikeComment(comment._id, index, comment.isLiked)
+                      }
                       avatar={avatar}
                     />
                   )

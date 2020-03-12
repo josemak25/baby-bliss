@@ -10,11 +10,11 @@ import UserPost from '../../components/userPost';
 interface RouteContainerProp extends NavigationInterface {
   testID?: string;
   categoryId: string;
-  handleLikePost(id: string, postIndex: number, categoryId: string): void;
+  handleLikePost(id: string, postIndex: number, categoryId: string,oldLikeState:boolean): void;
 }
 
 const RouteContainer = (props: RouteContainerProp) => {
-  const [{ grid, categoryState }, dispatch] = useStoreContext();
+  const [{ grid, categoryState }] = useStoreContext();
   const { colors } = useThemeContext();
   const posts = categoryState.communityPosts[props.categoryId];
 

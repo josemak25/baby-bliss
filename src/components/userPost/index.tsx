@@ -38,7 +38,12 @@ interface UserPostProps extends PostInterface {
   testID?: string;
   width: number;
   navigation(): void;
-  handleLikePost(id: string, postIndex: number, categoryId: string): void;
+  handleLikePost(
+    id: string,
+    postIndex: number,
+    categoryId: string,
+    oldLikeState: boolean
+  ): void;
 }
 
 const { width: DEVICE_WIDTH } = Dimensions.get('window');
@@ -58,6 +63,7 @@ export default function UserPost(props: UserPostProps) {
     handleLikePost,
     postIndex,
     category,
+    isLiked,
     _id
   } = props;
 
@@ -78,8 +84,7 @@ export default function UserPost(props: UserPostProps) {
       duration: 1300,
       easing: Easing.linear,
       useNativeDriver: true
-      // }).start(() => handleLikePost(category._id, postIndex));
-    }).start(() => handleLikePost(_id, postIndex, category._id));
+    }).start(() => handleLikePost(_id, postIndex, category._id, isLiked));
   };
 
   const handleImageLoading = (error: any) => {

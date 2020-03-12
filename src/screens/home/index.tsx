@@ -30,7 +30,7 @@ interface HomeScreenProp extends NavigationInterface {
 export default function HomeScreen(props: HomeScreenProp) {
   const [{ grid, postState, userState }, dispatch] = useStoreContext();
 
-  const [state, setState] = useState({ isLiked: true });
+  // const [state, setState] = useState({ isLiked: true });
 
   const { colors } = useThemeContext();
 
@@ -42,11 +42,15 @@ export default function HomeScreen(props: HomeScreenProp) {
     postsActions(POST_ACTION_TYPES.LOAD_BLOG_POSTS)(dispatch, null);
   };
 
-  const handleLikePost = (id: string, postIndex: number) => {
+  const handleLikePost = (
+    id: string,
+    postIndex: number,
+    oldLikeState: boolean
+  ) => {
     dispatch({
       type: POST_TYPES.LIKE_OR_UNLIKE_POST,
       payload: {
-        likeCount: state.isLiked ? 1 : -1,
+        likeCount: oldLikeState ? -1 : 1,
         id,
         postIndex
       }
@@ -56,12 +60,7 @@ export default function HomeScreen(props: HomeScreenProp) {
       id,
       postIndex,
       authToken: userState.token,
-      isLiked: state.isLiked
-    });
-
-    setState({
-      ...state,
-      isLiked: !state.isLiked //toggle the like property
+      isLiked: !oldLikeState
     });
   };
 
@@ -87,7 +86,9 @@ export default function HomeScreen(props: HomeScreenProp) {
                 {...item}
                 postIndex={index}
                 width={grid.cardSize}
-                handleLikePost={() => handleLikePost(item._id, index)}
+                handleLikePost={() =>
+                  handleLikePost(item._id, index, item.isLiked)
+                }
                 navigation={() => navigateToPost(item)}
               />
             )}

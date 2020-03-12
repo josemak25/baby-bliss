@@ -30,19 +30,31 @@ export default function CommunityScreen(props: CommunityScreenProp) {
     communityRoutes: [
       { key: 'general', title: 'general' },
       ...categoryState.categories
-    ],
-    isLiked: true
+    ]
   });
+
+  useEffect(() => {
+    startLikeAnimation(null);
+    postCategoryActions(CATEGORY_ACTION_TYPES.FETCH_CATEGORY_POSTS)(dispatch, {
+      authToken: userState.token,
+      categories: [...state.communityRoutes.slice(1)]
+    });
+    postCategoryActions(CATEGORY_ACTION_TYPES.LOAD_GENERAL_POSTS)(
+      dispatch,
+      userState.token
+    );
+  }, []);
 
   const handleLikePost = (
     id: string,
     postIndex: number,
-    categoryId: string
+    categoryId: string,
+    oldLikeState: boolean
   ) => {
     dispatch({
       type: POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_USER_POST,
       payload: {
-        likeCount: state.isLiked ? 1 : -1,
+        likeCount: oldLikeState ? -1 : 1,
         categoryId,
         id,
         postIndex
@@ -53,22 +65,10 @@ export default function CommunityScreen(props: CommunityScreenProp) {
       id,
       postIndex,
       authToken: userState.token,
-      isLiked: state.isLiked,
+      isLiked: !oldLikeState,
       categoryId
     });
-    setState({
-      ...state,
-      isLiked: !state.isLiked //toggle the like property
-    });
   };
-
-  useEffect(() => {
-    startLikeAnimation(null);
-    postCategoryActions(CATEGORY_ACTION_TYPES.FETCH_CATEGORY_POSTS)(dispatch, {
-      authToken: userState.token,
-      categories: [...state.communityRoutes.slice(1)]
-    });
-  }, []);
 
   const startLikeAnimation = (userPressed: string | null) => {
     state.animateMessageIcon.setValue(0);
