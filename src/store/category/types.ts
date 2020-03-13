@@ -58,16 +58,20 @@ export type LikeOrUnlikePostType = {
 };
 
 export type QuestionType = {
-  title: string;
-  description: string;
   category: string;
-  image: string;
 };
 
 export interface PostCategoryResponse {
   statusCode: number;
   message: string;
   payload: CategoryInterface[];
+  error?: any;
+}
+
+export interface QuestionResponse {
+  statusCode: number;
+  message: string;
+  payload: PostInterface;
   error?: any;
 }
 
@@ -94,7 +98,7 @@ export type PostCategoryAction =
     }
   | {
       type: POST_CATEGORY_TYPES.POST_QUESTION;
-      payload: QuestionType;
+      payload: PostInterface;
     }
   | {
       type: POST_CATEGORY_TYPES.GET_POST_CATEGORY_ERROR;

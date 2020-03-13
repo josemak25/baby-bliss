@@ -38,10 +38,21 @@ export default function PostCategoryReducer(
     }
 
     case POST_CATEGORY_TYPES.POST_QUESTION: {
+      //Add this question to the appropriate community posts
+      const categoryPosts = [
+        action.payload,
+        ...state.communityPosts[action.payload.category._id]
+      ];
+
       return {
         ...state,
         isLoading: false,
-        error: null
+        error: null,
+        communityPosts: {
+          ...state.communityPosts,
+          [action.payload.category._id]: categoryPosts
+        },
+        generalPosts: [action.payload, ...state.generalPosts] //also add this question to the general post collection
       };
     }
 

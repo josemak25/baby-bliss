@@ -53,7 +53,7 @@ export const createFormData = (
   },
   otherData: any
 ) => {
-  if (!photo) return ;
+  if (!photo) return;
   const data = new FormData();
 
   data.append('images', {

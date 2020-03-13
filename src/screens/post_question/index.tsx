@@ -83,10 +83,7 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
   }, [categoryState.error, categoryState.isLoading, state.hasSubmitted]);
 
   const handleTextChange = (key: string, value: string, index: number) => {
-    index = index > 0 ? index : 0;
-    const categoryId = index
-      ? postCategories[index]._id
-      : state.question.categoryId;
+    const categoryId = postCategories[index] ? postCategories[index]._id : null;
 
     setState({
       ...state,
@@ -112,6 +109,8 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
     //validate the form  for empty fields before sending this form.
     for (let key in state.question) {
       if (!state.question[key] && key !== 'image') {
+        console.log(key);
+
         showSnackbar(
           colors.LIKE_POST_COLOR,
           'Please some entries are required!'
@@ -152,16 +151,14 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
               <PostTitleInput
                 placeholder="When is it ok to give into food cravings during pregnancy?"
                 multiline={true}
-                onChangeText={text => handleTextChange('topic', text, null)}
+                onChangeText={text => handleTextChange('topic', text, -1)}
                 value={state.question.topic}
               />
               <PostDescriptionTitle>description</PostDescriptionTitle>
               <PostDescriptionInput
                 placeholder="Within the realms of food safety and common sense it is always ok to give in to your food cravings! You’ve had to give up..."
                 multiline={true}
-                onChangeText={text =>
-                  handleTextChange('description', text, null)
-                }
+                onChangeText={text => handleTextChange('description', text, -1)}
                 value={state.question.description}
               />
               <PostCategoryTitle>category</PostCategoryTitle>

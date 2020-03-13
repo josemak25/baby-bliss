@@ -5,7 +5,9 @@ import {
   CategoryInterface,
   PostCategoryResponse,
   CATEGORY_ACTION_TYPES,
-  LikeOrUnlikePostResponse
+  LikeOrUnlikePostResponse,
+  QuestionType,
+  QuestionResponse
 } from './types';
 
 const getPostCategoryStarted = () => ({
@@ -17,8 +19,9 @@ const fetchCategoriesPostSuccess = (categoryPosts: any) => ({
   payload: categoryPosts
 });
 
-const postQuestion = () => ({
-  type: POST_CATEGORY_TYPES.POST_QUESTION
+const postQuestion = (question: PostInterface) => ({
+  type: POST_CATEGORY_TYPES.POST_QUESTION,
+  payload: question
 });
 
 const getPostCategoryError = (error: string) => ({
@@ -81,9 +84,10 @@ export default function postCategoryActions(type: string) {
             payload: payload.userQuestion,
             authToken: payload.authToken
           });
-          const response: LikeOrUnlikePostResponse = await request.json();
+          const response: QuestionResponse = await request.json();
+
           if (response.statusCode === 200) {
-            return dispatch(postQuestion());
+            return dispatch(postQuestion(response.payload));
           }
           dispatch(getPostCategoryError(response.message));
         } catch (error) {
