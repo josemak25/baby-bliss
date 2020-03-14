@@ -98,21 +98,20 @@ export default function PostCategoryReducer(
         updatedGeneral = { generalPosts: updatedGeneralPosts };
       } else {
         //Here we are clear it general post that has this action
-        console.log(action.payload);
-
         const updatedGeneralPosts2 = updateCollection(
           state.generalPosts,
           postIndex,
           likeCount
         );
-        //Go ahead to update this post in the category posts as well
-        const { category, _id: postId } = state.generalPosts[postIndex];
 
+        //Go ahead to update this post in the category posts as well
+        const { category, _id: postId } = updatedGeneralPosts2[postIndex];
         const generalPostIndex = state.communityPosts[category._id].findIndex(
           (post: PostInterface) => post._id === postId
         );
+
         const updatedCategoryPosts2 = updateCollection(
-          state.communityPosts[categoryId],
+          state.communityPosts[category._id],
           generalPostIndex,
           likeCount
         );

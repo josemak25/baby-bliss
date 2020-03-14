@@ -29,7 +29,13 @@ const RouteContainer = (props: RouteContainerProp) => {
 
   return (
     <Container>
-      {posts ? (
+      {categoryState.isLoading ? (
+        <ActivityIndicator
+          size="large"
+          color={colors.POST_TIP_COLOR}
+          style={{ position: 'absolute', top: 100 }}
+        />
+      ) : (
         <OptimizedFlatList
           data={posts}
           renderItem={({ item, index }) => (
@@ -49,12 +55,6 @@ const RouteContainer = (props: RouteContainerProp) => {
           style={{ width: '100%' }}
           onEndReached={onEndReached}
           onRefresh={false}
-        />
-      ) : (
-        <ActivityIndicator
-          size="large"
-          color={colors.POST_TIP_COLOR}
-          style={{ position: 'absolute', top: 100 }}
         />
       )}
     </Container>

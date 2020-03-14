@@ -7,15 +7,14 @@ import GeneralRouteContainer from './generalRoute';
 import RouteContainer from './routeContainer';
 import { useThemeContext } from '../../theme';
 import { NavigationInterface } from '../../constants';
-
-import { LogoContainer, Logo, AskQuestion } from './styles';
+import { PostInterface, POST_ACTION_TYPES } from '../../store/posts/types';
+import postsActions from '../../store/posts/actions';
 import postCategoryActions from '../../store/category/actions';
 import {
   CATEGORY_ACTION_TYPES,
   POST_CATEGORY_TYPES
 } from '../../store/category/types';
-import { PostInterface, POST_ACTION_TYPES } from '../../store/posts/types';
-import postsActions from '../../store/posts/actions';
+import { LogoContainer, Logo, AskQuestion } from './styles';
 
 interface CommunityScreenProp extends NavigationInterface {
   testID?: string;
