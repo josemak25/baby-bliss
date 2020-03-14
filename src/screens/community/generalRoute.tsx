@@ -6,6 +6,7 @@ import { Container } from './styles';
 import { NavigationInterface } from '../../constants';
 import { ActivityIndicator } from 'react-native';
 import { useThemeContext } from '../../theme';
+import { PostInterface } from '../../store/posts/types';
 interface GeneralRouteContainerProp extends NavigationInterface {
   testID?: string;
   handleLikePost(
@@ -14,6 +15,7 @@ interface GeneralRouteContainerProp extends NavigationInterface {
     categoryId: string,
     oldLikeState: boolean
   ): void;
+  navigateToPost(item: PostInterface): void;
 }
 
 const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
@@ -39,11 +41,7 @@ const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
               {...item}
               postIndex={index}
               width={grid.cardSize}
-              navigation={() =>
-                props.navigation.navigate('UserBlogDetailsScreen', {
-                  post: item
-                })
-              }
+              navigation={() => props.navigateToPost(item)}
               handleLikePost={(id, postIndex, categoryId, oldLikeState) =>
                 props.handleLikePost(id, postIndex, null, oldLikeState)
               }

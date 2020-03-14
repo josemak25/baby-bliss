@@ -105,6 +105,7 @@ export default function postsActions(type: string) {
             authToken: payload.authToken
           });
           const response: PostCommentResponseInterface = await request.json();
+
           if (response.statusCode === 200) {
             return dispatch(postComment(response.payload));
           }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   StatusBar,
   ScrollView,
@@ -14,7 +14,8 @@ import Message from '../../components/message';
 import {
   POST_ACTION_TYPES,
   CommentInterface,
-  PostInterface
+  PostInterface,
+  POST_TYPES
 } from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
 import { Ionicons } from '@expo/vector-icons';
@@ -49,6 +50,13 @@ interface BlogDetailsProp extends NavigationInterface {
   testID?: string;
 }
 
+type messageType = {
+  authToken: string;
+  id: string;
+  commentId?: string;
+  content?: string;
+};
+
 const { width: DEVICE_WIDTH } = Dimensions.get('window');
 
 export default function UserBlogDetails(props: BlogDetailsProp) {
@@ -71,33 +79,102 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
     focus: false,
     message: '',
     commentId: null,
-    actionType: null
+    actionType: null,
+    replyToName: '',
+    text: ''
   });
 
-  const handleOnFocusRequest = (actionType: string, commentId: string) => {
-    setState({ ...state, focus: !state.focus, commentId, actionType });
-  };
+  const ref = useRef({
+    scrollViewRef: null,
+    messageComponentY: null,
+    scrollViewHeight: null,
+    canScrollDown: false
+  });
 
-  const dispatchMessage = () => {
-    let { actionType } = state;
-    actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
+  useEffect(() => {
+    if (!state.text) {
+      setState({
+        ...state,
+        replyToName: ''
+      });
+    }
 
-    postsActions(actionType)(dispatch, {
-      id,
-      authToken: userState.token,
-      commentId: state.commentId,
-      content: state.message
+    if (ref.current.canScrollDown && !postState.isLoading) {
+      ref.current.scrollViewRef.scrollTo({
+        y: ref.current.scrollViewHeight,
+        animated: true
+      });
+      ref.current.canScrollDown = false;
+    }
+  }, [
+    state.text,
+    ref.current.canScrollDown,
+    postState.isLoading,
+    ref.current.scrollViewHeight
+  ]);
+
+  const handleOnFocusRequest = (
+    actionType: string,
+    replyTo: { userName: string; contentId: string }
+  ) => {
+    const { userName, contentId: commentId } = replyTo;
+
+    setState({
+      ...state,
+      commentId,
+      actionType,
+      replyToName: `@${userName} `, //this holds reference of the reply name to strip off before dispatching the message
+      text: `@${userName} ` //State that hold the text user is entering
     });
   };
 
-  const setMessage = (message: string) => setState({ ...state, message });
+  const dispatchMessage = () => {
+    let message: messageType = {
+      authToken: userState.token,
+      id
+    };
+    let { actionType } = state;
+    actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
+    if (state.replyToName) {
+      message = {
+        ...message,
+        content: state.text.replace(state.replyToName, ''),
+        commentId: state.commentId
+      };
+    } else {
+      message = {
+        ...message,
+        content: state.text
+      };
+    }
 
-  const handleLikeComment = (id: string, commentIndex: number) => {
+    postsActions(actionType)(dispatch, message);
+    ref.current.canScrollDown = true;
+  };
+
+  const setMessage = (message: string) => {
+    setState({ ...state, text: message });
+  };
+
+  const handleLikeComment = (
+    id: string,
+    commentIndex: number,
+    oldLikeState: boolean
+  ) => {
+    dispatch({
+      type: POST_TYPES.LIKE_COMMENT,
+      payload: {
+        commentIndex,
+        userId: id
+      }
+    });
+
     postsActions(POST_ACTION_TYPES.LIKE_COMMENT)(dispatch, {
       id,
       authToken: userState.token,
       commentIndex,
-      userId: userState.user.id
+      userId: userState.user.id,
+      isLiked: !oldLikeState
     });
   };
 
@@ -116,6 +193,10 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
           backgroundColor: colors.BD_DARK_COLOR
         }}
         showsVerticalScrollIndicator={false}
+        ref={scrollRef => (ref.current.scrollViewRef = scrollRef)}
+        onContentSizeChange={(_width, height) =>
+          (ref.current.scrollViewHeight = height)
+        }
       >
         <Header style={{ height: 350, paddingLeft: 0, paddingRight: 0 }}>
           <HeaderContentContainer>
@@ -173,8 +254,13 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
                       comment={comment}
                       commentIndex={index}
                       handleOnFocusRequest={handleOnFocusRequest}
-                      handleLikeComment={handleLikeComment}
+                      handleLikeComment={() =>
+                        handleLikeComment(comment._id, index, comment.isLiked)
+                      }
                       avatar={avatar}
+                      commentRef={commentComponentRef =>
+                        (ref.current.messageComponentY = commentComponentRef)
+                      }
                     />
                   )
                 )
@@ -191,7 +277,7 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
         focus={state.focus}
         dispatchMessage={dispatchMessage}
         setNewMessage={setMessage}
-        message={state.message}
+        message={state.text}
       />
     </KeyboardAvoidingView>
   );

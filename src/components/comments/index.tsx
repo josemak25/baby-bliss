@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Animated, Easing, TouchableWithoutFeedback, Text } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -66,6 +66,9 @@ export default function Comment(props: CommentProps) {
       contentId: comment._id
     });
   };
+  useEffect(() => {
+    setState({ ...state, likedComment: comment.isLiked });
+  }, [comment.isLiked]);
 
   const startLikeAnimation = (id: string) => {
     setState({ ...state, likedComment: !state.likedComment });

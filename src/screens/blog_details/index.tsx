@@ -80,8 +80,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
     commentId: null,
     actionType: null,
     replyToName: '',
-    text: '',
-    canScrollDown: false
+    text: ''
   });
 
   const ref = useRef({
@@ -125,8 +124,8 @@ export default function BlogDetails(props: BlogDetailsProp) {
       // focus: !state.focus,
       commentId,
       actionType,
-      replyToName: `@${userName} `,
-      text: `@${userName} `
+      replyToName: `@${userName} `, //this holds reference of the reply name to strip off before dispatching the message
+      text: `@${userName} ` //State that hold the text user is entering
     });
   };
 

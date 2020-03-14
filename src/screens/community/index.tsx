@@ -14,6 +14,8 @@ import {
   CATEGORY_ACTION_TYPES,
   POST_CATEGORY_TYPES
 } from '../../store/category/types';
+import { PostInterface, POST_ACTION_TYPES } from '../../store/posts/types';
+import postsActions from '../../store/posts/actions';
 
 interface CommunityScreenProp extends NavigationInterface {
   testID?: string;
@@ -84,6 +86,16 @@ export default function CommunityScreen(props: CommunityScreenProp) {
     props.navigation.navigate('PostQuestionScreen');
   };
 
+  const navigateToPost = (post: PostInterface) => {
+    //dispatch action to fetch comments for this post
+    postsActions(POST_ACTION_TYPES.LOAD_POST_COMMENTS)(dispatch, {
+      authToken: userState.token,
+      postId: post._id
+    });
+
+    props.navigation.navigate('UserBlogDetailsScreen', { post });
+  };
+
   const renderTabBar = (props: any) => (
     <TabBar
       {...props}
@@ -112,6 +124,7 @@ export default function CommunityScreen(props: CommunityScreenProp) {
           <GeneralRouteContainer
             navigation={props.navigation}
             handleLikePost={handleLikePost}
+            navigateToPost={navigateToPost}
           />
         );
       default:
@@ -120,6 +133,7 @@ export default function CommunityScreen(props: CommunityScreenProp) {
             navigation={props.navigation}
             categoryId={route._id}
             handleLikePost={handleLikePost}
+            navigateToPost={navigateToPost}
           />
         );
     }
