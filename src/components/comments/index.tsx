@@ -37,6 +37,7 @@ type CommentProps = {
   handleLikeComment(id: string, commentIndex: number): void;
   commentIndex: number;
   avatar: string;
+  commentRef(ref: any): void;
 };
 
 export default function Comment(props: CommentProps) {
@@ -48,7 +49,8 @@ export default function Comment(props: CommentProps) {
     handleOnFocusRequest,
     handleLikeComment,
     commentIndex,
-    avatar
+    avatar,
+    commentRef
   } = props;
 
   const [state, setState] = useState({
@@ -150,7 +152,13 @@ export default function Comment(props: CommentProps) {
               color={colors.INACTIVE_ICON_COLOR}
             />
           </ReplyContainer>
-          <ReplayComment>reply</ReplayComment>
+          <ReplayComment
+            onLayout={e => {
+              commentRef(e.nativeEvent.layout.y);
+            }}
+          >
+            reply
+          </ReplayComment>
         </ActionContainer>
       </CommentDetails>
     </Container>

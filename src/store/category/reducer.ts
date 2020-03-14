@@ -1,4 +1,5 @@
 import dummyCategory from '../../libs/postCategories.json';
+import { PostInterface } from '../posts/types.js';
 
 import {
   CategoryInitialState,
@@ -66,33 +67,70 @@ export default function PostCategoryReducer(
     }
 
     case POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_USER_POST: {
-      //action.payload.categoryId property will be undefined if this action is for general post
-      let posts = [];
-      const { categoryId, postIndex, likeCount } = action.payload;
-      posts = categoryId
-        ? state.communityPosts[categoryId]
-        : state.generalPosts;
+      //action.payload.categoryId property will be null if this action is for general posts
+      let { categoryId, postIndex, likeCount } = action.payload;
+      let updatedCommunity = null;
+      let updatedGeneral = null;
 
-      const oldNoOfLikes = posts[postIndex].noOfLikes;
-      const newNoOfLikes = oldNoOfLikes + likeCount;
-      posts[postIndex].noOfLikes = newNoOfLikes < 0 ? 1 : newNoOfLikes;
-      posts[postIndex].isLiked = !posts[postIndex].isLiked;
+      if (categoryId) {
+        //Here we are clear it category post that has this action
+        const updatedCategoryPosts = updateCollection(
+          state.communityPosts[categoryId],
+          postIndex,
+          likeCount
+        );
+        //Go ahead to update this post in the general posts as well
+        const generalPostIndex = state.generalPosts.findIndex(
+          post => post._id === updatedCategoryPosts[postIndex]._id
+        );
 
-      //If the categoryId is present update the community post else update the general post
-      const update = categoryId
-        ? {
-            communityPosts: {
-              ...state.communityPosts,
-              [categoryId]: posts
-            }
+        const updatedGeneralPosts = updateCollection(
+          state.generalPosts,
+          generalPostIndex,
+          likeCount
+        );
+        updatedCommunity = {
+          communityPosts: {
+            ...state.communityPosts,
+            [categoryId]: updatedCategoryPosts
           }
-        : { generalPosts: posts };
+        };
+        updatedGeneral = { generalPosts: updatedGeneralPosts };
+      } else {
+        //Here we are clear it general post that has this action
+        console.log(action.payload);
+
+        const updatedGeneralPosts2 = updateCollection(
+          state.generalPosts,
+          postIndex,
+          likeCount
+        );
+        //Go ahead to update this post in the category posts as well
+        const { category, _id: postId } = state.generalPosts[postIndex];
+
+        const generalPostIndex = state.communityPosts[category._id].findIndex(
+          (post: PostInterface) => post._id === postId
+        );
+        const updatedCategoryPosts2 = updateCollection(
+          state.communityPosts[categoryId],
+          generalPostIndex,
+          likeCount
+        );
+        updatedCommunity = {
+          communityPosts: {
+            ...state.communityPosts,
+            [categoryId]: updatedCategoryPosts2
+          }
+        };
+        updatedGeneral = { generalPosts: updatedGeneralPosts2 };
+      }
 
       return {
         ...state,
         isLoading: false,
         error: null,
-        ...update
+        ...updatedCommunity,
+        ...updatedGeneral
       };
     }
 
@@ -104,3 +142,15 @@ export default function PostCategoryReducer(
       return state;
   }
 }
+
+const updateCollection = (
+  posts: PostInterface[],
+  postIndex: number,
+  likeCount: number
+) => {
+  const oldNoOfLikes = posts[postIndex].noOfLikes;
+  const newNoOfLikes = oldNoOfLikes + likeCount;
+  posts[postIndex].noOfLikes = newNoOfLikes < 0 ? 1 : newNoOfLikes;
+  posts[postIndex].isLiked = !posts[postIndex].isLiked;
+  return posts;
+};

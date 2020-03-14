@@ -85,6 +85,7 @@ export default function postCategoryActions(type: string) {
             authToken: payload.authToken
           });
           const response: QuestionResponse = await request.json();
+          console.log(response);
 
           if (response.statusCode === 200) {
             return dispatch(postQuestion(response.payload));

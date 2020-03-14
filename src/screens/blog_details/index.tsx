@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   StatusBar,
   ScrollView,
@@ -80,7 +80,16 @@ export default function BlogDetails(props: BlogDetailsProp) {
     commentId: null,
     actionType: null,
     replyToName: '',
-    text: ''
+    text: '',
+    canScrollDown: false
+  });
+
+  const ref = useRef({
+    scrollViewRef: null,
+    commentSectionY: null,
+    messageComponentY: null,
+    scrollViewHeight: null,
+    canScrollDown: false
   });
 
   useEffect(() => {
@@ -90,7 +99,20 @@ export default function BlogDetails(props: BlogDetailsProp) {
         replyToName: ''
       });
     }
-  }, [state.text]);
+
+    if (ref.current.canScrollDown && !postState.isLoading) {
+      ref.current.scrollViewRef.scrollTo({
+        y: ref.current.scrollViewHeight,
+        animated: true
+      });
+      ref.current.canScrollDown = false;
+    }
+  }, [
+    state.text,
+    ref.current.canScrollDown,
+    postState.isLoading,
+    ref.current.scrollViewHeight
+  ]);
 
   const handleOnFocusRequest = (
     actionType: string,
@@ -129,6 +151,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
     }
 
     postsActions(actionType)(dispatch, message);
+    ref.current.canScrollDown = true;
   };
 
   const setMessage = (message: string) => {
@@ -172,6 +195,10 @@ export default function BlogDetails(props: BlogDetailsProp) {
           backgroundColor: colors.BD_DARK_COLOR
         }}
         showsVerticalScrollIndicator={false}
+        ref={scrollRef => (ref.current.scrollViewRef = scrollRef)}
+        onContentSizeChange={(_width, height) =>
+          (ref.current.scrollViewHeight = height)
+        }
       >
         <Header style={{ height: 400, paddingLeft: 0, paddingRight: 0 }}>
           <HeaderImage
@@ -208,7 +235,14 @@ export default function BlogDetails(props: BlogDetailsProp) {
               end={{ x: 0, y: 0 }}
               colors={[colors.GRADIENT_COLOR_FROM, colors.GRADIENT_COLOR_TO]}
             >
-              <MessageIcon />
+              <MessageIcon
+                onPress={() => {
+                  ref.current.scrollViewRef.scrollTo({
+                    y: ref.current.commentSectionY,
+                    animated: true
+                  });
+                }}
+              />
             </FloatingMessageButton>
             <ActionContainer>
               <Eye style={{ position: 'relative', right: 9 }} width="30%" />
@@ -222,7 +256,11 @@ export default function BlogDetails(props: BlogDetailsProp) {
             </ActionContainer>
             <Description>{description}</Description>
             <CommentHeader>comment</CommentHeader>
-            <CommentsContainer>
+            <CommentsContainer
+              onLayout={e => {
+                ref.current.commentSectionY = e.nativeEvent.layout.y;
+              }}
+            >
               {postState.comments.length ? (
                 postState.comments.map(
                   (comment: CommentInterface, index: number) => (
@@ -235,6 +273,9 @@ export default function BlogDetails(props: BlogDetailsProp) {
                         handleLikeComment(comment._id, index, comment.isLiked)
                       }
                       avatar={avatar}
+                      commentRef={commentComponentRef =>
+                        (ref.current.messageComponentY = commentComponentRef)
+                      }
                     />
                   )
                 )
