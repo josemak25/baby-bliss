@@ -1,10 +1,6 @@
 import API from '../../src/lib/api';
 import post from '../../src/libs/dummyPost.json';
 
-jest.mock('react-native-dotenv', () => {
-  return 'BABY_BLISS_BASE_URI';
-});
-
 describe('TEST POST ACTIONS', function() {
   test('should return non empty array of posts for the case of LOAD_POSTS action type', async () => {
     window.fetch = jest.fn().mockImplementation(() =>

@@ -5,10 +5,6 @@ import { createNavigationTestProps } from '../../../src/constants';
 import ForgotPasswordScreen from '../../../src/screens/forgot_password';
 import { StoreProvider } from '../../../src/store';
 
-jest.mock('react-native-dotenv', () => {
-  return 'BABY_BLISS_BASE_URI';
-});
-
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
 
 const mountComponent = () => {

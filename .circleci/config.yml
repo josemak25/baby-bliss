@@ -36,4 +36,5 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
+      - run: printenv > .env # .env file needs to be supplied for react-native-dotenv to not crash. Remove this when github.com/zetachang/react-native-dotenv#75 is merged
       - run: yarn test

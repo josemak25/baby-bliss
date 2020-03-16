@@ -7,10 +7,6 @@ import { StoreProvider } from '../../../src/store';
 
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
 
-jest.mock('react-native-dotenv', () => {
-  return 'BABY_BLISS_BASE_URI';
-});
-
 const mountComponent = () => {
   const props: any = createNavigationTestProps();
   const renderedProps = render(

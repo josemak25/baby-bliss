@@ -6,10 +6,6 @@ import Theme from '../src/theme';
 import { AppBottomTabNavigator } from '../src/router';
 import { StoreProvider } from '../src/store';
 
-jest.mock('react-native-dotenv', () => {
-  return 'BABY_BLISS_BASE_URI';
-});
-
 jest.mock('react-navigation-stack', () => {
   return {
     ...require.requireActual('react-navigation-stack'),
