@@ -99,10 +99,14 @@ export const PostButtonContainer = styled.View`
   align-items: center;
 `;
 
-export const SelectedImageContanier = styled.View`
+export const SelectedImageContainer = styled.View`
   width: 100%;
   height: ${applyScale(200)}px;
   justify-content: center;
   align-items: center;
   margin-top: 5px;
+`;
+export const Spinner = styled.View`
+  position: absolute;
+  align-self: center;
 `;

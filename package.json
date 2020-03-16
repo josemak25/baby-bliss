@@ -15,12 +15,14 @@
     "@expo/vector-icons": "^10.0.0",
     "@react-native-community/masked-view": "0.1.5",
     "@types/react-native-snap-carousel": "^3.7.4",
+    "@react-native-community/netinfo": "4.6.0",
     "expo": "~36.0.0",
     "expo-constants": "~8.0.0",
     "expo-font": "~8.0.0",
     "expo-image-picker": "~8.0.1",
     "expo-linear-gradient": "^8.0.0",
     "lottie-react-native": "~2.6.1",
+    "moment-mini": "^2.24.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
@@ -36,6 +38,7 @@
     "react-native-screens": "2.0.0-alpha.12",
     "react-native-skeleton-content": "^1.0.13",
     "react-native-snap-carousel": "^3.8.4",
+    "react-native-smart-tip": "^2.0.1",
     "react-native-svg": "9.13.3",
     "react-native-tab-view": "^2.13.0",
     "react-native-web": "~0.11.7",
@@ -45,13 +48,35 @@
     "styled-components": "^5.0.1"
   },
   "jest": {
-    "preset": "jest-expo",
     "testEnvironment": "node",
     "setupFilesAfterEnv": [
       "<rootDir>/__tests__/config/jest.setup.ts"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/__tests__/config"
+    ],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
+    "projects": [
+      {
+        "preset": "jest-expo/ios",
+        "transformIgnorePatterns": [
+          "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base|static-container)"
+        ],
+        "globals": {
+          "__TEST__": true
+        }
+      },
+      {
+        "preset": "jest-expo/android",
+        "transformIgnorePatterns": [
+          "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base|static-container)"
+        ],
+        "globals": {
+          "__TEST__": true
+        }
+      }
     ]
   },
   "devDependencies": {
@@ -68,7 +93,6 @@
     "jest-expo": "^36.0.1",
     "jest-styled-components": "^7.0.0",
     "prettier": "^1.19.1",
-    "reactotron-react-native": "^4.0.3",
     "typescript": "~3.6.3"
   },
   "private": true

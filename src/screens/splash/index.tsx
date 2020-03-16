@@ -4,10 +4,15 @@ import { useThemeContext } from '../../theme';
 import { useStoreContext } from '../../store';
 import CARD_ITEM from '../../utils/getItemCardSize';
 import ScreenGridSizeActions from '../../store/grid/actions';
-import { NavigationInterface } from '../../constants';
+import { USER_TYPES } from '../../store/user/types';
+
+import {
+  NavigationInterface,
+  STORE_USER_PROFILE,
+  USER_FIRST_LAUNCH
+} from '../../constants';
 
 import { Container, ImageContainer, Image } from './styles';
-
 interface SplashScreenProp extends NavigationInterface {
   testID?: string;
 }
@@ -44,10 +49,33 @@ export default function SplashScreen({ navigation }: SplashScreenProp) {
 
   const checkInitialLaunch = async () => {
     try {
-      const firstTimeLaunch = await AsyncStorage.getItem('@FIRST_TIME_LAUNCH');
-      if (!firstTimeLaunch) {
-        await AsyncStorage.setItem('@FIRST_TIME_LAUNCH', '1');
+      const [firstTimeLaunch, storedUserProfile] = await AsyncStorage.multiGet([
+        USER_FIRST_LAUNCH,
+        STORE_USER_PROFILE
+      ]);
+
+      const [, firstTimeLaunchValue] = firstTimeLaunch;
+      const [, storedUserProfileValue] = storedUserProfile;
+      if (!firstTimeLaunchValue) {
+        await AsyncStorage.setItem(USER_FIRST_LAUNCH, '1');
         return navigation.replace('GetStartedScreen');
+      }
+
+      if (storedUserProfileValue) {
+        //Navigate this user to the home screen if he still has token stored
+        const { payload, token } = JSON.parse(storedUserProfileValue);
+
+        if (payload) {
+          dispatch({
+            type: USER_TYPES.LOAD_FROM_STORE,
+            payload: { payload, token }
+          });
+
+          if (payload.isApproved) {
+            return navigation.replace('HomeScreen');
+          }
+          return navigation.replace('ProfileSetupScreen');
+        }
       }
       navigation.replace('SignInScreen');
     } catch (error) {

@@ -3,21 +3,33 @@ import Animated, { Easing } from 'react-native-reanimated';
 import RNPickerSelect from 'react-native-picker-select';
 import { useThemeContext } from '../../theme';
 import applyScale from '../../utils/applyScale';
+import { useStoreContext } from '../../store';
+import Button from '../../components/button';
+import { ActivityIndicator } from 'react-native';
 
 import {
   PageOneContainer,
   SelectQuestionButtonContainer,
   AnswerOption,
   AnswerOptionText,
-  SelectQuestionButton
+  SelectQuestionButton,
+  Spinner
 } from './styles';
 
 const SelectQuestionButtonOverlay = Animated.createAnimatedComponent(
   SelectQuestionButton
 );
 
-export default function PageSix({ handleNavigation, handleChange, profile }) {
-  const { colors } = useThemeContext();
+export default function PageSix({
+  handleNavigation,
+  handleChange,
+  handleSubmit
+}) {
+  const { colors, fonts } = useThemeContext();
+
+  const [{ interestState, userState }] = useStoreContext();
+
+  const [state, setState] = useState('');
 
   const [animation, setAnimation] = useState({
     buttonWidthOne: new Animated.Value(applyScale(5)),
@@ -51,8 +63,8 @@ export default function PageSix({ handleNavigation, handleChange, profile }) {
     });
   };
 
-  const handleState = (userInterest: string) => {
-    handleChange({ type: 'antenatalInterest', data: userInterest });
+  const handleState = () => {
+    handleChange({ key: 'userInterest', data: state });
   };
 
   const handleRNPickerSelect = () => {
@@ -102,12 +114,13 @@ export default function PageSix({ handleNavigation, handleChange, profile }) {
               color: 'red',
               key: 'Select an interest...'
             }}
-            onValueChange={handleState}
-            value={profile.userInterest}
-            items={allStates.map((title: string, index: number) => ({
+            onValueChange={value => setState(value)}
+            onDonePress={handleState}
+            value={state}
+            items={interestState.interests.map(({ title, id }) => ({
               label: title,
               value: title,
-              key: index
+              key: id
             }))}
             textInputProps={{
               color:
@@ -141,49 +154,26 @@ export default function PageSix({ handleNavigation, handleChange, profile }) {
           </AnswerOptionText>
         </SelectQuestionButton>
       </SelectQuestionButtonContainer>
-      <SelectQuestionButtonContainer>
-        <SelectQuestionButton>
-          <AnswerOption>b</AnswerOption>
-          <AnswerOptionText>Continue</AnswerOptionText>
-        </SelectQuestionButton>
-        <SelectQuestionButtonOverlay
-          style={{
-            width: animation.buttonWidthTwo,
-            backgroundColor: colors.BG_LIGHT_COLOR,
-            alignSelf: 'flex-start',
-            borderLeftWidth: 0,
-            left: -5
-          }}
-        />
-        <SelectQuestionButton
-          style={{ backgroundColor: 'transparent' }}
-          onPress={() => startButtonAnimation('buttonWidthTwo')}
-        >
-          <AnswerOption
-            style={{
-              color:
-                animation.selected === 'buttonWidthTwo'
-                  ? colors.POST_TIP_COLOR
-                  : colors.BD_DARK_COLOR
-            }}
-          >
-            b
-          </AnswerOption>
-          <AnswerOptionText
-            style={{
-              color:
-                animation.selected === 'buttonWidthTwo'
-                  ? colors.FLOATING_MESSAGE_COLOR
-                  : colors.BG_LIGHT_COLOR,
-              zIndex: 999
-            }}
-          >
-            Continue
-          </AnswerOptionText>
-        </SelectQuestionButton>
-      </SelectQuestionButtonContainer>
+
+      <Button
+        title={`${userState.isLoading ? '' : 'Submit'}`}
+        disabled={userState.isLoading}
+        buttonStyle={{
+          backgroundColor: colors.POST_TIP_COLOR,
+          marginTop: 20,
+          width: '100%'
+        }}
+        textStyle={{
+          color: colors.BG_LIGHT_COLOR,
+          fontFamily: fonts.IBM_SANS_BOLD
+        }}
+        onPress={handleSubmit}
+      />
+      {userState.isLoading && (
+        <Spinner>
+          <ActivityIndicator size="small" color={colors.BG_LIGHT_COLOR} />
+        </Spinner>
+      )}
     </PageOneContainer>
   );
 }
-
-const allStates = ['Parenting', 'Health', 'Contraceptives', 'IVF'];

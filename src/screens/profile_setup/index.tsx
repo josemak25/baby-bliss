@@ -1,14 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { AsyncStorage, Dimensions, StatusBar } from 'react-native';
+import { Dimensions, StatusBar, AsyncStorage } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, { Easing } from 'react-native-reanimated';
 import QuestionScreenItem from './QuestionScreenItem';
 import { useThemeContext } from '../../theme';
 import { useStoreContext } from '../../store';
-import { NavigationInterface } from '../../constants';
+import { NavigationInterface, STORE_USER_PROFILE } from '../../constants';
 import { questions as profileSetupQuestion } from '../../libs/profileSetupQuestion.json';
 import applyScale from '../../utils/applyScale';
+import userActions from '../../store/user/actions';
+import { USER_ACTION_TYPES } from '../../store/user/types';
+import interestActions from '../../store/interest/actions';
 
 import {
   Container,
@@ -43,26 +46,30 @@ export default function ProfileSetupScreen({
   testID,
   questions
 }: ProfileSetupScreenProp) {
-  const { colors } = useThemeContext();
-  const [, dispatch] = useStoreContext();
+  const MAX_SLIDES = 6;
 
+  const { colors } = useThemeContext();
+  const [{ interestState, userState }, dispatch] = useStoreContext();
   let questionRef = useRef(null);
 
   const [profile, setProfile] = useState({
     scrollIndex: 0,
-    animation: new Animated.Value(0),
+    animation: new Animated.Value(62.1),
+    userScrolled: false,
     payload: {
-      birthDueDate: new Date().toDateString(),
-      address: '',
-      birthHospital: '',
-      hasHMO: '',
-      antenatalInterest: '',
-      userInterest: ''
+      state: null,
+      dueDateStart: null,
+      hasBirthHospital: false,
+      hasHealthMaintenanceOrg: false,
+      hasInterestInAntenatalServices: false,
+      userInterest: []
     }
   });
 
   useEffect(() => {
-    startScrollBarAnimation();
+    if (profile.userScrolled) startScrollBarAnimation();
+
+    if (!profile.scrollIndex) interestActions(dispatch);
   }, [profile.scrollIndex]);
 
   // @ts-ignore
@@ -77,11 +84,42 @@ export default function ProfileSetupScreen({
   };
 
   const handleStateChange = (scrollIndex: number) => {
-    setProfile({ ...profile, scrollIndex });
+    setProfile({ ...profile, userScrolled: true, scrollIndex });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (profile.payload['dueDateStart'] === null) {
+      delete profile.payload['dueDateStart'];
+    }
+
+    if (profile.payload['state'] === null) {
+      delete profile.payload['state'];
+    }
+
+    const payload = {
+      ...profile.payload,
+      userInterest: interestState.interests.reduce((acc, { title, id }) => {
+        if (title === profile.payload.userInterest) acc.push(id);
+        return acc;
+      }, [])
+    };
+
     // dispatch user profile setup here
+    await userActions(USER_ACTION_TYPES.COMPLETE_PROFILE)(dispatch, {
+      payload,
+      id: userState.user.id,
+      token: userState.token
+    });
+
+    await AsyncStorage.setItem(
+      STORE_USER_PROFILE,
+      JSON.stringify({
+        user: userState.user,
+        token: userState.token
+      })
+    );
+
+    navigation.replace('HomeScreen');
   };
 
   return (
@@ -99,10 +137,15 @@ export default function ProfileSetupScreen({
             )}
           </GoBack>
           <SlideNumberContainer>
-            <SlideNumber>0{++profile.scrollIndex} </SlideNumber>
-            <SlideNumberLength>
-              / 0{profileSetupQuestion.length}
-            </SlideNumberLength>
+            <SlideNumber>
+              0
+              {profile.userScrolled
+                ? profile.scrollIndex < MAX_SLIDES
+                  ? ++profile.scrollIndex
+                  : MAX_SLIDES
+                : 1}
+            </SlideNumber>
+            <SlideNumberLength>/ 0{MAX_SLIDES}</SlideNumberLength>
           </SlideNumberContainer>
         </QuestionHeaderContent>
         <ProgressBarContainer>
@@ -127,6 +170,7 @@ export default function ProfileSetupScreen({
               questionRef={questionRef}
               setProfile={setProfile}
               profile={profile.payload}
+              handleSubmit={handleSubmit}
             />
           )}
           sliderWidth={sliderWidth}

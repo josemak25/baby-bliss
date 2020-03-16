@@ -1,9 +1,10 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import {
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
-  ScrollView
+  ScrollView,
+  ActivityIndicator
 } from 'react-native';
 
 import * as ImagePicker from 'expo-image-picker';
@@ -15,6 +16,11 @@ import { NavigationInterface } from '../../constants';
 import boxShadow from '../../utils/boxShadows';
 import ResponsiveImage from '../../libs/responsiveImage';
 import { category as postCategories } from '../../libs/postCategories.json';
+import { useStoreContext } from '../../store';
+import postCategoryActions from '../../store/category/actions';
+import { CATEGORY_ACTION_TYPES } from '../../store/category/types';
+import showSnackbar from '../../components/UI/snackbar';
+import { createFormData } from '../utils';
 
 import {
   Container,
@@ -30,7 +36,8 @@ import {
   SelectImageContainer,
   SelectImageTitle,
   PostButtonContainer,
-  SelectedImageContanier
+  SelectedImageContainer,
+  Spinner
 } from './styles';
 
 interface PostQuestionScreenProp extends NavigationInterface {
@@ -39,34 +46,96 @@ interface PostQuestionScreenProp extends NavigationInterface {
 
 export default function PostQuestionScreen(props: PostQuestionScreenProp) {
   const { colors, fonts } = useThemeContext();
+  const [{ userState, categoryState }, dispatch] = useStoreContext();
 
-  const [question, setQuestion] = useState({
-    title: '',
-    description: '',
-    category: 'First Trimester',
-    image: '',
-    isModalVisible: false
+  const [state, setState] = useState({
+    question: {
+      topic: '',
+      description: '',
+      category: 'First Trimester',
+      categoryId: '',
+      image: null
+    },
+    hasSubmitted: false
   });
 
-  const handleCategory = (category: string) => {
-    setQuestion({ ...question, category });
+  useEffect(() => {
+    if (categoryState.error && !categoryState.isLoading) {
+      showSnackbar('#F42850', categoryState.error);
+    }
+    if (
+      state.hasSubmitted &&
+      !categoryState.error &&
+      !categoryState.isLoading
+    ) {
+      showSnackbar(colors.POST_TIP_COLOR, 'Profile updated successfully!');
+      setState({
+        ...state,
+        question: {
+          topic: '',
+          description: '',
+          category: 'First Trimester',
+          categoryId: '',
+          image: null
+        }
+      });
+    }
+  }, [categoryState.error, categoryState.isLoading, state.hasSubmitted]);
+
+  const handleTextChange = (key: string, value: string, index: number) => {
+    const categoryId = postCategories[index] ? postCategories[index]._id : null;
+
+    setState({
+      ...state,
+      question: { ...state.question, [key]: value, categoryId }
+    });
   };
 
   const handleImage = async () => {
     const permissionResult = await ImagePicker.requestCameraRollPermissionsAsync();
 
     if (permissionResult.granted === false) {
-      return alert('Permission to access camera roll is required!');
+      alert('Permission to access camera roll is required!');
     }
 
     const response = await ImagePicker.launchImageLibraryAsync();
 
     if (response.cancelled === true) return;
 
-    setQuestion({ ...question, image: response.uri });
+    setState({ ...state, question: { ...state.question, image: response } });
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    //validate the form  for empty fields before sending this form.
+    for (let key in state.question) {
+      if (!state.question[key] && key !== 'image') {
+        console.log(key);
+
+        showSnackbar(
+          colors.LIKE_POST_COLOR,
+          'Please some entries are required!'
+        );
+        return;
+      }
+    }
+    const userQuestion = {
+      topic: state.question.topic,
+      description: state.question.description,
+      category: state.question.categoryId
+    };
+    const images = createFormData(state.question.image, {});
+
+    postCategoryActions(CATEGORY_ACTION_TYPES.POST_QUESTION)(dispatch, {
+      image: images,
+      userQuestion,
+      authToken: userState.token
+    });
+
+    setState({
+      ...state,
+      hasSubmitted: true
+    });
+  };
 
   return (
     <ScrollView
@@ -78,15 +147,19 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
           <Container testID="PostQuestionScreen">
             <Title>ask question</Title>
             <QuestionContainer>
-              <PostTitle>title</PostTitle>
+              <PostTitle>Topic</PostTitle>
               <PostTitleInput
                 placeholder="When is it ok to give into food cravings during pregnancy?"
                 multiline={true}
+                onChangeText={text => handleTextChange('topic', text, -1)}
+                value={state.question.topic}
               />
               <PostDescriptionTitle>description</PostDescriptionTitle>
               <PostDescriptionInput
                 placeholder="Within the realms of food safety and common sense it is always ok to give in to your food cravings! You’ve had to give up..."
                 multiline={true}
+                onChangeText={text => handleTextChange('description', text, -1)}
+                value={state.question.description}
               />
               <PostCategoryTitle>category</PostCategoryTitle>
               <PostCategoryContainer>
@@ -97,8 +170,10 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                     color: 'red',
                     key: 'Select a category...'
                   }}
-                  onValueChange={handleCategory}
-                  value={question.category}
+                  onValueChange={(value, key) => {
+                    handleTextChange('category', value, --key);
+                  }}
+                  value={state.question.category}
                   items={postCategories.map(({ title, id }) => ({
                     label: title,
                     value: title,
@@ -116,12 +191,13 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                     color: colors.FONT_LIGHT_COLOR,
                     textTransform: 'capitalize'
                   }}
+                  doneText="Close"
                 />
               </PostCategoryContainer>
               <PostCategoryTitle>attach image</PostCategoryTitle>
               <SelectImageContainer onPress={handleImage}>
                 <Fragment>
-                  <SelectImageTitle>Click to attach image(s)</SelectImageTitle>
+                  <SelectImageTitle>Click to attach image</SelectImageTitle>
                   <Entypo
                     name="attachment"
                     size={20}
@@ -129,15 +205,15 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                   />
                 </Fragment>
               </SelectImageContainer>
-              {question.image ? (
-                <SelectedImageContanier>
+              {state.question.image ? (
+                <SelectedImageContainer>
                   <ResponsiveImage
-                    imageUrl={question.image}
+                    imageUrl={state.question.image.uri}
                     width={350}
                     height={200}
                     style={{ borderRadius: 5 }}
                   />
-                </SelectedImageContanier>
+                </SelectedImageContainer>
               ) : null}
             </QuestionContainer>
             <PostButtonContainer>
@@ -163,9 +239,18 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
                   fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
                   fontSize: fonts.MEDIUM_SIZE + 2
                 }}
-                title="create post"
                 onPress={handleSubmit}
+                title={`${categoryState.isLoading ? '' : 'create post'}`}
+                disabled={categoryState.isLoading}
               />
+              {categoryState.isLoading && (
+                <Spinner>
+                  <ActivityIndicator
+                    size="small"
+                    color={colors.BG_LIGHT_COLOR}
+                  />
+                </Spinner>
+              )}
             </PostButtonContainer>
           </Container>
         </KeyboardAvoidingView>

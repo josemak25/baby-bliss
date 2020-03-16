@@ -3,7 +3,8 @@ import { POST_TYPES, PostInitialState, PostAction } from './types';
 export const postInitialState: PostInitialState = {
   isLoading: false,
   error: null,
-  posts: []
+  posts: [],
+  comments: []
 };
 
 export default function postReducer(
@@ -20,23 +21,61 @@ export default function postReducer(
         ...state,
         isLoading: false,
         error: null,
-        posts: [...state.posts, action.payload]
+        posts: [...action.payload]
       };
     }
 
-    case POST_TYPES.LIKE_POST: {
-      const { payload: postId } = action;
-      // send id to backend
+    case POST_TYPES.LOAD_POST_ERROR: {
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload
+      };
+    }
+
+    case POST_TYPES.LIKE_OR_UNLIKE_POST: {
+      const { postIndex, likeCount } = action.payload;
+      const oldNoOfLikes = state.posts[postIndex].noOfLikes;
+      const newNoOfLikes = oldNoOfLikes + likeCount;
+
+      state.posts[postIndex].noOfLikes = newNoOfLikes < 0 ? 1 : newNoOfLikes;
+      state.posts[postIndex].isLiked = !state.posts[postIndex].isLiked;
+
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        posts: state.posts
+      };
+    }
+
+    case POST_TYPES.LOAD_COMMENT_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        comments: [...action.payload]
+      };
     }
 
     case POST_TYPES.LIKE_COMMENT: {
-      const { payload: commentId } = action;
-      // send id to backend
+      const { userId, commentIndex } = action.payload;
+      state.comments[commentIndex].likes.push(userId);
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        comments: state.comments
+      };
     }
 
-    case POST_TYPES.COMMENT_ON_POST: {
-      const { postId, comment } = action.payload;
-      // send id to backend
+    case POST_TYPES.POST_COMMENT: {
+      return {
+        ...state,
+        isLoading: false,
+        error: null,
+        comments: [...state.comments, action.payload]
+      };
     }
 
     case POST_TYPES.LOAD_POST_ERROR: {

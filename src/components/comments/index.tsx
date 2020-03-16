@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import { Animated, Easing, TouchableWithoutFeedback } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Animated, Easing, TouchableWithoutFeedback, Text } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeContext } from '../../theme';
 import ResponsiveImage from '../../libs/responsiveImage';
+import LoveIcon from '../../../assets/icons/love';
+import { CommentInterface, POST_ACTION_TYPES } from '../../store/posts/types';
+import timeSince from '../../lib/timeSince';
 
 import {
   Container,
@@ -19,46 +22,76 @@ import {
   LikeComment,
   ReplayComment,
   ReplyContainer,
-  ImageOutlineBar
+  ImageOutlineBar,
+  ReplyComment
 } from './styles';
-import LoveIcon from '../../../assets/icons/love';
 
 type CommentProps = {
   style?: {};
   testID?: string;
-  onPress?(): void;
+  comment: CommentInterface;
+  handleOnFocusRequest(
+    actionType: string,
+    replyTo: { userName: string; contentId: string }
+  ): void;
+  handleLikeComment(id: string, commentIndex: number): void;
+  commentIndex: number;
+  avatar: string;
+  commentRef(ref: any): void;
 };
 
 export default function Comment(props: CommentProps) {
-  const { colors } = useThemeContext();
+  const { colors, fonts } = useThemeContext();
 
-  const [animation, setAnimation] = useState({
+  const {
+    comment,
+    testID,
+    handleOnFocusRequest,
+    handleLikeComment,
+    commentIndex,
+    avatar,
+    commentRef
+  } = props;
+
+  const [state, setState] = useState({
     animateImage: new Animated.Value(0),
-    likedComment: false
+    likedComment: comment.isLiked
   });
 
-  const handleLikeComment = () => {};
+  const commentTime = timeSince(comment.createdAt);
 
-  const handleCommentReply = () => {};
+  const handleCommentReply = () => {
+    handleOnFocusRequest(POST_ACTION_TYPES.REPLY_COMMENT, {
+      userName: comment.user.name,
+      contentId: comment._id
+    });
+  };
+  useEffect(() => {
+    setState({ ...state, likedComment: comment.isLiked });
+  }, [comment.isLiked]);
 
-  const startLikeAnimation = () => {
-    if (animation.likedComment) return;
+  const startLikeAnimation = (id: string) => {
+    setState({ ...state, likedComment: !state.likedComment });
 
-    setAnimation({ ...animation, likedComment: true });
-    Animated.timing(animation.animateImage, {
-      toValue: 1,
-      duration: 1300,
-      easing: Easing.linear,
-      useNativeDriver: true
-    }).start(() => handleLikeComment());
+    if (!state.likedComment) {
+      state.animateImage.setValue(0);
+      return Animated.timing(state.animateImage, {
+        toValue: 1,
+        duration: 1300,
+        easing: Easing.linear,
+        useNativeDriver: true
+      }).start(() => handleLikeComment(id, commentIndex));
+    }
+
+    handleLikeComment(id, commentIndex);
   };
 
   return (
-    <Container testID={props.testID}>
+    <Container testID={testID}>
       <ImageContainer>
         <ImageWrapper>
           <ResponsiveImage
-            imageUrl="https://bit.ly/2TcUWv4"
+            imageUrl={avatar ? avatar : 'https://bit.ly/2TcUWv4'}
             width={60}
             height={60}
             resizeMode="contain"
@@ -73,16 +106,25 @@ export default function Comment(props: CommentProps) {
       </ImageContainer>
       <CommentDetails>
         <CommentDetailsHeader>
-          <CommenterName>Josephine Damilola</CommenterName>
-          <CommenterTime>54m</CommenterTime>
+          <CommenterName>{comment.user.name}</CommenterName>
+          <CommenterTime
+            style={{
+              fontSize: commentTime.length > 3 ? fonts.SMALL_SIZE + 2 : null
+            }}
+          >
+            {commentTime}
+          </CommenterTime>
         </CommentDetailsHeader>
         <UserComment>
-          Billions are spent each year on cosmetic products to delete wrinkles
+          {comment.replyTo && (
+            <ReplyComment>{`@${comment.replyTo.user.name} `}</ReplyComment>
+          )}
+          {comment.content}
         </UserComment>
         <ActionContainer>
           <TouchableWithoutFeedback
             testID="like-comment-container"
-            onPress={startLikeAnimation}
+            onPress={() => startLikeAnimation(comment._id)}
           >
             <LikeContainer>
               <LottieView
@@ -94,10 +136,9 @@ export default function Comment(props: CommentProps) {
                   top: -19,
                   alignSelf: 'center'
                 }}
-                progress={animation.animateImage}
+                progress={state.animateImage}
               />
-
-              {!animation.likedComment && (
+              {!state.likedComment && (
                 <LoveIcon
                   style={{ position: 'relative', right: -8, top: 8 }}
                   width="60%"
@@ -107,17 +148,20 @@ export default function Comment(props: CommentProps) {
             </LikeContainer>
           </TouchableWithoutFeedback>
           <LikeComment>like</LikeComment>
-          <ReplyContainer
-            onPress={handleCommentReply}
-            onPressIn={() => console.log('HELLO')}
-          >
+          <ReplyContainer onPress={handleCommentReply}>
             <MaterialCommunityIcons
               name="reply"
               size={25}
               color={colors.INACTIVE_ICON_COLOR}
             />
           </ReplyContainer>
-          <ReplayComment>reply</ReplayComment>
+          <ReplayComment
+            onLayout={e => {
+              commentRef(e.nativeEvent.layout.y);
+            }}
+          >
+            reply
+          </ReplayComment>
         </ActionContainer>
       </CommentDetails>
     </Container>

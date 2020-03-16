@@ -52,7 +52,7 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
   };
 
   const handleDate = (date: string) => {
-    handleChange({ type: 'birthDueDate', data: date });
+    handleChange({ key: 'dueDateStart', data: date });
     setTimeout(handleNavigation, 500);
   };
 
@@ -120,7 +120,7 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
       <SelectQuestionButtonContainer>
         <SelectQuestionButton>
           <AnswerOption>b</AnswerOption>
-          <AnswerOptionText>Continue</AnswerOptionText>
+          <AnswerOptionText>Am Not Pregnant</AnswerOptionText>
         </SelectQuestionButton>
         <SelectQuestionButtonOverlay
           style={{
@@ -153,8 +153,9 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
                   : colors.BG_LIGHT_COLOR,
               zIndex: 999
             }}
+            onPress={() => handleDate(null)}
           >
-            Continue
+            Am Not Pregnant
           </AnswerOptionText>
         </SelectQuestionButton>
       </SelectQuestionButtonContainer>

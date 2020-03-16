@@ -139,3 +139,9 @@ export const OptionContainerFooter = styled.View`
   width: 100%;
   align-items: center;
 `;
+
+export const Spinner = styled.View`
+  position: absolute;
+  align-self: center;
+  bottom: 15px;
+`;

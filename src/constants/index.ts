@@ -7,6 +7,7 @@ import {
 interface NavigationScreenType
   extends NavigationScreenProp<NavigationState, NavigationParams> {
   replace: (T: string) => void;
+  push: (T: string) => void;
 }
 
 // App Navigation prop types
@@ -46,6 +47,7 @@ export type IconProps = {
   fillColor?: string;
   useCase?: boolean;
   style?: object;
+  onPress?(): void;
 };
 
 // App header custom style
@@ -68,3 +70,6 @@ export const navigationBackButton = {
     fontSize: 12
   }
 };
+
+export const STORE_USER_PROFILE = '@USER_PROFILE_TESTS_';
+export const USER_FIRST_LAUNCH = '@FIRST_TIME_LAUNCH=';

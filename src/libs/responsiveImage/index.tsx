@@ -12,6 +12,7 @@ type ResponsiveImageProps = {
   resizeMode?: string;
   style?: any;
   imageUrl: string;
+  defaultSource?: object;
   testID?: string;
   imageFadeDuration?: number;
   thumbnailSource?: object;
@@ -80,6 +81,7 @@ export default function ResponsiveImage(props: ResponsiveImageProps) {
         onLoad={onLoadImage}
         onError={props.onError}
         onLoadEnd={props.onLoadEnd}
+        defaultSource={props.defaultSource}
         testID="image-data"
       />
     </Fragment>

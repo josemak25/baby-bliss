@@ -1,5 +1,8 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { useThemeContext } from '../../theme';
+import CheckedIcon from '../../../assets/icons/checked';
+import ErrorIcon from '../../../assets/icons/error';
+import { validateFormFields } from './utils';
 
 import {
   Container,
@@ -9,8 +12,6 @@ import {
   Placeholder,
   CheckedContainer
 } from './styles';
-import CheckedIcon from '../../../assets/icons/checked';
-import ErrorIcon from '../../../assets/icons/error';
 
 type InputFieldProps = {
   placeholder: string;
@@ -24,6 +25,8 @@ type InputFieldProps = {
   style?: object;
   disable?: boolean;
   activeColor?: string;
+  ignoreValidation?: boolean;
+  setValidationError(error: string): void;
 };
 
 const InputFiled: FunctionComponent<InputFieldProps> = props => {
@@ -40,7 +43,9 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
     secureTextEntry = false,
     style,
     testID,
-    disable = false
+    disable = false,
+    ignoreValidation = false,
+    setValidationError
   } = props;
 
   const [inputState, setInputState] = useState({
@@ -64,52 +69,23 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
     setInputState({ ...inputState, text });
   };
 
-  function updateFeedBack(value: boolean) {
+  function updateFeedBack(value: string) {
     setInputState({
       ...inputState,
-      isValid: value,
+      isValid: value ? false : true,
       activateColor: true,
       canShowIsValid: true
     });
-  }
 
-  const decorateTextFieldOnBlur = () => {
-    switch (placeholder.toLowerCase()) {
-      case 'username':
-        if (inputState.text.trim().length < 5) {
-          return updateFeedBack(false);
-        }
-        updateFeedBack(true);
-        break;
-      case 'email':
-        const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (!EMAIL_PATTERN.test(inputState.text.trim())) {
-          return updateFeedBack(false);
-        }
-        updateFeedBack(true);
-        break;
-      case 'phone':
-        const PHONE_PATTERN = /^(\+234|0)\d{10}$/;
-        if (!PHONE_PATTERN.test(inputState.text)) {
-          return updateFeedBack(false);
-        }
-        updateFeedBack(true);
-      case 'password':
-        if (inputState.text.trim().length < 6) {
-          return updateFeedBack(false);
-        }
-        updateFeedBack(true);
-        break;
-      default:
-        break;
-    }
-  };
+    //if this value is not empty, it means there is error in validation
+    if (value) setValidationError(value);
+  }
 
   const decorateTextFieldOnFocus = () => {
     setInputState({
       ...inputState,
       activateColor: false,
-      canShowIsValid: !inputState.isValid
+      canShowIsValid: false
     });
   };
 
@@ -135,13 +111,17 @@ const InputFiled: FunctionComponent<InputFieldProps> = props => {
           onChangeText={onChangeText}
           placeholder={placeholder}
           onChange={handleTextChange}
-          onBlur={decorateTextFieldOnBlur}
+          onBlur={() => {
+            if (!ignoreValidation)
+              updateFeedBack(validateFormFields(placeholder, inputState.text));
+          }}
           onFocus={decorateTextFieldOnFocus}
           textContentType={textContentType}
           keyboardType={keyboardType}
           returnKeyType={returnKeyType}
           secureTextEntry={secureTextEntry}
           editable={!disable}
+          autoCapitalize="none"
         />
         {inputState.canShowIsValid && (
           <CheckedContainer>

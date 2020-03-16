@@ -58,7 +58,7 @@ export const DetailsTitle = styled.Text`
   text-transform: capitalize;
 `;
 
-export const GoBack = styled.TouchableHighlight`
+export const GoBack = styled.TouchableOpacity`
   width: 40px;
   height: 40px;
   border-radius: 20px;
@@ -83,7 +83,6 @@ export const ActionContainer = styled.View`
   height: 50px;
   flex-direction: row;
   align-items: center;
-  overflow: hidden;
 `;
 
 export const NoOfViews = styled.Text`
@@ -120,4 +119,17 @@ export const CommentHeader = styled.Text`
 
 export const CommentsContainer = styled.View`
   margin-top: 30px;
+`;
+
+export const EmptyComment = styled.Text`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const EmptyCommentText = styled.Text`
+  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE + 2}px;
+  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_MEDIUM};
+  color: ${({ theme }) => theme.colors.FONT_LIGHT_COLOR};
+  text-align: center;
 `;

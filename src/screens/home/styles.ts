@@ -27,3 +27,17 @@ export const SearchContainer = styled.TouchableOpacity`
   height: 70%;
   right: 20px;
 `;
+
+export const EmptyPostContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+`;
+
+export const EmptyPostText = styled.Text`
+  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
+  font-size: ${({ theme }) => theme.fonts.SMALL_SIZE + 2}px;
+  color: ${({ theme }) => theme.colors.FONT_LIGHT_COLOR};
+  text-align: center;
+`;

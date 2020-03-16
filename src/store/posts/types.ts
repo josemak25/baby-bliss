@@ -31,8 +31,8 @@ export interface PostInterface {
   topic: string;
   description: string;
   user: User;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
   __v: number;
   id: string;
   noOfComments: number;
@@ -42,42 +42,118 @@ export interface PostInterface {
   userId: string;
 }
 
+export interface ReplyTo {
+  _id: string;
+  content: string;
+  user: User;
+}
+export interface CommentInterface {
+  likes: any[];
+  replyTo?: ReplyTo;
+  isDeleted: boolean;
+  isFlagged: boolean;
+  _id: string;
+  content: string;
+  user: User;
+  post: string;
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
+  id: string;
+  isLiked: boolean;
+}
+
+export interface LikeCommentResponseInterface {
+  statusCode: number;
+  message: string;
+  payload: CommentInterface[];
+  error?: any;
+}
+
+export interface PostCommentResponseInterface {
+  statusCode: number;
+  message: string;
+  payload: CommentInterface;
+  error?: any;
+}
+
 // POSTS TYPES
 export enum POST_TYPES {
   LOAD_POST_STARTED = 'LOAD_POST_STARTED',
   LOAD_POST_SUCCESS = 'LOAD_POST_SUCCESS',
   LOAD_POST_ERROR = 'LOAD_POST_ERROR',
-  LIKE_POST = 'LIKE_POST',
+  LIKE_OR_UNLIKE_POST = 'LIKE_OR_UNLIKE_POST',
   LIKE_COMMENT = 'LIKE_COMMENT',
-  COMMENT_ON_POST = 'COMMENT_ON_POST'
+  POST_COMMENT = 'POST_COMMENT',
+  REPLY_COMMENT = 'REPLY_COMMENT',
+  LOAD_COMMENT_SUCCESS = 'LOAD_COMMENT_SUCCESS'
 }
 
 // POSTS ACTION TYPES
 export enum POST_ACTION_TYPES {
-  LOAD_POSTS = 'LOAD_POSTS',
+  LOAD_BLOG_POSTS = 'LOAD_BLOG_POSTS',
+  LOAD_USER_POSTS = 'LOAD_USER_POSTS',
   LIKE_POST = 'LIKE_POST',
+  UNLIKE_POST = 'UNLIKE_POST',
   POST_COMMENT = 'POST_COMMENT',
-  LIKE_COMMENT = 'LIKE_COMMENT'
+  REPLY_COMMENT = 'REPLY_COMMENT',
+  LIKE_COMMENT = 'LIKE_COMMENT',
+  LOAD_POST_COMMENTS = 'LOAD_POST_COMMENTS'
 }
 
-export type CommentInterface = {
+export type SaveCommentInterface = {
+  statusCode: number;
+  message: string;
   payload: { postId: string; comment: string };
+  error?: any;
 };
 
 // TYPESCRIPT TYPES
+
+export type ResponseInterface = {
+  statusCode: number;
+  message: string;
+  payload: PostInterface[];
+};
+
 export type PostInitialState = {
   isLoading: boolean;
   error?: any;
   posts?: PostInterface[];
+  comments?: CommentInterface[];
 };
 
+export type LikeOrUnlikePostResponse = {
+  statusCode: number;
+  message: string;
+  payload: { likes: number };
+};
+
+export type LikeCommentResponse = LikeOrUnlikePostResponse;
+
+export type LikeOrUnlikePostType = {
+  likeCount: number;
+  postId: string;
+  postIndex: number;
+};
+
+export type LikeCommentType = {
+  likeCount: number;
+  commentIndex: number;
+  userId: string;
+};
 export type PostAction =
   | { type: POST_TYPES.LOAD_POST_STARTED; payload: null }
   | { type: POST_TYPES.LOAD_POST_SUCCESS; payload: PostInterface[] }
   | { type: POST_TYPES.LOAD_POST_ERROR; payload: string }
-  | { type: POST_TYPES.LIKE_POST; payload: string }
-  | { type: POST_TYPES.LIKE_COMMENT; payload: string }
   | {
-      type: POST_TYPES.COMMENT_ON_POST;
-      payload: CommentInterface | any;
-    }; // add post body when response is identified
+      type: POST_TYPES.LIKE_OR_UNLIKE_POST;
+      payload: LikeOrUnlikePostType;
+    }
+  | { type: POST_TYPES.LIKE_COMMENT; payload: LikeCommentType }
+  | {
+      type: POST_TYPES.POST_COMMENT;
+      payload: LikeCommentType | any;
+    } // add post body when response is identified
+  | { type: POST_TYPES.LOAD_COMMENT_SUCCESS; payload: CommentInterface[] }
+  | { type: POST_TYPES.REPLY_COMMENT; payload: LikeCommentType };

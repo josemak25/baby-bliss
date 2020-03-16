@@ -8,6 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:12
+        environment: 
+          BABY_BLISS_BASE_URI: http://ci.level5.digital:9005/api
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -34,4 +36,5 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
+      - run: printenv > .env # .env file needs to be supplied for react-native-dotenv to not crash. Remove this when github.com/zetachang/react-native-dotenv#75 is merged
       - run: yarn test

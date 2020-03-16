@@ -16,7 +16,7 @@ const SelectQuestionButtonOverlay = Animated.createAnimatedComponent(
   SelectQuestionButton
 );
 
-export default function PageFour({ handleNavigation, handleChange }) {
+export default function PageFive({ handleNavigation, handleChange }) {
   const { colors } = useThemeContext();
 
   const [animation, setAnimation] = useState({
@@ -25,7 +25,7 @@ export default function PageFour({ handleNavigation, handleChange }) {
     selected: ''
   });
 
-  const startButtonAnimation = (buttonType: string, answer: string) => {
+  const startButtonAnimation = (buttonType: string, answer: boolean) => {
     if (buttonType === animation.selected) {
       return setTimeout(handleNavigation, 500);
     }
@@ -45,7 +45,7 @@ export default function PageFour({ handleNavigation, handleChange }) {
       duration: 500,
       easing: Easing.elastic(0.7)
     }).start(() => {
-      handleChange({ type: 'antenatalInterest', data: answer });
+      handleChange({ key: 'hasHealthMaintenanceOrg', data: answer });
       setTimeout(handleNavigation, 500);
     });
   };
@@ -69,7 +69,7 @@ export default function PageFour({ handleNavigation, handleChange }) {
 
         <SelectQuestionButton
           style={{ backgroundColor: 'transparent' }}
-          onPress={() => startButtonAnimation('buttonWidthOne', 'yes')}
+          onPress={() => startButtonAnimation('buttonWidthOne', true)}
         >
           <AnswerOption
             style={{
@@ -109,7 +109,7 @@ export default function PageFour({ handleNavigation, handleChange }) {
         />
         <SelectQuestionButton
           style={{ backgroundColor: 'transparent' }}
-          onPress={() => startButtonAnimation('buttonWidthTwo', 'no')}
+          onPress={() => startButtonAnimation('buttonWidthTwo', false)}
         >
           <AnswerOption
             style={{

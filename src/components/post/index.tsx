@@ -29,17 +29,25 @@ interface PostProps extends PostInterface {
   testID?: string;
   width: number;
   navigation(): void;
+  handleLikePost(): void;
 }
 
-export default function Post(props: PostProps) {
-  const { topic, description, noOfLikes, noOfViews, testID, width } = props;
+export default function Post(post: PostProps) {
+  const {
+    topic,
+    description,
+    noOfLikes,
+    noOfViews,
+    testID,
+    width,
+    images,
+    handleLikePost
+  } = post;
 
   const [animation, setAnimation] = useState({
     animateImage: new Animated.Value(0),
     hideContentLoader: true
   });
-
-  const handleLikePost = () => {};
 
   const startLikeAnimation = () => {
     animation.animateImage.setValue(0);
@@ -48,7 +56,7 @@ export default function Post(props: PostProps) {
       duration: 1300,
       easing: Easing.linear,
       useNativeDriver: true
-    }).start(() => handleLikePost);
+    }).start(() => handleLikePost());
   };
 
   const handleImageLoading = (error: any) => {
@@ -64,7 +72,7 @@ export default function Post(props: PostProps) {
         height: applyScale(417),
         margin: 15
       }}
-      onPress={props.navigation}
+      onPress={post.navigation}
     >
       <Container testID={testID}>
         <Topic testID="post-topic">{topic}</Topic>
@@ -78,7 +86,7 @@ export default function Post(props: PostProps) {
             layout={[{ width: applyScale(width), height: applyScale(220) }]}
           />
           <ResponsiveImage
-            imageUrl="https://bit.ly/38c0U3G"
+            imageUrl={images.length > 0 ? images[0] : 'https://bit.ly/38cCLKf'}
             width={width}
             height={220}
             onLoad={handleImageLoading}

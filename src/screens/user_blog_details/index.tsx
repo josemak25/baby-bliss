@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   StatusBar,
   ScrollView,
@@ -8,14 +8,24 @@ import {
   Dimensions
 } from 'react-native';
 
+import { useThemeContext } from '../../theme';
+import { useStoreContext } from '../../store';
+import Message from '../../components/message';
+import {
+  POST_ACTION_TYPES,
+  CommentInterface,
+  PostInterface,
+  POST_TYPES
+} from '../../store/posts/types';
+import postsActions from '../../store/posts/actions';
 import { Ionicons } from '@expo/vector-icons';
 import Header from '../../components/header';
 import { NavigationInterface } from '../../constants';
-import { useThemeContext } from '../../theme';
 
 import Comment from '../../components/comments';
 import Eye from '../../../assets/icons/eye';
 import LoveIcon from '../../../assets/icons/love';
+import { abbreviateNumber } from '../utils';
 
 import {
   Container,
@@ -31,19 +41,142 @@ import {
   Description,
   CommentHeader,
   CommentsContainer,
-  PostImage
+  PostImage,
+  EmptyComment,
+  EmptyCommentText
 } from './styles';
-
-import Message from '../../components/message';
 
 interface BlogDetailsProp extends NavigationInterface {
   testID?: string;
 }
 
+type messageType = {
+  authToken: string;
+  id: string;
+  commentId?: string;
+  content?: string;
+};
+
 const { width: DEVICE_WIDTH } = Dimensions.get('window');
 
 export default function UserBlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
+
+  const [{ postState, userState }, dispatch] = useStoreContext();
+  const post: PostInterface = props.navigation.getParam('post');
+
+  const {
+    topic,
+    description,
+    noOfLikes,
+    noOfViews,
+    images,
+    id,
+    user: { avatar }
+  } = post;
+
+  const [state, setState] = useState({
+    focus: false,
+    message: '',
+    commentId: null,
+    actionType: null,
+    replyToName: '',
+    text: ''
+  });
+
+  const ref = useRef({
+    scrollViewRef: null,
+    messageComponentY: null,
+    scrollViewHeight: null,
+    canScrollDown: false
+  });
+
+  useEffect(() => {
+    if (!state.text) {
+      setState({
+        ...state,
+        replyToName: ''
+      });
+    }
+
+    if (ref.current.canScrollDown && !postState.isLoading) {
+      ref.current.scrollViewRef.scrollTo({
+        y: ref.current.scrollViewHeight,
+        animated: true
+      });
+      ref.current.canScrollDown = false;
+    }
+  }, [
+    state.text,
+    ref.current.canScrollDown,
+    postState.isLoading,
+    ref.current.scrollViewHeight
+  ]);
+
+  const handleOnFocusRequest = (
+    actionType: string,
+    replyTo: { userName: string; contentId: string }
+  ) => {
+    const { userName, contentId: commentId } = replyTo;
+
+    setState({
+      ...state,
+      commentId,
+      actionType,
+      replyToName: `@${userName} `, //this holds reference of the reply name to strip off before dispatching the message
+      text: `@${userName} ` //State that hold the text user is entering
+    });
+  };
+
+  const dispatchMessage = () => {
+    let message: messageType = {
+      authToken: userState.token,
+      id
+    };
+    let { actionType } = state;
+    actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
+    if (state.replyToName) {
+      message = {
+        ...message,
+        content: state.text.replace(state.replyToName, ''),
+        commentId: state.commentId
+      };
+    } else {
+      message = {
+        ...message,
+        content: state.text
+      };
+    }
+
+    postsActions(actionType)(dispatch, message);
+    ref.current.canScrollDown = true;
+  };
+
+  const setMessage = (message: string) => {
+    setState({ ...state, text: message });
+  };
+
+  const handleLikeComment = (
+    id: string,
+    commentIndex: number,
+    oldLikeState: boolean
+  ) => {
+    dispatch({
+      type: POST_TYPES.LIKE_COMMENT,
+      payload: {
+        commentIndex,
+        userId: id
+      }
+    });
+
+    postsActions(POST_ACTION_TYPES.LIKE_COMMENT)(dispatch, {
+      id,
+      authToken: userState.token,
+      commentIndex,
+      userId: userState.user.id,
+      isLiked: !oldLikeState
+    });
+  };
 
   return (
     <KeyboardAvoidingView
@@ -60,6 +193,10 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
           backgroundColor: colors.BD_DARK_COLOR
         }}
         showsVerticalScrollIndicator={false}
+        ref={scrollRef => (ref.current.scrollViewRef = scrollRef)}
+        onContentSizeChange={(_width, height) =>
+          (ref.current.scrollViewHeight = height)
+        }
       >
         <Header style={{ height: 350, paddingLeft: 0, paddingRight: 0 }}>
           <HeaderContentContainer>
@@ -74,18 +211,16 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
               <DetailsTipContainer>
                 <DetailsTip>Baby Tips</DetailsTip>
               </DetailsTipContainer>
-              <DetailsTitle>
-                Always Look On The Bright Side Of Life
-              </DetailsTitle>
+              <DetailsTitle>{topic}</DetailsTitle>
               <ActionContainer>
                 <Eye style={{ position: 'relative', right: 9 }} width="30%" />
-                <NoOfViews>1.6k</NoOfViews>
+                <NoOfViews>{abbreviateNumber(noOfViews)}</NoOfViews>
                 <LoveIcon
                   style={{ position: 'relative', right: 10 }}
                   width="30%"
                   height="40%"
                 />
-                <NoOfLikes>2.1k</NoOfLikes>
+                <NoOfLikes>{abbreviateNumber(noOfLikes)}</NoOfLikes>
               </ActionContainer>
             </HeaderTextContainer>
           </HeaderContentContainer>
@@ -99,35 +234,51 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
         >
           <Container testID="blog-details">
             <PostImage
-              source={{ uri: 'https://bit.ly/2THZ4SC' }}
+              source={{
+                uri: images.length > 0 ? images[0] : 'https://bit.ly/2THZ4SC'
+              }}
               style={{
                 height: DEVICE_WIDTH > 414 ? 400 : 250,
                 borderRadius: 2
               }}
               resizeMode="cover"
             />
-            <Description>
-              As conscious traveling Paupers we must always be concerned about
-              our dear Mother Earth. If you think about it, you travel across
-              her face, and She is the host to your journey without Her we could
-              not find the unfolding adventures that attract and feed our souls.
-              I have found some valuable resources for As conscious traveling
-              Paupers we must always be concerned about our dear Mother Earth.
-              If you think about it, you travel across her face, and She is the
-              host to your journey without
-            </Description>
+            <Description>{description}</Description>
             <CommentHeader>comment</CommentHeader>
             <CommentsContainer>
-              {Array(10)
-                .fill(0)
-                .map((_, i) => (
-                  <Comment key={i} />
-                ))}
+              {postState.comments.length ? (
+                postState.comments.map(
+                  (comment: CommentInterface, index: number) => (
+                    <Comment
+                      key={index}
+                      comment={comment}
+                      commentIndex={index}
+                      handleOnFocusRequest={handleOnFocusRequest}
+                      handleLikeComment={() =>
+                        handleLikeComment(comment._id, index, comment.isLiked)
+                      }
+                      avatar={avatar}
+                      commentRef={commentComponentRef =>
+                        (ref.current.messageComponentY = commentComponentRef)
+                      }
+                    />
+                  )
+                )
+              ) : (
+                <EmptyComment>
+                  <EmptyCommentText>No Comment!</EmptyCommentText>
+                </EmptyComment>
+              )}
             </CommentsContainer>
           </Container>
         </TouchableWithoutFeedback>
       </ScrollView>
-      <Message />
+      <Message
+        focus={state.focus}
+        dispatchMessage={dispatchMessage}
+        setNewMessage={setMessage}
+        message={state.text}
+      />
     </KeyboardAvoidingView>
   );
 }

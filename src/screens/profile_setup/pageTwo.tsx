@@ -16,9 +16,9 @@ const SelectQuestionButtonOverlay = Animated.createAnimatedComponent(
   SelectQuestionButton
 );
 
-export default function PageTwo({ handleNavigation, handleChange, profile }) {
+export default function PageTwo({ handleNavigation, handleChange }) {
   const { colors } = useThemeContext();
-
+  const [state, setState] = useState('');
   const [animation, setAnimation] = useState({
     buttonWidthOne: new Animated.Value(applyScale(5)),
     buttonWidthTwo: new Animated.Value(applyScale(5)),
@@ -51,8 +51,8 @@ export default function PageTwo({ handleNavigation, handleChange, profile }) {
     });
   };
 
-  const handleState = (state: string) => {
-    handleChange({ type: 'address', data: state });
+  const handleState = () => {
+    handleChange({ key: 'state', data: state });
   };
 
   const handleRNPickerSelect = () => {
@@ -102,8 +102,10 @@ export default function PageTwo({ handleNavigation, handleChange, profile }) {
               color: 'red',
               key: 'Select a state...'
             }}
-            onValueChange={handleState}
-            value={profile.address}
+            onValueChange={value => {
+              setState(value);
+            }}
+            value={state}
             items={allStates.map((title: string, index: number) => ({
               label: title,
               value: title,
@@ -118,6 +120,7 @@ export default function PageTwo({ handleNavigation, handleChange, profile }) {
               height: applyScale(63),
               paddingLeft: applyScale(85)
             }}
+            onDonePress={handleState}
           />
           <AnswerOption
             style={{

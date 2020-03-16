@@ -3,12 +3,17 @@ import { Animated, Easing, Dimensions, StatusBar } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { TabView, TabBar } from 'react-native-tab-view';
 import { useStoreContext } from '../../store';
-
 import GeneralRouteContainer from './generalRoute';
 import RouteContainer from './routeContainer';
 import { useThemeContext } from '../../theme';
 import { NavigationInterface } from '../../constants';
-
+import { PostInterface, POST_ACTION_TYPES } from '../../store/posts/types';
+import postsActions from '../../store/posts/actions';
+import postCategoryActions from '../../store/category/actions';
+import {
+  CATEGORY_ACTION_TYPES,
+  POST_CATEGORY_TYPES
+} from '../../store/category/types';
 import { LogoContainer, Logo, AskQuestion } from './styles';
 
 interface CommunityScreenProp extends NavigationInterface {
@@ -18,20 +23,53 @@ interface CommunityScreenProp extends NavigationInterface {
 export default function CommunityScreen(props: CommunityScreenProp) {
   const { colors, fonts } = useThemeContext();
 
-  const [{ categoryState }] = useStoreContext();
-
-  useEffect(() => {
-    startLikeAnimation(null);
-  }, []);
+  const [{ categoryState, userState }, dispatch] = useStoreContext();
 
   const [state, setState] = useState({
     animateMessageIcon: new Animated.Value(0),
     currentRoute: 0,
     communityRoutes: [
       { key: 'general', title: 'general' },
-      ...categoryState.category
+      ...categoryState.categories
     ]
   });
+
+  useEffect(() => {
+    startLikeAnimation(null);
+    postCategoryActions(CATEGORY_ACTION_TYPES.FETCH_CATEGORY_POSTS)(dispatch, {
+      authToken: userState.token,
+      categories: [...state.communityRoutes.slice(1)]
+    });
+    postCategoryActions(CATEGORY_ACTION_TYPES.LOAD_GENERAL_POSTS)(
+      dispatch,
+      userState.token
+    );
+  }, []);
+
+  const handleLikePost = (
+    id: string,
+    postIndex: number,
+    categoryId: string,
+    oldLikeState: boolean
+  ) => {
+    dispatch({
+      type: POST_CATEGORY_TYPES.LIKE_OR_UNLIKE_USER_POST,
+      payload: {
+        likeCount: oldLikeState ? -1 : 1,
+        categoryId,
+        id,
+        postIndex
+      }
+    });
+
+    postCategoryActions(CATEGORY_ACTION_TYPES.LIKE_POST)(dispatch, {
+      id,
+      postIndex,
+      authToken: userState.token,
+      isLiked: !oldLikeState,
+      categoryId
+    });
+  };
 
   const startLikeAnimation = (userPressed: string | null) => {
     state.animateMessageIcon.setValue(0);
@@ -45,6 +83,16 @@ export default function CommunityScreen(props: CommunityScreenProp) {
 
   const askQuestion = () => {
     props.navigation.navigate('PostQuestionScreen');
+  };
+
+  const navigateToPost = (post: PostInterface) => {
+    //dispatch action to fetch comments for this post
+    postsActions(POST_ACTION_TYPES.LOAD_POST_COMMENTS)(dispatch, {
+      authToken: userState.token,
+      postId: post._id
+    });
+
+    props.navigation.navigate('UserBlogDetailsScreen', { post });
   };
 
   const renderTabBar = (props: any) => (
@@ -71,9 +119,22 @@ export default function CommunityScreen(props: CommunityScreenProp) {
   const renderScene = ({ route }) => {
     switch (route.key) {
       case 'general':
-        return <GeneralRouteContainer navigation={props.navigation} />;
+        return (
+          <GeneralRouteContainer
+            navigation={props.navigation}
+            handleLikePost={handleLikePost}
+            navigateToPost={navigateToPost}
+          />
+        );
       default:
-        return <RouteContainer navigation={props.navigation} />;
+        return (
+          <RouteContainer
+            navigation={props.navigation}
+            categoryId={route._id}
+            handleLikePost={handleLikePost}
+            navigateToPost={navigateToPost}
+          />
+        );
     }
   };
 

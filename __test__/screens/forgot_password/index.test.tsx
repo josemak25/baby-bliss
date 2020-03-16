@@ -3,15 +3,18 @@ import { fireEvent, render } from '@testing-library/react-native';
 import Theme from '../../../src/theme';
 import { createNavigationTestProps } from '../../../src/constants';
 import ForgotPasswordScreen from '../../../src/screens/forgot_password';
+import { StoreProvider } from '../../../src/store';
 
 jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
 
 const mountComponent = () => {
   const props: any = createNavigationTestProps();
   const renderedProps = render(
-    <Theme>
-      <ForgotPasswordScreen {...props} />
-    </Theme>
+    <StoreProvider>
+      <Theme>
+        <ForgotPasswordScreen {...props} />
+      </Theme>
+    </StoreProvider>
   );
   return {
     props,
@@ -36,13 +39,9 @@ describe(' TEST FORGOT PASSWORD SCREEN (<ForgotPasswordScreen/>)', () => {
   });
 
   test('The submit button to send request to reset password was pressed', () => {
-    const { props, queryByTestId } = mountComponent();
+    const { queryByTestId } = mountComponent();
     const resetButton = queryByTestId('resetButton');
     expect(resetButton).toBeTruthy();
-    fireEvent.press(queryByTestId('resetButton'));
-    expect(props.navigation.navigate).toHaveBeenCalledTimes(1);
-    expect(props.navigation.navigate).toHaveBeenCalledWith(
-      'ResetPasswordScreen'
-    );
+    fireEvent.press(resetButton);
   });
 });

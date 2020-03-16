@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LottieView from 'lottie-react-native';
 import { useThemeContext } from '../../theme';
 import { NavigationInterface } from '../../constants';
@@ -14,11 +14,18 @@ import {
   TitleContainer,
   FormField,
   KeyboardAvoidingView,
-  SafeAreaView
+  SafeAreaView,
+  Spinner
 } from './styles';
 
 import MailIcon from '../../../assets/icons/mail';
 import Button from '../../components/button';
+import userActions from '../../store/user/actions';
+import { USER_ACTION_TYPES } from '../../store/user/types';
+import { useStoreContext } from '../../store';
+import showSnackbar from '../../components/UI/snackbar';
+import { validateFormFields } from '../../components/inputField/utils';
+import { ActivityIndicator } from 'react-native';
 
 interface SplashScreenProp extends NavigationInterface {
   testID?: string;
@@ -26,16 +33,40 @@ interface SplashScreenProp extends NavigationInterface {
 
 export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
   const { colors, fonts } = useThemeContext();
+  const [{ userState }, dispatch] = useStoreContext();
 
-  const [email, setEmail] = useState('');
+  const [state, setState] = useState({ email: '', canShow: true });
 
-  const onHandleChange = (value: string) => setEmail(value);
+  const onHandleChange = (value: string) =>
+    setState({ ...state, email: value });
+
+  useEffect(() => {
+    if (userState.errorMessage && !state.canShow) {
+      showSnackbar(colors.LIKE_POST_COLOR, userState.errorMessage);
+      return;
+    }
+  }, [userState.errorMessage]);
 
   const handleSubmit = () => {
-    // dispatch action to submit form
+    //validate the email address before sending this form.
+    const status = validateFormFields('email', state.email);
+    if (status) {
+      showSnackbar(colors.LIKE_POST_COLOR, status);
+      return;
+    }
+    userActions(USER_ACTION_TYPES.FORGOT_PASSWORD)(dispatch, {
+      email: state.email
+    });
 
     // on success navigate to reset password screen
     navigation.navigate('ResetPasswordScreen');
+  };
+
+  const setValidationError = (error: string) => {
+    if (state.canShow) {
+      showSnackbar('#F42850', error);
+      setState({ ...state, canShow: false });
+    }
   };
 
   return (
@@ -59,9 +90,10 @@ export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
               placeholder="Email"
               testID="email-input"
               onChangeText={onHandleChange}
-              defaultValue={email}
+              defaultValue={state.email}
               textContentType="emailAddress"
               keyboardType="email-address"
+              setValidationError={setValidationError}
             >
               <MailIcon />
             </InputField>
@@ -87,9 +119,14 @@ export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
                 fontFamily: fonts.MONTSERRAT_SEMI_BOLD,
                 fontSize: fonts.MEDIUM_SIZE - 1
               }}
-              title="reset password"
+              title={`${userState.isLoading ? '' : 'reset password'}`}
               onPress={handleSubmit}
             />
+            {userState.isLoading && (
+              <Spinner>
+                <ActivityIndicator size="small" color={colors.BG_LIGHT_COLOR} />
+              </Spinner>
+            )}
           </FormField>
         </Container>
       </KeyboardAvoidingView>

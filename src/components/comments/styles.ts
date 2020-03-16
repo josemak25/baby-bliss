@@ -46,7 +46,7 @@ export const CommenterName = styled.Text`
 `;
 
 export const CommenterTime = styled.Text`
-  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE}px;
+  font-size: ${({ theme }) => theme.fonts.MEDIUM_SIZE}px;
   font-family: ${({ theme }) => theme.fonts.IBM_SANS_BOLD};
   color: ${({ theme }) => theme.colors.INACTIVE_ICON_COLOR};
   font-weight: ${({ theme }) => theme.fonts.FONT_WEIGHT_HEAVY};
@@ -89,11 +89,18 @@ export const LikeContainer = styled.View`
   right: 10px;
 `;
 
-export const ReplyContainer = styled.TouchableHighlight`
+export const ReplyContainer = styled.TouchableOpacity`
   width: 40px;
   height: 40px;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   border-radius: 40px;
+`;
+
+export const ReplyComment = styled.Text`
+  font-size: ${({ theme }) => theme.fonts.LARGE_SIZE}px;
+  font-family: ${({ theme }) => theme.fonts.MONTSERRAT_SEMI_BOLD};
+  color: ${({ theme }) => theme.colors.POST_TIP_COLOR};
+  text-transform: capitalize;
 `;
