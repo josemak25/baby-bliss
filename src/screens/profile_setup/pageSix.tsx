@@ -170,9 +170,10 @@ export default function PageSix({
           fontFamily: fonts.IBM_SANS_BOLD
         }}
         onPress={handleSubmit}
+        testID="pageSixSubmitButton"
       />
       {userState.isLoading && (
-        <Spinner>
+        <Spinner testID="pageSixSpinner">
           <ActivityIndicator size="small" color={colors.BG_LIGHT_COLOR} />
         </Spinner>
       )}

@@ -234,7 +234,7 @@ export default function SignUp({ navigation }: NavigationInterface) {
             disabled={userState.isLoading}
           />
           {userState.isLoading && (
-            <Spinner>
+            <Spinner testID="spinner">
               <ActivityIndicator size="small" color={colors.BG_LIGHT_COLOR} />
             </Spinner>
           )}

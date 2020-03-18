@@ -190,6 +190,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
         flex: 1,
         backgroundColor: colors.BD_DARK_COLOR
       }}
+      testID="postDetailScreen"
     >
       <StatusBar barStyle="light-content" />
       <ScrollView
@@ -202,6 +203,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
         onContentSizeChange={(_width, height) =>
           (ref.current.scrollViewHeight = height)
         }
+        testID="postDetailScrollView"
       >
         <Header style={{ height: 400, paddingLeft: 0, paddingRight: 0 }}>
           <HeaderImage
@@ -213,14 +215,17 @@ export default function BlogDetails(props: BlogDetailsProp) {
           >
             <HeaderOverLay />
             <HeaderContentContainer>
-              <GoBack onPress={() => props.navigation.goBack()}>
+              <GoBack
+                onPress={() => props.navigation.goBack()}
+                testID="backButton"
+              >
                 <Ionicons name="ios-arrow-back" size={25} color="white" />
               </GoBack>
               <HeaderTextContainer>
                 <DetailsTipContainer>
-                  <DetailsTip>Baby Tips</DetailsTip>
+                  <DetailsTip testID="babyTipsButton">Baby Tips</DetailsTip>
                 </DetailsTipContainer>
-                <DetailsTitle>{topic}</DetailsTitle>
+                <DetailsTitle testID="postDetailTopic">{topic}</DetailsTitle>
               </HeaderTextContainer>
             </HeaderContentContainer>
           </HeaderImage>
@@ -245,17 +250,27 @@ export default function BlogDetails(props: BlogDetailsProp) {
                     animated: true
                   });
                 }}
+                testID="messageIconButton"
               />
             </FloatingMessageButton>
             <ActionContainer>
-              <Eye style={{ position: 'relative', right: 9 }} width="30%" />
-              <NoOfViews>{abbreviateNumber(noOfViews)}</NoOfViews>
+              <Eye
+                testID="eyeIcon"
+                style={{ position: 'relative', right: 9 }}
+                width="30%"
+              />
+              <NoOfViews testID="postDetailViewCounter">
+                {abbreviateNumber(noOfViews)}
+              </NoOfViews>
               <LoveIcon
                 style={{ position: 'relative', right: 10 }}
                 width="30%"
                 height="40%"
+                testID="postDetailLikeIcon"
               />
-              <NoOfLikes>{abbreviateNumber(noOfLikes)}</NoOfLikes>
+              <NoOfLikes testID="postDetailLikeCounter">
+                {abbreviateNumber(noOfLikes)}
+              </NoOfLikes>
             </ActionContainer>
             <Description>{description}</Description>
             <CommentHeader>comment</CommentHeader>
@@ -279,6 +294,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
                       commentRef={commentComponentRef =>
                         (ref.current.messageComponentY = commentComponentRef)
                       }
+                      testID={`commentComponent${index}`}
                     />
                   )
                 )
@@ -296,6 +312,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
         dispatchMessage={dispatchMessage}
         setNewMessage={setMessage}
         message={state.text}
+        testID="postDetailMessageInput"
       />
     </KeyboardAvoidingView>
   );
