@@ -147,7 +147,9 @@ export default function PageTwo({ handleNavigation, handleChange }) {
       <SelectQuestionButtonContainer>
         <SelectQuestionButton>
           <AnswerOption>b</AnswerOption>
-          <AnswerOptionText>Continue</AnswerOptionText>
+          <AnswerOptionText testID="pageTwoContinueButton">
+            Continue
+          </AnswerOptionText>
         </SelectQuestionButton>
         <SelectQuestionButtonOverlay
           style={{

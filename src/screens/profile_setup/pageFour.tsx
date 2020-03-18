@@ -96,7 +96,7 @@ export default function PageFive({ handleNavigation, handleChange }) {
       <SelectQuestionButtonContainer>
         <SelectQuestionButton>
           <AnswerOption>b</AnswerOption>
-          <AnswerOptionText>No</AnswerOptionText>
+          <AnswerOptionText testID="pageFourNoButton">No</AnswerOptionText>
         </SelectQuestionButton>
         <SelectQuestionButtonOverlay
           style={{
