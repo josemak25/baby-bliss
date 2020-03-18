@@ -3,10 +3,14 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.0.0-beta.44", "@babel/code-frame@^7.8.3":
 =======
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.8.3":
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+"@babel/code-frame@^7.0.0", "@babel/code-frame@^7.0.0-beta.44", "@babel/code-frame@^7.8.3":
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "7.8.3"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.8.3.tgz#33e25903d7481181534e12ec0a25f16b6fcf419e"
   integrity sha512-a9gxpmdXtZEInkCSHUJDLHZVBgb1QS0jhss4cPP93EW7s+uC5bikET2twEF3KV+7rDblJcmNvTR7VJejqd2C2g==
@@ -53,10 +57,10 @@
     invariant "^2.2.4"
     semver "^5.5.0"
 
-"@babel/core@^7.0.0", "@babel/core@^7.1.0":
-  version "7.9.0"
-  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.9.0.tgz#ac977b538b77e132ff706f3b8a4dbad09c03c56e"
-  integrity sha512-kWc7L0fw1xwvI0zi8OKVBuxRVefwGOrKSQMvrQ3dW+bIIavBY3/NpXmpjMy7bQnLgwgzWQZ8TlM57YHpHNHz4w==
+"@babel/core@^7.0.0", "@babel/core@^7.1.0", "@babel/core@^7.4.5":
+  version "7.8.7"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.8.7.tgz#b69017d221ccdeb203145ae9da269d72cf102f3b"
+  integrity sha512-rBlqF3Yko9cynC5CCFy6+K/w2N+Sq/ff2BPy+Krp7rHlABIr5epbA7OxVeKoMHB39LZOp1UY5SuLjy6uWi35yA==
   dependencies:
     "@babel/code-frame" "^7.8.3"
     "@babel/generator" "^7.9.0"
@@ -1168,6 +1172,9 @@
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 "@expo/bunyan@3.0.2":
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/@expo/bunyan/-/bunyan-3.0.2.tgz#775680bd479a8b79ada4a5676936a58eef1579c9"
@@ -1304,11 +1311,14 @@
   dependencies:
     cross-spawn "^6.0.5"
 
+<<<<<<< HEAD
 "@expo/vector-icons@^10.0.0", "@expo/vector-icons@^10.0.2":
   version "10.1.0"
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-10.1.0.tgz#3fb2517924b031c1b98f86fa51a2032a257759b0"
   integrity sha512-6ikFslHORJgsb8wKeSgXYfZNNXsiTb3yQf5xaNyGUCYg4zqE7VchdhnH9yZKTI3Lu16jna52pHQZl+3jcOSAbQ==
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 "@expo/vector-icons@^10.0.0", "@expo/vector-icons@^10.0.2":
   version "10.0.6"
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-10.0.6.tgz#5718953ff0b97827d11dae5787976fa8ce5caaed"
@@ -1681,6 +1691,19 @@
     react-native-safe-area-view "^0.14.8"
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 
+"@segment/loosely-validate-event@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@segment/loosely-validate-event/-/loosely-validate-event-1.1.2.tgz#d77840999e3f7e43e74b3b0d43391c1526f793b8"
+  integrity sha1-13hAmZ4/fkPnSzsNQzkcFSb3k7g=
+  dependencies:
+    component-type "^1.2.1"
+    join-component "^1.1.0"
+
+"@sindresorhus/is@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
+  integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
+
 "@testing-library/react-native@^5.0.3":
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/@testing-library/react-native/-/react-native-5.0.3.tgz#8821dcf7fe7364bc7f427d853cd96e4407d88a4f"
@@ -1734,19 +1757,28 @@
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 "@types/events@*":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/events/-/events-3.0.0.tgz#2862f3f58a9a7f7c3e78d79f130dd4d71c25c2a7"
   integrity sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 "@types/fbemitter@^2.0.32":
   version "2.0.32"
   resolved "https://registry.yarnpkg.com/@types/fbemitter/-/fbemitter-2.0.32.tgz#8ed204da0f54e9c8eaec31b1eec91e25132d082c"
   integrity sha1-jtIE2g9U6cjq7DGx7skeJRMtCCw=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 "@types/glob@*":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.1.tgz#aa59a1c6e3fbc421e07ccd31a944c30eba521575"
@@ -1756,8 +1788,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 "@types/hammerjs@^2.0.36":
   version "2.0.36"
   resolved "https://registry.yarnpkg.com/@types/hammerjs/-/hammerjs-2.0.36.tgz#17ce0a235e9ffbcdcdf5095646b374c2bf615a4c"
@@ -1837,6 +1872,16 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.149.tgz#1342d63d948c6062838fbf961012f74d4e638440"
   integrity sha512-ijGqzZt/b7BfzcK9vTrS6MFljQRPn5BFWOx8oE0GYxribu6uV+aA9zZuXI1zc/etK9E8nrgdoF2+LgUw7+9tJQ==
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+
+"@types/minimatch@*":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
+  integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
+
+"@types/node@*":
+  version "13.9.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.9.1.tgz#96f606f8cd67fb018847d9b61e93997dabdefc72"
+  integrity sha512-E6M6N0blf/jiZx8Q3nb0vNaswQeEyn0XlupO+xN6DtJ6r6IT4nXrTry7zhIfYvFCl3/8Cu6WIysmUBKiqV0bqQ==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -1963,6 +2008,9 @@
     prop-types "^15.6.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 JSONStream@^1.3.4:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-1.3.5.tgz#3208c1f08d3a4d99261ab64f92302bc15e111ca0"
@@ -1971,13 +2019,17 @@ JSONStream@^1.3.4:
     jsonparse "^1.2.0"
     through ">=2.2.7 <3"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 abab@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-2.0.3.tgz#623e2075e02eb2d3f2475e49f99c91846467907a"
   integrity sha512-tsFzPpcttalNjFBCFMqsKYQcWxxen1pgJR56by//QwvJc4/OUS3kPOOttx2tSIfjsylB0pYu7f5D3K1RCxUnUg==
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 abbrev@1:
@@ -1986,6 +2038,8 @@ abbrev@1:
   integrity sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==
 
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 abort-controller@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/abort-controller/-/abort-controller-3.0.0.tgz#eaf54d53b62bae4138e809ca225c8439a6efb392"
@@ -2031,6 +2085,7 @@ acorn@^6.0.1:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 add@^2.0.6:
@@ -2039,6 +2094,8 @@ add@^2.0.6:
   integrity sha1-JI8Kn25aUo7yKV2+7DBTITCuIjU=
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 agent-base@4, agent-base@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-4.3.0.tgz#8165f01c436009bccad0b1d122f05ed770efc6ee"
@@ -2069,6 +2126,7 @@ ajv@^5.2.2:
     fast-deep-equal "^1.0.0"
     fast-json-stable-stringify "^2.0.0"
     json-schema-traverse "^0.3.0"
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 ajv@^6.5.5:
@@ -2076,6 +2134,8 @@ ajv@^6.5.5:
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.2.tgz#c629c5eced17baf314437918d2da88c99d5958cd"
   integrity sha512-k+V+hzjm5q/Mr8ef/1Y9goCmlsK4I6Sm74teeyGvFk1XrOsbsKLjEdrvny42CZ+a8sXbk8KWpY/bDwS+FLL2UQ==
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 ajv@^6.5.5:
   version "6.12.0"
@@ -2089,6 +2149,9 @@ ajv@^6.5.5:
     uri-js "^4.2.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 analytics-node@^2.1.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/analytics-node/-/analytics-node-2.4.1.tgz#1f96c8eb887b6c47691044ac7fc9a1231fb020f7"
@@ -2104,8 +2167,11 @@ analytics-node@^2.1.0:
     superagent "^3.5.0"
     superagent-retry "^0.6.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 ansi-colors@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-1.1.0.tgz#6374b4dd5d4718ff3ce27a671a3b1cad077132a9"
@@ -2212,13 +2278,19 @@ ansi-wrap@0.1.0, ansi-wrap@^0.1.0:
   integrity sha1-qCJQ3bABXponyoLoLqYDu/pF768=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 any-promise@^1.0.0, any-promise@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/any-promise/-/any-promise-1.3.0.tgz#abc6afeedcea52e809cdc0376aed3ce39635d17f"
   integrity sha1-q8av7tzqUugJzcA3au0845Y10X8=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 anymatch@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/anymatch/-/anymatch-2.0.0.tgz#bcb24b4f37934d9aa7ac17b4adaf89e7c76ef2eb"
@@ -2229,15 +2301,20 @@ anymatch@^2.0.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 aproba@^1.1.1:
 =======
 aproba@^1.0.3:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+aproba@^1.1.1:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-1.2.0.tgz#6802e6264efd18c790a1b0d517f0f2627bf2c94a"
   integrity sha512-Y9J6ZjXtoYh8RnXVCMOU/ttDmk1aBjunq9vO0ta5x85WDQiQfUF9sIPBITdbiiIVcBo03Hi3jMxigBtsddlXRw==
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
@@ -2250,6 +2327,8 @@ are-we-there-yet@~1.1.2:
     readable-stream "^2.0.6"
 
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 argparse@^1.0.7:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-1.0.10.tgz#bcd6791ea5ae09725e17e5ad988134cd40b3d911"
@@ -2307,6 +2386,7 @@ array-find-index@^1.0.2:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 array-includes@^3.0.3, array-includes@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/array-includes/-/array-includes-3.1.1.tgz#cdd67e6852bdf9c1215460786732255ed2459348"
@@ -2316,14 +2396,20 @@ array-includes@^3.0.3, array-includes@^3.1.1:
     es-abstract "^1.17.0"
     is-string "^1.0.5"
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 array-flatten@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
   integrity sha1-ml9pkFGx5wczKPKgCJaLZOopVdI=
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 array-map@~0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/array-map/-/array-map-0.0.0.tgz#88a2bab73d1cf7bcd5c1b118a003f66f665fa662"
@@ -2340,6 +2426,9 @@ array-slice@^0.2.3:
   integrity sha1-3Tz7gO15c6dRF82sabC5nshhhvU=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 array-union@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/array-union/-/array-union-1.0.2.tgz#9a34410e4f4e3da23dea375be5be70f24778ec39"
@@ -2352,8 +2441,11 @@ array-uniq@^1.0.1:
   resolved "https://registry.yarnpkg.com/array-uniq/-/array-uniq-1.0.3.tgz#af6ac877a25cc7f74e058894753858dfdb24fdb6"
   integrity sha1-r2rId6Jcx/dOBYiUdThY39sk/bY=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 array-unique@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/array-unique/-/array-unique-0.3.2.tgz#a894b75d4bc4f6cd679ef3244a9fd8f46ae2d428"
@@ -2397,13 +2489,19 @@ async-limiter@~1.0.0:
   integrity sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 async@^0.9.0:
   version "0.9.2"
   resolved "https://registry.yarnpkg.com/async/-/async-0.9.2.tgz#aea74d5e61c1f899613bf64bda66d4c78f2fd17d"
   integrity sha1-rqdNXmHB+JlhO/ZL2mbUx48v0X0=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 async@^2.4.0:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/async/-/async-2.6.3.tgz#d72625e2344a3656e3a3ad4fa749fa83299d82ff"
@@ -2412,13 +2510,19 @@ async@^2.4.0:
     lodash "^4.17.14"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 async@~1.5:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
   integrity sha1-7GphrlZIDAw8skHJVhjiCJL5Zyo=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -2440,6 +2544,9 @@ aws4@^1.8.0:
   integrity sha512-wMHVg2EOHaMRxbzgFJ9gtjOOCrI80OHLG14rxi28XwOW8ux6IiEbRCGGGqCtdAIg4FQCbW20k9RsT4y3gJlFug==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 axios@v0.19.0-beta.1:
   version "0.19.0-beta.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.0-beta.1.tgz#3d6a9ee75885d1fd39e108df9a4fb2e48e1af1e8"
@@ -2448,8 +2555,11 @@ axios@v0.19.0-beta.1:
     follow-redirects "^1.4.1"
     is-buffer "^2.0.2"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 babel-jest@^24.7.1, babel-jest@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-24.9.0.tgz#3fc327cb8467b89d14d7bc70e315104a783ccd54"
@@ -2603,7 +2713,11 @@ babel-preset-jest@^24.9.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 babel-runtime@^6.22.0:
+=======
+babel-runtime@^6.23.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 babel-runtime@^6.23.0:
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
@@ -2614,21 +2728,30 @@ babel-runtime@^6.23.0:
     core-js "^2.4.0"
     regenerator-runtime "^0.11.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 base64-js@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.2.0.tgz#a39992d723584811982be5e290bb6a53d86700f1"
   integrity sha1-o5mS1yNYSBGYK+XikLtqU9hnAPE=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 base64-js@^1.1.2, base64-js@^1.2.3:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.3.1.tgz#58ece8cb75dd07e71ed08c736abc5fac4dbf8df1"
@@ -2674,6 +2797,9 @@ bindings@^1.5.0:
     file-uri-to-path "1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 bluebird@3.5.x:
   version "3.5.5"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.5.tgz#a8d0afd73251effbbd5fe384a77d73003c17a71f"
@@ -2684,14 +2810,20 @@ bluebird@^3.5.1, bluebird@^3.5.2, bluebird@^3.5.5:
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 blueimp-md5@^2.10.0:
   version "2.13.0"
   resolved "https://registry.yarnpkg.com/blueimp-md5/-/blueimp-md5-2.13.0.tgz#07314b0c64dda0bf1733f96ce40d5af94eb28965"
   integrity sha512-lmp0m647R5e77ORduxLW5mISIDcvgJZa52vMBv5uVI3UmSWTQjkJsZVBfaFqQPw/QFogJwvY6e3Gl9nP+Loe+Q==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 body-parser@1.18.3:
   version "1.18.3"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.3.tgz#5b292198ffdd553b3a0f20ded0592b956955c8b4"
@@ -2708,8 +2840,11 @@ body-parser@1.18.3:
     raw-body "2.3.3"
     type-is "~1.6.16"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
@@ -2821,6 +2956,9 @@ buffer-from@^1.0.0:
   integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 builtins@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/builtins/-/builtins-1.0.3.tgz#cb94faeb61c8696451db36534e1422f94f0aee88"
@@ -2844,14 +2982,20 @@ bunyan@^1.8.12:
     mv "~2"
     safe-json-stringify "~1"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 bytes@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
   integrity sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 cacache@^11.2.0, cacache@^11.3.3:
   version "11.3.3"
   resolved "https://registry.yarnpkg.com/cacache/-/cacache-11.3.3.tgz#8bd29df8c6a718a6ebd2d010da4d7972ae3bbadc"
@@ -2872,8 +3016,11 @@ cacache@^11.2.0, cacache@^11.3.3:
     unique-filename "^1.1.1"
     y18n "^4.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 cache-base@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cache-base/-/cache-base-1.0.1.tgz#0a7f46416831c8b662ee36fe4e7c59d76f666ab2"
@@ -2890,6 +3037,9 @@ cache-base@^1.0.1:
     unset-value "^1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 cacheable-request@^2.1.1:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/cacheable-request/-/cacheable-request-2.1.4.tgz#0d808801b6342ad33c91df9d0b44dc09b91e5c3d"
@@ -2903,8 +3053,11 @@ cacheable-request@^2.1.1:
     normalize-url "2.0.1"
     responselike "1.0.2"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 caller-callsite@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/caller-callsite/-/caller-callsite-2.0.0.tgz#847e0fce0a223750a9a027c54b33731ad3154134"
@@ -2920,13 +3073,19 @@ caller-path@^2.0.0:
     caller-callsite "^2.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 callsite@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/callsite/-/callsite-1.0.0.tgz#280398e5d664bd74038b6f0905153e6e8af1bc20"
   integrity sha1-KAOY5dZkvXQDi28JBRU+borxvCA=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 callsites@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/callsites/-/callsites-2.0.0.tgz#06eb84f00eea413da86affefacbffb36093b3c50"
@@ -2972,13 +3131,19 @@ capture-exit@^2.0.0:
     rsvp "^4.8.4"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 capture-stack-trace@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/capture-stack-trace/-/capture-stack-trace-1.0.1.tgz#a6c0bbe1f38f3aa0b92238ecb6ff42c344d4135d"
   integrity sha512-mYQLZnx5Qt1JgB1WEiMCf2647plpGeQ2NMR/5L0HNZzGQo4fuSPnK+wjfPnKZV0aiJDgzmWqqkV/g7JD+DW0qw==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 caseless@~0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
@@ -3030,7 +3195,10 @@ chardet@^0.4.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 charenc@~0.0.1:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/charenc/-/charenc-0.0.2.tgz#c0a1d2f3a7092e03774bfa83f14c0fc5790a8667"
@@ -3045,8 +3213,11 @@ child-process-promise@^2.2.0, child-process-promise@^2.2.1:
     node-version "^1.0.0"
     promise-polyfill "^6.0.1"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 chownr@^1.1.1:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.4.tgz#6fc9d7b42d32a583596337666e7d08084da2cc6b"
@@ -3122,6 +3293,9 @@ cliui@^5.0.0:
     wrap-ansi "^5.1.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 clone-response@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/clone-response/-/clone-response-1.0.2.tgz#d1dc973920314df67fbeb94223b4ee350239e96b"
@@ -3129,21 +3303,30 @@ clone-response@1.0.2:
   dependencies:
     mimic-response "^1.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 clone@^1.0.2:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 clone@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
   integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -3213,13 +3396,19 @@ colorette@^1.0.7:
   integrity sha512-6S062WDQUXi6hOfkO/sBPVwE5ASXY4G2+b4atvhJfSsuUUhIaUKlkjLe9692Ipyt5/a+IPF5aVTu3V5gvXq5cg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 colors@^1.0.3:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
   integrity sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 combined-stream@^1.0.6, combined-stream@~1.0.6:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/combined-stream/-/combined-stream-1.0.8.tgz#c3d45a8b34fd730631a110a8a2520682b31d5a7f"
@@ -3227,6 +3416,7 @@ combined-stream@^1.0.6, combined-stream@~1.0.6:
   dependencies:
     delayed-stream "~1.0.0"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 command-exists@^1.2.8:
@@ -3243,12 +3433,19 @@ command-exists@^1.2.7, command-exists@^1.2.8:
 commander@^2.19.0, commander@^2.9.0:
 =======
 command-exists@^1.2.8:
+=======
+command-exists@^1.2.7, command-exists@^1.2.8:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/command-exists/-/command-exists-1.2.8.tgz#715acefdd1223b9c9b37110a149c6392c2852291"
   integrity sha512-PM54PkseWbiiD/mMsbvW351/u+dafwTJ0ye2qB60G1aGQP9j3xK2gmMDc+R34L3nDtx4qMCitXT75mkbkGJDLw==
 
+<<<<<<< HEAD
 commander@^2.19.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+commander@^2.19.0, commander@^2.9.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
@@ -3269,22 +3466,32 @@ compare-versions@^3.4.0, compare-versions@^3.6.0:
   integrity sha512-W6Af2Iw1z4CB7q4uU4hv646dW9GQuBM+YpC0UvUCWSD8w90SJjp+ujJuXaEMtAXBtSqGfMPuFOVn4/+FlaqfBA==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 component-emitter@^1.2.0, component-emitter@^1.2.1:
 =======
 component-emitter@^1.2.1:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+component-emitter@^1.2.0, component-emitter@^1.2.1:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
   integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 component-type@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/component-type/-/component-type-1.2.1.tgz#8a47901700238e4fc32269771230226f24b415a9"
   integrity sha1-ikeQFwAjjk/DIml3EjAibyS0Fak=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 compressible@~2.0.16:
   version "2.0.18"
   resolved "https://registry.yarnpkg.com/compressible/-/compressible-2.0.18.tgz#af53cca6b070d4c3c0750fbd77286a6d7cc46fba"
@@ -3311,10 +3518,14 @@ concat-map@0.0.1:
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 concat-stream@^1.5.0, concat-stream@^1.6.0:
 =======
 concat-stream@^1.6.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+concat-stream@^1.5.0, concat-stream@^1.6.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/concat-stream/-/concat-stream-1.6.2.tgz#904bdf194cd3122fc675c77fc4ac3d4ff0fd1a34"
   integrity sha512-27HBghJxjiZtIk3Ycvn/4kbJk/1uZuJFfuPEns6LaEvpvG1f0hTea8lilrouyo9mVc2GWdcEZ8OLoGmSADlrCw==
@@ -3336,7 +3547,10 @@ connect@^3.6.5:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 content-disposition@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/content-disposition/-/content-disposition-0.5.2.tgz#0cf68bb9ddf5f2be7961c3a85178cb85dba78cb4"
@@ -3346,6 +3560,7 @@ content-type@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
   integrity sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
+<<<<<<< HEAD
 
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
@@ -3353,6 +3568,8 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
   integrity sha1-PXz0Rk22RG6mRL9LOVB/mFEAjo4=
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 convert-source-map@^1.4.0, convert-source-map@^1.7.0:
@@ -3363,6 +3580,9 @@ convert-source-map@^1.4.0, convert-source-map@^1.7.0:
     safe-buffer "~5.1.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 cookie-signature@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
@@ -3390,8 +3610,11 @@ copy-concurrently@^1.0.0:
     rimraf "^2.5.4"
     run-queue "^1.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
@@ -3426,10 +3649,14 @@ core-js@^1.0.0:
   integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 core-js@^2.2.2, core-js@^2.4.0, core-js@^2.4.1:
 =======
 core-js@^2.2.2, core-js@^2.4.1:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+core-js@^2.2.2, core-js@^2.4.0, core-js@^2.4.1:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
   integrity sha512-5wjnpaT/3dV+XB4borEsnAYQchn00XSgTAWKDkEqv+K8KevjbzmofK6hfJ9TZIlpj2N0xQpazy7PiRQiWHqzWg==
@@ -3462,8 +3689,11 @@ cosmiconfig@^6.0.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 create-react-class@^15.6.0, create-react-class@^15.6.2, create-react-class@^15.6.3:
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 create-error-class@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/create-error-class/-/create-error-class-3.0.2.tgz#06be7abef947a3f14a30fd610671d401bca8b7b6"
@@ -3485,6 +3715,9 @@ create-react-class@^15.6.2, create-react-class@^15.6.3:
     object-assign "^4.1.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 cross-spawn@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-4.0.2.tgz#7b9247621c23adfdd3856004a823cbe397424d41"
@@ -3493,8 +3726,11 @@ cross-spawn@^4.0.2:
     lru-cache "^4.0.1"
     which "^1.2.9"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 cross-spawn@^5.0.1, cross-spawn@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -3516,6 +3752,9 @@ cross-spawn@^6.0.0, cross-spawn@^6.0.5:
     which "^1.2.9"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 crypt@~0.0.1:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/crypt/-/crypt-0.0.2.tgz#88d7ff7ec0dfb86f713dc87bbb42d044d3e6c41b"
@@ -3526,8 +3765,11 @@ crypto-token@^1.0.1:
   resolved "https://registry.yarnpkg.com/crypto-token/-/crypto-token-1.0.1.tgz#27c6482faf3b63c2f5da11577f8304346fe797a5"
   integrity sha1-J8ZIL687Y8L12hFXf4MENG/nl6U=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 css-color-keywords@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/css-color-keywords/-/css-color-keywords-1.0.0.tgz#fea2616dc676b2962686b3af8dbdbe180b244e05"
@@ -3601,13 +3843,19 @@ csstype@^2.2.0:
   integrity sha512-D34BqZU4cIlMCY93rZHbrq9pjTAQJ3U8S8rfBqjwHxkGPThWFjzZDQpgMJY0QViLxth6ZKYiwFBo14RdN44U/w==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 cyclist@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cyclist/-/cyclist-1.0.1.tgz#596e9698fd0c80e12038c2b82d6eb1b35b6224d9"
   integrity sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 dashdash@^1.12.0:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/dashdash/-/dashdash-1.14.1.tgz#853cfa0f7cbe2fed5de20326b8dd581035f6e2f0"
@@ -3641,10 +3889,14 @@ debounce@^1.2.0:
   integrity sha512-mYtLl1xfZLi1m4RtQYlZgJUNQjl4ZxVnHzIR8nLLgi4q1YT8o/WM+MK/f8yfcc9s5Ir5zRaPZyZU6xs1Syoocg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 debug@2, debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.2:
 =======
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+debug@2, debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.2:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
@@ -3653,7 +3905,10 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 debug@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
@@ -3662,9 +3917,12 @@ debug@3.1.0:
     ms "2.0.0"
 
 debug@^3.0.0, debug@^3.1.0:
+<<<<<<< HEAD
 =======
 debug@^3.2.6:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
   integrity sha512-mel+jf7nrtEl5Pn1Qx46zARXKDpBbvzezse7p7LqINmdoIk8PYP5SySaxEmYv6TZ0JyEKA1hsCId6DIhgITtWQ==
@@ -3683,6 +3941,9 @@ debug@^4.1.0, debug@^4.1.1:
     ms "^2.1.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 decache@^4.1.0:
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/decache/-/decache-4.5.1.tgz#94a977a88a4188672c96550ec4889582ceecdf49"
@@ -3690,8 +3951,11 @@ decache@^4.1.0:
   dependencies:
     callsite "^1.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 decamelize@^1.1.1, decamelize@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
@@ -3703,6 +3967,9 @@ decode-uri-component@^0.2.0:
   integrity sha1-6zkTMzRYd1y4TNGh+uBiEGu4dUU=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 decompress-response@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/decompress-response/-/decompress-response-3.3.0.tgz#80a4dd323748384bfa248083622aedec982adff3"
@@ -3710,8 +3977,11 @@ decompress-response@^3.3.0:
   dependencies:
     mimic-response "^1.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 dedent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/dedent/-/dedent-0.6.0.tgz#0e6da8f0ce52838ef5cec5c8f9396b0c1b64a3cb"
@@ -3726,14 +3996,20 @@ deep-assign@^3.0.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 deep-diff@0.3.4:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-0.3.4.tgz#aac5c39952236abe5f037a2349060ba01b00ae48"
   integrity sha1-qsXDmVIjar5fA3ojSQYLoBsArkg=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 deep-extend@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
@@ -3749,13 +4025,19 @@ deep-is@~0.1.3:
   integrity sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 deepmerge@^1.3.0:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-1.5.2.tgz#10499d868844cdad4fee0842df8c7f6f0c95a753"
   integrity sha512-95k0GDqvBjZavkuvzx/YqVLv/6YYa17fz6ILMSf7neqQITCPbnfEnQvEgMPNjH4kgobe7+WIL0yJEHku+H3qtQ==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 deepmerge@^3.2.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-3.3.0.tgz#d3c47fd6f3a93d517b14426b0628a17b0125f5f7"
@@ -3798,18 +4080,25 @@ define-property@^2.0.2:
     isobject "^3.0.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 delay-async@^1.0.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/delay-async/-/delay-async-1.2.0.tgz#d62f7974868bd91980c6b9c17dc8132c6768709b"
   integrity sha512-BDhPL4k42yL2c0b5zTUlMIM3/wmv77HOgZi4ya/8tOHw16GZ1i9Qj7Tmy3xt0jWb4VmpQtklLPReUtOUZUuzuQ==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 delegates@^1.0.0:
@@ -3818,6 +4107,8 @@ delegates@^1.0.0:
   integrity sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=
 
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 denodeify@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/denodeify/-/denodeify-1.2.1.tgz#3a36287f5034e699e7577901052c2e6c94251631"
@@ -3839,6 +4130,7 @@ destroy@~1.0.4:
   integrity sha1-l4hXRCxEdJ5CBmE+N5RiBYJqvYA=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 detect-libc@^1.0.2:
   version "1.0.3"
@@ -3846,12 +4138,17 @@ detect-libc@^1.0.2:
   integrity sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
 
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 detect-newline@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/detect-newline/-/detect-newline-2.1.0.tgz#f41f1c10be4b00e87b5f13da680759f2c5bfd3e2"
   integrity sha1-9B8cEL5LAOh7XxPaaAdZ8sW/0+I=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 detox-expo-helpers@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/detox-expo-helpers/-/detox-expo-helpers-0.6.0.tgz#01cc53727bbd516d162d8fcd37fce61983c54181"
@@ -3888,8 +4185,11 @@ detox@^16.0.0:
     yargs "^13.0.0"
     yargs-parser "^13.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 didyoumean@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/didyoumean/-/didyoumean-1.2.1.tgz#e92edfdada6537d484d73c0172fd1eba0c4976ff"
@@ -3954,6 +4254,9 @@ dotenv@^2.0.0:
   integrity sha1-vXWcNXqqcDZeAclrewvsCKbg2Uk=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 dtrace-provider@~0.8:
   version "0.8.8"
   resolved "https://registry.yarnpkg.com/dtrace-provider/-/dtrace-provider-0.8.8.tgz#2996d5490c37e1347be263b423ed7b297fb0d97e"
@@ -3976,8 +4279,11 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 ecc-jsbn@~0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.2.tgz#3a83a904e54353287874c564b7549386849a98c9"
@@ -4036,10 +4342,14 @@ encoding@^0.1.11:
     iconv-lite "~0.4.13"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 end-of-stream@^1.0.0, end-of-stream@^1.1.0:
 =======
 end-of-stream@^1.1.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+end-of-stream@^1.0.0, end-of-stream@^1.1.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.4.4"
   resolved "https://registry.yarnpkg.com/end-of-stream/-/end-of-stream-1.4.4.tgz#5ae64a5f45057baf3626ec14da0ca5e4b2431eb0"
   integrity sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==
@@ -4066,6 +4376,11 @@ err-code@^1.0.0:
   resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-7.5.0.tgz#91410bb6db262fb4f1409bd506e9ff57e91023f4"
   integrity sha512-jDgnJaF/Btomk+m3PZDTTCb5XIIIX3zYItnCRfF73zVgvinLoRomuhi75Y4su0PtQxWz4v66XnLLckyvyJTOIQ==
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+
+err-code@^1.0.0:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/err-code/-/err-code-1.1.2.tgz#06e0116d3028f6aef4806849eb0ea6a748ae6960"
+  integrity sha1-BuARbTAo9q70gGhJ6w6mp0iuaWA=
 
 error-ex@^1.2.0, error-ex@^1.3.1:
   version "1.3.2"
@@ -4113,6 +4428,9 @@ es-to-primitive@^1.2.1:
     is-symbol "^1.0.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 es6-error@^4.0.2:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/es6-error/-/es6-error-4.1.1.tgz#9e3af407459deed47e9a91f9b885a84eb05c561d"
@@ -4130,8 +4448,11 @@ es6-promisify@^5.0.0:
   dependencies:
     es6-promise "^4.0.3"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 escape-html@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
@@ -4210,6 +4531,9 @@ eventemitter3@^3.0.0:
   integrity sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 exception-formatter@^1.0.4:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/exception-formatter/-/exception-formatter-1.0.7.tgz#3291616b86fceabefa97aee6a4708032c6e3b96d"
@@ -4222,8 +4546,11 @@ exec-async@^2.2.0:
   resolved "https://registry.yarnpkg.com/exec-async/-/exec-async-2.2.0.tgz#c7c5ad2eef3478d38390c6dd3acfe8af0efc8301"
   integrity sha1-x8WtLu80eNODkMbdOs/orw78gwE=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 exec-sh@^0.3.2:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/exec-sh/-/exec-sh-0.3.4.tgz#3a018ceb526cc6f6df2bb504b2bfe8e3a4934ec5"
@@ -4256,13 +4583,19 @@ execa@^1.0.0:
     strip-eof "^1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 exeunt@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/exeunt/-/exeunt-1.1.0.tgz#af72db6f94b3cb75e921aee375d513049843d284"
   integrity sha1-r3Lbb5Szy3XpIa7jddUTBJhD0oQ=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 exit@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/exit/-/exit-0.1.2.tgz#0632638f8d877cc82107d30a0fff1a17cba1cd0c"
@@ -4315,6 +4648,9 @@ expo-constants@~8.0.0:
     ua-parser-js "^0.7.19"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 expo-detox-hook@^1.0.10:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/expo-detox-hook/-/expo-detox-hook-1.0.10.tgz#fd75f845f962421299f31ec361ad6cb94dd1d06f"
@@ -4324,8 +4660,11 @@ expo-detox-hook@^1.0.10:
     commander "^2.19.0"
     fs-extra "^7.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 expo-error-recovery@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/expo-error-recovery/-/expo-error-recovery-1.0.0.tgz#2ca9d59fcd16c5c881af877993731056f2d46afe"
@@ -4457,6 +4796,9 @@ expo@~36.0.0:
     uuid-js "^0.7.5"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 express@4.16.4:
   version "4.16.4"
   resolved "https://registry.yarnpkg.com/express/-/express-4.16.4.tgz#fddef61926109e24c515ea97fd2f1bdbf62df12e"
@@ -4493,8 +4835,11 @@ express@4.16.4:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 extend-shallow@^1.1.2:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/extend-shallow/-/extend-shallow-1.1.4.tgz#19d6bf94dfc09d76ba711f39b872d21ff4dd9071"
@@ -4518,14 +4863,19 @@ extend-shallow@^3.0.0, extend-shallow@^3.0.2:
     is-extendable "^1.0.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 extend@^3.0.0, extend@~3.0.2:
 =======
 extend@~3.0.2:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+extend@^3.0.0, extend@~3.0.2:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
   integrity sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 external-editor@^2.0.1, external-editor@^2.0.4:
@@ -4535,6 +4885,9 @@ external-editor@^2.0.4, external-editor@^2.1.0:
 =======
 external-editor@^2.0.4:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+external-editor@^2.0.4, external-editor@^2.1.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/external-editor/-/external-editor-2.2.0.tgz#045511cfd8d133f3846673d1047c154e214ad3d5"
   integrity sha512-bSn6gvGxKt+b7+6TKEv1ZycHleA7aHhRHyAqJyp5pbUFuYYNIzpZnQDk7AsYckyWdEnTeAnay0aCy2aV6iTk9A==
@@ -4578,13 +4931,19 @@ fancy-log@^1.3.2:
     time-stamp "^1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 fast-deep-equal@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-1.1.0.tgz#c053477817c86b51daa853c81e059b733d023614"
   integrity sha1-wFNHeBfIa1HaqFPIHgWbcz0CNhQ=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 fast-deep-equal@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.1.tgz#545145077c501491e33b15ec408c294376e94ae4"
@@ -4663,13 +5022,19 @@ fbjs@^1.0.0:
     ua-parser-js "^0.7.18"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 figgy-pudding@^3.4.1, figgy-pudding@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/figgy-pudding/-/figgy-pudding-3.5.1.tgz#862470112901c727a0e495a80744bd5baa1d6790"
   integrity sha512-vNKxJHTEKNThjfrdJwHc7brvM6eVevuO5nTj6ez8ZQ1qbXTvGthucRF7S4vf2cr71QVnT70V34v0S1DyQsti0w==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 figures@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/figures/-/figures-2.0.0.tgz#3ab1a2d2a62c8bfb431a0c94cb797a2fce27c962"
@@ -4678,13 +5043,19 @@ figures@^2.0.0:
     escape-string-regexp "^1.0.5"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 file-type@^4.0.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/file-type/-/file-type-4.4.0.tgz#1b600e5fca1fbdc6e80c0a70c71c8dba5f7906c5"
   integrity sha1-G2AOX8ofvcboDApwxxyNul95BsU=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 file-uri-to-path@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz#553a7b8446ff6f684359c445f1e37a05dacc33dd"
@@ -4701,6 +5072,9 @@ fill-range@^4.0.0:
     to-regex-range "^2.1.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 finalhandler@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.1.1.tgz#eebf4ed840079c83f4249038c9d703008301b105"
@@ -4714,8 +5088,11 @@ finalhandler@1.1.1:
     statuses "~1.4.0"
     unpipe "~1.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 finalhandler@1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/finalhandler/-/finalhandler-1.1.2.tgz#b7e7d000ffd11938d0fdb053506f6ebabe9f587d"
@@ -4776,6 +5153,9 @@ find-versions@^3.2.0:
     semver-regex "^2.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 flush-write-stream@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"
@@ -4791,8 +5171,11 @@ follow-redirects@^1.4.1:
   dependencies:
     debug "^3.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 fontfaceobserver@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/fontfaceobserver/-/fontfaceobserver-2.1.0.tgz#e2705d293e2c585a6531c2a722905657317a2991"
@@ -4809,6 +5192,9 @@ forever-agent@~0.6.1:
   integrity sha1-+8cfDEGt6zf5bFd60e1C2P2sypE=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 form-data@^2.1.4, form-data@^2.3.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.5.1.tgz#f2cbec57b5e59e23716e128fe44d4e5dd23895f4"
@@ -4818,8 +5204,11 @@ form-data@^2.1.4, form-data@^2.3.1:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 form-data@~2.3.2:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-2.3.3.tgz#dcce52c05f644f298c6a7ab936bd724ceffbf3a6"
@@ -4830,6 +5219,9 @@ form-data@~2.3.2:
     mime-types "^2.1.12"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 formidable@^1.2.0:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/formidable/-/formidable-1.2.2.tgz#bf69aea2972982675f00865342b982986f6b8dd9"
@@ -4840,8 +5232,11 @@ forwarded@~0.1.2:
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
   integrity sha1-mMI9qxF1ZXuMBXPozszZGw/xjIQ=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 fragment-cache@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/fragment-cache/-/fragment-cache-0.2.1.tgz#4290fad27f13e89be7f33799c6bc5a0abfff0d19"
@@ -4850,19 +5245,28 @@ fragment-cache@^0.2.1:
     map-cache "^0.2.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 freeport-async@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/freeport-async/-/freeport-async-1.1.1.tgz#5c8cf4fc1aba812578317bd4d7a1e5597baf958e"
   integrity sha1-XIz0/Bq6gSV4MXvU16HlWXuvlY4=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 from2@^2.1.0, from2@^2.1.1:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/from2/-/from2-2.3.0.tgz#8bfb5502bde4a4d36cfdeea007fcca21d7e382af"
@@ -4871,8 +5275,11 @@ from2@^2.1.0, from2@^2.1.1:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 fs-extra@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-1.0.0.tgz#cd3ce5f7e7cb6145883fcae3191e9877f8587950"
@@ -4883,6 +5290,9 @@ fs-extra@^1.0.0:
     klaw "^1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 fs-extra@^4.0.2:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-4.0.3.tgz#0d852122e5bc5beb453fb028e9c0c9bf36340c94"
@@ -4893,7 +5303,10 @@ fs-extra@^4.0.2:
     universalify "^0.1.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 fs-extra@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-6.0.1.tgz#8abc128f7946e310135ddc93b98bddb410e7a34b"
@@ -4904,9 +5317,12 @@ fs-extra@^6.0.1:
     universalify "^0.1.0"
 
 fs-extra@^7.0.0, fs-extra@^7.0.1:
+<<<<<<< HEAD
 =======
 fs-extra@^7.0.1:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-7.0.1.tgz#4f189c44aa123b895f722804f55ea23eadc348e9"
   integrity sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
@@ -4916,6 +5332,9 @@ fs-extra@^7.0.1:
     universalify "^0.1.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 fs-extra@^8.0.1:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-8.1.0.tgz#49d43c45a88cd9677668cb7be1b46efdb8d2e1c0"
@@ -4925,8 +5344,11 @@ fs-extra@^8.0.1:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 fs-minipass@^1.2.5:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/fs-minipass/-/fs-minipass-1.2.7.tgz#ccff8570841e7fe4265693da88936c55aed7f7c7"
@@ -4935,6 +5357,9 @@ fs-minipass@^1.2.5:
     minipass "^2.6.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 fs-write-stream-atomic@^1.0.8:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/fs-write-stream-atomic/-/fs-write-stream-atomic-1.0.10.tgz#b47df53493ef911df75731e70a9ded0189db40c9"
@@ -4945,9 +5370,12 @@ fs-write-stream-atomic@^1.0.8:
     imurmurhash "^0.1.4"
     readable-stream "1 || 2"
 
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -4968,6 +5396,7 @@ function-bind@^1.1.1:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 fuse.js@^3.4.4:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/fuse.js/-/fuse.js-3.6.1.tgz#7de85fdd6e1b3377c23ce010892656385fd9b10c"
@@ -4976,6 +5405,8 @@ fuse.js@^3.4.4:
 =======
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 funpermaproxy@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/funpermaproxy/-/funpermaproxy-1.0.1.tgz#4650e69b7c334d9717c06beba9b339cc08ac3335"
@@ -4985,6 +5416,7 @@ genfun@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/genfun/-/genfun-5.0.0.tgz#9dd9710a06900a5c4a5bf57aca5da4e52fe76537"
   integrity sha512-KGDOARWVga7+rnB3z9Sd2Letx515owfk0hSxHGuqjANb1M+x2bGZGqHLiozPsYMdM2OubeMni/Hpwmjq6qIUhA==
+<<<<<<< HEAD
 
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
@@ -5002,6 +5434,8 @@ gauge@~2.7.3:
     string-width "^1.0.1"
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 gensync@^1.0.0-beta.1:
@@ -5020,6 +5454,9 @@ get-caller-file@^2.0.1:
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 get-port@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/get-port/-/get-port-2.1.0.tgz#8783f9dcebd1eea495a334e1a6a251e78887ab1a"
@@ -5028,18 +5465,25 @@ get-port@^2.1.0:
     pinkie-promise "^2.0.0"
 
 get-stream@3.0.0, get-stream@^3.0.0:
+<<<<<<< HEAD
 =======
 get-stream@^3.0.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
   integrity sha1-jpQ9E1jcN1VQVOy+LtsFqhdO3hQ=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 get-stream@^4.0.0, get-stream@^4.1.0:
 =======
 get-stream@^4.0.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+get-stream@^4.0.0, get-stream@^4.1.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/get-stream/-/get-stream-4.1.0.tgz#c1b255575f3dc21d59bfc79cd3d2b46b1c3a54b5"
   integrity sha512-GMat4EJ5161kIy2HevLlr4luNjBgvmj413KaQA7jt4V8B4RDsfpHk7WQ9GVqfYyyx8OS/L66Kox+rJRNklLK7w==
@@ -5052,13 +5496,19 @@ get-value@^2.0.3, get-value@^2.0.6:
   integrity sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 getenv@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/getenv/-/getenv-0.7.0.tgz#39b91838707e2086fd1cf6ef8777d1c93e14649e"
   integrity sha1-ObkYOHB+IIb9HPbvh3fRyT4UZJ4=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 getpass@^0.1.1:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.7.tgz#5eff8e3e684d569ae4cb2b1282604e8ba62149fa"
@@ -5067,6 +5517,9 @@ getpass@^0.1.1:
     assert-plus "^1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 glob-promise@^3.3.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/glob-promise/-/glob-promise-3.4.0.tgz#b6b8f084504216f702dc2ce8c9bc9ac8866fdb20"
@@ -5086,9 +5539,12 @@ glob@^6.0.1:
     path-is-absolute "^1.0.0"
 
 glob@^7.0.3, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4:
+<<<<<<< HEAD
 =======
 glob@^7.1.1, glob@^7.1.2, glob@^7.1.3:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
   integrity sha512-LwaxwyZ72Lk7vZINtNNrywX0ZuLyStrdDtabefZKAY5ZGJhVtgdznluResxNmPitE0SAO+O26sWTHeKSI2wMBA==
@@ -5107,11 +5563,14 @@ globals@^11.1.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.3, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "4.2.4"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
   integrity sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 globby@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/globby/-/globby-6.1.0.tgz#f5a6d70e8395e21c858fb0489d64df02424d506c"
@@ -5164,12 +5623,15 @@ got@^8.3.1:
     url-to-options "^1.0.1"
 
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.3, graceful-fs@^4.1.6, graceful-fs@^4.1.9, graceful-fs@^4.2.0:
+<<<<<<< HEAD
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
   integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.3, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.3.tgz#4a12ff1b60376ef09862c2093edd908328be8423"
   integrity sha512-a30VEBm4PEdx1dRB7MFK7BejejvCvBronbLjht+sHuGYj8PHs7M/5Z+rt5lw551vZ7yfTCj4Vuyy3mSJytDWRQ==
@@ -5181,6 +5643,7 @@ growly@^1.3.0:
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "hammerjs@https://github.com/naver/hammer.js.git":
   version "2.0.17-snapshot"
   resolved "https://github.com/naver/hammer.js.git#54bc698b25edd6e1b76ca975ebaced5ce0467d51"
@@ -5189,6 +5652,11 @@ growly@^1.3.0:
   version "2.0.17-snapshot"
   resolved "git+https://github.com/naver/hammer.js.git#54bc698b25edd6e1b76ca975ebaced5ce0467d51"
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+"hammerjs@https://github.com/naver/hammer.js.git":
+  version "2.0.17-snapshot"
+  resolved "https://github.com/naver/hammer.js.git#54bc698b25edd6e1b76ca975ebaced5ce0467d51"
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
@@ -5226,13 +5694,19 @@ has-flag@^4.0.0:
   integrity sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 has-symbol-support-x@^1.4.1:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/has-symbol-support-x/-/has-symbol-support-x-1.4.2.tgz#1409f98bc00247da45da67cee0a36f282ff26455"
   integrity sha512-3ToOva++HaW+eCpgqZrCfN51IPB+7bJNVT6CUATzueB5Heb8o6Nam0V3HG5dlDvZU1Gn5QLcbahiKw/XVk5JJw==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 has-symbols@^1.0.0, has-symbols@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/has-symbols/-/has-symbols-1.0.1.tgz#9f5214758a44196c406d9bd76cebf81ec2dd31e8"
@@ -5240,13 +5714,17 @@ has-symbols@^1.0.0, has-symbols@^1.0.1:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 has-to-string-tag-x@^1.2.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/has-to-string-tag-x/-/has-to-string-tag-x-1.4.1.tgz#a045ab383d7b4b2012a00148ab0aa5f290044d4d"
   integrity sha512-vdbKfmw+3LoOYVr+mtxHaX5a96+0f3DljYd8JOqvOLsf5mw2Otda2qCDT9qRqLAhrjyQ0h7ual5nOiASpsGNFw==
   dependencies:
     has-symbol-support-x "^1.4.1"
+<<<<<<< HEAD
 
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
@@ -5254,6 +5732,8 @@ has-unicode@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/has-unicode/-/has-unicode-2.0.1.tgz#e0e6fe6a28cf51138855e086d1691e771de2a8b9"
   integrity sha1-4Ob+aijPUROIVeCG0Wkedx3iqLk=
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 has-value@^0.3.1:
@@ -5295,6 +5775,9 @@ has@^1.0.3:
     function-bind "^1.1.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 hasbin@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/hasbin/-/hasbin-1.2.3.tgz#78c5926893c80215c2b568ae1fd3fcab7a2696b0"
@@ -5307,21 +5790,30 @@ hashids@^1.1.4:
   resolved "https://registry.yarnpkg.com/hashids/-/hashids-1.2.2.tgz#28635c7f2f7360ba463686078eee837479e8eafb"
   integrity sha512-dEHCG2LraR6PNvSGxosZHIRgxF5sNLOIBFEHbj8lfP9WWmu/PWPMzsip1drdVSOFi51N2pU7gZavrgn7sbGFuw==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 hermes-engine@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/hermes-engine/-/hermes-engine-0.2.1.tgz#25c0f1ff852512a92cb5c5cc47cf967e1e722ea2"
   integrity sha512-eNHUQHuadDMJARpaqvlCZoK/Nitpj6oywq3vQ3wCwEsww5morX34mW5PmKWQTO7aU0ck0hgulxR+EVDlXygGxQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 hoek@6.x.x:
   version "6.1.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-6.1.3.tgz#73b7d33952e01fe27a38b0457294b79dd8da242c"
   integrity sha512-YXXAAhmF9zpQbC7LEcREFtXfGq5K1fmd+4PHkBq8NUqmzW3G+Dq10bI/i0KucLRwss3YYFQ0fSfoxBZYiGUqtQ==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 hoist-non-react-statics@^2.3.1:
   version "2.5.5"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
@@ -5335,15 +5827,21 @@ hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.0, hoist-non-react-
     react-is "^16.7.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 home-dir@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/home-dir/-/home-dir-1.0.0.tgz#2917eb44bdc9072ceda942579543847e3017fe4e"
   integrity sha1-KRfrRL3JByztqUJXlUOEfjAX/k4=
 
 hosted-git-info@^2.1.4, hosted-git-info@^2.7.1:
+<<<<<<< HEAD
 =======
 hosted-git-info@^2.1.4:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
   integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
@@ -5361,6 +5859,9 @@ html-escaper@^2.0.0:
   integrity sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 http-cache-semantics@3.8.1, http-cache-semantics@^3.8.1:
   version "3.8.1"
   resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-3.8.1.tgz#39b0e16add9b605bf0a9ef3d9daaf4843b4cacd2"
@@ -5376,8 +5877,11 @@ http-errors@1.6.3, http-errors@~1.6.2, http-errors@~1.6.3:
     setprototypeof "1.1.0"
     statuses ">= 1.4.0 < 2"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 http-errors@~1.7.2:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.7.3.tgz#6c619e4f9c60308c38519498c14fbb10aacebb06"
@@ -5390,6 +5894,9 @@ http-errors@~1.7.2:
     toidentifier "1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 http-proxy-agent@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/http-proxy-agent/-/http-proxy-agent-2.1.0.tgz#e4821beef5b2142a2026bd73926fe537631c5405"
@@ -5398,8 +5905,11 @@ http-proxy-agent@^2.1.0:
     agent-base "4"
     debug "3.1.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 http-signature@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/http-signature/-/http-signature-1.2.0.tgz#9aecd925114772f3d95b65a60abb8f7c18fbace1"
@@ -5410,6 +5920,9 @@ http-signature@~1.2.0:
     sshpk "^1.7.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 https-proxy-agent@^2.2.1:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-2.2.4.tgz#4ee7a737abd92678a293d9b34a1af4d0d08c787b"
@@ -5425,8 +5938,11 @@ humanize-ms@^1.2.1:
   dependencies:
     ms "^2.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 husky@^4.2.3:
   version "4.2.5"
   resolved "https://registry.yarnpkg.com/husky/-/husky-4.2.5.tgz#2b4f7622673a71579f901d9885ed448394b5fa36"
@@ -5450,7 +5966,10 @@ hyphenate-style-name@^1.0.2:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 iconv-lite@0.4.23:
   version "0.4.23"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.23.tgz#297871f63be507adcfbfca715d0cd0eed84e9a63"
@@ -5458,11 +5977,15 @@ iconv-lite@0.4.23:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 iconv-lite@0.4.24, iconv-lite@^0.4.17, iconv-lite@~0.4.13:
 =======
 iconv-lite@0.4.24, iconv-lite@^0.4.17, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+iconv-lite@0.4.24, iconv-lite@^0.4.17, iconv-lite@~0.4.13:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
   integrity sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==
@@ -5471,7 +5994,10 @@ iconv-lite@0.4.24, iconv-lite@^0.4.17, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 idx@^2.1.0:
   version "2.5.6"
   resolved "https://registry.yarnpkg.com/idx/-/idx-2.5.6.tgz#1f824595070100ae9ad585c86db08dc74f83a59d"
@@ -5482,8 +6008,11 @@ iferr@^0.1.5:
   resolved "https://registry.yarnpkg.com/iferr/-/iferr-0.1.5.tgz#c60eed69e6d8fdb6b3104a1fcbca1c192dc5b501"
   integrity sha1-xg7taebY/bazEEofy8ocGS3FtQE=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 ignore-walk@^3.0.1:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/ignore-walk/-/ignore-walk-3.0.3.tgz#017e2447184bfeade7c238e4aefdd1e8f95b1e37"
@@ -5535,13 +6064,19 @@ imurmurhash@^0.1.4:
   integrity sha1-khi5srkoojixPcT7a21XbyMUU+o=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 indent-string@^3.1.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/indent-string/-/indent-string-3.2.0.tgz#4a5fd6d27cc332f37e5419a504dbb837105c9289"
   integrity sha1-Sl/W0nzDMvN+VBmlBNu4NxBckok=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 inflight@^1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/inflight/-/inflight-1.0.6.tgz#49bd6331d7d02d0c09bc910a1075ba8165b56df9"
@@ -5551,26 +6086,36 @@ inflight@^1.0.4:
     wrappy "1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 inherits@2, inherits@2.0.4, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.3:
 =======
 inherits@2, inherits@2.0.4, inherits@^2.0.3, inherits@~2.0.3:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+inherits@2, inherits@2.0.4, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.3:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 inherits@2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
 ini@^1.3.4, ini@~1.3.0:
+<<<<<<< HEAD
 =======
 ini@~1.3.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/ini/-/ini-1.3.5.tgz#eee25f56db1c9ec6085e0c22778083f596abf927"
   integrity sha512-RZY5huIKCMRWDUqZlEi72f/lmXKMvuszcMBduliQ3nnWbx9X/ZBQO7DijMEYS9EhHBb2qacRUMtC7svLwe0lcw==
@@ -5630,6 +6175,7 @@ inquirer@^3.0.6:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 internal-slot@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/internal-slot/-/internal-slot-1.0.2.tgz#9c2e9fb3cd8e5e4256c6f45fe310067fcfa378a3"
@@ -5639,6 +6185,8 @@ internal-slot@^1.0.2:
     has "^1.0.3"
     side-channel "^1.0.2"
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 inquirer@^5.0.1:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-5.2.0.tgz#db350c2b73daca77ff1243962e9f22f099685726"
@@ -5665,10 +6213,14 @@ into-stream@^3.1.0:
   dependencies:
     from2 "^2.1.1"
     p-is-promise "^1.1.0"
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -5687,6 +6239,9 @@ invert-kv@^2.0.0:
   integrity sha512-wPVv/y/QQ/Uiirj/vh3oP+1Ww+AWehmi1g5fFWGPF6IpCBCDVrhgHRMvrLfdYcwDh3QJbGXDW4JAuzxElLSqKA==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 ip@1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ip/-/ip-1.1.5.tgz#bdded70114290828c0a039e72ef25f5aaec4354a"
@@ -5697,8 +6252,11 @@ ipaddr.js@1.9.1:
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.9.1.tgz#bff38543eeb8984825079ff3a2a8e6cbd46781b3"
   integrity sha512-0KI/607xoxSToH7GjN1FfSbLoU0+btTicjsQSWQlh/hZykN8KpmMf7uYwPW3R+akZ6R/w18ZlXSHBYXiYUPO3g==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 is-accessor-descriptor@^0.1.6:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/is-accessor-descriptor/-/is-accessor-descriptor-0.1.6.tgz#a9e12cb3ae8d876727eeef3843f8a0897b5c98d6"
@@ -5724,22 +6282,32 @@ is-arrayish@^0.3.1:
   integrity sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 is-buffer@^1.1.5, is-buffer@~1.1.1:
 =======
 is-buffer@^1.1.5:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+is-buffer@^1.1.5, is-buffer@~1.1.1:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-1.1.6.tgz#efaa2ea9daa0d7ab2ea13a97b2b8ad51fefbe8be"
   integrity sha512-NcdALwpXkTm5Zvvbk7owOUSvVvBKDgKP5/ewfXEznmQFfs4ZRmanOeKBTjRVjka3QFoN6XJ+9F3USqfHqTaU5w==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 is-buffer@^2.0.2:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-2.0.4.tgz#3e572f23c8411a5cfd9557c849e3665e0b290623"
   integrity sha512-Kq1rokWXOPXWuaMAqZiJW4XxsmD9zGx9q4aePabbn3qCRGedtH7Cm+zV8WETitMfu1wdh+Rvd6w5egwSngUX2A==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 is-callable@^1.1.4, is-callable@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/is-callable/-/is-callable-1.1.5.tgz#f7e46b596890456db74e7f6e976cb3273d06faab"
@@ -5836,6 +6404,9 @@ is-obj@^1.0.0:
   integrity sha1-PkcprB9f3gJc19g6iW2rn09n2w8=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 is-object@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/is-object/-/is-object-1.0.1.tgz#8952688c5ec2ffd6b03ecc85e769e02903083470"
@@ -5846,8 +6417,11 @@ is-plain-obj@^1.0.0:
   resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-1.1.0.tgz#71a50c8429dfca773c92a390a4a03b39fcd51d3e"
   integrity sha1-caUMhCnfync8kqOQpKA7OfzVHT4=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/is-plain-object/-/is-plain-object-2.0.4.tgz#2c163b3fafb1b606d9d17928f05c2a1c38e07677"
@@ -5866,14 +6440,20 @@ is-promise@^2.1.0:
   integrity sha1-eaKp7OfwlugPNtKy87wWwf9L8/o=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 is-redirect@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-redirect/-/is-redirect-1.0.0.tgz#1d03dded53bd8db0f30c26e4f95d36fc7c87dc24"
   integrity sha1-HQPd7VO9jbDzDCbk+V02/HyH3CQ=
 
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 is-regex@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/is-regex/-/is-regex-1.0.5.tgz#39d589a358bf18967f726967120b8fc1aed74eae"
@@ -5882,15 +6462,21 @@ is-regex@^1.0.5:
     has "^1.0.3"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 is-retry-allowed@^1.0.0, is-retry-allowed@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/is-retry-allowed/-/is-retry-allowed-1.2.0.tgz#d778488bd0a4666a3be8a1482b9f2baafedea8b4"
   integrity sha512-RUbUeKwvm3XG2VYamhJL1xFktgjvPzL0Hq8C+6yrWIswDy3BIXGqCxhxkc30N9jqK311gVU137K8Ei55/zVJRg==
 
 is-stream@^1.0.0, is-stream@^1.0.1, is-stream@^1.1.0:
+<<<<<<< HEAD
 =======
 is-stream@^1.0.1, is-stream@^1.1.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
   integrity sha1-EtSj3U5o4Lec6428hBc66A2RykQ=
@@ -5936,6 +6522,9 @@ isarray@1.0.0, isarray@~1.0.0:
   integrity sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 isemail@3.x.x:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/isemail/-/isemail-3.2.0.tgz#59310a021931a9fb06bbb51e155ce0b3f236832c"
@@ -5943,8 +6532,11 @@ isemail@3.x.x:
   dependencies:
     punycode "2.x.x"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
@@ -6021,6 +6613,9 @@ istanbul-reports@^2.2.6:
     html-escaper "^2.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 isurl@^1.0.0-alpha5:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isurl/-/isurl-1.0.0.tgz#b27f4f49f3cdaa3ea44a0a5b7f3462e6edc39d67"
@@ -6029,8 +6624,11 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 jest-changed-files@^24.9.0:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-24.9.0.tgz#08d8c15eb79a7fa3fc98269bc14b451ee82f8039"
@@ -6458,6 +7056,9 @@ jetifier@^1.6.2:
   integrity sha512-T7yzBSu9PR+DqjYt+I0KVO1XTb1QhAfHnXV5Nd3xpbXM6Xg4e3vP60Q4qkNU8Fh6PHC2PivPUNN3rY7G2MxcDQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 joi@14.0.4:
   version "14.0.4"
   resolved "https://registry.yarnpkg.com/joi/-/joi-14.0.4.tgz#f066f79330f6bd6f3dda243be6d2c211f83a5f9b"
@@ -6472,8 +7073,11 @@ join-component@^1.1.0:
   resolved "https://registry.yarnpkg.com/join-component/-/join-component-1.1.0.tgz#b8417b750661a392bee2c2537c68b2a9d4977cd5"
   integrity sha1-uEF7dQZho5K+4sJTfGiyqdSXfNU=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -6540,27 +7144,39 @@ jsesc@~0.5.0:
   integrity sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 json-buffer@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/json-buffer/-/json-buffer-3.0.0.tgz#5b1f397afc75d677bde8bcfc0e47e1f9a3d9a898"
   integrity sha1-Wx85evx11ne96Lz8Dkfh+aPZqJg=
 
 json-parse-better-errors@^1.0.0, json-parse-better-errors@^1.0.1:
+<<<<<<< HEAD
 =======
 json-parse-better-errors@^1.0.1:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz#bb867cfb3450e69107c131d1c514bab3dc8bcaa9"
   integrity sha512-mrqyZKfX5EhL7hvqcV6WG1yYjnjeuYDzDhhcAAUrq8Po85NBQBJP+ZDUT75qZQ98IkUoBqdkExkukOU7Ts2wrw==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 json-schema-traverse@0.3.1, json-schema-traverse@^0.3.0:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-0.3.1.tgz#349a6d44c53a51de89b40805c5d5e59b417d3340"
   integrity sha1-NJptRMU6Ud6JtAgFxdXlm0F9M0A=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 json-schema-traverse@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/json-schema-traverse/-/json-schema-traverse-0.4.1.tgz#69f6a87d9513ab8bb8fe63bdb0979c448e684660"
@@ -6590,6 +7206,7 @@ json5@^0.5.1:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 json5@^2.1.0, json5@^2.1.2:
@@ -6598,6 +7215,8 @@ json5@^2.1.0, json5@^2.1.2:
   integrity sha512-KXPvOm8K9IJKFM0bmdn8QXh7udDh1g/giieX0NLCaMnb4hEiVFqnop2ImTXCc5e0/oHz3LTqmHGtExn5hfMkOA==
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 json5@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-1.0.1.tgz#779fb0018604fa854eacbf6252180d83543e3dbe"
@@ -6609,9 +7228,12 @@ json5@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.1.1.tgz#81b6cb04e9ba496f1c7005d07b4368a2638f90b6"
   integrity sha512-l+3HXD0GEI3huGq1njuqtzYK8OYJyXMkOLtQ53pjWh89tvWS2h6l+1zMkYWqlb57+SiQodKZyvMEFb2X+KrFhQ==
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   dependencies:
     minimist "^1.2.5"
 
@@ -6635,13 +7257,19 @@ jsonify@~0.0.0:
   integrity sha1-LHS27kHZPKUbe1qu6PUDYx0lKnM=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 jsonparse@^1.2.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/jsonparse/-/jsonparse-1.3.1.tgz#3f4dae4a91fac315f71062f8521cc239f1366280"
   integrity sha1-P02uSpH6wxX3EGL4UhzCOfE2YoA=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 jsprim@^1.2.2:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/jsprim/-/jsprim-1.4.1.tgz#313e66bc1e5cc06e438bc1b7499c2e5c56acb6a2"
@@ -6654,6 +7282,7 @@ jsprim@^1.2.2:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 jsx-ast-utils@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/jsx-ast-utils/-/jsx-ast-utils-2.2.3.tgz#8a9364e402448a3ce7f14d357738310d9248054f"
@@ -6662,16 +7291,22 @@ jsx-ast-utils@^2.2.3:
     array-includes "^3.0.3"
     object.assign "^4.1.0"
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 keyv@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/keyv/-/keyv-3.0.0.tgz#44923ba39e68b12a7cec7df6c3268c031f2ef373"
   integrity sha512-eguHnq22OE3uVoSYG0LVWNP+4ppamWr9+zWBe1bsNcovIMy6huUJFPgy4mGwCd/rnl3vOLGW1MTlu4c57CT1xA==
   dependencies:
     json-buffer "3.0.0"
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 kind-of@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-1.1.0.tgz#140a3d2d41a36d2efcfa9377b62c24f8495a5c44"
@@ -6714,6 +7349,9 @@ kleur@^3.0.3:
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 latest-version@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/latest-version/-/latest-version-4.0.0.tgz#9542393ac55a585861a4c4ebc02389a0b4a9c332"
@@ -6721,8 +7359,11 @@ latest-version@^4.0.0:
   dependencies:
     package-json "^5.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 lcid@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lcid/-/lcid-1.0.0.tgz#308accafa0bc483a3867b4b6f2b9506251d1b835"
@@ -6812,6 +7453,7 @@ locate-path@^5.0.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 lodash-es@4.17.4:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.4.tgz#dcc1d7552e150a0640073ba9cb31d70f032950e7"
@@ -6822,6 +7464,8 @@ lodash.isempty@^4.4.0:
   resolved "https://registry.yarnpkg.com/lodash.isempty/-/lodash.isempty-4.4.0.tgz#6f86cbedd8be4ec987be9aaf33c9684db1b31e7e"
   integrity sha1-b4bL7di+TsmHvpqvM8loTbGzHn4=
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 lock@^0.1.2:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/lock/-/lock-0.1.4.tgz#fec7deaef17e7c3a0a55e1da042803e25d91745d"
@@ -6831,10 +7475,14 @@ lodash-es@^4.2.1:
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.15.tgz#21bd96839354412f23d7a10340e5eac6ee455d78"
   integrity sha512-rlrc3yU3+JNOpZ9zj5pQtxnx2THmvRykwL4Xlxoa8I9lHBlVbbyPhgyPMioxVZ4NqyxaVVtaJnzsyOidQIhyyQ==
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 lodash.isequal@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
@@ -6852,6 +7500,7 @@ lodash.throttle@^4.1.1:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 lodash.times@^4.3.2:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/lodash.times/-/lodash.times-4.3.2.tgz#3e1f2565c431754d54ab57f2ed1741939285ca1d"
@@ -6864,6 +7513,9 @@ lodash@4.x.x, lodash@^4.14.1, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14,
 =======
 lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+lodash@4.x.x, lodash@^4.14.1, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1, lodash@^4.3.0, lodash@^4.5.0, lodash@^4.6.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
@@ -6876,6 +7528,9 @@ log-symbols@^2.2.0:
     chalk "^2.0.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 logfmt@^1.2.0:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/logfmt/-/logfmt-1.3.2.tgz#be34020b7390b8201212a12f533e3cb4c92d70c2"
@@ -6884,8 +7539,11 @@ logfmt@^1.2.0:
     split "0.2.x"
     through "2.3.x"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 logkitty@^0.6.0:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/logkitty/-/logkitty-0.6.1.tgz#fe29209669d261539cbd6bb998a136fc92a1a05c"
@@ -6918,6 +7576,9 @@ lottie-react-native@~2.6.1:
     react-native-safe-module "^1.1.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 lowercase-keys@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/lowercase-keys/-/lowercase-keys-1.0.0.tgz#4e3366b39e7f5457e35f1324bdf6f88d0bfc7306"
@@ -6929,9 +7590,12 @@ lowercase-keys@^1.0.0:
   integrity sha512-G2Lj61tXDnVFFOi8VZds+SoQjtQC3dgokKdDG2mTm1tx4m50NUHBOZSBwQQHyy0V12A0JTG4icfZQH+xPyh8VA==
 
 lru-cache@^4.0.1, lru-cache@^4.1.3:
+<<<<<<< HEAD
 =======
 lru-cache@^4.0.1:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "4.1.5"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
   integrity sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g==
@@ -6940,6 +7604,9 @@ lru-cache@^4.0.1:
     yallist "^2.1.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 lru-cache@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-5.1.1.tgz#1da27e6710271947695daf6848e847f01d84b920"
@@ -6947,8 +7614,11 @@ lru-cache@^5.1.1:
   dependencies:
     yallist "^3.0.2"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 make-dir@^2.0.0, make-dir@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-2.1.0.tgz#5f0310e18b8be898cc07009295a30ae41e91e6f5"
@@ -6958,6 +7628,9 @@ make-dir@^2.0.0, make-dir@^2.1.0:
     semver "^5.6.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 make-fetch-happen@^4.0.1, make-fetch-happen@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/make-fetch-happen/-/make-fetch-happen-4.0.2.tgz#2d156b11696fb32bffbafe1ac1bc085dd6c78a79"
@@ -6975,8 +7648,11 @@ make-fetch-happen@^4.0.1, make-fetch-happen@^4.0.2:
     socks-proxy-agent "^4.0.0"
     ssri "^6.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 makeerror@1.0.x:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/makeerror/-/makeerror-1.0.11.tgz#e01a5c9109f2af79660e4e8b9587790184f5a96c"
@@ -7011,6 +7687,9 @@ md5-file@^3.2.3:
     buffer-alloc "^1.1.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 md5@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/md5/-/md5-2.2.1.tgz#53ab38d5fe3c8891ba465329ea23fac0540126f9"
@@ -7025,21 +7704,30 @@ md5hex@^1.0.0:
   resolved "https://registry.yarnpkg.com/md5hex/-/md5hex-1.0.0.tgz#ed74b477a2ee9369f75efee2f08d5915e52a42e8"
   integrity sha1-7XS0d6Luk2n3Xv7i8I1ZFeUqQug=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 mdn-data@2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/mdn-data/-/mdn-data-2.0.6.tgz#852dc60fcaa5daa2e8cf6c9189c440ed3e042978"
   integrity sha512-rQvjv71olwNHgiTbfPZFkJtjNMciWgswYeciZhtvWLO8bmX3TnhyA62I6sTWOyZssWHJJjY6/KiWwqQsWWsqOA==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 mem@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/mem/-/mem-1.1.0.tgz#5edd52b485ca1d900fe64895505399a0dfa45f76"
@@ -7057,13 +7745,19 @@ mem@^4.0.0:
     p-is-promise "^2.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 merge-descriptors@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
   integrity sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 merge-stream@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-1.0.1.tgz#4041202d508a342ba00174008df0c251b8c135e1"
@@ -7077,13 +7771,19 @@ merge-stream@^2.0.0:
   integrity sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 methods@^1.1.1, methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 metro-babel-register@^0.56.0, metro-babel-register@^0.56.4:
   version "0.56.4"
   resolved "https://registry.yarnpkg.com/metro-babel-register/-/metro-babel-register-0.56.4.tgz#b0c627a1cfdd1bdd768f81af79481754e833a902"
@@ -7366,8 +8066,17 @@ mime@1.6.0, mime@^1.4.1:
   dependencies:
     mime-db "1.43.0"
 
+<<<<<<< HEAD
 mime@1.6.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+mime@1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-1.4.1.tgz#121f9ebc49e3766f311a76e1fa1c8003c4b03aa6"
+  integrity sha512-KI1+qOZu5DcW6wayYHSzR/tXKCDC5Om4s1z2QJjDULzLcmf3DvzS7oluY4HCTrc+9FiKmWUgeNLg7W3uIQvxtQ==
+
+mime@1.6.0, mime@^1.4.1:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
@@ -7394,15 +8103,21 @@ mimic-fn@^2.0.0:
   integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 mimic-response@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-1.0.1.tgz#4923538878eef42063cb8a3e3b0798781487ab1b"
   integrity sha512-j5EctnkH7amfV/q5Hgmoal1g2QHFJRraOtmx0JpIqkxhBhI/lJSl1nMpQ45hVarwNETOoWEimndZ4QK0RHxuxQ==
 
 "minimatch@2 || 3", minimatch@^3.0.4:
+<<<<<<< HEAD
 =======
 minimatch@^3.0.4:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   integrity sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==
@@ -7431,11 +8146,20 @@ minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.5:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 minipass@^2.3.5, minipass@^2.6.0, minipass@^2.8.6, minipass@^2.9.0:
 =======
 minipass@^2.6.0, minipass@^2.8.6, minipass@^2.9.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+minimist@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
+  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+
+minipass@^2.3.5, minipass@^2.6.0, minipass@^2.8.6, minipass@^2.9.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/minipass/-/minipass-2.9.0.tgz#e713762e7d3e32fed803115cf93e04bca9fcc9a6"
   integrity sha512-wxfUjg9WebH+CUDX/CdbRlh5SmfZiy/hpkxaRI16Y9W56Pa75sWgd/rvFilSgrauD9NyFymP/+JFV3KwzIsJeg==
@@ -7451,6 +8175,9 @@ minizlib@^1.2.1:
     minipass "^2.9.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 mississippi@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/mississippi/-/mississippi-3.0.0.tgz#ea0a3291f97e0b5e8776b363d5f0a12d94c67022"
@@ -7467,10 +8194,13 @@ mississippi@^3.0.0:
     stream-each "^1.1.0"
     through2 "^2.0.0"
 
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 mixin-deep@^1.2.0:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/mixin-deep/-/mixin-deep-1.3.2.tgz#1120b43dc359a785dce65b55b82e257ccf479566"
@@ -7481,6 +8211,7 @@ mixin-deep@^1.2.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 mkdirp@^0.5.1:
 <<<<<<< HEAD
   version "0.5.5"
@@ -7488,6 +8219,8 @@ mkdirp@^0.5.1:
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
 =======
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 mkdirp@^0.5.0:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.3.tgz#5a514b7179259287952881e94410ec5465659f8c"
@@ -7496,6 +8229,7 @@ mkdirp@^0.5.0:
     minimist "^1.2.5"
 
 mkdirp@^0.5.1, mkdirp@~0.5.1:
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
@@ -7520,10 +8254,15 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.5.tgz#d91cefd62d1436ca0f41620e251288d420099def"
   integrity sha512-NKmAlESf6jMGym1++R0Ra7wvhV+wFW63FaSOFPwRahvea0gMUcGUhVeAg/0BC0wiv9ih5NYPB1Wn1UEI1/L+xQ==
+=======
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
+  integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   dependencies:
     minimist "^1.2.5"
 
-moment@^2.22.0:
+moment@^2.10.6, moment@^2.22.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
@@ -7541,6 +8280,9 @@ morgan@^1.9.0:
     on-headers "~1.0.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -7553,8 +8295,11 @@ move-concurrently@^1.0.1:
     rimraf "^2.5.4"
     run-queue "^1.0.3"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -7566,10 +8311,14 @@ ms@2.1.1:
   integrity sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ms@^2.0.0, ms@^2.1.1:
 =======
 ms@^2.1.1:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+ms@^2.0.0, ms@^2.1.1:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
@@ -7581,11 +8330,14 @@ mute-stream@0.0.7:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 nan@^2.12.1:
   version "2.14.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.1.tgz#d7be34dfa3105b91494c3147089315eff8874b01"
   integrity sha512-isWHgVjnFjh2x2yuJ/tj3JbwoHu3UC2dX5G/88Cm24yB6YopVgxvBObDY7n5xW6ExmFhJpSEQqFPvq9zaXc8Jw==
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 mv@^2.1.1, mv@~2:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/mv/-/mv-2.1.1.tgz#ae6ce0d6f6d5e0a4f7d893798d03c1ea9559b6a2"
@@ -7605,12 +8357,15 @@ mz@^2.7.0:
     thenify-all "^1.0.0"
 
 nan@^2.12.1, nan@^2.14.0:
+<<<<<<< HEAD
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 nan@^2.12.1:
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.14.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
@@ -7640,11 +8395,15 @@ natural-compare@^1.4.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 ncp@^2.0.0, ncp@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ncp/-/ncp-2.0.0.tgz#195a21d6c46e361d2fb1281ba38b91e9df7bdbb3"
   integrity sha1-GVoh1sRuNh0vsSgbo4uR6d9727M=
+<<<<<<< HEAD
 
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
@@ -7656,6 +8415,8 @@ needle@^2.2.1:
     debug "^3.2.6"
     iconv-lite "^0.4.4"
     sax "^1.2.4"
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 negotiator@0.6.2:
@@ -7664,18 +8425,25 @@ negotiator@0.6.2:
   integrity sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 next-tick@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.1.0.tgz#1836ee30ad56d67ef281b22bd199f709449b35eb"
   integrity sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 node-fetch@1.6.3:
@@ -7686,6 +8454,8 @@ node-fetch@1.6.3:
     encoding "^0.1.11"
     is-stream "^1.0.1"
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 node-fetch-npm@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/node-fetch-npm/-/node-fetch-npm-2.0.3.tgz#efae4aacb0500444e449a51fc1467397775ebc38"
@@ -7694,10 +8464,14 @@ node-fetch-npm@^2.0.2:
     encoding "^0.1.11"
     json-parse-better-errors "^1.0.0"
     safe-buffer "^5.1.1"
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 node-fetch@^1.0.1:
   version "1.7.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.7.3.tgz#980f6f72d85211a5347c6b2bc18c5b84c3eb47ef"
@@ -7712,13 +8486,19 @@ node-fetch@^2.2.0, node-fetch@^2.5.0:
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 node-forge@^0.7.4:
   version "0.7.6"
   resolved "https://registry.yarnpkg.com/node-forge/-/node-forge-0.7.6.tgz#fdf3b418aee1f94f0ef642cd63486c77ca9724ac"
   integrity sha512-sol30LUpz1jQFBjOKwbjxijiE3b6pjd74YwfD0fJOKPjF+fONKb2Yg8rYgS6+bK6VDl+/wfr4IYpC7jDzLUIfw==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 node-int64@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
@@ -7741,28 +8521,33 @@ node-notifier@^5.2.1, node-notifier@^5.4.2:
     which "^1.3.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 node-pre-gyp@*:
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.14.0.tgz#9a0596533b877289bcad4e143982ca3d904ddc83"
   integrity sha512-+CvDC7ZttU/sSt9rFjix/P05iS43qHCOOGzcr3Ry99bXG7VX953+vFyEuph/tfqoYu8dttBkE86JSKBO2OzcxA==
+=======
+node-releases@^1.1.50:
+  version "1.1.51"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.51.tgz#70d0e054221343d2966006bfbd4d98622cc00bd0"
+  integrity sha512-1eQEs6HFYY1kMXQPOLzCf7HdjReErmvn85tZESMczdCNVWP3Y7URYLBAyYynuI7yef1zj4HN5q+oB2x67QU0lw==
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   dependencies:
-    detect-libc "^1.0.2"
-    mkdirp "^0.5.1"
-    needle "^2.2.1"
-    nopt "^4.0.1"
-    npm-packlist "^1.1.6"
-    npmlog "^4.0.2"
-    rc "^1.2.7"
-    rimraf "^2.6.1"
-    semver "^5.3.0"
-    tar "^4.4.2"
+    semver "^6.3.0"
 
+<<<<<<< HEAD
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 node-releases@^1.1.53:
   version "1.1.53"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.53.tgz#2d821bfa499ed7c5dffc5e2f28c88e78a08ee3f4"
   integrity sha512-wp8zyQVwef2hpZ/dJH7SfSrIPD6YoJz6BDQDpGEkcA0s3LpAQoxBIYmfIq6QAhC1DhwsyCgTaTTcONwX8qzCuQ==
+=======
+node-version@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/node-version/-/node-version-1.2.0.tgz#34fde3ffa8e1149bd323983479dda620e1b5060d"
+  integrity sha512-ma6oU4Sk0qOoKEAymVoTvk8EdXEobdS7m/mAGhDJ8Rouugho48crHBORAmy5BoOcv8wraPM6xumapQp5hl4iIQ==
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 <<<<<<< HEAD
 node-version@^1.0.0:
@@ -7778,6 +8563,7 @@ noop-fn@^1.0.0:
   integrity sha1-XzPUfxPSFQ35PgywNmmemC94/78=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 nopt@^4.0.1:
   version "4.0.3"
@@ -7788,16 +8574,22 @@ nopt@^4.0.1:
     osenv "^0.1.4"
 
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 normalize-css-color@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/normalize-css-color/-/normalize-css-color-1.0.2.tgz#02991e97cccec6623fe573afbbf0de6a1f3e9f8d"
   integrity sha1-Apkel8zOxmI/5XOvu/Deah8+n40=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 normalize-package-data@^2.3.2, normalize-package-data@^2.4.0:
 =======
 normalize-package-data@^2.3.2:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+normalize-package-data@^2.3.2, normalize-package-data@^2.4.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.5.0.tgz#e66db1838b200c1dfc233225d12cb36520e234a8"
   integrity sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==
@@ -7816,7 +8608,10 @@ normalize-path@^2.1.1:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 normalize-url@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-2.0.1.tgz#835a9da1551fa26f70e92329069a23aa6574d7e6"
@@ -7826,8 +8621,11 @@ normalize-url@2.0.1:
     query-string "^5.0.1"
     sort-keys "^2.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 npm-bundled@^1.0.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/npm-bundled/-/npm-bundled-1.1.1.tgz#1edd570865a94cdb1bc8220775e29466c9fb234b"
@@ -7841,6 +8639,9 @@ npm-normalize-package-bin@^1.0.1:
   integrity sha512-EPfafl6JL5/rU+ot6P3gRSCpPDW5VmIzX959Ob1+ySFUuuYHWHekXpwdUZcKP5C+DS4GEtdJluwBjnsNDl+fSA==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 npm-package-arg@^6.0.0, npm-package-arg@^6.1.0:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/npm-package-arg/-/npm-package-arg-6.1.1.tgz#02168cb0a49a2b75bf988a28698de7b529df5cb7"
@@ -7852,9 +8653,12 @@ npm-package-arg@^6.0.0, npm-package-arg@^6.1.0:
     validate-npm-package-name "^3.0.0"
 
 npm-packlist@^1.1.12:
+<<<<<<< HEAD
 =======
 npm-packlist@^1.1.6:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.4.8"
   resolved "https://registry.yarnpkg.com/npm-packlist/-/npm-packlist-1.4.8.tgz#56ee6cc135b9f98ad3d51c1c95da22bbb9b2ef3e"
   integrity sha512-5+AZgwru5IevF5ZdnFglB5wNlHG1AOOuw28WhUq8/8emhBmLv6jX5by4WJCh7lW0uSYZYS6DXqIsyZVIXRZU9A==
@@ -7864,6 +8668,9 @@ npm-packlist@^1.1.6:
     npm-normalize-package-bin "^1.0.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 npm-pick-manifest@^2.2.3:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/npm-pick-manifest/-/npm-pick-manifest-2.2.3.tgz#32111d2a9562638bb2c8f2bf27f7f3092c8fae40"
@@ -7885,9 +8692,12 @@ npm-registry-fetch@^3.8.0:
     make-fetch-happen "^4.0.2"
     npm-package-arg "^6.1.0"
 
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 npm-run-path@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/npm-run-path/-/npm-run-path-2.0.2.tgz#35a9232dfa35d7067b4cb2ddf2357b1871536c5f"
@@ -7895,6 +8705,7 @@ npm-run-path@^2.0.0:
   dependencies:
     path-key "^2.0.0"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 npmlog@^4.0.2:
@@ -7908,6 +8719,8 @@ npmlog@^4.0.2:
     set-blocking "~2.0.0"
 
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 nth-check@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-1.0.2.tgz#b2bd295c37e3dd58a3bf0700376663ba4d9cf05c"
@@ -8072,6 +8885,7 @@ opencollective-postinstall@^2.0.2:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 opencollective@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/opencollective/-/opencollective-1.0.3.tgz#aee6372bc28144583690c3ca8daecfc120dd0ef1"
@@ -8088,6 +8902,9 @@ opn@4.0.2:
 =======
 opn@^4.0.2:
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
+=======
+opn@^4.0.2:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/opn/-/opn-4.0.2.tgz#7abc22e644dff63b0a96d5ab7f2790c0f01abc95"
   integrity sha1-erwi5kTf9jsKltWrfyeQwPAavJU=
@@ -8095,8 +8912,11 @@ opn@^4.0.2:
     object-assign "^4.0.1"
     pinkie-promise "^2.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 optionator@^0.8.1:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/optionator/-/optionator-0.8.3.tgz#84fa1d036fe9d3c7e21d99884b601167ec8fb495"
@@ -8159,11 +8979,15 @@ os-tmpdir@^1.0.0, os-tmpdir@~1.0.2:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 osenv@^0.1.5:
 =======
 osenv@^0.1.4:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+osenv@^0.1.5:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/osenv/-/osenv-0.1.5.tgz#85cdfafaeb28e8677f416e287592b5f3f49ea410"
   integrity sha512-0CWcCECdMVc2Rw3U5w9ZjqX6ga6ubk1xDVKxtBQPK7wis/0F2r9T6k4ydGYhecl7YUBxBVxhL5oisPsNxAPe2g==
@@ -8172,14 +8996,20 @@ osenv@^0.1.4:
     os-tmpdir "^1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 p-cancelable@^0.4.0:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/p-cancelable/-/p-cancelable-0.4.1.tgz#35f363d67d52081c8d9585e37bcceb7e0bbcb2a0"
   integrity sha512-HNa1A8LvB1kie7cERyy21VNeHb2CWJJYqyyC2o3klWFfMGlFmWv2Z7sFgZH8ZiaYL95ydToKTFVXgMV/Os0bBQ==
 
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 p-defer@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-defer/-/p-defer-1.0.0.tgz#9f6eb182f6c9aa8cd743004a7d4f96b196b0fb0c"
@@ -8198,13 +9028,19 @@ p-finally@^1.0.0:
   integrity sha1-P7z7FbiZpEEjs0ttzBi3JDNqLK4=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 p-is-promise@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/p-is-promise/-/p-is-promise-1.1.0.tgz#9c9456989e9f6588017b0434d56097675c3da05e"
   integrity sha1-nJRWmJ6fZYgBewQ01WCXZ1w9oF4=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 p-is-promise@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/p-is-promise/-/p-is-promise-2.1.0.tgz#918cebaea248a62cf7ffab8e3bca8c5f882fc42e"
@@ -8251,6 +9087,9 @@ p-reduce@^1.0.0:
   integrity sha1-GMKw3ZNqRpClKfgjH1ig/bakffo=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 p-timeout@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/p-timeout/-/p-timeout-2.0.1.tgz#d8dd1979595d2dc0139e1fe46b8b646cb3cdf038"
@@ -8258,27 +9097,38 @@ p-timeout@^2.0.1:
   dependencies:
     p-finally "^1.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 p-try@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-1.0.0.tgz#cbc79cdbaf8fd4228e13f621f2b1a237c1b207b3"
   integrity sha1-y8ec26+P1CKOE/Yh8rGiN8GyB7M=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 p-try@^2.0.0, p-try@^2.1.0:
 =======
 p-try@^2.0.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+p-try@^2.0.0, p-try@^2.1.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 package-json@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/package-json/-/package-json-5.0.0.tgz#a7dbe2725edcc7dc9bcee627672275e323882433"
   integrity sha512-EeHQFFTlEmLrkIQoxbE9w0FuAWHoc1XpthDqnZ/i9keOt701cteyXwAxQFLpVqVjj3feh2TodkihjLaRUtIgLg==
+<<<<<<< HEAD
   dependencies:
     got "^8.3.1"
     registry-auth-token "^3.3.2"
@@ -8333,6 +9183,60 @@ parent-module@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/parent-module/-/parent-module-1.0.1.tgz#691d2709e78c79fae3a156622452d00762caaaa2"
   integrity sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
+  dependencies:
+    got "^8.3.1"
+    registry-auth-token "^3.3.2"
+    registry-url "^3.1.0"
+    semver "^5.5.0"
+
+pacote@9.2.3:
+  version "9.2.3"
+  resolved "https://registry.yarnpkg.com/pacote/-/pacote-9.2.3.tgz#48cfe87beb9177acd6594355a584a538835424b3"
+  integrity sha512-Y3+yY3nBRAxMlZWvr62XLJxOwCmG9UmkGZkFurWHoCjqF0cZL72cTOCRJTvWw8T4OhJS2RTg13x4oYYriauvEw==
+  dependencies:
+    bluebird "^3.5.2"
+    cacache "^11.2.0"
+    figgy-pudding "^3.5.1"
+    get-stream "^4.1.0"
+    glob "^7.1.3"
+    lru-cache "^4.1.3"
+    make-fetch-happen "^4.0.1"
+    minimatch "^3.0.4"
+    minipass "^2.3.5"
+    mississippi "^3.0.0"
+    mkdirp "^0.5.1"
+    normalize-package-data "^2.4.0"
+    npm-package-arg "^6.1.0"
+    npm-packlist "^1.1.12"
+    npm-pick-manifest "^2.2.3"
+    npm-registry-fetch "^3.8.0"
+    osenv "^0.1.5"
+    promise-inflight "^1.0.1"
+    promise-retry "^1.1.1"
+    protoduck "^5.0.1"
+    rimraf "^2.6.2"
+    safe-buffer "^5.1.2"
+    semver "^5.6.0"
+    ssri "^6.0.1"
+    tar "^4.4.6"
+    unique-filename "^1.1.1"
+    which "^1.3.1"
+
+parallel-transform@^1.1.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/parallel-transform/-/parallel-transform-1.2.0.tgz#9049ca37d6cb2182c3b1d2c720be94d14a5814fc"
+  integrity sha512-P2vSmIu38uIlvdcU7fDkyrxj33gTUy/ABO5ZUbGowxNCopBq/OoD42bP4UmMrJoPyk4Uqf0mu3mtWBhHCZD8yg==
+  dependencies:
+    cyclist "^1.0.1"
+    inherits "^2.0.3"
+    readable-stream "^2.1.5"
+
+parent-module@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/parent-module/-/parent-module-1.0.1.tgz#691d2709e78c79fae3a156622452d00762caaaa2"
+  integrity sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==
   dependencies:
     callsites "^3.0.0"
 
@@ -8372,10 +9276,14 @@ parse5@4.0.0:
   integrity sha512-VrZ7eOd3T1Fk4XWNXMgiGBK/z0MG48BWG2uQNU4I72fkQuKUTZpl+u9k+CxEG0twMVzSmXEEz12z5Fnw1jIQFA==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 parseurl@~1.3.2, parseurl@~1.3.3:
 =======
 parseurl@~1.3.3:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+parseurl@~1.3.2, parseurl@~1.3.3:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
   integrity sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==
@@ -8416,13 +9324,19 @@ path-parse@^1.0.6:
   integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
   integrity sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 path-to-regexp@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-1.8.0.tgz#887b3ba9d84393e87a0a0b9f4cb756198b53548a"
@@ -8470,6 +9384,9 @@ pify@^4.0.1:
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 pinkie-promise@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pinkie-promise/-/pinkie-promise-2.0.1.tgz#2135d6dfa7a358c069ac9b178776288228450ffa"
@@ -8482,8 +9399,11 @@ pinkie@^2.0.0:
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 pirates@^4.0.0, pirates@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.1.tgz#643a92caf894566f91b2b986d2c66950a8e2fb87"
@@ -8520,6 +9440,9 @@ please-upgrade-node@^3.2.0:
     semver-compare "^1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 plist@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/plist/-/plist-2.1.0.tgz#57ccdb7a0821df21831217a3cad54e3e146a1025"
@@ -8529,8 +9452,11 @@ plist@^2.1.0:
     xmlbuilder "8.2.2"
     xmldom "0.1.x"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 plist@^3.0.0, plist@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/plist/-/plist-3.0.1.tgz#a9b931d17c304e8912ef0ba3bdd6182baf2e1f8c"
@@ -8583,6 +9509,9 @@ prelude-ls@~1.1.2:
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 prepend-http@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
@@ -8593,8 +9522,11 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 prettier@^1.19.1:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"
@@ -8643,6 +9575,9 @@ private@^0.1.8:
   integrity sha512-VvivMrbvd2nKkiG38qjULzlc+4Vx4wm/whI9pQD35YrARNnhxeiRktSOhSukRLFNlzg6Br/cJPet5J/u19r/mg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 probe-image-size@^3.1.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/probe-image-size/-/probe-image-size-3.2.0.tgz#0b8d7cd6e8dce8356bec732a1d9e793bcc8aed44"
@@ -8655,14 +9590,20 @@ probe-image-size@^3.1.0:
     next-tick "^1.0.0"
     stream-parser "~0.3.1"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 promise-inflight@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/promise-inflight/-/promise-inflight-1.0.1.tgz#98472870bf228132fcbdd868129bad12c3c029e3"
@@ -8681,8 +9622,11 @@ promise-retry@^1.1.1:
     err-code "^1.0.0"
     retry "^0.10.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 promise@^7.1.1:
   version "7.3.1"
   resolved "https://registry.yarnpkg.com/promise/-/promise-7.3.1.tgz#064b72602b18f90f29192b8b1bc418ffd1ebd3bf"
@@ -8719,6 +9663,9 @@ prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2,
     react-is "^16.8.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 proper-lockfile@^3.0.2:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/proper-lockfile/-/proper-lockfile-3.2.0.tgz#89ca420eea1d55d38ca552578851460067bcda66"
@@ -8743,8 +9690,11 @@ proxy-addr@~2.0.4:
     forwarded "~0.1.2"
     ipaddr.js "1.9.1"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 pseudomap@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
@@ -8756,6 +9706,9 @@ psl@^1.1.28:
   integrity sha512-RIdOzyoavK+hA18OGGWDqUTsCLhtA7IcZ/6NCs4fFJaHBDab+pDDmDIByWFRQJq2Cd7r1OoQxBGKOaztq+hjIQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 pump@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pump/-/pump-2.0.1.tgz#12399add6e4cf7526d973cbc8b5ce2e2908b3909"
@@ -8764,8 +9717,11 @@ pump@^2.0.0:
     end-of-stream "^1.1.0"
     once "^1.3.1"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 pump@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/pump/-/pump-3.0.0.tgz#b4a2116815bde2f4e1ea602354e8c75565107a64"
@@ -8775,6 +9731,9 @@ pump@^3.0.0:
     once "^1.3.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 pumpify@^1.3.3:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/pumpify/-/pumpify-1.5.1.tgz#36513be246ab27570b1a374a5ce278bfd74370ce"
@@ -8790,13 +9749,17 @@ punycode@1.3.2:
   integrity sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0=
 
 punycode@2.x.x, punycode@^2.1.0, punycode@^2.1.1:
+<<<<<<< HEAD
 =======
 punycode@^2.1.0, punycode@^2.1.1:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -8812,15 +9775,24 @@ qs@6.5.2, qs@~6.5.2:
 
 qs@~6.5.2:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+qs@6.5.2, qs@~6.5.2:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "6.5.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 qs@^6.5.0, qs@^6.5.1:
   version "6.9.1"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.9.1.tgz#20082c65cb78223635ab1a9eaca8875a29bf8ec9"
   integrity sha512-Cxm7/SS/y/Z3MHWSxXb8lIFqgqBowP5JMlTUFyJN88y0SGQhVmZnqFK/PeuMX9LzUyWsqqhNxIyg0jlzq946yA==
+<<<<<<< HEAD
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
+=======
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 query-string@^5.0.1:
@@ -8832,11 +9804,14 @@ query-string@^5.0.1:
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
+<<<<<<< HEAD
 query-string@^6.11.1:
   version "6.12.1"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.12.1.tgz#2ae4d272db4fba267141665374e49a1de09e8a7c"
   integrity sha512-OHj+zzfRMyj3rmo/6G8a5Ifvw3AleL/EbcHMD27YA31Q+cO5lfmQxECkImuNVjcskLcvBRVHNAB3w6udMs1eAA==
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 query-string@^6.11.1:
   version "6.12.0"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.12.0.tgz#fa0fe5b3ddf4d040d1236b80672949ab33d5cf80"
@@ -8848,30 +9823,43 @@ query-string@^6.11.1:
     strict-uri-encode "^2.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 querystring@0.2.0, querystring@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
   integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 querystringify@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-2.1.1.tgz#60e5a5fd64a7f8bfa4d2ab2ed6fdf4c85bad154e"
   integrity sha512-w7fLxIRCRT7U8Qu53jQnJyPkYZIaR4n5151KMfcJlO/A9397Wxb1amJvROTK6TOnp7PfoAmg/qXiNHI+08jRfA==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 range-parser@~1.2.0, range-parser@~1.2.1:
 =======
 range-parser@~1.2.1:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+range-parser@~1.2.0, range-parser@~1.2.1:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 raven-js@^3.17.0:
   version "3.27.2"
   resolved "https://registry.yarnpkg.com/raven-js/-/raven-js-3.27.2.tgz#6c33df952026cd73820aa999122b7b7737a66775"
@@ -8899,9 +9887,12 @@ raw-body@2.3.3:
     unpipe "1.0.0"
 
 rc@^1.0.1, rc@^1.1.6:
+<<<<<<< HEAD
 =======
 rc@^1.2.7:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
   integrity sha512-y3bGgqKj3QBdxLbLkomlohkvsA8gdAiUQlSBJnBhfn+BPxg4bc62d8TcBW15wavDfgexCgccckhcZvywyQYPOw==
@@ -8943,12 +9934,24 @@ react-dom@~16.9.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 react-is@^16.12.0, react-is@^16.13.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.9.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+=======
+react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6, react-is@^16.9.0:
+  version "16.13.0"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.0.tgz#0f37c3613c34fe6b37cd7f763a0d6293ab15c527"
+  integrity sha512-GFMtL0vHkiBv9HluwNZTggSn/sCyEt9n02aM0dSAjGGyqyNlAyftYm4phPxdvCigG15JreC5biwxCgTAJZ7yAA==
+
+react-lifecycles-compat@^3.0.0:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
+  integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 <<<<<<< HEAD
 react-native-animatable@^1.3.0:
@@ -9287,6 +10290,19 @@ react-redux@^5.0.2:
     "@react-navigation/native" "^3.7.11"
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 
+react-redux@^5.0.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.1.2.tgz#b19cf9e21d694422727bf798e934a916c4080f57"
+  integrity sha512-Ns1G0XXc8hDyH/OcBHOxNgQx9ayH3SPxBnFCOidGKSle8pKihysQw2rG/PmciUQRoclhVBO8HMhiRmGXnDja9Q==
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    hoist-non-react-statics "^3.3.0"
+    invariant "^2.2.4"
+    loose-envify "^1.1.0"
+    prop-types "^15.6.1"
+    react-is "^16.6.0"
+    react-lifecycles-compat "^3.0.0"
+
 react-refresh@^0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.4.2.tgz#54a277a6caaac2803d88f1d6f13c1dcfbd81e334"
@@ -9308,6 +10324,9 @@ react-timer-mixin@^0.13.4:
   integrity sha512-4+ow23tp/Tv7hBM5Az5/Be/eKKF7DIvJ09voz5LyHGQaqqz9WV8YMs31eFvcYQs7d451LSg7kDJV70XYN/Ug/Q==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 react@^16.0.0:
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
@@ -9317,8 +10336,11 @@ react@^16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 react@~16.9.0:
   version "16.9.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.9.0.tgz#40ba2f9af13bc1a38d75dbf2f4359a5185c4f7aa"
@@ -9329,6 +10351,9 @@ react@~16.9.0:
     prop-types "^15.6.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 read-chunk@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/read-chunk/-/read-chunk-2.1.0.tgz#6a04c0928005ed9d42e1a6ac5600e19cbc7ff655"
@@ -9352,8 +10377,11 @@ read-last-lines@^1.6.0:
   dependencies:
     mz "^2.7.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 read-pkg-up@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-2.0.0.tgz#6b72a8048984e0c41e79510fd5e9fa99b3b549be"
@@ -9390,6 +10418,7 @@ read-pkg@^3.0.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 readable-stream@^2.0.1, readable-stream@^2.2.2, readable-stream@~2.3.6:
 =======
 "readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.5, readable-stream@^2.3.6, readable-stream@~2.3.6:
@@ -9397,6 +10426,9 @@ readable-stream@^2.0.1, readable-stream@^2.2.2, readable-stream@~2.3.6:
 =======
 readable-stream@^2.0.1, readable-stream@^2.0.6, readable-stream@^2.2.2, readable-stream@~2.3.6:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+"readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.5, readable-stream@^2.3.6, readable-stream@~2.3.6:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.3.7"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.7.tgz#1eca1cf711aef814c04f62252a36a62f6cb23b57"
   integrity sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw==
@@ -9418,6 +10450,7 @@ realpath-native@^1.1.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 recyclerlistview@^1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/recyclerlistview/-/recyclerlistview-1.3.4.tgz#4c0e57d19d5480d3c4e7e5abc45b23ca7ce09a5f"
@@ -9435,6 +10468,8 @@ regenerate-unicode-properties@^8.2.0:
   integrity sha512-F9DjY1vKLo/tPePDycuH3dn9H1OTPIkVD9Kz4LODu+F2C75mgjAJ7x/gwy6ZcSNRAAkhNlJSOHRe8k3p+K9WhA==
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 redux-logger@^2.7.4:
   version "2.10.2"
   resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-2.10.2.tgz#3c5a5f0a6f32577c1deadf6655f257f82c6c3937"
@@ -9456,9 +10491,12 @@ regenerate-unicode-properties@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.1.0.tgz#ef51e0f0ea4ad424b77bf7cb41f3e015c70a3f0e"
   integrity sha512-LGZzkgtLY79GeXLm8Dp0BVLdQlWICzBnJz/ipWUgo59qBaZ+BHtq51P2q1uVZlppMuUAT37SDk39qUbjTWB7bA==
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   dependencies:
     regenerate "^1.4.0"
 
@@ -9469,11 +10507,14 @@ regenerate@^1.4.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 regenerator-runtime@^0.10.0:
   version "0.10.5"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
   integrity sha1-M2w+/BIgrc7dosn6tntaeVWjNlg=
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 regenerator-runtime@^0.11.0:
   version "0.11.1"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
@@ -9483,6 +10524,7 @@ regenerator-runtime@^0.13.2:
   version "0.13.3"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.3.tgz#7cf6a77d8f5c6f60eb73c5fc1955b2ceb01e6bf5"
   integrity sha512-naKIZz2GQ8JWh///G7L3X6LaQUAMp2lvb1rvwwsURe/VXwD6VMfr+/1NuNw3ag8v2kY1aQ/go5SNn79O9JU7yw==
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 regenerator-runtime@^0.11.0:
@@ -9496,6 +10538,13 @@ regenerator-runtime@^0.13.2, regenerator-runtime@^0.13.4:
   version "0.13.5"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.5.tgz#d878a1d094b4306d10b9096484b33ebd55e26697"
   integrity sha512-ZS5w8CpKFinUzOwW3c83oPeVXoNsrLsaCoLtJvAClH135j/R77RuymhiSErhm2lKcwSCIpmvIWSbDkIfAqKQlA==
+=======
+
+regenerator-runtime@^0.13.4:
+  version "0.13.4"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.4.tgz#e96bf612a3362d12bb69f7e8f74ffeab25c7ac91"
+  integrity sha512-plpwicqEzfEyTQohIKktWigcLzmNStMGwbOUbykx51/29Z3JOGYldaaNGK7ngNXV+UcoqvIMmloZ48Sr74sd+g==
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 regenerator-transform@^0.14.2:
   version "0.14.4"
@@ -9538,8 +10587,11 @@ regexpu-core@^4.7.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 regjsgen@^0.5.1:
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 registry-auth-token@^3.3.2:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/registry-auth-token/-/registry-auth-token-3.4.0.tgz#d7446815433f5d5ed6431cd5dca21048f66b397e"
@@ -9556,10 +10608,13 @@ registry-url@^3.1.0:
     rc "^1.0.1"
 
 regjsgen@^0.5.0:
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 regjsgen@^0.5.1:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/regjsgen/-/regjsgen-0.5.1.tgz#48f0bf1a5ea205196929c0d9798b42d1ed98443c"
   integrity sha512-5qxzGZjDs9w4tzT3TPhCJqWdCc3RLYwy9J2NB0nm5Lz+S273lvWcpjaTGHsT1dc6Hhfq41uSEOw8wBmxrKOuyg==
@@ -9577,13 +10632,19 @@ remove-trailing-separator@^1.0.1:
   integrity sha1-wkvOKig62tW8P1jg1IJJuSN52O8=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 remove-trailing-slash@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/remove-trailing-slash/-/remove-trailing-slash-0.1.0.tgz#1498e5df0984c27e49b76ebf06887ca2d01150d2"
   integrity sha1-FJjl3wmEwn5Jt26/Boh8otARUNI=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 repeat-element@^1.1.2:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/repeat-element/-/repeat-element-1.1.3.tgz#782e0d825c0c5a3bb39731f84efee6b742e6b1ce"
@@ -9595,13 +10656,19 @@ repeat-string@^1.6.1:
   integrity sha1-jcrkcOHIirwtYA//Sndihtp15jc=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 replace-string@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/replace-string/-/replace-string-1.1.0.tgz#87062117f823fe5800c306bacb2cfa359b935fea"
   integrity sha1-hwYhF/gj/lgAwwa6yyz6NZuTX+o=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 request-promise-core@1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/request-promise-core/-/request-promise-core-1.1.3.tgz#e9a3c081b51380dfea677336061fea879a829ee9"
@@ -9619,10 +10686,14 @@ request-promise-native@^1.0.5:
     tough-cookie "^2.3.3"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 request@^2.81.0, request@^2.83.0, request@^2.87.0:
 =======
 request@^2.87.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+request@^2.81.0, request@^2.83.0, request@^2.87.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.88.2"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.2.tgz#d73c918731cb5a87da047e207234146f664d12b3"
   integrity sha512-MsvtOrfG9ZcrOwAW+Qi+F6HbD0CWXEh9ou77uOb7FM2WPhwT7smM833PzanhJLsgXjN89Ir6V2PczXNnMpwKhw==
@@ -9723,7 +10794,17 @@ resolve@^1.10.0, resolve@^1.3.2, resolve@^1.4.0, resolve@^1.5.0, resolve@^1.8.1:
   dependencies:
     path-parse "^1.0.6"
 
+<<<<<<< HEAD
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+responselike@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/responselike/-/responselike-1.0.2.tgz#918720ef3b631c5642be068f15ade5a46f4ba1e7"
+  integrity sha1-kYcg7ztjHFZCvgaPFa3lpG9Loec=
+  dependencies:
+    lowercase-keys "^1.0.0"
+
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 restore-cursor@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/restore-cursor/-/restore-cursor-2.0.0.tgz#9f7ee287f82fd326d4fd162923d62129eee0dfaf"
@@ -9739,8 +10820,11 @@ ret@~0.1.10:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 rimraf@^2.5.4, rimraf@^2.6.3:
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 retry@^0.10.0:
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/retry/-/retry-0.10.1.tgz#e76388d217992c252750241d3d3956fed98d8ff4"
@@ -9752,10 +10836,13 @@ retry@^0.12.0:
   integrity sha1-G0KmJmoh8HQh0bC1S33BZ7AcATs=
 
 rimraf@^2.5.4, rimraf@^2.6.2, rimraf@^2.6.3:
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.3:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.7.1.tgz#35797f13a7fdadc566142c29d4f07ccad483e3ec"
   integrity sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==
@@ -9768,6 +10855,9 @@ rimraf@~2.2.6:
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 rimraf@~2.4.0:
   version "2.4.5"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.4.5.tgz#ee710ce5d93a8fdb856fb5ea8ff0e2d75934b2da"
@@ -9775,8 +10865,11 @@ rimraf@~2.4.0:
   dependencies:
     glob "^6.0.1"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 rsvp@^4.8.4:
   version "4.8.5"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
@@ -9802,6 +10895,13 @@ run-queue@^1.0.0, run-queue@^1.0.3:
     is-promise "^2.1.0"
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 
+run-queue@^1.0.0, run-queue@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/run-queue/-/run-queue-1.0.3.tgz#e848396f057d223f24386924618e25694161ec47"
+  integrity sha1-6Eg5bwV9Ij8kOGkkYY4laUFh7Ec=
+  dependencies:
+    aproba "^1.1.1"
+
 rx-lite-aggregates@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/rx-lite-aggregates/-/rx-lite-aggregates-4.0.8.tgz#753b87a89a11c95467c4ac1626c4efc4e05c67be"
@@ -9816,6 +10916,7 @@ rx-lite@*, rx-lite@^4.0.8:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
@@ -9828,6 +10929,9 @@ rxjs@^5.4.3, rxjs@^5.5.2:
 =======
 rxjs@^5.4.3:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+rxjs@^5.4.3, rxjs@^5.5.2:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "5.5.12"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.5.12.tgz#6fa61b8a77c3d793dbaf270bee2f43f652d741cc"
   integrity sha512-xx2itnL5sBbqeeiVgNPVuQQ1nC8Jp2WfNJhXWHmElW9YmrpS9UVnNzhP3EH3HFqexO5Tlp8GhYY+WEcqcVMvGw==
@@ -9840,22 +10944,32 @@ safe-buffer@5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   integrity sha512-Gd2UZBJDkXlY7GbJxfsE8/nvKkUEU1G38c1siN6QP6a9PT9MmHB8GnpscSmMJSoF8LOIrt8ud/wPtojys4G6+g==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@^5.1.2:
 =======
 safe-buffer@^5.0.1, safe-buffer@^5.1.2:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+safe-buffer@^5.0.1, safe-buffer@^5.1.1, safe-buffer@^5.1.2:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.0.tgz#b74daec49b1148f88c64b68d49b1e815c1f2f519"
   integrity sha512-fZEwUGbVl7kouZs1jCdMLdt95hdIv0ZeHg6L7qPeciMZhZ+/gdesW4wgTARkrFWEpspjEATAzUGPG8N2jJiwbg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 safe-json-stringify@~1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/safe-json-stringify/-/safe-json-stringify-1.2.0.tgz#356e44bc98f1f93ce45df14bcd7c01cda86e0afd"
   integrity sha512-gH8eh2nZudPQO6TytOvbxnuhYBOvDBBLW52tz5q6X58lJcd/tkmqFR+5Z9adS8aJtURSXWThWy/xJtJwixErvg==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 safe-regex@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/safe-regex/-/safe-regex-1.1.0.tgz#40a3669f3b077d1e943d44629e157dd48023bf2e"
@@ -9884,6 +10998,9 @@ sane@^4.0.3:
     walker "~1.0.5"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 sanitize-filename@^1.6.1:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/sanitize-filename/-/sanitize-filename-1.6.3.tgz#755ebd752045931977e30b2025d340d7c9090378"
@@ -9891,8 +11008,11 @@ sanitize-filename@^1.6.1:
   dependencies:
     truncate-utf8-bytes "^1.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 sax@^1.2.1, sax@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
@@ -9936,6 +11056,9 @@ semver@^6.0.0, semver@^6.2.0, semver@^6.3.0:
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 send@0.16.2:
   version "0.16.2"
   resolved "https://registry.yarnpkg.com/send/-/send-0.16.2.tgz#6ecca1e0f8c156d141597559848df64730a6bbc1"
@@ -9955,8 +11078,11 @@ send@0.16.2:
     range-parser "~1.2.0"
     statuses "~1.4.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 send@0.17.1:
   version "0.17.1"
   resolved "https://registry.yarnpkg.com/send/-/send-0.17.1.tgz#c1d8b059f7900f7466dd4938bdc44e11ddb376c8"
@@ -9982,6 +11108,9 @@ serialize-error@^2.1.0:
   integrity sha1-ULZ51WNc34Rme9yOWa9OW4HV9go=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 serve-static@1.13.2:
   version "1.13.2"
   resolved "https://registry.yarnpkg.com/serve-static/-/serve-static-1.13.2.tgz#095e8472fd5b46237db50ce486a43f4b86c6cec1"
@@ -9992,8 +11121,11 @@ serve-static@1.13.2:
     parseurl "~1.3.2"
     send "0.16.2"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 serve-static@^1.13.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/serve-static/-/serve-static-1.14.1.tgz#666e636dc4f010f7ef29970a88a674320898b2f9"
@@ -10005,10 +11137,14 @@ serve-static@^1.13.1:
     send "0.17.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 set-blocking@^2.0.0:
 =======
 set-blocking@^2.0.0, set-blocking@~2.0.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+set-blocking@^2.0.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/set-blocking/-/set-blocking-2.0.0.tgz#045f9782d011ae9a6803ddd382b24392b3d890f7"
   integrity sha1-BF+XgtARrppoA93TgrJDkrPYkPc=
@@ -10029,13 +11165,19 @@ setimmediate@^1.0.5:
   integrity sha1-KQy7Iy4waULX1+qbg3Mqt4VvgoU=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 setprototypeof@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.0.tgz#d0bd85536887b6fe7c0d818cb962d9d91c54e656"
   integrity sha512-BvE/TwpZX4FXExxOxZyRGQQv651MSwmWKZGqvmPcRIjDqWub67kTKuIMx43cZZrS/cBBzwBcNDWoFxt2XEFIpQ==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 setprototypeof@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.1.tgz#7e95acb24aa92f5885e0abef5ba131330d4ae683"
@@ -10074,6 +11216,9 @@ shell-quote@^1.6.1:
   integrity sha512-mRz/m/JVscCrkMyPqHc/bczi3OQHkLTqXHEFu0zDhK/qfv3UcOA4SVmRCLmos4bhjr9ekVQubj/R7waKapmiQg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 shell-utils@^1.0.9:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/shell-utils/-/shell-utils-1.0.10.tgz#7fe7b8084f5d6d21323d941267013bc38aed063e"
@@ -10081,8 +11226,11 @@ shell-utils@^1.0.9:
   dependencies:
     lodash "4.x.x"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
@@ -10150,6 +11298,9 @@ slide@^1.1.5:
   integrity sha1-VusCfWW00tzmyy4tMsTUr8nh1wc=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 slugid@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/slugid/-/slugid-1.1.0.tgz#e09f00899c09f5a7058edc36dd49f046fd50a82a"
@@ -10167,8 +11318,11 @@ smart-buffer@^4.1.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.1.0.tgz#91605c25d91652f4661ea69ccf45f1b331ca21ba"
   integrity sha512-iVICrxOzCynf/SNaBQCw34eM9jROU/s5rzIhpOvzhzuYHfJR/DhZfDkXiZSgKXfgv26HT3Yni3AV/DGw0cGnnw==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 snapdragon-node@^2.0.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/snapdragon-node/-/snapdragon-node-2.1.1.tgz#6c175f86ff14bdb0724563e8f3c1b021a286853b"
@@ -10200,6 +11354,9 @@ snapdragon@^0.8.1:
     use "^3.1.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 socks-proxy-agent@^4.0.0:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/socks-proxy-agent/-/socks-proxy-agent-4.0.2.tgz#3c8991f3145b2799e70e11bd5fbc8b1963116386"
@@ -10223,8 +11380,11 @@ sort-keys@^2.0.0:
   dependencies:
     is-plain-obj "^1.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 source-map-resolve@^0.5.0, source-map-resolve@^0.5.2:
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/source-map-resolve/-/source-map-resolve-0.5.3.tgz#190866bece7553e1f8f267a2ee82c606b5509a1a"
@@ -10237,6 +11397,9 @@ source-map-resolve@^0.5.0, source-map-resolve@^0.5.2:
     urix "^0.1.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 source-map-support@^0.4.2:
   version "0.4.18"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.4.18.tgz#0286a6de8be42641338594e97ccea75f0a2c585f"
@@ -10244,11 +11407,14 @@ source-map-support@^0.4.2:
   dependencies:
     source-map "^0.5.6"
 
+<<<<<<< HEAD
 source-map-support@^0.5.16, source-map-support@^0.5.6:
   version "0.5.19"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
   integrity sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 source-map-support@^0.5.16, source-map-support@^0.5.6:
   version "0.5.16"
   resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.16.tgz#0ae069e7fe3ba7538c64c98515e35339eac5a042"
@@ -10318,6 +11484,9 @@ split-string@^3.0.1, split-string@^3.0.2:
     extend-shallow "^3.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 split@0.2.x:
   version "0.2.10"
   resolved "https://registry.yarnpkg.com/split/-/split-0.2.10.tgz#67097c601d697ce1368f418f06cd201cf0521a57"
@@ -10332,8 +11501,11 @@ split@^1.0.1:
   dependencies:
     through "2"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 sprintf-js@~1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
@@ -10355,6 +11527,9 @@ sshpk@^1.7.0:
     tweetnacl "~0.14.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 ssri@^6.0.0, ssri@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/ssri/-/ssri-6.0.1.tgz#2a3c41b28dd45b62b63676ecb74001265ae9edd8"
@@ -10367,8 +11542,11 @@ stack-trace@0.0.10:
   resolved "https://registry.yarnpkg.com/stack-trace/-/stack-trace-0.0.10.tgz#547c70b347e8d32b4e108ea1a2a159e5fdde19c0"
   integrity sha1-VHxws0fo0ytOEI6hoqFZ5f3eGcA=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 stack-utils@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/stack-utils/-/stack-utils-1.0.2.tgz#33eba3897788558bebfc2db059dc158ec36cebb8"
@@ -10395,22 +11573,32 @@ static-extend@^0.1.1:
     object-copy "^0.1.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "statuses@>= 1.4.0 < 2", "statuses@>= 1.5.0 < 2", statuses@~1.5.0:
 =======
 "statuses@>= 1.5.0 < 2", statuses@~1.5.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+"statuses@>= 1.4.0 < 2", "statuses@>= 1.5.0 < 2", statuses@~1.5.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 statuses@~1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.4.0.tgz#bb73d446da2796106efcc1b601a253d6c46bd087"
   integrity sha512-zhSCtt8v2NDrRlPQpCNtw/heZLtfUDqxBM1udqikb/Hbk52LK4nQSwr10u77iopCW5LsyHpuXS0GnEc48mLeew==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 stealthy-require@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
@@ -10422,6 +11610,9 @@ stream-buffers@~2.2.0:
   integrity sha1-kdX1Ew0c75bc+n9yaUUYh0HQnuQ=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 stream-each@^1.1.0:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/stream-each/-/stream-each-1.2.3.tgz#ebe27a0c389b04fbcc233642952e10731afa9bae"
@@ -10447,8 +11638,11 @@ strict-uri-encode@^1.0.0:
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-1.1.0.tgz#279b225df1d582b1f54e65addd4352e18faa0713"
   integrity sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 strict-uri-encode@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/strict-uri-encode/-/strict-uri-encode-2.0.0.tgz#b9c7330c7042862f6b142dc274bbcc5866ce3546"
@@ -10480,10 +11674,14 @@ string-width@^1.0.1:
     strip-ansi "^3.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 string-width@^2.0.0, string-width@^2.1.0, string-width@^2.1.1:
 =======
 "string-width@^1.0.2 || 2", string-width@^2.0.0, string-width@^2.1.0, string-width@^2.1.1:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+string-width@^2.0.0, string-width@^2.1.0, string-width@^2.1.1:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-2.1.1.tgz#ab93f27a8dc13d28cac815c462143a6d9012ae9e"
   integrity sha512-nOqH59deCq9SRHlxq1Aw85Jnt4w6KvLKqWVik6oA9ZklXLNIOlqg4F2yrT1MVaTjAqvVwdfeZ7w7aCvJD7ugkw==
@@ -10648,6 +11846,27 @@ superagent@^3.5.0:
   integrity sha512-es33J1g2HjMpyAhz8lOR+ICmXXAqTuKbuXuUWLhOLew20oN9oUCgCJx615U/v7aioZg7IX5lIh9x34vwneu4pA==
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 
+superagent-retry@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/superagent-retry/-/superagent-retry-0.6.0.tgz#e49b35ca96c0e3b1d0e3f49605136df0e0a028b7"
+  integrity sha1-5Js1ypbA47HQ4/SWBRNt8OCgKLc=
+
+superagent@^3.5.0:
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/superagent/-/superagent-3.8.3.tgz#460ea0dbdb7d5b11bc4f78deba565f86a178e128"
+  integrity sha512-GLQtLMCoEIK4eDv6OGtkOoSMt3D+oq0y3dsxMuYuDvaNUvuT8eFBuLmfR0iYYzHC1e8hpzC6ZsxbuP6DIalMFA==
+  dependencies:
+    component-emitter "^1.2.0"
+    cookiejar "^2.1.0"
+    debug "^3.1.0"
+    extend "^3.0.0"
+    form-data "^2.3.1"
+    formidable "^1.2.0"
+    methods "^1.1.1"
+    mime "^1.4.1"
+    qs "^6.5.1"
+    readable-stream "^2.3.5"
+
 supports-color@^5.3.0, supports-color@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-5.5.0.tgz#e2e69a44ac8772f78a1ec0b35b689df6530efc8f"
@@ -10675,13 +11894,19 @@ symbol-observable@1.0.1:
   integrity sha1-g0D8RwLDEi310iKI+IKD9RPT/dQ=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 symbol-observable@^1.0.3:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
   integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 symbol-tree@^3.2.2:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
@@ -10689,16 +11914,22 @@ symbol-tree@^3.2.2:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 tail@^2.0.0:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/tail/-/tail-2.0.3.tgz#37567adc4624a70b35f1d146c3376fa3d6ef7c04"
   integrity sha512-s9NOGkLqqiDEtBttQZI7acLS8ycYK5sTlDwNjGnpXG9c8AWj0cfAtwEIzo/hVRMMiC5EYz+bXaJWC1u1u0GPpQ==
 
 tar@^4.0.2, tar@^4.4.6:
+<<<<<<< HEAD
 =======
 tar@^4.4.2:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "4.4.13"
   resolved "https://registry.yarnpkg.com/tar/-/tar-4.4.13.tgz#43b364bc52888d555298637b10d60790254ab525"
   integrity sha512-w2VwSrBoHa5BsSyH+KxEqeQBAllHhccyMFVHtGtdMpF4W7IRWfZjFiQceJPChOeTsSDVUpER2T8FA93pr0L+QA==
@@ -10712,6 +11943,9 @@ tar@^4.4.2:
     yallist "^3.0.3"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 telnet-client@0.15.3:
   version "0.15.3"
   resolved "https://registry.yarnpkg.com/telnet-client/-/telnet-client-0.15.3.tgz#99ec754e4acf6fa51dc69898f574df3c2550712e"
@@ -10724,9 +11958,12 @@ temp-dir@^1.0.0:
   resolved "https://registry.yarnpkg.com/temp-dir/-/temp-dir-1.0.0.tgz#0a7c0ea26d3a39afa7e0ebea9c1fc0bc4daa011d"
   integrity sha1-CnwOom06Oa+n4OvqnB/AvE2qAR0=
 
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 temp@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/temp/-/temp-0.8.3.tgz#e0c6bc4d26b903124410e4fed81103014dfc1f59"
@@ -10736,6 +11973,9 @@ temp@0.8.3:
     rimraf "~2.2.6"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 tempfile@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/tempfile/-/tempfile-2.0.0.tgz#6b0446856a9b1114d1856ffcbe509cccb0977265"
@@ -10744,8 +11984,11 @@ tempfile@^2.0.0:
     temp-dir "^1.0.0"
     uuid "^3.0.1"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 test-exclude@^5.2.3:
   version "5.2.3"
   resolved "https://registry.yarnpkg.com/test-exclude/-/test-exclude-5.2.3.tgz#c3d3e1e311eb7ee405e092dac10aefd09091eac0"
@@ -10757,6 +12000,9 @@ test-exclude@^5.2.3:
     require-main-filename "^2.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 thenify-all@^1.0.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/thenify-all/-/thenify-all-1.6.0.tgz#1a1918d402d8fc3f98fbf234db0bcc8cc10e9726"
@@ -10771,8 +12017,11 @@ thenify-all@^1.0.0:
   dependencies:
     any-promise "^1.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 throat@^4.0.0, throat@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-4.1.0.tgz#89037cbc92c56ab18926e6ba4cbb200e15672a6a"
@@ -10787,10 +12036,14 @@ through2@^2.0.0, through2@^2.0.1:
     xtend "~4.0.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 through@2, through@2.3.x, "through@>=2.2.7 <3", through@^2.3.6:
 =======
 through@^2.3.6:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+through@2, through@2.3.x, "through@>=2.2.7 <3", through@^2.3.6:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
   integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
@@ -10801,13 +12054,19 @@ time-stamp@^1.0.0:
   integrity sha1-dkpaEa9QVhkhsTPztE5hhofg9cM=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 timed-out@4.0.1, timed-out@^4.0.0, timed-out@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/timed-out/-/timed-out-4.0.1.tgz#f32eacac5a175bea25d7fab565ab3ed8741ef56f"
   integrity sha1-8y6srFoXW+ol1/q1Zas+2HQe9W8=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 tiny-queue@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/tiny-queue/-/tiny-queue-0.2.1.tgz#25a67f2c6e253b2ca941977b5ef7442ef97a6046"
@@ -10861,6 +12120,9 @@ toidentifier@1.0.0:
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 topo@3.x.x:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/topo/-/topo-3.0.3.tgz#d5a67fb2e69307ebeeb08402ec2a2a6f5f7ad95c"
@@ -10868,8 +12130,11 @@ topo@3.x.x:
   dependencies:
     hoek "6.x.x"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 tough-cookie@^2.3.3, tough-cookie@^2.3.4, tough-cookie@~2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/tough-cookie/-/tough-cookie-2.5.0.tgz#cd9fb2a0aa1d5a12b473bd9fb96fa3dcff65ade2"
@@ -10887,11 +12152,14 @@ tr46@^1.0.1:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ts-object-utils@0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/ts-object-utils/-/ts-object-utils-0.0.5.tgz#95361cdecd7e52167cfc5e634c76345e90a26077"
   integrity sha1-lTYc3s1+UhZ8/F5jTHY0XpCiYHc=
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 tree-kill@^1.1.0:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
@@ -10903,10 +12171,14 @@ truncate-utf8-bytes@^1.0.0:
   integrity sha1-QFkjkJWS1W94pYGENLC3hInKXys=
   dependencies:
     utf8-byte-length "^1.0.1"
+<<<<<<< HEAD
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 tunnel-agent@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.6.0.tgz#27a5dea06b36b04a0a9966774b290868f0fc40fd"
@@ -10937,6 +12209,9 @@ type-fest@^0.7.1:
   integrity sha512-Ne2YiiGN8bmrmJJEuTWTLJR32nh/JdL1+PSicowtNb0WFpn59GK8/lfD61bVtzguz7b3PBt74nxpv/Pw5po5Rg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 type-is@~1.6.16:
   version "1.6.18"
   resolved "https://registry.yarnpkg.com/type-is/-/type-is-1.6.18.tgz#4e552cd05df09467dcbc4ef739de89f2cf37c131"
@@ -10945,8 +12220,11 @@ type-is@~1.6.16:
     media-typer "0.3.0"
     mime-types "~2.1.24"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
@@ -11064,6 +12342,9 @@ union-value@^1.0.0:
     set-value "^2.0.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 unique-filename@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/unique-filename/-/unique-filename-1.1.1.tgz#1d69769369ada0583103a1e6ae87681b56573230"
@@ -11078,18 +12359,25 @@ unique-slug@^2.0.0:
   dependencies:
     imurmurhash "^0.1.4"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 universalify@^0.1.0:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/universalify/-/universalify-0.1.2.tgz#b646f69be3942dabcecc9d6639c80dc105efaa66"
   integrity sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 unpipe@1.0.0, unpipe@~1.0.0:
 =======
 unpipe@~1.0.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+unpipe@1.0.0, unpipe@~1.0.0:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/unpipe/-/unpipe-1.0.0.tgz#b2bf4ee8514aae6165b4817829d21b2ef49904ec"
   integrity sha1-sr9O6FFKrmFltIF4KdIbLvSZBOw=
@@ -11103,13 +12391,19 @@ unset-value@^1.0.0:
     isobject "^3.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 unzip-response@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/unzip-response/-/unzip-response-2.0.1.tgz#d2f0f737d16b0615e72a6935ed04214572d56f97"
   integrity sha1-0vD3N9FrBhXnKmk17QQhRXLVb5c=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 uri-js@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/uri-js/-/uri-js-4.2.2.tgz#94c540e1ff772956e2299507c010aea6c8838eb0"
@@ -11123,6 +12417,9 @@ urix@^0.1.0:
   integrity sha1-2pN/emLiH+wf0Y1Js1wpNQZ6bHI=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 url-join@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/url-join/-/url-join-4.0.0.tgz#4d3340e807d3773bda9991f8305acdcc2a665d2a"
@@ -11142,8 +12439,11 @@ url-parse-lax@^3.0.0:
   dependencies:
     prepend-http "^2.0.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 url-parse@^1.4.4:
   version "1.4.7"
   resolved "https://registry.yarnpkg.com/url-parse/-/url-parse-1.4.7.tgz#a8a83535e8c00a316e403a5db4ac1b9b853ae278"
@@ -11153,6 +12453,9 @@ url-parse@^1.4.4:
     requires-port "^1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 url-to-options@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/url-to-options/-/url-to-options-1.0.1.tgz#1505a03a289a48cbd7a434efbaeec5055f5633a9"
@@ -11166,21 +12469,30 @@ url@^0.11.0:
     punycode "1.3.2"
     querystring "0.2.0"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 utf8-byte-length@^1.0.1:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/utf8-byte-length/-/utf8-byte-length-1.0.4.tgz#f45f150c4c66eee968186505ab93fcbb8ad6bf61"
   integrity sha1-9F8VDExm7uloGGUFq5P8u4rWv2E=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
@@ -11207,6 +12519,9 @@ uuid-js@^0.7.5:
   integrity sha1-bIhtAqU9LUDc8l2RoXC0p7JblNA=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 uuid@3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
@@ -11218,9 +12533,12 @@ uuid@^2.0.1:
   integrity sha1-Z+LoY3lyFVMN/zGOW/nc6/1Hsho=
 
 uuid@^3.0.0, uuid@^3.0.1, uuid@^3.2.1, uuid@^3.3.2:
+<<<<<<< HEAD
 =======
 uuid@^3.3.2:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
@@ -11234,6 +12552,9 @@ validate-npm-package-license@^3.0.1:
     spdx-expression-parse "^3.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 validate-npm-package-name@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/validate-npm-package-name/-/validate-npm-package-name-3.0.0.tgz#5fa912d81eb7d0c74afc140de7317f0ca7df437e"
@@ -11241,8 +12562,11 @@ validate-npm-package-name@^3.0.0:
   dependencies:
     builtins "^1.0.3"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
@@ -11339,10 +12663,14 @@ which-pm-runs@^1.0.0:
   integrity sha1-Zws6+8VS4LVd9rd4DKdGFfI60cs=
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 which@^1.2.9, which@^1.3.0, which@^1.3.1:
 =======
 which@^1.2.9, which@^1.3.0:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+which@^1.2.9, which@^1.3.0, which@^1.3.1:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/which/-/which-1.3.1.tgz#a45043d54f5805316da8d62f9f50918d3da70b0a"
   integrity sha512-HxJdYWq1MTIQbJ3nw0cqssHoTNU267KlrDuGZ1WYlxDStUtKUhOaJmh112/TZmHxxUfuJqPXSOm7tDyas0OSIQ==
@@ -11351,11 +12679,15 @@ which@^1.2.9, which@^1.3.0:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 with-open-file@^0.1.6:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/with-open-file/-/with-open-file-0.1.7.tgz#e2de8d974e8a8ae6e58886be4fe8e7465b58a729"
   integrity sha512-ecJS2/oHtESJ1t3ZfMI3B7KIDKyfN0O16miWxdn30zdh66Yd3LsRFebXZXq6GU4xfxLf6nVxp9kIqElb5fqczA==
+<<<<<<< HEAD
   dependencies:
     p-finally "^1.0.0"
     p-try "^2.1.0"
@@ -11367,8 +12699,12 @@ wide-align@^1.1.0:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/wide-align/-/wide-align-1.1.3.tgz#ae074e6bdc0c14a431e804e624549c633b000457"
   integrity sha512-QGkOQc8XL6Bt5PwnsExKBPuMKBxnGxWWW3fU55Xt4feHozMUhdUMaBCk290qpm/wG5u/RSKzwdAC4i51YigihA==
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   dependencies:
-    string-width "^1.0.2 || 2"
+    p-finally "^1.0.0"
+    p-try "^2.1.0"
+    pify "^4.0.1"
 
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 word-wrap@~1.2.3:
@@ -11422,6 +12758,9 @@ write-file-atomic@^1.2.0:
     slide "^1.1.5"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 write-file-atomic@^2.3.0:
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/write-file-atomic/-/write-file-atomic-2.4.3.tgz#1fd2e9ae1df3e75b8d8c367443c692d4ca81f481"
@@ -11431,8 +12770,11 @@ write-file-atomic@^2.3.0:
     imurmurhash "^0.1.4"
     signal-exit "^3.0.2"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 ws@^1.1.0, ws@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/ws/-/ws-1.1.5.tgz#cbd9e6e75e09fc5d2c90015f21f0c40875e0dd51"
@@ -11466,6 +12808,9 @@ xcode@^2.0.0:
     uuid "^3.3.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 xdl@^51.5.0:
   version "51.6.4"
   resolved "https://registry.yarnpkg.com/xdl/-/xdl-51.6.4.tgz#32abaf71be10426f81a98a43b0def2f39ad4590e"
@@ -11541,21 +12886,30 @@ xdl@^51.5.0:
     uuid "^3.0.1"
     xmldom "^0.1.27"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 xml-name-validator@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
   integrity sha512-A5CUptxDsvxKJEU3yO6DuWBSJz/qizqzJKOMIfUJHETbBw/sFaDxgd6fxm1ewUaM0jZ444Fc5vC5ROYurg/4Pw==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 xmlbuilder@8.2.2:
   version "8.2.2"
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-8.2.2.tgz#69248673410b4ba42e1a6136551d2922335aa773"
   integrity sha1-aSSGc0ELS6QuGmE2VR0pIjNap3M=
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 xmlbuilder@^9.0.7:
   version "9.0.7"
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-9.0.7.tgz#132ee63d2ec5565c557e20f4c22df9aca686b10d"
@@ -11569,10 +12923,14 @@ xmldoc@^1.1.2:
     sax "^1.2.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 xmldom@0.1.x, xmldom@^0.1.27:
 =======
 xmldom@0.1.x:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+xmldom@0.1.x, xmldom@^0.1.27:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "0.1.31"
   resolved "https://registry.yarnpkg.com/xmldom/-/xmldom-0.1.31.tgz#b76c9a1bd9f0a9737e5a72dc37231cf38375e2ff"
   integrity sha512-yS2uJflVQs6n+CyjHoaBmVSqIDevTAWrzMmjG1Gc7h1qQ7uVozNhEPJAwZXWyGQ/Gafo3fCwrcaokezLPupVyQ==
@@ -11614,11 +12972,15 @@ yallist@^2.1.2:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 yallist@^3.0.0, yallist@^3.0.2, yallist@^3.0.3:
 =======
 yallist@^3.0.0, yallist@^3.0.3:
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+yallist@^3.0.0, yallist@^3.0.2, yallist@^3.0.3:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.1.1.tgz#dbb7daf9bfd8bac9ab45ebf602b8cbad0d5d08fd"
   integrity sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==
@@ -11650,9 +13012,13 @@ yargs-parser@^11.1.1:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
 yargs-parser@^13.1.2:
+=======
+yargs-parser@^13.0.0, yargs-parser@^13.1.2:
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
   version "13.1.2"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-13.1.2.tgz#130f09702ebaeef2650d54ce6e3e5706f7a4fb38"
   integrity sha512-3lbsNRf/j+A4QuSZfDRA7HRSfWrzO0YjqTJd5kjAq37Zep1CEgaYmrH9Q3GwPiB9cHyd1Y1UwggGhJGoxipbzg==
@@ -11673,6 +13039,14 @@ yargs-parser@^13.1.1:
 >>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+  dependencies:
+    camelcase "^5.0.0"
+    decamelize "^1.2.0"
+
+yargs-parser@^13.1.1:
+  version "13.1.1"
+  resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-13.1.1.tgz#d26058532aa06d365fe091f6a1fc06b2f7e5eca0"
+  integrity sha512-oVAVsHz6uFrg3XQheFII8ESO2ssAf9luWuAd6Wexsu4F3OtIW0o8IribPXYrD4WC24LWtPrJlGy87y5udK+dxQ==
   dependencies:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
@@ -11703,6 +13077,9 @@ yargs@^12.0.5:
     yargs-parser "^11.1.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 yargs@^13.0.0:
   version "13.3.2"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-13.3.2.tgz#ad7ffefec1aa59565ac915f82dccb38a9c31a2dd"
@@ -11719,8 +13096,11 @@ yargs@^13.0.0:
     y18n "^4.0.0"
     yargs-parser "^13.1.2"
 
+<<<<<<< HEAD
 =======
 >>>>>>> rf-rebase develop branch and fix merge conflicts
+=======
+>>>>>>> ch-add e2e test for intro screens,  onboarding screens and home screen
 yargs@^13.3.0:
   version "13.3.2"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-13.3.2.tgz#ad7ffefec1aa59565ac915f82dccb38a9c31a2dd"
