@@ -93,6 +93,7 @@ export default function HomeScreen(props: HomeScreenProp) {
                   handleLikePost(item._id, index, item.isLiked)
                 }
                 navigation={() => navigateToPost(item)}
+                testID={`post-${index}`}
               />
             )}
             key={grid.numOfColumn}
@@ -103,6 +104,7 @@ export default function HomeScreen(props: HomeScreenProp) {
             style={{ width: '100%' }}
             onEndReached={onEndReached}
             onRefresh={false}
+            testID="postList"
           />
         ) : (
           <ActivityIndicator

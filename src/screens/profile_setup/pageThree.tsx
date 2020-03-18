@@ -95,7 +95,7 @@ export default function PageThree({ handleNavigation, handleChange }) {
       <SelectQuestionButtonContainer>
         <SelectQuestionButton>
           <AnswerOption>b</AnswerOption>
-          <AnswerOptionText>No</AnswerOptionText>
+          <AnswerOptionText testID="pageThreeNoButton">No</AnswerOptionText>
         </SelectQuestionButton>
         <SelectQuestionButtonOverlay
           style={{

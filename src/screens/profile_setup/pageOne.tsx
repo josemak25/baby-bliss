@@ -121,7 +121,9 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
       <SelectQuestionButtonContainer>
         <SelectQuestionButton>
           <AnswerOption>b</AnswerOption>
-          <AnswerOptionText>Am Not Pregnant</AnswerOptionText>
+          <AnswerOptionText testID="amNotPregnantButton">
+            Am Not Pregnant
+          </AnswerOptionText>
         </SelectQuestionButton>
         <SelectQuestionButtonOverlay
           style={{
