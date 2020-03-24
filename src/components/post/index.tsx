@@ -76,7 +76,7 @@ export default function Post(post: PostProps) {
       onPress={post.navigation}
     >
       <Container testID={testID}>
-        <Topic testID={`postTopic-${postIndex}`}>{topic}</Topic>
+        <Topic testID="post-topic">{topic}</Topic>
         <ContentLoaderContainer>
           <ContentLoader
             isLoading={animation.hideContentLoader}
@@ -91,27 +91,24 @@ export default function Post(post: PostProps) {
             width={width}
             height={220}
             onLoad={handleImageLoading}
-            testID={`postImage-${postIndex}`}
+            testID="postImage"
           />
         </ContentLoaderContainer>
 
         <DescriptionContainer>
-          <Description
-            numberOfLines={3}
-            testID={`postDescription-${postIndex}`}
-          >
+          <Description numberOfLines={3} testID="postDescription">
             {description.length > 120
               ? `${description.substring(0, 120)}...`
               : description}
           </Description>
-          <ReadMore testID={`readMoreText-${postIndex}`}>read more...</ReadMore>
+          <ReadMore testID="readMoreText">read more...</ReadMore>
         </DescriptionContainer>
         <ActionContainer>
           <TouchableWithoutFeedback
             testID="like-post-container"
             onPress={startLikeAnimation}
           >
-            <LikeContainer testID={`likeIcon-${postIndex}`}>
+            <LikeContainer testID="likeIcon">
               <LottieView
                 source={require('../../../assets/animations/twitter-heart.json')}
                 style={{
@@ -125,13 +122,9 @@ export default function Post(post: PostProps) {
               />
             </LikeContainer>
           </TouchableWithoutFeedback>
-          <LikeCount testID={`postLikeCounter-${postIndex}`}>
-            {noOfLikes}
-          </LikeCount>
-          <CommentsIcon testID={`commentIcon-${postIndex}`} />
-          <CommentCount testID={`postViewCounter-${postIndex}`}>
-            {noOfViews}
-          </CommentCount>
+          <LikeCount testID="postLikeCounter">{noOfLikes}</LikeCount>
+          <CommentsIcon testID="commentIcon" />
+          <CommentCount testID="postViewCounter">{noOfViews}</CommentCount>
         </ActionContainer>
       </Container>
       <PostDivider />
