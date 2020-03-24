@@ -1031,6 +1031,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                         },
                       ]
                     }
+                    testID="CommunityTabIcon"
                     vbHeight={24}
                     vbWidth={24}
                     width="100%"
@@ -1331,6 +1332,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                         },
                       ]
                     }
+                    testID="CommunityTabIcon"
                     vbHeight={24}
                     vbWidth={24}
                     width="100%"
