@@ -24,7 +24,9 @@ export default function Message(props: MessageProps) {
   const { testID, focus, dispatchMessage, setNewMessage, message } = props;
 
   useEffect(() => {
-    ref.current.focus();
+    if (focus) {
+      ref.current.focus();
+    }
   }, [focus]);
 
   const onSendMessage = () => {
