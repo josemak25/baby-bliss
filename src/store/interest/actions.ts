@@ -29,7 +29,7 @@ export default async function userInterestActions(dispatch: any) {
   dispatch(getUserInterestStarted);
 
   try {
-    const request = await API.get('/interests', 'null');
+    const request = await API.get('/interests', 'null', '');
     const response: InterestResponseInterface = await request.json();
     if (response.statusCode === 200) {
       return dispatch(getUserInterestSuccess(response.payload));
