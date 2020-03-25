@@ -6,7 +6,6 @@ import {
   PostCategoryResponse,
   CATEGORY_ACTION_TYPES,
   LikeOrUnlikePostResponse,
-  QuestionType,
   QuestionResponse
 } from './types';
 
