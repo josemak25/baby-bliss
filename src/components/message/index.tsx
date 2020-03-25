@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeContext } from '../../theme';
 
@@ -30,6 +30,11 @@ export default function Message(props: MessageProps) {
     message,
     handleInsertEmoji
   } = props;
+  useEffect(() => {
+    if (focus) {
+      ref.current.focus();
+    }
+  }, [focus]);
 
   const onSendMessage = () => {
     dispatchMessage();
