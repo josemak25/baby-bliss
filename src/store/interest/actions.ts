@@ -5,7 +5,7 @@ import {
   InterestResponseInterface
 } from './types';
 
-import API from '../../libs/api';
+import API from '../../lib/api';
 import { CONNECTION_TYPES } from '../connection/types';
 
 const getUserInterestStarted = () => ({

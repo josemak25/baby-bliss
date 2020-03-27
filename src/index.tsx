@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Router from './router';
 import ThemeProvider from './theme';
-import showSnackbar from './commons/snackbar';
+import showSnackbar from './components/UI/snackbar';
 import { useStoreContext } from './store';
 
 export default function AppRouter() {
-  const {
-    store: { connectionState }
-  } = useStoreContext();
+  const [{ connectionState }] = useStoreContext();
   const [state, setState] = useState({ isFirstLaunch: true });
 
   useEffect(() => {
