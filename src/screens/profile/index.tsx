@@ -68,7 +68,7 @@ const SCALED_WIDTH = applyScale(120);
 export default function ProfileScreen(props: ProfileScreenProp) {
   const { colors, fonts } = useThemeContext();
   const {
-    store: { userState, connectionState },
+    store: { userState,connectionState },
     dispatch
   } = useStoreContext();
 
