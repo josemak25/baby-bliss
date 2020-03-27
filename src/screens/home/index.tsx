@@ -116,7 +116,7 @@ export default function HomeScreen(props: HomeScreenProp) {
             style={{ width: '100%' }}
             refreshing={false}
             onEndReached={onEndReached}
-            onRefresh={false}
+            onRefresh={onRefresh}
             testID="postList"
           />
         ) : connectionState.isConnected ? (

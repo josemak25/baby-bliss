@@ -1,10 +1,10 @@
 import {
-  ConnectionStateInterface,
+  connectionStateInterface,
   CONNECTION_TYPES,
   ConnectionAction
 } from './types';
 
-export const connectionInitialState: ConnectionStateInterface = {
+export const connectionInitialState: connectionStateInterface = {
   isConnected: true
 };
 

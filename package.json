@@ -15,7 +15,6 @@
     "@expo/vector-icons": "^10.0.0",
     "@react-native-community/datetimepicker": "2.1.0",
     "@react-native-community/masked-view": "0.1.5",
-    "@react-native-community/netinfo": "4.6.0",
     "@types/react-native-snap-carousel": "^3.7.4",
     "add": "^2.0.6",
     "emoji-datasource": "^5.0.1",
