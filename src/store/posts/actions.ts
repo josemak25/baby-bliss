@@ -12,6 +12,7 @@ import {
   PostCommentResponseInterface,
   LikeCommentType
 } from './types';
+import { CONNECTION_TYPES } from '../connection/types';
 
 const loadPostStarted = () => ({ type: POST_TYPES.LOAD_POST_STARTED });
 
@@ -51,11 +52,15 @@ export default function postsActions(type: string) {
           const response: ResponseInterface = await request.json();
 
           if (response.statusCode === 200) {
+            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return dispatch(loadPostSuccess(response.payload));
           }
 
           dispatch(loadPostError(response.message));
         } catch (error) {
+          if (error.message === 'Network request failed') {
+            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
+          }
           dispatch(loadPostError(error));
         }
         break;
@@ -69,10 +74,14 @@ export default function postsActions(type: string) {
           });
           const response: LikeOrUnlikePostResponse = await request.json();
           if (response.statusCode === 200) {
+            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return;
           }
           dispatch(loadPostError(response.message));
         } catch (error) {
+          if (error.message === 'Network request failed') {
+            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
+          }
           dispatch(loadPostError(error));
         }
         break;
@@ -88,10 +97,14 @@ export default function postsActions(type: string) {
           const response: LikeCommentResponseInterface = await request.json();
 
           if (response.statusCode === 200) {
+            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return dispatch(loadCommentsSuccess(response.payload));
           }
           dispatch(loadPostError(response.message));
         } catch (error) {
+          if (error.message === 'Network request failed') {
+            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
+          }
           dispatch(loadPostError(error));
         }
         break;
@@ -107,10 +120,14 @@ export default function postsActions(type: string) {
           const response: PostCommentResponseInterface = await request.json();
 
           if (response.statusCode === 200) {
+            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return dispatch(postComment(response.payload));
           }
           dispatch(loadPostError(response.message));
         } catch (error) {
+          if (error.message === 'Network request failed') {
+            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
+          }
           dispatch(loadPostError(error));
         }
         break;
@@ -126,10 +143,14 @@ export default function postsActions(type: string) {
           });
           const response: PostCommentResponseInterface = await request.json();
           if (response.statusCode === 200) {
+            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return dispatch(postComment(response.payload));
           }
           dispatch(loadPostError(response.message));
         } catch (error) {
+          if (error.message === 'Network request failed') {
+            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
+          }
           dispatch(loadPostError(error));
         }
         break;
@@ -146,12 +167,16 @@ export default function postsActions(type: string) {
           const response: LikeCommentResponse = await request.json();
 
           if (response.statusCode === 200) {
+            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return dispatch(
               likeComment({ likeCount: response.payload.likes, ...payload })
             );
           }
           dispatch(loadPostError(response.message));
         } catch (error) {
+          if (error.message === 'Network request failed') {
+            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
+          }
           dispatch(loadPostError(error));
         }
         break;
