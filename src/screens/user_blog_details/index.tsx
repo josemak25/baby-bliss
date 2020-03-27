@@ -65,7 +65,7 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
 
   const {
-    store: { postState, userState },
+    store: { postState, userState,connectionState },
     dispatch
   } = useStoreContext();
 
@@ -270,7 +270,7 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
             <Description>{description}</Description>
             <CommentHeader>comment</CommentHeader>
             <CommentsContainer>
-              {postState.comments.length ? (
+              {postState.comments.length && connectionState.isConnected ? (
                 postState.comments.map(
                   (comment: CommentInterface, index: number) => (
                     <Comment

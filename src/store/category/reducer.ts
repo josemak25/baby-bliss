@@ -79,6 +79,7 @@ export default function PostCategoryReducer(
           postIndex,
           likeCount
         );
+
         //Go ahead to update this post in the general posts as well
         const generalPostIndex = state.generalPosts.findIndex(
           post => post._id === updatedCategoryPosts[postIndex]._id
@@ -89,6 +90,7 @@ export default function PostCategoryReducer(
           generalPostIndex,
           likeCount
         );
+
         updatedCommunity = {
           communityPosts: {
             ...state.communityPosts,
@@ -147,6 +149,9 @@ const updateCollection = (
   postIndex: number,
   likeCount: number
 ) => {
+  if (!posts[postIndex]) {
+    return posts;
+  }
   const oldNoOfLikes = posts[postIndex].noOfLikes;
   const newNoOfLikes = oldNoOfLikes + likeCount;
   posts[postIndex].noOfLikes = newNoOfLikes < 0 ? 1 : newNoOfLikes;

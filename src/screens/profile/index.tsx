@@ -68,7 +68,7 @@ const SCALED_WIDTH = applyScale(120);
 export default function ProfileScreen(props: ProfileScreenProp) {
   const { colors, fonts } = useThemeContext();
   const {
-    store: { userState },
+    store: { userState,connectionState },
     dispatch
   } = useStoreContext();
 
@@ -113,7 +113,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     (async () => {
       if (userState.token) await fetchProfile();
     })();
-  }, [userState.token, user]);
+  }, [userState.token, user, connectionState.isConnected]);
 
   const onHandleChange = (field: string) => (value: string) => {
     setState({

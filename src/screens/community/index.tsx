@@ -24,7 +24,7 @@ export default function CommunityScreen(props: CommunityScreenProp) {
   const { colors, fonts } = useThemeContext();
 
   const {
-    store: { categoryState, userState },
+    store: { categoryState, userState,connectionState },
     dispatch
   } = useStoreContext();
 
@@ -34,7 +34,8 @@ export default function CommunityScreen(props: CommunityScreenProp) {
     communityRoutes: [
       { key: 'general', title: 'general' },
       ...categoryState.categories
-    ]
+    ],
+    refresh: false
   });
 
   useEffect(() => {
@@ -47,7 +48,11 @@ export default function CommunityScreen(props: CommunityScreenProp) {
       dispatch,
       userState.token
     );
-  }, []);
+  }, [state.refresh, connectionState.isConnected]);
+
+  const onRefresh = () => {
+    setState({ ...state, refresh: !state.refresh });
+  };
 
   const handleLikePost = (
     id: string,
@@ -127,6 +132,8 @@ export default function CommunityScreen(props: CommunityScreenProp) {
             navigation={props.navigation}
             handleLikePost={handleLikePost}
             navigateToPost={navigateToPost}
+            refresh={state.refresh}
+            onRefresh={onRefresh}
           />
         );
       default:
@@ -136,6 +143,8 @@ export default function CommunityScreen(props: CommunityScreenProp) {
             categoryId={route._id}
             handleLikePost={handleLikePost}
             navigateToPost={navigateToPost}
+            onRefresh={onRefresh}
+            refresh={state.refresh}
           />
         );
     }
