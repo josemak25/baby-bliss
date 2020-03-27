@@ -5,7 +5,7 @@ import { useStoreContext } from '../../store';
 import { useThemeContext } from '../../theme';
 import { ActivityIndicator } from 'react-native';
 import postsActions from '../../store/posts/actions';
-
+import { Ionicons } from '@expo/vector-icons';
 import Post from '../../components/post';
 import SearchIcon from '../../../assets/icons/search';
 import { NavigationInterface } from '../../constants';
@@ -20,7 +20,9 @@ import {
   SafeAreaView,
   Logo,
   LogoContainer,
-  SearchContainer
+  SearchContainer,
+  EmptyPostContainer,
+  EmptyPostText
 } from './styles';
 
 interface HomeScreenProp extends NavigationInterface {
@@ -28,18 +30,23 @@ interface HomeScreenProp extends NavigationInterface {
 }
 
 export default function HomeScreen(props: HomeScreenProp) {
-  const [{ grid, postState, userState }, dispatch] = useStoreContext();
-
-  // const [state, setState] = useState({ isLiked: true });
-
+  const [
+    { grid, postState, userState, connectionState },
+    dispatch
+  ] = useStoreContext();
+  const [state, setState] = useState({ refresh: false });
   const { colors } = useThemeContext();
 
   useEffect(() => {
     postsActions(POST_ACTION_TYPES.LOAD_BLOG_POSTS)(dispatch, userState.token);
-  }, [userState.token]);
+  }, [userState.token, state.refresh, connectionState.isConnected]);
 
   const onEndReached = () => {
     postsActions(POST_ACTION_TYPES.LOAD_BLOG_POSTS)(dispatch, null);
+  };
+
+  const onRefresh = () => {
+    setState({ ...state, refresh: !state.refresh });
   };
 
   const handleLikePost = (
@@ -73,6 +80,13 @@ export default function HomeScreen(props: HomeScreenProp) {
 
     props.navigation.navigate('BlogDetailsScreen', { post });
   };
+  const Loader = () => (
+    <ActivityIndicator
+      size="large"
+      color={colors.POST_TIP_COLOR}
+      style={{ position: 'absolute', top: 100 }}
+    />
+  );
 
   return (
     <SafeAreaView testID="HomeScreen">
@@ -99,16 +113,24 @@ export default function HomeScreen(props: HomeScreenProp) {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 0, alignItems: 'center' }}
             style={{ width: '100%' }}
+            refreshing={false}
             onEndReached={onEndReached}
-            onRefresh={false}
+            onRefresh={onRefresh}
             testID="postList"
           />
+        ) : postState.isConnected ? (
+          <Loader />
+        ) : postState.isLoading ? (
+          <Loader />
         ) : (
-          <ActivityIndicator
-            size="large"
-            color={colors.POST_TIP_COLOR}
-            style={{ position: 'absolute', top: 100 }}
-          />
+          <EmptyPostContainer
+            onTouchStart={() => {
+              onRefresh();
+            }}
+          >
+            <EmptyPostText>Tap to refresh</EmptyPostText>
+            <Ionicons name="ios-refresh" size={23} />
+          </EmptyPostContainer>
         )}
       </Container>
     </SafeAreaView>

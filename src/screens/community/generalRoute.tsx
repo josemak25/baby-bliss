@@ -16,6 +16,8 @@ interface GeneralRouteContainerProp extends NavigationInterface {
     oldLikeState: boolean
   ): void;
   navigateToPost(item: PostInterface): void;
+  onRefresh(): void;
+  refresh: boolean;
 }
 
 const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
@@ -53,8 +55,9 @@ const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 0, alignItems: 'center' }}
           style={{ width: '100%' }}
+          refreshing={false}
           onEndReached={onEndReached}
-          onRefresh={false}
+          onRefresh={props.onRefresh}
         />
       )}
     </Container>

@@ -18,6 +18,8 @@ interface RouteContainerProp extends NavigationInterface {
     oldLikeState: boolean
   ): void;
   navigateToPost(item: PostInterface): void;
+  onRefresh(): void;
+  refresh: boolean;
 }
 
 const RouteContainer = (props: RouteContainerProp) => {
@@ -53,8 +55,9 @@ const RouteContainer = (props: RouteContainerProp) => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ paddingBottom: 0, alignItems: 'center' }}
           style={{ width: '100%' }}
-          onEndReached={onEndReached}
-          onRefresh={false}
+          refreshing={false}
+          // onEndReached={onEndReached}
+          onRefresh={props.onRefresh}
         />
       )}
     </Container>
