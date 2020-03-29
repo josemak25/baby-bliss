@@ -132,3 +132,8 @@ export const EmptyCommentText = styled.Text`
   color: ${({ theme }) => theme.colors.FONT_LIGHT_COLOR};
   text-align: center;
 `;
+
+export const EmojiSelectorContainer = styled.View`
+  height: 200px;
+  margin-bottom: 30px;
+`;

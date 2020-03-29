@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeContext } from '../../theme';
 
@@ -8,35 +8,49 @@ import {
   SendContainer,
   MessageInput
 } from './styles';
+import { Keyboard } from 'react-native';
 
 type MessageProps = {
   style?: {};
   testID?: string;
-  focus: boolean;
+  // focus: boolean;
   dispatchMessage(): void;
   setNewMessage(message: string): void;
   message: string;
+  handleInsertEmoji(status: boolean): void;
 };
 
 export default function Message(props: MessageProps) {
   const { colors } = useThemeContext();
-  const ref = useRef(null);
-  const { testID, focus, dispatchMessage, setNewMessage, message } = props;
+  const [state, setState] = useState({ inputType: 'smile' });
 
-  useEffect(() => {
-    if (focus) {
-      ref.current.focus();
-    }
-  }, [focus]);
+  const ref = useRef(null);
+  const {
+    testID,
+    // focus,
+    dispatchMessage,
+    setNewMessage,
+    message,
+    handleInsertEmoji
+  } = props;
+
+  // useEffect(() => {
+  //   // if (focus) {
+  //   ref.current.focus();
+  //   // }
+  // }, [focus]);
 
   const onSendMessage = () => {
     dispatchMessage();
     setNewMessage('');
   };
 
-  const handleEmoji = () => {};
-
   const handleChangeText = (message: string) => setNewMessage(message);
+
+  const swapInputType = () => {
+    const inputType = state.inputType === 'smile' ? 'keyboard' : 'smile';
+    setState({ inputType });
+  };
 
   return (
     <Container testID={testID}>
@@ -44,13 +58,22 @@ export default function Message(props: MessageProps) {
         placeholder="Write comment here…"
         onChangeText={handleChangeText}
         defaultValue={message}
-        autoFocus={focus}
+        autoFocus={false}
         ref={inputField => (ref.current = inputField)}
+        onFocus={() => {
+          handleInsertEmoji(false);
+          setState({ ...state, inputType: 'smile' });
+        }}
       />
-      <EmojiContainer onPress={handleEmoji}>
+      <EmojiContainer
+        onPress={() => {
+          handleInsertEmoji(true);
+          swapInputType();
+        }}
+      >
         <FontAwesome5
-          name="smile"
-          size={25}
+          name={state.inputType}
+          size={20}
           color={colors.INACTIVE_ICON_COLOR}
         />
       </EmojiContainer>

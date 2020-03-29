@@ -18,6 +18,7 @@
     "@react-native-community/netinfo": "4.6.0",
     "@types/react-native-snap-carousel": "^3.7.4",
     "add": "^2.0.6",
+    "emoji-datasource": "^5.0.1",
     "expo": "~36.0.0",
     "expo-constants": "~8.0.0",
     "expo-font": "~8.0.0",
