@@ -8,10 +8,12 @@ import {
   SendContainer,
   MessageInput
 } from './styles';
+import { Keyboard } from 'react-native';
 
 type MessageProps = {
   style?: {};
   testID?: string;
+  // focus: boolean;
   dispatchMessage(): void;
   setNewMessage(message: string): void;
   message: string;
@@ -25,16 +27,18 @@ export default function Message(props: MessageProps) {
   const ref = useRef(null);
   const {
     testID,
+    // focus,
     dispatchMessage,
     setNewMessage,
     message,
     handleInsertEmoji
   } = props;
-  useEffect(() => {
-    if (focus) {
-      ref.current.focus();
-    }
-  }, [focus]);
+
+  // useEffect(() => {
+  //   // if (focus) {
+  //   ref.current.focus();
+  //   // }
+  // }, [focus]);
 
   const onSendMessage = () => {
     dispatchMessage();
