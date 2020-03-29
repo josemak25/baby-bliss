@@ -4,7 +4,8 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  View
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -26,6 +27,7 @@ import {
   POST_TYPES
 } from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
+import EmojiSelector, { Categories } from '../../libs/emojiSelector';
 
 import {
   Container,
@@ -45,7 +47,8 @@ import {
   CommentHeader,
   CommentsContainer,
   EmptyComment,
-  EmptyCommentText
+  EmptyCommentText,
+  EmojiSelectorContainer
 } from './styles';
 
 interface BlogDetailsProp extends NavigationInterface {
@@ -80,7 +83,8 @@ export default function BlogDetails(props: BlogDetailsProp) {
     commentId: null,
     actionType: null,
     replyToName: '',
-    text: ''
+    text: '',
+    insertEmoji: false
   });
 
   const ref = useRef({
@@ -179,6 +183,20 @@ export default function BlogDetails(props: BlogDetailsProp) {
     });
   };
 
+  const handleInsertEmoji = (status: boolean) => {
+    if (status && state.insertEmoji) {
+      return setState({ ...state, insertEmoji: !state.insertEmoji });
+    }
+
+    setState({ ...state, insertEmoji: status });
+  };
+
+  useEffect(() => {
+    if (state.insertEmoji) {
+      Keyboard.dismiss();
+    }
+  }, [state.insertEmoji]);
+
   return (
     <KeyboardAvoidingView
       behavior="height"
@@ -227,7 +245,10 @@ export default function BlogDetails(props: BlogDetailsProp) {
           </HeaderImage>
         </Header>
         <TouchableWithoutFeedback
-          onPress={Keyboard.dismiss}
+          onPress={() => {
+            Keyboard.dismiss();
+            setState({ ...state, insertEmoji: false });
+          }}
           style={{
             flex: 1,
             backgroundColor: colors.BD_DARK_COLOR
@@ -303,12 +324,24 @@ export default function BlogDetails(props: BlogDetailsProp) {
           </Container>
         </TouchableWithoutFeedback>
       </ScrollView>
+      {state.insertEmoji && (
+        <EmojiSelectorContainer>
+          <EmojiSelector
+            theme={colors.POST_TIP_COLOR}
+            category={Categories.all}
+            onEmojiSelected={emoji => {
+              setState({ ...state, text: state.text + emoji });
+            }}
+          />
+        </EmojiSelectorContainer>
+      )}
       <Message
-        focus={state.focus}
+        // focus={false}
         dispatchMessage={dispatchMessage}
         setNewMessage={setMessage}
         message={state.text}
         testID="postDetailMessageInput"
+        handleInsertEmoji={handleInsertEmoji}
       />
     </KeyboardAvoidingView>
   );

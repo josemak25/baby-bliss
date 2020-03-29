@@ -26,6 +26,7 @@ import Comment from '../../components/comments';
 import Eye from '../../../assets/icons/eye';
 import LoveIcon from '../../../assets/icons/love';
 import { abbreviateNumber } from '../utils';
+import EmojiSelector, { Categories } from '../../libs/emojiSelector';
 
 import {
   Container,
@@ -43,7 +44,8 @@ import {
   CommentsContainer,
   PostImage,
   EmptyComment,
-  EmptyCommentText
+  EmptyCommentText,
+  EmojiSelectorContainer
 } from './styles';
 
 interface BlogDetailsProp extends NavigationInterface {
@@ -81,7 +83,8 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
     commentId: null,
     actionType: null,
     replyToName: '',
-    text: ''
+    text: '',
+    insertEmoji: false
   });
 
   const ref = useRef({
@@ -178,6 +181,20 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
     });
   };
 
+  const handleInsertEmoji = (status: boolean) => {
+    if (status && state.insertEmoji) {
+      return setState({ ...state, insertEmoji: !state.insertEmoji });
+    }
+
+    setState({ ...state, insertEmoji: status });
+  };
+
+  useEffect(() => {
+    if (state.insertEmoji) {
+      Keyboard.dismiss();
+    }
+  }, [state.insertEmoji]);
+
   return (
     <KeyboardAvoidingView
       behavior="height"
@@ -226,7 +243,10 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
           </HeaderContentContainer>
         </Header>
         <TouchableWithoutFeedback
-          onPress={Keyboard.dismiss}
+          onPress={() => {
+            Keyboard.dismiss();
+            setState({ ...state, insertEmoji: false });
+          }}
           style={{
             flex: 1,
             backgroundColor: colors.BD_DARK_COLOR
@@ -273,11 +293,24 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
           </Container>
         </TouchableWithoutFeedback>
       </ScrollView>
+      {state.insertEmoji && (
+        <EmojiSelectorContainer>
+          <EmojiSelector
+            theme={colors.POST_TIP_COLOR}
+            category={Categories.all}
+            onEmojiSelected={emoji => {
+              setState({ ...state, text: state.text + emoji });
+            }}
+          />
+        </EmojiSelectorContainer>
+      )}
       <Message
-        focus={state.focus}
+        // focus={false}
         dispatchMessage={dispatchMessage}
         setNewMessage={setMessage}
         message={state.text}
+        testID="postDetailMessageInput"
+        handleInsertEmoji={handleInsertEmoji}
       />
     </KeyboardAvoidingView>
   );

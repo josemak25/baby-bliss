@@ -73,3 +73,4 @@ export const navigationBackButton = {
 
 export const STORE_USER_PROFILE = '@USER_PROFILE_TESTS_';
 export const USER_FIRST_LAUNCH = '@FIRST_TIME_LAUNCH=';
+export const EMOJI_HISTORY_KEY = '@react-native-emoji-selector:HISTORY';
