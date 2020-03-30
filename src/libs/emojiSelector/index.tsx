@@ -300,7 +300,7 @@ const EmojiSelector = (props: EmojiSelectorPropType) => {
     setState({ ...state, searchQuery });
   };
 
-  const SearchBar = () => (
+  const SearchBar = (
     <SearchBarContainer>
       <SearchInput
         placeholder={placeholder}
@@ -330,7 +330,7 @@ const EmojiSelector = (props: EmojiSelectorPropType) => {
         )}
       </ToolBarContainer>
       <SearchBarView>
-        {showSearchBar && <SearchBar />}
+        {showSearchBar && SearchBar}
         {isReady ? (
           <SearchBarView>
             <SearchBarViewContent>
