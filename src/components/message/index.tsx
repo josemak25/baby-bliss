@@ -8,7 +8,6 @@ import {
   SendContainer,
   MessageInput
 } from './styles';
-import { Keyboard } from 'react-native';
 
 type MessageProps = {
   style?: {};
@@ -27,18 +26,11 @@ export default function Message(props: MessageProps) {
   const ref = useRef(null);
   const {
     testID,
-    // focus,
     dispatchMessage,
     setNewMessage,
     message,
     handleInsertEmoji
   } = props;
-
-  // useEffect(() => {
-  //   // if (focus) {
-  //   ref.current.focus();
-  //   // }
-  // }, [focus]);
 
   const onSendMessage = () => {
     dispatchMessage();
