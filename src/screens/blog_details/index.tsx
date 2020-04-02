@@ -4,8 +4,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
-  Keyboard,
-  View
+  Keyboard
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -129,7 +128,6 @@ export default function BlogDetails(props: BlogDetailsProp) {
 
     setState({
       ...state,
-      // focus: !state.focus,
       commentId,
       actionType,
       replyToName: `@${userName} `, //this holds reference of the reply name to strip off before dispatching the message
@@ -340,7 +338,6 @@ export default function BlogDetails(props: BlogDetailsProp) {
         </EmojiSelectorContainer>
       )}
       <Message
-        // focus={false}
         dispatchMessage={dispatchMessage}
         setNewMessage={setMessage}
         message={state.text}
