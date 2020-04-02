@@ -75,7 +75,7 @@ export default function CommunityScreen(props: CommunityScreenProp) {
     state.animateMessageIcon.setValue(0);
     Animated.timing(state.animateMessageIcon, {
       toValue: 1,
-      duration: 1300,
+      duration: 500,
       easing: Easing.linear,
       useNativeDriver: true
     }).start(() => (userPressed ? askQuestion() : null));
