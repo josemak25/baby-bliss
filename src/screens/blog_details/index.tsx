@@ -142,17 +142,15 @@ export default function BlogDetails(props: BlogDetailsProp) {
     };
     let { actionType } = state;
     actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
+    const content = state.text.replace(state.replyToName, '');
+    if (!content) {
+      return;
+    }
+
     if (state.replyToName) {
-      message = {
-        ...message,
-        content: state.text.replace(state.replyToName, ''),
-        commentId: state.commentId
-      };
+      message = { ...message, content, commentId: state.commentId };
     } else {
-      message = {
-        ...message,
-        content: state.text
-      };
+      message = { ...message, content: state.text };
     }
 
     postsActions(actionType)(dispatch, message);
