@@ -157,7 +157,7 @@ const EmojiCell = ({ emoji, colSize, ...other }) => (
 const EmojiSelector = (props: EmojiSelectorPropType) => {
   const [state, setState] = useState({
     searchQuery: '',
-    category: Categories.people,
+    category: Categories.all,
     isReady: false,
     history: [],
     emojiList: null,
@@ -186,7 +186,7 @@ const EmojiSelector = (props: EmojiSelectorPropType) => {
     if (showHistory) {
       loadHistoryAsync();
     }
-  }, [props.category, props.showHistory]);
+  }, [props.category, props.showHistory, state.isReady]);
 
   const handleTabSelect = (category: categoryKeysType) => {
     const { scrollView } = ref.current;
@@ -349,7 +349,7 @@ const EmojiSelector = (props: EmojiSelectorPropType) => {
           </SearchBarView>
         ) : (
           <Loader {...other}>
-            <ActivityIndicator size={'large'} color="#000000" />
+            <ActivityIndicator size={'large'} color={theme} />
           </Loader>
         )}
       </SearchBarView>
