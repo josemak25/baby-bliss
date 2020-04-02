@@ -12,7 +12,6 @@ import {
 type MessageProps = {
   style?: {};
   testID?: string;
-  // focus: boolean;
   dispatchMessage(): void;
   setNewMessage(message: string): void;
   message: string;
@@ -73,7 +72,7 @@ export default function Message(props: MessageProps) {
         <MaterialCommunityIcons
           name="send"
           size={25}
-          color={colors.INACTIVE_ICON_COLOR}
+          color={colors.POST_TIP_COLOR}
         />
       </SendContainer>
     </Container>
