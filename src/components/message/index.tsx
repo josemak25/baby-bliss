@@ -12,7 +12,6 @@ import {
 type MessageProps = {
   style?: {};
   testID?: string;
-  // focus: boolean;
   dispatchMessage(): void;
   setNewMessage(message: string): void;
   message: string;

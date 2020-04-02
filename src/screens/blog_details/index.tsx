@@ -4,8 +4,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
-  Keyboard,
-  View
+  Keyboard
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
