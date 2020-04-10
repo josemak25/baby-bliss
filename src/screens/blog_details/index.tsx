@@ -62,7 +62,7 @@ type messageType = {
 export default function BlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
   const {
-    store: { postState, userState,connectionState },
+    store: { postState, userState, connectionState },
     dispatch
   } = useStoreContext();
 

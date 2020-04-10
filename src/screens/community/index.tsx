@@ -24,7 +24,7 @@ export default function CommunityScreen(props: CommunityScreenProp) {
   const { colors, fonts } = useThemeContext();
 
   const {
-    store: { categoryState, userState,connectionState },
+    store: { categoryState, userState, connectionState },
     dispatch
   } = useStoreContext();
 

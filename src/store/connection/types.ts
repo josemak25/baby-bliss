@@ -11,7 +11,7 @@ export enum CONNECTION_TYPES {
 }
 
 // CONNECTION TYPES
-export type connectionStateInterface = {
+export type ConnectionStateInterface = {
   isConnected: boolean;
 };
 

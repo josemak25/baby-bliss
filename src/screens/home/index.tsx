@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native';
 import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import { useStoreContext } from '../../store';
@@ -31,11 +31,12 @@ interface HomeScreenProp extends NavigationInterface {
 
 export default function HomeScreen(props: HomeScreenProp) {
   const {
-    store: { grid, postState, userState,connectionState },
+    store: { grid, postState, userState, connectionState },
     dispatch
   } = useStoreContext();
 
   const { colors } = useThemeContext();
+  const [state, setState] = useState({ refresh: false });
 
   useEffect(() => {
     postsActions(POST_ACTION_TYPES.LOAD_BLOG_POSTS)(dispatch, userState.token);
@@ -118,7 +119,7 @@ export default function HomeScreen(props: HomeScreenProp) {
             onRefresh={onRefresh}
             testID="postList"
           />
-        ) : postState.isConnected ? (
+        ) : connectionState.isConnected ? (
           <Loader />
         ) : postState.isLoading ? (
           <Loader />

@@ -63,7 +63,7 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
 
   const {
-    store: { postState, userState,connectionState },
+    store: { postState, userState, connectionState },
     dispatch
   } = useStoreContext();
 
