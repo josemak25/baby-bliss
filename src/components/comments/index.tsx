@@ -6,7 +6,7 @@ import { useThemeContext } from '../../theme';
 import ResponsiveImage from '../../libs/responsiveImage';
 import LoveIcon from '../../../assets/icons/love';
 import { CommentInterface, POST_ACTION_TYPES } from '../../store/posts/types';
-import timeSince from '../../lib/timeSince';
+import timeSince from '../../libs/timeSince';
 
 import {
   Container,

@@ -6,7 +6,7 @@ import {
   InterestResponseInterface
 } from './types';
 
-import API from '../../lib/api';
+import API from '../../libs/api';
 
 const getUserInterestStarted = () => ({
   type: INTEREST_TYPES.SET_INTEREST_STARTED
@@ -29,7 +29,7 @@ export default async function userInterestActions(dispatch: any) {
   dispatch(getUserInterestStarted);
 
   try {
-    const request = await API.get('/interests', 'null');
+    const request = await API.get('/interests', null, '');
     const response: InterestResponseInterface = await request.json();
     if (response.statusCode === 200) {
       return dispatch(getUserInterestSuccess(response.payload));

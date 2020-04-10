@@ -16,7 +16,7 @@ import Card from '../card';
 import CommentsIcon from '../../../assets/icons/comments';
 
 import { PostInterface } from '../../store/posts/types';
-import timeSince from '../../lib/timeSince';
+import timeSince from '../../libs/timeSince';
 
 import {
   Container,

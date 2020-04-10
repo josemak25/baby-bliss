@@ -23,7 +23,7 @@ import { USER_ACTION_TYPES } from '../../store/user/types';
 import userActions from '../../store/user/actions';
 import { Spinner } from '../signin/styles';
 import { validateFormFields } from '../../components/inputField/utils';
-import showSnackbar from '../../components/UI/snackbar';
+import showSnackbar from '../../commons/snackbar';
 import postsActions from '../../store/posts/actions';
 import { POST_ACTION_TYPES } from '../../store/posts/types';
 
@@ -47,7 +47,10 @@ export default function SignUp({ navigation }: NavigationInterface) {
   });
 
   const { colors, fonts } = useThemeContext();
-  const [{ userState }, dispatch] = useStoreContext();
+  const {
+    store: { userState },
+    dispatch
+  } = useStoreContext();
 
   const onHandleChange = (field: string) => (value: string) => {
     setState({

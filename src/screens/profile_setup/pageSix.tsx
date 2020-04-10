@@ -27,7 +27,9 @@ export default function PageSix({
 }) {
   const { colors, fonts } = useThemeContext();
 
-  const [{ interestState, userState }] = useStoreContext();
+  const {
+    store: { interestState, userState }
+  } = useStoreContext();
 
   const [state, setState] = useState('');
 

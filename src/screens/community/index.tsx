@@ -23,7 +23,10 @@ interface CommunityScreenProp extends NavigationInterface {
 export default function CommunityScreen(props: CommunityScreenProp) {
   const { colors, fonts } = useThemeContext();
 
-  const [{ categoryState, userState }, dispatch] = useStoreContext();
+  const {
+    store: { categoryState, userState },
+    dispatch
+  } = useStoreContext();
 
   const [state, setState] = useState({
     animateMessageIcon: new Animated.Value(0),

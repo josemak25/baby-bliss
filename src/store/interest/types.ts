@@ -29,7 +29,7 @@ export interface InterestResponseInterface {
 }
 
 //  INTEREST STATE TYPE
-export type InterestStateInterface = {
+export type InterestInitialState = {
   isLoading: boolean;
   error: string | null;
   interests: InterestInterface[];

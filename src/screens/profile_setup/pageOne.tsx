@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import Animated, { Easing } from 'react-native-reanimated';
-import DatePicker from 'react-native-datepicker';
+import DatePicker from '@react-native-community/datetimepicker';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { Dimensions } from 'react-native';
+import Button from '../../components/button';
 import { useThemeContext } from '../../theme';
 import applyScale from '../../utils/applyScale';
 
@@ -9,7 +12,9 @@ import {
   SelectQuestionButtonContainer,
   AnswerOption,
   AnswerOptionText,
-  SelectQuestionButton
+  SelectQuestionButton,
+  DatePickerModalContainer,
+  DatePickerModalHeader
 } from './styles';
 
 const SelectQuestionButtonOverlay = Animated.createAnimatedComponent(
@@ -18,11 +23,13 @@ const SelectQuestionButtonOverlay = Animated.createAnimatedComponent(
 
 export default function PageOne({ handleNavigation, handleChange, profile }) {
   const { colors } = useThemeContext();
+  let dueDate: Date | null = null;
 
   const [animation, setAnimation] = useState({
     buttonWidthOne: new Animated.Value(applyScale(5)),
     buttonWidthTwo: new Animated.Value(applyScale(5)),
-    selected: ''
+    selected: '',
+    showDateModal: false
   });
 
   const startButtonAnimation = (buttonType: string) => {
@@ -40,6 +47,8 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
       }).start();
     }
 
+    if (buttonType === 'buttonWidthOne') showDatePicker();
+
     Animated.timing(animation[buttonType], {
       toValue: applyScale(373),
       duration: 500,
@@ -51,9 +60,16 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
     });
   };
 
-  const handleDate = (date: string) => {
-    handleChange({ key: 'dueDateStart', data: date });
+  console.log(profile.birthDueDate);
+
+  const handleDate = (date: Date | null) => {
     setTimeout(handleNavigation, 500);
+    showDatePicker();
+    handleChange({ key: 'dueDateStart', data: date });
+  };
+
+  const showDatePicker = () => {
+    setAnimation({ ...animation, showDateModal: !animation.showDateModal });
   };
 
   return (
@@ -72,27 +88,10 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
             left: -5
           }}
         />
-        <SelectQuestionButton style={{ backgroundColor: 'transparent' }}>
-          <DatePicker
-            style={{
-              position: 'absolute',
-              width: applyScale(373)
-            }}
-            mode="date"
-            placeholder=" "
-            format="DD-MM-YYYY"
-            minDate={new Date()}
-            maxDate="01-03-2060"
-            confirmBtnText="Confirm"
-            cancelBtnText="Cancel"
-            showIcon={false}
-            customStyles={{
-              dateInput: { height: applyScale(60), borderWidth: 0 }
-            }}
-            onDateChange={handleDate}
-            onOpenModal={() => startButtonAnimation('buttonWidthOne')}
-            getDateStr={(date: Date) => new Date(date).toDateString()}
-          />
+        <SelectQuestionButton
+          style={{ backgroundColor: 'transparent' }}
+          onPress={() => startButtonAnimation('buttonWidthOne')}
+        >
           <AnswerOption
             style={{
               color:
@@ -113,7 +112,9 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
           >
             {animation.selected === 'buttonWidthOne'
               ? profile.birthDueDate
-              : null}
+                ? profile.birthDueDate
+                : 'Select date'
+              : 'Select date'}
           </AnswerOptionText>
         </SelectQuestionButton>
       </SelectQuestionButtonContainer>
@@ -153,12 +154,53 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
                   : colors.BG_LIGHT_COLOR,
               zIndex: 999
             }}
-            onPress={() => handleDate(null)}
           >
             Am Not Pregnant
           </AnswerOptionText>
         </SelectQuestionButton>
       </SelectQuestionButtonContainer>
+      {animation.showDateModal && (
+        <Fragment>
+          <TouchableWithoutFeedback
+            style={{ alignItems: 'center' }}
+            containerStyle={{
+              flex: 1,
+              width: Dimensions.get('window').width,
+              height: Dimensions.get('window').height,
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              position: 'absolute',
+              backgroundColor: colors.FONT_DARK_COLOR,
+              bottom: -20,
+              opacity: 0.5
+            }}
+            onPress={() => handleDate(dueDate)}
+          />
+          <DatePickerModalContainer>
+            <DatePickerModalHeader>
+              <Button
+                title="Cancel"
+                buttonStyle={{ backgroundColor: 'transparent' }}
+                onPress={showDatePicker}
+              />
+              <Button
+                title="Confirm"
+                buttonStyle={{ backgroundColor: 'transparent' }}
+                textStyle={{ color: colors.FLOATING_MESSAGE_COLOR }}
+                onPress={() => handleDate(dueDate)}
+              />
+            </DatePickerModalHeader>
+            <DatePicker
+              mode="date"
+              display="default"
+              value={new Date()}
+              minimumDate={new Date()}
+              style={{ width: '100%', marginTop: 40 }}
+              onChange={(_, date) => (dueDate = date)}
+            />
+          </DatePickerModalContainer>
+        </Fragment>
+      )}
     </PageOneContainer>
   );
 }

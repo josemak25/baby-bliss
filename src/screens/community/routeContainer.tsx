@@ -21,7 +21,10 @@ interface RouteContainerProp extends NavigationInterface {
 }
 
 const RouteContainer = (props: RouteContainerProp) => {
-  const [{ grid, categoryState }] = useStoreContext();
+  const {
+    store: { grid, categoryState }
+  } = useStoreContext();
+
   const { colors } = useThemeContext();
   const posts = categoryState.communityPosts[props.categoryId];
 

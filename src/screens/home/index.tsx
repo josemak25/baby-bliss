@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
 import { OptimizedFlatList } from 'react-native-optimized-flatlist';
 import { useStoreContext } from '../../store';
@@ -28,7 +28,10 @@ interface HomeScreenProp extends NavigationInterface {
 }
 
 export default function HomeScreen(props: HomeScreenProp) {
-  const [{ grid, postState, userState }, dispatch] = useStoreContext();
+  const {
+    store: { grid, postState, userState },
+    dispatch
+  } = useStoreContext();
 
   // const [state, setState] = useState({ isLiked: true });
 

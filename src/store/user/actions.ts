@@ -1,4 +1,4 @@
-import API from '../../lib/api';
+import API from '../../libs/api';
 
 import {
   USER_TYPES,

@@ -24,8 +24,8 @@ import PhoneIcon from '../../../assets/icons/phone';
 import { useStoreContext } from '../../store';
 import { USER_TYPES, USER_ACTION_TYPES } from '../../store/user/types';
 import userActions from '../../store/user/actions';
-import showSnackbar from '../../components/UI/snackbar';
-import API from '../../lib/api';
+import showSnackbar from '../../commons/snackbar';
+import API from '../../libs/api';
 import { validateFormFields } from '../../components/inputField/utils';
 
 import {
@@ -67,7 +67,11 @@ const SCALED_WIDTH = applyScale(120);
 
 export default function ProfileScreen(props: ProfileScreenProp) {
   const { colors, fonts } = useThemeContext();
-  const [{ userState }, dispatch] = useStoreContext();
+  const {
+    store: { userState },
+    dispatch
+  } = useStoreContext();
+
   const { user } = userState;
 
   const [state, setState] = useState({

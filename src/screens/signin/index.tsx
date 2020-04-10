@@ -11,7 +11,7 @@ import boxShadow from '../../utils/boxShadows';
 import userActions from '../../store/user/actions';
 import { useStoreContext } from '../../store';
 import { USER_ACTION_TYPES } from '../../store/user/types';
-import showSnackbar from '../../components/UI/snackbar';
+import showSnackbar from '../../commons/snackbar';
 import UserIcon from '../../../assets/icons/user';
 import { validateFormFields } from '../../components/inputField/utils';
 
@@ -29,7 +29,10 @@ import {
 
 export default function SignIn({ navigation }: NavigationInterface) {
   const { colors, fonts } = useThemeContext();
-  const [{ userState }, dispatch] = useStoreContext();
+  const {
+    store: { userState },
+    dispatch
+  } = useStoreContext();
 
   const [values, setValues] = useState({
     user: { username: '', password: '' },

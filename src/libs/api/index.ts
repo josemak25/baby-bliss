@@ -28,7 +28,11 @@ class API {
     this.API_VERSION = 'v1';
   }
 
-  get(path: string, authToken: string, apiVersion: string): Promise<any> {
+  get(
+    path: string,
+    authToken: string | null,
+    apiVersion: string
+  ): Promise<any> {
     return fetch(
       `${this.BASE_URL}/${apiVersion ? apiVersion : this.API_VERSION}/${path}`,
       {

@@ -19,7 +19,10 @@ interface GeneralRouteContainerProp extends NavigationInterface {
 }
 
 const GeneralRouteContainer = (props: GeneralRouteContainerProp) => {
-  const [{ grid, categoryState }] = useStoreContext();
+  const {
+    store: { grid, categoryState }
+  } = useStoreContext();
+
   const { colors } = useThemeContext();
   const posts = categoryState.generalPosts;
 
