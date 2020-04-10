@@ -49,7 +49,11 @@ export default function ProfileSetupScreen({
   const MAX_SLIDES = 6;
 
   const { colors } = useThemeContext();
-  const [{ interestState, userState }, dispatch] = useStoreContext();
+  const {
+    store: { interestState, userState },
+    dispatch
+  } = useStoreContext();
+
   let questionRef = useRef(null);
 
   const [profile, setProfile] = useState({

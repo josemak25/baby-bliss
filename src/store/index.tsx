@@ -1,11 +1,7 @@
-import React, {
-  createContext,
-  useReducer,
-  FunctionComponent,
-  useContext
-} from 'react';
+import React, { useReducer, FunctionComponent, useContext } from 'react';
 
-import useCombinedReducers from '../lib/useCombineReducer';
+import StoreContext from './types';
+import useCombinedReducers from '../libs/useCombineReducer';
 
 import postsReducer, { postInitialState } from './posts/reducer';
 import userReducer, { userInitialState } from './user/reducer';
@@ -13,10 +9,8 @@ import gridSizeReducer, { gridInitialState } from './grid/reducer';
 import postCategoryReducer, { categoryInitialState } from './category/reducer';
 import interestReducer, { interestInitialState } from './interest/reducer';
 
-const StoreContext = createContext(null);
-
 const StoreProvider: FunctionComponent = ({ children }) => {
-  const [state, dispatch] = useCombinedReducers({
+  const [store, dispatch] = useCombinedReducers({
     userState: useReducer(userReducer, userInitialState),
     postState: useReducer(postsReducer, postInitialState),
     grid: useReducer(gridSizeReducer, gridInitialState),
@@ -25,7 +19,7 @@ const StoreProvider: FunctionComponent = ({ children }) => {
   });
 
   return (
-    <StoreContext.Provider value={[state, dispatch]}>
+    <StoreContext.Provider value={{ store, dispatch }}>
       {children}
     </StoreContext.Provider>
   );

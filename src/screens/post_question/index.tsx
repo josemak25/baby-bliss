@@ -19,8 +19,8 @@ import { category as postCategories } from '../../libs/postCategories.json';
 import { useStoreContext } from '../../store';
 import postCategoryActions from '../../store/category/actions';
 import { CATEGORY_ACTION_TYPES } from '../../store/category/types';
-import showSnackbar from '../../components/UI/snackbar';
-import { createFormData } from '../utils';
+import showSnackbar from '../../commons/snackbar';
+import createFormData from '../../utils/createFormData';
 
 import {
   Container,
@@ -46,7 +46,10 @@ interface PostQuestionScreenProp extends NavigationInterface {
 
 export default function PostQuestionScreen(props: PostQuestionScreenProp) {
   const { colors, fonts } = useThemeContext();
-  const [{ userState, categoryState }, dispatch] = useStoreContext();
+  const {
+    store: { userState, categoryState },
+    dispatch
+  } = useStoreContext();
 
   const [state, setState] = useState({
     question: {

@@ -19,7 +19,7 @@ interface SplashScreenProp extends NavigationInterface {
 
 export default function SplashScreen({ navigation }: SplashScreenProp) {
   const { colors } = useThemeContext();
-  const [, dispatch] = useStoreContext();
+  const { dispatch } = useStoreContext();
 
   const [splash, setSplash] = useState({
     appLogoLoaded: true,

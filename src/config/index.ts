@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { BABY_BLISS_BASE_URI } from 'react-native-dotenv';
 
 export type ENV_VARIABLES_TYPES = {

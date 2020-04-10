@@ -1,4 +1,4 @@
-import API from '../../src/lib/api';
+import API from '../../src/libs/api';
 import post from '../../src/libs/dummyPost.json';
 
 describe('TEST POST ACTIONS', function() {

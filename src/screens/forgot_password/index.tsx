@@ -23,7 +23,7 @@ import Button from '../../components/button';
 import userActions from '../../store/user/actions';
 import { USER_ACTION_TYPES } from '../../store/user/types';
 import { useStoreContext } from '../../store';
-import showSnackbar from '../../components/UI/snackbar';
+import showSnackbar from '../../commons/snackbar';
 import { validateFormFields } from '../../components/inputField/utils';
 import { ActivityIndicator } from 'react-native';
 
@@ -33,7 +33,10 @@ interface SplashScreenProp extends NavigationInterface {
 
 export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
   const { colors, fonts } = useThemeContext();
-  const [{ userState }, dispatch] = useStoreContext();
+  const {
+    store: { userState },
+    dispatch
+  } = useStoreContext();
 
   const [state, setState] = useState({ email: '', canShow: true });
 

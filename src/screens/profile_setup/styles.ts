@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import applyScale from '../../utils/applyScale';
+import { Dimensions } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -110,7 +111,7 @@ export const ProgressBar = styled.View`
 
 export const SlideAnswersContainer = styled.View`
   width: 100%;
-  height: 40%;
+  height: ${applyScale(310)}px;
   justify-content: space-between;
   align-items: center;
   padding: 20px 20px;
@@ -160,4 +161,25 @@ export const Spinner = styled.View`
   position: absolute;
   align-self: center;
   top: 105px;
+`;
+
+export const DatePickerModalContainer = styled.View`
+  width: ${Dimensions.get('window').width}px;
+  height: ${applyScale(250)}px;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.BG_LIGHT_COLOR};
+  position: absolute;
+  bottom: -22px;
+  z-index: 99;
+`;
+
+export const DatePickerModalHeader = styled.View`
+  width: 100%;
+  height: ${applyScale(50)}px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  border-bottom-width: 1px;
+  border-color: ${({ theme }) => theme.colors.INACTIVE_ICON_COLOR};
 `;

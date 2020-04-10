@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import NetInfo from '@react-native-community/netinfo';
 import Router from './router';
 import ThemeProvider from './theme';
-import showSnackbar from './components/UI/snackbar';
+import showSnackbar from './commons/snackbar';
 
 export default function AppRouter() {
   const [isConnected, setIsConnected] = useState(true);

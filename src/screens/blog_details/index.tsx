@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
-import Header from '../../components/header';
+import Header from '../../commons/header';
 import { NavigationInterface } from '../../constants';
 import { useThemeContext } from '../../theme';
 
@@ -17,7 +17,7 @@ import MessageIcon from '../../../assets/icons/message';
 import Eye from '../../../assets/icons/eye';
 import LoveIcon from '../../../assets/icons/love';
 import Message from '../../components/message';
-import { abbreviateNumber } from '../utils';
+import abbreviateNumber from '../../utils/abbreviateNumber';
 import { useStoreContext } from '../../store';
 import {
   CommentInterface,
@@ -61,7 +61,11 @@ type messageType = {
 
 export default function BlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
-  const [{ postState, userState }, dispatch] = useStoreContext();
+  const {
+    store: { postState, userState },
+    dispatch
+  } = useStoreContext();
+
   const post: PostInterface = props.navigation.getParam('post');
 
   const {

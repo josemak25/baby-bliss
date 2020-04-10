@@ -19,13 +19,13 @@ import {
 } from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
 import { Ionicons } from '@expo/vector-icons';
-import Header from '../../components/header';
+import Header from '../../commons/header';
 import { NavigationInterface } from '../../constants';
 
 import Comment from '../../components/comments';
 import Eye from '../../../assets/icons/eye';
 import LoveIcon from '../../../assets/icons/love';
-import { abbreviateNumber } from '../utils';
+import abbreviateNumber from '../../utils/abbreviateNumber';
 
 import {
   Container,
@@ -62,7 +62,11 @@ const { width: DEVICE_WIDTH } = Dimensions.get('window');
 export default function UserBlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
 
-  const [{ postState, userState }, dispatch] = useStoreContext();
+  const {
+    store: { postState, userState },
+    dispatch
+  } = useStoreContext();
+
   const post: PostInterface = props.navigation.getParam('post');
 
   const {
