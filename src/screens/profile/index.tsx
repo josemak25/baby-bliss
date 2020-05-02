@@ -94,7 +94,6 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     userProfile: {
       address: user ? user.address : '',
       phone: user ? user.mobileNumber : '',
-      image: user && user.avatar ? user.avatar : 'url',
       imageUri: user && user.avatar ? user.avatar : 'url'
     },
     hasSubmitted: false,
@@ -277,7 +276,6 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       ...state,
       userProfile: {
         ...state.userProfile,
-        image: response,
         imageUri: response.uri
       }
     });
