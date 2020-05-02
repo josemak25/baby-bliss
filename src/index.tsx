@@ -3,7 +3,6 @@ import Router from './router';
 import ThemeProvider from './theme';
 import { useStoreContext } from './store';
 import showSnackbar from './commons/snackbar';
-import { useStoreContext } from './store';
 
 export default function AppRouter() {
   const {
