@@ -26,7 +26,6 @@ import Comment from '../../components/comments';
 import Eye from '../../../assets/icons/eye';
 import LoveIcon from '../../../assets/icons/love';
 import abbreviateNumber from '../../utils/abbreviateNumber';
-import { abbreviateNumber } from '../utils';
 import EmojiSelector, { Categories } from '../../libs/emojiSelector';
 
 import {
