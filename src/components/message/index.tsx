@@ -12,7 +12,6 @@ import {
 type MessageProps = {
   style?: {};
   testID?: string;
-  focus: boolean;
   dispatchMessage(): void;
   setNewMessage(message: string): void;
   message: string;
@@ -20,12 +19,8 @@ type MessageProps = {
 
 export default function Message(props: MessageProps) {
   const { colors } = useThemeContext();
-  const ref = useRef(null);
-  const { testID, focus, dispatchMessage, setNewMessage, message } = props;
-
-  useEffect(() => {
-    ref.current.focus();
-  }, [focus]);
+  // const ref = useRef(null);
+  const { testID, dispatchMessage, setNewMessage, message } = props;
 
   const onSendMessage = () => {
     dispatchMessage();
@@ -42,8 +37,6 @@ export default function Message(props: MessageProps) {
         placeholder="Write comment here…"
         onChangeText={handleChangeText}
         defaultValue={message}
-        autoFocus={focus}
-        ref={inputField => (ref.current = inputField)}
       />
       <EmojiContainer onPress={handleEmoji}>
         <FontAwesome5

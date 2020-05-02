@@ -308,7 +308,6 @@ export default function BlogDetails(props: BlogDetailsProp) {
         </TouchableWithoutFeedback>
       </ScrollView>
       <Message
-        focus={state.focus}
         dispatchMessage={dispatchMessage}
         setNewMessage={setMessage}
         message={state.text}
