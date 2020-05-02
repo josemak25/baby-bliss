@@ -1,12 +1,12 @@
+import { CONNECTION_TYPES } from '../connection/types';
+import API from '../../libs/api';
+
 import {
   INTEREST_TYPES,
   InterestAction,
   InterestInterface,
   InterestResponseInterface
 } from './types';
-
-import API from '../../lib/api';
-import { CONNECTION_TYPES } from '../connection/types';
 
 const getUserInterestStarted = () => ({
   type: INTEREST_TYPES.SET_INTEREST_STARTED

@@ -12,8 +12,6 @@ import connectionReducer, {
   connectionInitialState
 } from './connection/reducer';
 
-const StoreContext = createContext(null);
-
 const StoreProvider: FunctionComponent = ({ children }) => {
   const [store, dispatch] = useCombinedReducers({
     userState: useReducer(userReducer, userInitialState),
