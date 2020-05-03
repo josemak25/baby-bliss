@@ -26,6 +26,7 @@ import {
   POST_TYPES
 } from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
+import EmojiSelector, { Categories } from '../../libs/emojiSelector';
 
 import {
   Container,
@@ -45,7 +46,8 @@ import {
   CommentHeader,
   CommentsContainer,
   EmptyComment,
-  EmptyCommentText
+  EmptyCommentText,
+  EmojiSelectorContainer
 } from './styles';
 
 interface BlogDetailsProp extends NavigationInterface {
@@ -62,7 +64,7 @@ type messageType = {
 export default function BlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
   const {
-    store: { postState, userState },
+    store: { postState, userState, connectionState },
     dispatch
   } = useStoreContext();
 
@@ -84,7 +86,8 @@ export default function BlogDetails(props: BlogDetailsProp) {
     commentId: null,
     actionType: null,
     replyToName: '',
-    text: ''
+    text: '',
+    insertEmoji: false
   });
 
   const ref = useRef({
@@ -125,7 +128,6 @@ export default function BlogDetails(props: BlogDetailsProp) {
 
     setState({
       ...state,
-      // focus: !state.focus,
       commentId,
       actionType,
       replyToName: `@${userName} `, //this holds reference of the reply name to strip off before dispatching the message
@@ -140,17 +142,15 @@ export default function BlogDetails(props: BlogDetailsProp) {
     };
     let { actionType } = state;
     actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
+    const content = state.text.replace(state.replyToName, '');
+    if (!content) {
+      return;
+    }
+
     if (state.replyToName) {
-      message = {
-        ...message,
-        content: state.text.replace(state.replyToName, ''),
-        commentId: state.commentId
-      };
+      message = { ...message, content, commentId: state.commentId };
     } else {
-      message = {
-        ...message,
-        content: state.text
-      };
+      message = { ...message, content: state.text };
     }
 
     postsActions(actionType)(dispatch, message);
@@ -183,6 +183,20 @@ export default function BlogDetails(props: BlogDetailsProp) {
     });
   };
 
+  const handleInsertEmoji = (status: boolean) => {
+    if (status && state.insertEmoji) {
+      return setState({ ...state, insertEmoji: !state.insertEmoji });
+    }
+
+    setState({ ...state, insertEmoji: status });
+  };
+
+  useEffect(() => {
+    if (state.insertEmoji) {
+      Keyboard.dismiss();
+    }
+  }, [state.insertEmoji]);
+
   return (
     <KeyboardAvoidingView
       behavior="height"
@@ -190,6 +204,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
         flex: 1,
         backgroundColor: colors.BD_DARK_COLOR
       }}
+      testID="postDetailScreen"
     >
       <StatusBar barStyle="light-content" />
       <ScrollView
@@ -202,6 +217,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
         onContentSizeChange={(_width, height) =>
           (ref.current.scrollViewHeight = height)
         }
+        testID="postDetailScrollView"
       >
         <Header style={{ height: 400, paddingLeft: 0, paddingRight: 0 }}>
           <HeaderImage
@@ -213,20 +229,26 @@ export default function BlogDetails(props: BlogDetailsProp) {
           >
             <HeaderOverLay />
             <HeaderContentContainer>
-              <GoBack onPress={() => props.navigation.goBack()}>
+              <GoBack
+                onPress={() => props.navigation.goBack()}
+                testID="backButton"
+              >
                 <Ionicons name="ios-arrow-back" size={25} color="white" />
               </GoBack>
               <HeaderTextContainer>
                 <DetailsTipContainer>
-                  <DetailsTip>Baby Tips</DetailsTip>
+                  <DetailsTip testID="babyTipsButton">Baby Tips</DetailsTip>
                 </DetailsTipContainer>
-                <DetailsTitle>{topic}</DetailsTitle>
+                <DetailsTitle testID="postDetailTopic">{topic}</DetailsTitle>
               </HeaderTextContainer>
             </HeaderContentContainer>
           </HeaderImage>
         </Header>
         <TouchableWithoutFeedback
-          onPress={Keyboard.dismiss}
+          onPress={() => {
+            Keyboard.dismiss();
+            setState({ ...state, insertEmoji: false });
+          }}
           style={{
             flex: 1,
             backgroundColor: colors.BD_DARK_COLOR
@@ -245,17 +267,27 @@ export default function BlogDetails(props: BlogDetailsProp) {
                     animated: true
                   });
                 }}
+                testID="messageIconButton"
               />
             </FloatingMessageButton>
             <ActionContainer>
-              <Eye style={{ position: 'relative', right: 9 }} width="30%" />
-              <NoOfViews>{abbreviateNumber(noOfViews)}</NoOfViews>
+              <Eye
+                testID="eyeIcon"
+                style={{ position: 'relative', right: 9 }}
+                width="30%"
+              />
+              <NoOfViews testID="postDetailViewCounter">
+                {abbreviateNumber(noOfViews)}
+              </NoOfViews>
               <LoveIcon
                 style={{ position: 'relative', right: 10 }}
                 width="30%"
                 height="40%"
+                testID="postDetailLikeIcon"
               />
-              <NoOfLikes>{abbreviateNumber(noOfLikes)}</NoOfLikes>
+              <NoOfLikes testID="postDetailLikeCounter">
+                {abbreviateNumber(noOfLikes)}
+              </NoOfLikes>
             </ActionContainer>
             <Description>{description}</Description>
             <CommentHeader>comment</CommentHeader>
@@ -264,7 +296,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
                 ref.current.commentSectionY = e.nativeEvent.layout.y;
               }}
             >
-              {postState.comments.length ? (
+              {postState.comments.length && connectionState.isConnected ? (
                 postState.comments.map(
                   (comment: CommentInterface, index: number) => (
                     <Comment
@@ -279,6 +311,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
                       commentRef={commentComponentRef =>
                         (ref.current.messageComponentY = commentComponentRef)
                       }
+                      testID={`commentComponent${index}`}
                     />
                   )
                 )
@@ -291,11 +324,23 @@ export default function BlogDetails(props: BlogDetailsProp) {
           </Container>
         </TouchableWithoutFeedback>
       </ScrollView>
+      {state.insertEmoji && (
+        <EmojiSelectorContainer>
+          <EmojiSelector
+            theme={colors.POST_TIP_COLOR}
+            category={Categories.all}
+            onEmojiSelected={emoji => {
+              setState({ ...state, text: state.text + emoji });
+            }}
+          />
+        </EmojiSelectorContainer>
+      )}
       <Message
-        focus={state.focus}
         dispatchMessage={dispatchMessage}
         setNewMessage={setMessage}
         message={state.text}
+        testID="postDetailMessageInput"
+        handleInsertEmoji={handleInsertEmoji}
       />
     </KeyboardAvoidingView>
   );

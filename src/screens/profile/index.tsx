@@ -68,7 +68,7 @@ const SCALED_WIDTH = applyScale(120);
 export default function ProfileScreen(props: ProfileScreenProp) {
   const { colors, fonts } = useThemeContext();
   const {
-    store: { userState },
+    store: { userState, connectionState },
     dispatch
   } = useStoreContext();
 
@@ -94,7 +94,6 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     userProfile: {
       address: user ? user.address : '',
       phone: user ? user.mobileNumber : '',
-      image: user && user.avatar ? user.avatar : 'url',
       imageUri: user && user.avatar ? user.avatar : 'url'
     },
     hasSubmitted: false,
@@ -114,7 +113,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     (async () => {
       if (userState.token) await fetchProfile();
     })();
-  }, [userState.token, user]);
+  }, [userState.token, user, connectionState.isConnected]);
 
   const onHandleChange = (field: string) => (value: string) => {
     setState({
@@ -277,7 +276,6 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       ...state,
       userProfile: {
         ...state.userProfile,
-        image: response,
         imageUri: response.uri
       }
     });

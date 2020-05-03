@@ -69,7 +69,9 @@ export const AppBottomTabNavigator = createMaterialBottomTabNavigator(
       screen: CommunityNavigator,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => {
-          return <CommunityIcon fillColor={tintColor} />;
+          return (
+            <CommunityIcon fillColor={tintColor} testID="CommunityTabIcon" />
+          );
         }
       }
     },

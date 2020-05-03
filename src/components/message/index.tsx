@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeContext } from '../../theme';
 
@@ -12,29 +12,36 @@ import {
 type MessageProps = {
   style?: {};
   testID?: string;
-  focus: boolean;
   dispatchMessage(): void;
   setNewMessage(message: string): void;
   message: string;
+  handleInsertEmoji(status: boolean): void;
 };
 
 export default function Message(props: MessageProps) {
   const { colors } = useThemeContext();
-  const ref = useRef(null);
-  const { testID, focus, dispatchMessage, setNewMessage, message } = props;
+  const [state, setState] = useState({ inputType: 'smile' });
 
-  useEffect(() => {
-    ref.current.focus();
-  }, [focus]);
+  const ref = useRef(null);
+  const {
+    testID,
+    dispatchMessage,
+    setNewMessage,
+    message,
+    handleInsertEmoji
+  } = props;
 
   const onSendMessage = () => {
     dispatchMessage();
     setNewMessage('');
   };
 
-  const handleEmoji = () => {};
-
   const handleChangeText = (message: string) => setNewMessage(message);
+
+  const swapInputType = () => {
+    const inputType = state.inputType === 'smile' ? 'keyboard' : 'smile';
+    setState({ inputType });
+  };
 
   return (
     <Container testID={testID}>
@@ -42,13 +49,22 @@ export default function Message(props: MessageProps) {
         placeholder="Write comment here…"
         onChangeText={handleChangeText}
         defaultValue={message}
-        autoFocus={focus}
+        autoFocus={false}
         ref={inputField => (ref.current = inputField)}
+        onFocus={() => {
+          handleInsertEmoji(false);
+          setState({ ...state, inputType: 'smile' });
+        }}
       />
-      <EmojiContainer onPress={handleEmoji}>
+      <EmojiContainer
+        onPress={() => {
+          handleInsertEmoji(true);
+          swapInputType();
+        }}
+      >
         <FontAwesome5
-          name="smile"
-          size={25}
+          name={state.inputType}
+          size={20}
           color={colors.INACTIVE_ICON_COLOR}
         />
       </EmojiContainer>
@@ -56,7 +72,7 @@ export default function Message(props: MessageProps) {
         <MaterialCommunityIcons
           name="send"
           size={25}
-          color={colors.INACTIVE_ICON_COLOR}
+          color={colors.POST_TIP_COLOR}
         />
       </SendContainer>
     </Container>

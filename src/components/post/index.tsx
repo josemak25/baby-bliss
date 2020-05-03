@@ -41,7 +41,8 @@ export default function Post(post: PostProps) {
     testID,
     width,
     images,
-    handleLikePost
+    handleLikePost,
+    postIndex
   } = post;
 
   const [animation, setAnimation] = useState({
@@ -90,23 +91,24 @@ export default function Post(post: PostProps) {
             width={width}
             height={220}
             onLoad={handleImageLoading}
+            testID="postImage"
           />
         </ContentLoaderContainer>
 
         <DescriptionContainer>
-          <Description numberOfLines={3}>
+          <Description numberOfLines={3} testID="postDescription">
             {description.length > 120
               ? `${description.substring(0, 120)}...`
               : description}
           </Description>
-          <ReadMore>read more...</ReadMore>
+          <ReadMore testID="readMoreText">read more...</ReadMore>
         </DescriptionContainer>
         <ActionContainer>
           <TouchableWithoutFeedback
             testID="like-post-container"
             onPress={startLikeAnimation}
           >
-            <LikeContainer>
+            <LikeContainer testID="likeIcon">
               <LottieView
                 source={require('../../../assets/animations/twitter-heart.json')}
                 style={{
@@ -120,9 +122,9 @@ export default function Post(post: PostProps) {
               />
             </LikeContainer>
           </TouchableWithoutFeedback>
-          <LikeCount>{noOfLikes}</LikeCount>
-          <CommentsIcon />
-          <CommentCount>{noOfViews}</CommentCount>
+          <LikeCount testID="postLikeCounter">{noOfLikes}</LikeCount>
+          <CommentsIcon testID="commentIcon" />
+          <CommentCount testID="postViewCounter">{noOfViews}</CommentCount>
         </ActionContainer>
       </Container>
       <PostDivider />
