@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Ionicons } from '@expo/vector-icons';
 import {
   StatusBar,
   KeyboardAvoidingView,
@@ -18,10 +19,8 @@ import {
   POST_TYPES
 } from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
-import { Ionicons } from '@expo/vector-icons';
 import Header from '../../commons/header';
 import { NavigationInterface } from '../../constants';
-
 import Comment from '../../components/comments';
 import Eye from '../../../assets/icons/eye';
 import LoveIcon from '../../../assets/icons/love';
@@ -150,8 +149,7 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
       ...state,
       commentId,
       actionType,
-      replyToName: `@${userName} `, //this holds reference of the reply name to strip off before dispatching the message
-      text: `@${userName} ` //State that hold the text user is entering
+      replyToName: `@${userName} ` //this holds reference of the reply name to strip off before dispatching the message
     });
   };
 
@@ -392,7 +390,7 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
       <Message
         dispatchMessage={dispatchMessage}
         setNewMessage={setMessage}
-        message={state.text}
+        message={state.replyToName ? `@${state.replyToName} ` : state.text}
         testID="postDetailMessageInput"
         handleInsertEmoji={handleInsertEmoji}
         scrollViewOnFocus={() =>

@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import Animated from 'react-native-reanimated';
 import { Ionicons } from '@expo/vector-icons';
+
 import Header from '../../commons/header';
 import { NavigationInterface } from '../../constants';
 import { useThemeContext } from '../../theme';
@@ -154,8 +155,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
       ...state,
       commentId,
       actionType,
-      replyToName: `@${userName} `, //this holds reference of the reply name to strip off before dispatching the message
-      text: `@${userName} ` //State that hold the text user is entering
+      replyToName: `@${userName} ` //this holds reference of the reply name to strip off before dispatching the message
     });
   };
 
