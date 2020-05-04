@@ -6,12 +6,11 @@ import {
   TouchableWithoutFeedback,
   Keyboard
 } from 'react-native';
-
 import { Ionicons } from '@expo/vector-icons';
+
 import Header from '../../commons/header';
 import { NavigationInterface } from '../../constants';
 import { useThemeContext } from '../../theme';
-
 import Comment from '../../components/comments';
 import MessageIcon from '../../../assets/icons/message';
 import Eye from '../../../assets/icons/eye';
@@ -130,8 +129,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
       ...state,
       commentId,
       actionType,
-      replyToName: `@${userName} `, //this holds reference of the reply name to strip off before dispatching the message
-      text: `@${userName} ` //State that hold the text user is entering
+      replyToName: `@${userName} ` //this holds reference of the reply name to strip off before dispatching the message
     });
   };
 
