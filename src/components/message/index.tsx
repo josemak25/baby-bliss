@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons';
-import { useThemeContext } from '../../theme';
 
+import { useThemeContext } from '../../theme';
 import {
   Container,
   EmojiContainer,
@@ -15,12 +15,12 @@ type MessageProps = {
   dispatchMessage(): void;
   setNewMessage(message: string): void;
   message: string;
-  handleInsertEmoji(status: boolean): void;
+  isInputEmoji(status: boolean): void;
+  inputType: string;
 };
 
 export default function Message(props: MessageProps) {
   const { colors } = useThemeContext();
-  const [state, setState] = useState({ inputType: 'smile' });
 
   const ref = useRef(null);
   const {
@@ -28,7 +28,8 @@ export default function Message(props: MessageProps) {
     dispatchMessage,
     setNewMessage,
     message,
-    handleInsertEmoji
+    isInputEmoji,
+    inputType
   } = props;
 
   const onSendMessage = () => {
@@ -37,11 +38,6 @@ export default function Message(props: MessageProps) {
   };
 
   const handleChangeText = (message: string) => setNewMessage(message);
-
-  const swapInputType = () => {
-    const inputType = state.inputType === 'smile' ? 'keyboard' : 'smile';
-    setState({ inputType });
-  };
 
   return (
     <Container testID={testID}>
@@ -52,18 +48,16 @@ export default function Message(props: MessageProps) {
         autoFocus={false}
         ref={inputField => (ref.current = inputField)}
         onFocus={() => {
-          handleInsertEmoji(false);
-          setState({ ...state, inputType: 'smile' });
+          isInputEmoji(false);
         }}
       />
       <EmojiContainer
         onPress={() => {
-          handleInsertEmoji(true);
-          swapInputType();
+          isInputEmoji(true);
         }}
       >
         <FontAwesome5
-          name={state.inputType}
+          name={inputType}
           size={20}
           color={colors.INACTIVE_ICON_COLOR}
         />

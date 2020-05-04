@@ -87,7 +87,8 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
     actionType: null,
     replyToName: '',
     text: '',
-    insertEmoji: false
+    insertEmoji: false,
+    inputType: 'smile'
   });
 
   const ref = useRef({
@@ -183,12 +184,15 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
     });
   };
 
-  const handleInsertEmoji = (status: boolean) => {
-    if (status && state.insertEmoji) {
-      return setState({ ...state, insertEmoji: !state.insertEmoji });
+  const isInputEmoji = (status: boolean) => {
+    const inputType = state.inputType === 'smile' ? 'keyboard' : 'smile';
+
+    if (status) {
+      setState({ ...state, insertEmoji: !state.insertEmoji, inputType });
+      return;
     }
 
-    setState({ ...state, insertEmoji: status });
+    setState({ ...state, insertEmoji: status, inputType: 'smile' });
   };
 
   useEffect(() => {
@@ -311,7 +315,8 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
         setNewMessage={setMessage}
         message={state.replyToName ? `@${state.replyToName} ` : state.text}
         testID="postDetailMessageInput"
-        handleInsertEmoji={handleInsertEmoji}
+        isInputEmoji={isInputEmoji}
+        inputType={state.inputType}
       />
     </KeyboardAvoidingView>
   );
