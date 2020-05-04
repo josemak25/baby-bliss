@@ -359,10 +359,6 @@ export default function BlogDetails(props: BlogDetailsProp) {
             Keyboard.dismiss();
             setState({ ...state, insertEmoji: false });
           }}
-          style={{
-            flex: 1,
-            backgroundColor: colors.BD_DARK_COLOR
-          }}
         >
           <Container testID="blog-details">
             <ActionContainer>
