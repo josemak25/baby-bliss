@@ -77,7 +77,7 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
   const { colors, fonts } = useThemeContext();
 
   const {
-    store: { postState, userState, connectionState },
+    store: { postState, userState },
     dispatch
   } = useStoreContext();
 
@@ -102,7 +102,8 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
     text: '',
     insertEmoji: false,
     displayHeader: false,
-    scrollY: new Animated.Value(0)
+    scrollY: new Animated.Value(0),
+    inputType: 'smile'
   });
 
   const ref = useRef({
@@ -158,12 +159,13 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
     let { actionType } = state;
 
     actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
+    const content = state.text.replace(state.replyToName, '');
+
+    if (!content) {
+      return;
+    }
     if (state.replyToName) {
-      message = {
-        ...message,
-        content: state.text.replace(state.replyToName, ''),
-        commentId: state.commentId
-      };
+      message = { ...message, content, commentId: state.commentId };
     } else {
       message = { ...message, content: state.text };
     }
@@ -193,12 +195,15 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
     });
   };
 
-  const handleInsertEmoji = (status: boolean) => {
-    if (status && state.insertEmoji) {
-      return setState({ ...state, insertEmoji: !state.insertEmoji });
+  const isInputEmoji = (status: boolean) => {
+    const inputType = state.inputType === 'smile' ? 'keyboard' : 'smile';
+
+    if (status) {
+      setState({ ...state, insertEmoji: !state.insertEmoji, inputType });
+      return;
     }
 
-    setState({ ...state, insertEmoji: status });
+    setState({ ...state, insertEmoji: status, inputType: 'smile' });
   };
 
   const HEADER_HEIGHT = Animated.interpolate(state.scrollY, {
@@ -349,7 +354,7 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
             <Description>{description}</Description>
             <CommentHeader>comment</CommentHeader>
             <CommentsContainer>
-              {postState.comments.length && connectionState.isConnected ? (
+              {postState.comments.length ? (
                 postState.comments.map(
                   (comment: CommentInterface, index: number) => (
                     <Comment
@@ -392,10 +397,11 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
         setNewMessage={setMessage}
         message={state.replyToName ? `@${state.replyToName} ` : state.text}
         testID="postDetailMessageInput"
-        handleInsertEmoji={handleInsertEmoji}
         scrollViewOnFocus={() =>
           ref.current.scrollViewRef.getNode().scrollToEnd()
         }
+        isInputEmoji={isInputEmoji}
+        inputType={state.inputType}
       />
     </KeyboardAvoidingView>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Ionicons } from '@expo/vector-icons';
 import {
   StatusBar,
   KeyboardAvoidingView,
@@ -6,7 +7,6 @@ import {
   Keyboard
 } from 'react-native';
 import Animated from 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
 
 import Header from '../../commons/header';
 import { NavigationInterface } from '../../constants';
@@ -99,7 +99,6 @@ export default function BlogDetails(props: BlogDetailsProp) {
   } = post;
 
   const [state, setState] = useState({
-    focus: false,
     message: '',
     commentId: null,
     actionType: null,
@@ -107,7 +106,8 @@ export default function BlogDetails(props: BlogDetailsProp) {
     text: '',
     insertEmoji: false,
     displayHeader: false,
-    scrollY: new Animated.Value(0)
+    scrollY: new Animated.Value(0),
+    inputType: 'smile'
   });
 
   const ref = useRef({
@@ -198,12 +198,15 @@ export default function BlogDetails(props: BlogDetailsProp) {
     });
   };
 
-  const handleInsertEmoji = (status: boolean) => {
-    if (status && state.insertEmoji) {
-      return setState({ ...state, insertEmoji: !state.insertEmoji });
+  const isInputEmoji = (status: boolean) => {
+    const inputType = state.inputType === 'smile' ? 'keyboard' : 'smile';
+
+    if (status) {
+      setState({ ...state, insertEmoji: !state.insertEmoji, inputType });
+      return;
     }
 
-    setState({ ...state, insertEmoji: status });
+    setState({ ...state, insertEmoji: status, inputType: 'smile' });
   };
 
   const HEADER_HEIGHT = Animated.interpolate(state.scrollY, {
@@ -356,8 +359,9 @@ export default function BlogDetails(props: BlogDetailsProp) {
       >
         <TouchableWithoutFeedback
           onPress={() => {
+            //Disable the emoji's keyboard when clicked outside
             Keyboard.dismiss();
-            setState({ ...state, insertEmoji: false });
+            setState({ ...state, insertEmoji: false, inputType: 'smile' });
           }}
         >
           <Container testID="blog-details">
@@ -431,10 +435,11 @@ export default function BlogDetails(props: BlogDetailsProp) {
         setNewMessage={setMessage}
         message={state.text}
         testID="postDetailMessageInput"
-        handleInsertEmoji={handleInsertEmoji}
         scrollViewOnFocus={() =>
           ref.current.scrollViewRef.getNode().scrollToEnd()
         }
+        isInputEmoji={isInputEmoji}
+        inputType={state.inputType}
       />
     </KeyboardAvoidingView>
   );
