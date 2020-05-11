@@ -40,13 +40,13 @@ export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
 
   const [state, setState] = useState({ email: '', canShow: true });
 
-  const onHandleChange = (value: string) =>
+  const onHandleChange = (value: string) => {
     setState({ ...state, email: value });
+  };
 
   useEffect(() => {
     if (userState.errorMessage && !state.canShow) {
-      showSnackbar(colors.LIKE_POST_COLOR, userState.errorMessage);
-      return;
+      return showSnackbar(colors.LIKE_POST_COLOR, userState.errorMessage);
     }
   }, [userState.errorMessage]);
 
@@ -54,8 +54,7 @@ export default function ForgotPasswordScreen({ navigation }: SplashScreenProp) {
     //validate the email address before sending this form.
     const status = validateFormFields('email', state.email);
     if (status) {
-      showSnackbar(colors.LIKE_POST_COLOR, status);
-      return;
+      return showSnackbar(colors.LIKE_POST_COLOR, status);
     }
     userActions(USER_ACTION_TYPES.FORGOT_PASSWORD)(dispatch, {
       email: state.email

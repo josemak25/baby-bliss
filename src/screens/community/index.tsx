@@ -14,6 +14,7 @@ import {
   CATEGORY_ACTION_TYPES,
   POST_CATEGORY_TYPES
 } from '../../store/category/types';
+
 import { LogoContainer, Logo, AskQuestion } from './styles';
 
 interface CommunityScreenProp extends NavigationInterface {
@@ -24,7 +25,7 @@ export default function CommunityScreen(props: CommunityScreenProp) {
   const { colors, fonts } = useThemeContext();
 
   const {
-    store: { categoryState, userState, connectionState },
+    store: { categoryState, userState },
     dispatch
   } = useStoreContext();
 
@@ -48,7 +49,7 @@ export default function CommunityScreen(props: CommunityScreenProp) {
       dispatch,
       userState.token
     );
-  }, [state.refresh, connectionState.isConnected]);
+  }, [state.refresh]);
 
   const onRefresh = () => {
     setState({ ...state, refresh: !state.refresh });

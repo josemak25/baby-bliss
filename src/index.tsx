@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Router from './router';
 import ThemeProvider from './theme';
-import { useStoreContext } from './store';
+import { useNetInfo } from '@react-native-community/netinfo';
 import showSnackbar from './commons/snackbar';
 
 export default function AppRouter() {
-  const {
-    store: { connectionState }
-  } = useStoreContext();
-  const [state, setState] = useState({ isFirstLaunch: true });
+  const { isConnected, isInternetReachable } = useNetInfo();
 
-  useEffect(() => {
-    if (state.isFirstLaunch) {
-      return setState({ isFirstLaunch: false });
-    }
-    if (connectionState.isConnected) {
-      showSnackbar('#50AE7C', 'Connection is back!');
-    } else {
-      showSnackbar('#F42850', 'No Internet Connection!', true);
-    }
-  }, [connectionState.isConnected]);
+  switch (true) {
+    case isConnected && !isInternetReachable:
+      showSnackbar('#F42850', 'Internet is not reachable!');
+      break;
+
+    case !isConnected && !isInternetReachable:
+      showSnackbar('#F42850', 'You are not connected to Internet!', true);
+      break;
+
+    default:
+      showSnackbar('#50AE7C', 'Internet is back!');
+  }
 
   return (
     <ThemeProvider>

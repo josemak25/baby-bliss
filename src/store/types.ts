@@ -6,7 +6,6 @@ import { userInitialState } from './user/reducer';
 import { gridInitialState } from './grid/reducer';
 import { categoryInitialState } from './category/reducer';
 import { interestInitialState } from './interest/reducer';
-import { connectionInitialState } from './connection/reducer';
 
 // all reducers initial state interface
 import { UserInitialState } from './user/types';
@@ -14,7 +13,6 @@ import { ScreenGridStateInterface } from './grid/types';
 import { PostInitialState } from './posts/types';
 import { CategoryInitialState } from './category/types';
 import { InterestInitialState } from './interest/types';
-import { ConnectionStateInterface } from './connection/types';
 
 // We define our type for the context properties right here
 interface ContextProps {
@@ -24,7 +22,6 @@ interface ContextProps {
     categoryState: CategoryInitialState;
     interestState: InterestInitialState;
     grid: ScreenGridStateInterface;
-    connectionState: ConnectionStateInterface;
   };
   dispatch?: any;
 }
@@ -35,8 +32,7 @@ const StoreContext = createContext<ContextProps>({
     postState: postInitialState,
     categoryState: categoryInitialState,
     interestState: interestInitialState,
-    grid: gridInitialState,
-    connectionState: connectionInitialState
+    grid: gridInitialState
   }
 });
 

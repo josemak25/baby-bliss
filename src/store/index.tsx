@@ -8,9 +8,6 @@ import userReducer, { userInitialState } from './user/reducer';
 import gridSizeReducer, { gridInitialState } from './grid/reducer';
 import postCategoryReducer, { categoryInitialState } from './category/reducer';
 import interestReducer, { interestInitialState } from './interest/reducer';
-import connectionReducer, {
-  connectionInitialState
-} from './connection/reducer';
 
 const StoreProvider: FunctionComponent = ({ children }) => {
   const [store, dispatch] = useCombinedReducers({
@@ -18,8 +15,7 @@ const StoreProvider: FunctionComponent = ({ children }) => {
     postState: useReducer(postsReducer, postInitialState),
     grid: useReducer(gridSizeReducer, gridInitialState),
     categoryState: useReducer(postCategoryReducer, categoryInitialState),
-    interestState: useReducer(interestReducer, interestInitialState),
-    connectionState: useReducer(connectionReducer, connectionInitialState)
+    interestState: useReducer(interestReducer, interestInitialState)
   });
 
   return (

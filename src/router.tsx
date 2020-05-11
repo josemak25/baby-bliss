@@ -1,10 +1,9 @@
 import React from 'react';
-
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-
 import { customHeaderStyle, navigationBackButton } from './constants';
+
 import Screens from './screens';
 import HomeIcon from '../assets/icons/home';
 import UserIcon from '../assets/icons/user';
