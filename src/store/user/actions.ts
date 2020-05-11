@@ -6,7 +6,6 @@ import {
   UserResponseInterface,
   USER_ACTION_TYPES
 } from './types';
-import { CONNECTION_TYPES } from '../connection/types';
 
 const actionStarted = () => ({ type: USER_TYPES.STARTED });
 
@@ -51,15 +50,11 @@ export default function userActions(type: string) {
           });
           const response: UserResponseInterface = await request.json();
           if (response.statusCode === 200) {
-            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return dispatch(loginSuccess(response));
           }
 
           dispatch(onError(response.message));
         } catch (error) {
-          if (error.message === 'Network request failed') {
-            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
-          }
           dispatch(onError(error));
         }
         break;
@@ -75,14 +70,10 @@ export default function userActions(type: string) {
           const response: UserResponseInterface = await request.json();
 
           if (response.statusCode === 200) {
-            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return dispatch(registrationSuccess(response));
           }
           dispatch(onError(response.message));
         } catch (error) {
-          if (error.message === 'Network request failed') {
-            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
-          }
           dispatch(onError(error));
         }
         break;
@@ -101,15 +92,11 @@ export default function userActions(type: string) {
           const response: UserResponseInterface = await request.json();
 
           if (response.statusCode === 200) {
-            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return dispatch(profileSetupSuccess(response));
           }
 
           dispatch(onError(response.message));
         } catch (error) {
-          if (error.message === 'Network request failed') {
-            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
-          }
           dispatch(onError(error));
         }
         break;
@@ -129,15 +116,11 @@ export default function userActions(type: string) {
           const response: UserResponseInterface = await request.json();
 
           if (response.statusCode === 200) {
-            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return dispatch(profileSetupSuccess(response));
           }
 
           dispatch(onError(response.message));
         } catch (error) {
-          if (error.message === 'Network request failed') {
-            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
-          }
           dispatch(onError(error));
         }
         break;
@@ -157,14 +140,10 @@ export default function userActions(type: string) {
           } = await request.json();
 
           if (response.statusCode === 200) {
-            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return dispatch(forgotPasswordSuccess());
           }
           dispatch(onError(response.message));
         } catch (error) {
-          if (error.message === 'Network request failed') {
-            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
-          }
           dispatch(onError(error));
         }
         break;

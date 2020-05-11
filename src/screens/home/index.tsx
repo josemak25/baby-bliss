@@ -9,6 +9,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Post from '../../components/post';
 import SearchIcon from '../../../assets/icons/search';
 import { NavigationInterface } from '../../constants';
+
 import {
   POST_ACTION_TYPES,
   PostInterface,
@@ -31,7 +32,7 @@ interface HomeScreenProp extends NavigationInterface {
 
 export default function HomeScreen(props: HomeScreenProp) {
   const {
-    store: { grid, postState, userState, connectionState },
+    store: { grid, postState, userState },
     dispatch
   } = useStoreContext();
 
@@ -40,7 +41,7 @@ export default function HomeScreen(props: HomeScreenProp) {
 
   useEffect(() => {
     postsActions(POST_ACTION_TYPES.LOAD_BLOG_POSTS)(dispatch, userState.token);
-  }, [userState.token, state.refresh, connectionState.isConnected]);
+  }, [userState.token, state.refresh]);
 
   const onEndReached = () => {
     postsActions(POST_ACTION_TYPES.LOAD_BLOG_POSTS)(dispatch, null);
@@ -119,8 +120,6 @@ export default function HomeScreen(props: HomeScreenProp) {
             onRefresh={onRefresh}
             testID="postList"
           />
-        ) : connectionState.isConnected ? (
-          <Loader />
         ) : postState.isLoading ? (
           <Loader />
         ) : (

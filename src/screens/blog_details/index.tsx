@@ -63,8 +63,9 @@ type messageType = {
 
 export default function BlogDetails(props: BlogDetailsProp) {
   const { colors } = useThemeContext();
+
   const {
-    store: { postState, userState, connectionState },
+    store: { postState, userState },
     dispatch
   } = useStoreContext();
 
@@ -99,12 +100,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
   });
 
   useEffect(() => {
-    if (!state.text) {
-      setState({
-        ...state,
-        replyToName: ''
-      });
-    }
+    if (!state.text) setState({ ...state, replyToName: '' });
 
     if (ref.current.canScrollDown && !postState.isLoading) {
       ref.current.scrollViewRef.scrollTo({
@@ -136,16 +132,13 @@ export default function BlogDetails(props: BlogDetailsProp) {
   };
 
   const dispatchMessage = () => {
-    let message: messageType = {
-      authToken: userState.token,
-      id
-    };
+    let message: messageType = { authToken: userState.token, id };
+
     let { actionType } = state;
+
     actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
     const content = state.text.replace(state.replyToName, '');
-    if (!content) {
-      return;
-    }
+    if (!content) return;
 
     if (state.replyToName) {
       message = { ...message, content, commentId: state.commentId };
@@ -157,9 +150,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
     ref.current.canScrollDown = true;
   };
 
-  const setMessage = (message: string) => {
-    setState({ ...state, text: message });
-  };
+  const setMessage = (message: string) => setState({ ...state, text: message });
 
   const handleLikeComment = (
     id: string,
@@ -168,10 +159,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
   ) => {
     dispatch({
       type: POST_TYPES.LIKE_COMMENT,
-      payload: {
-        commentIndex,
-        userId: id
-      }
+      payload: { commentIndex, userId: id }
     });
 
     postsActions(POST_ACTION_TYPES.LIKE_COMMENT)(dispatch, {
@@ -192,9 +180,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
   };
 
   useEffect(() => {
-    if (state.insertEmoji) {
-      Keyboard.dismiss();
-    }
+    if (state.insertEmoji) Keyboard.dismiss();
   }, [state.insertEmoji]);
 
   return (
@@ -296,7 +282,7 @@ export default function BlogDetails(props: BlogDetailsProp) {
                 ref.current.commentSectionY = e.nativeEvent.layout.y;
               }}
             >
-              {postState.comments.length && connectionState.isConnected ? (
+              {postState.comments.length ? (
                 postState.comments.map(
                   (comment: CommentInterface, index: number) => (
                     <Comment

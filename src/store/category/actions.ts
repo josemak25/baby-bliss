@@ -8,7 +8,6 @@ import {
   LikeOrUnlikePostResponse,
   QuestionResponse
 } from './types';
-import { CONNECTION_TYPES } from '../connection/types';
 
 const getPostCategoryStarted = () => ({
   type: POST_CATEGORY_TYPES.GET_POST_CATEGORY_STARTED
@@ -54,11 +53,7 @@ export default function postCategoryActions(type: string) {
             dispatchPayload[categoryId] = response.payload;
           }
           dispatch(fetchCategoriesPostSuccess(dispatchPayload));
-          dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
         } catch (error) {
-          if (error.message === 'Network request failed') {
-            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
-          }
           dispatch(getPostCategoryError(error));
         }
         break;
@@ -72,15 +67,10 @@ export default function postCategoryActions(type: string) {
           });
           const response: LikeOrUnlikePostResponse = await request.json();
           if (response.statusCode === 200) {
-            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return;
           }
           dispatch(getPostCategoryError(response.message));
         } catch (error) {
-          if (error.message === 'Network request failed') {
-            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
-          }
-
           dispatch(getPostCategoryError(error));
         }
         break;
@@ -96,14 +86,10 @@ export default function postCategoryActions(type: string) {
           const response: QuestionResponse = await request.json();
 
           if (response.statusCode === 200) {
-            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return dispatch(postQuestion(response.payload));
           }
           dispatch(getPostCategoryError(response.message));
         } catch (error) {
-          if (error.message === 'Network request failed') {
-            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
-          }
           dispatch(getPostCategoryError(error));
         }
         break;
@@ -114,14 +100,10 @@ export default function postCategoryActions(type: string) {
           const request = await API.get(`/posts`, payload, '');
           const response: ResponseInterface = await request.json();
           if (response.statusCode === 200) {
-            dispatch({ type: CONNECTION_TYPES.YES_CONNECTION });
             return dispatch(loadPostSuccess(response.payload));
           }
           dispatch(getPostCategoryError(response.message));
         } catch (error) {
-          if (error.message === 'Network request failed') {
-            dispatch({ type: CONNECTION_TYPES.NO_CONNECTION });
-          }
           dispatch(getPostCategoryError(error));
         }
         break;

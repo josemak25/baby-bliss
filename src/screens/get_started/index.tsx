@@ -75,9 +75,7 @@ export default function GetStarted(props: GetStartedProp) {
               textTransform: 'capitalize'
             }}
             buttonStyle={[
-              {
-                borderRadius: 2
-              },
+              { borderRadius: 2 },
               boxShadow({
                 elevation: 0.1,
                 color: 'rgba(175, 163, 180, 0.45)',
