@@ -1,4 +1,7 @@
 import React, { useState, Fragment, useEffect } from 'react';
+import Animated, { Easing } from 'react-native-reanimated';
+import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 import {
   SafeAreaView,
   ScrollView,
@@ -8,9 +11,6 @@ import {
   AsyncStorage,
   ActivityIndicator
 } from 'react-native';
-import Animated, { Easing } from 'react-native-reanimated';
-import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import * as ImagePicker from 'expo-image-picker';
 import { NavigationInterface, STORE_USER_PROFILE } from '../../constants';
 import { useThemeContext } from '../../theme';
 
@@ -68,11 +68,16 @@ const SCALED_WIDTH = applyScale(120);
 export default function ProfileScreen(props: ProfileScreenProp) {
   const { colors, fonts } = useThemeContext();
   const {
-    store: { userState, connectionState },
+    store: { userState },
     dispatch
   } = useStoreContext();
 
   const { user } = userState;
+  const avatar = {
+    fileName: '',
+    type: '',
+    uri: user && user.avatar ? user.avatar : 'url'
+  };
 
   const [state, setState] = useState({
     animateContentHeightOne: new Animated.Value(applyScale(70)),
@@ -97,7 +102,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     userProfile: {
       address: user ? user.address : '',
       phone: user ? user.mobileNumber : '',
-      imageUri: user && user.avatar ? user.avatar : 'url'
+      avatar
     }
   });
 
@@ -114,7 +119,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     (async () => {
       if (userState.token) await fetchProfile();
     })();
-  }, [userState.token, user, connectionState.isConnected]);
+  }, [userState.token, user]);
 
   const onHandleChange = (field: string) => (value: string) => {
     setState({
@@ -148,11 +153,6 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     }
 
     const { phone, address } = state.userProfile;
-    // const payload = createFormData(state.userProfile.image, {
-    //   mobileNumber: phone,
-    //   address
-    // });
-    // console.log(payload);
 
     userActions(USER_ACTION_TYPES.UPDATE_PROFILE)(dispatch, {
       payload: { mobileNumber: phone, address },
@@ -275,7 +275,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       ...state,
       userProfile: {
         ...state.userProfile,
-        imageUri: response.uri
+        avatar: { ...state.userProfile.avatar, uri: response.uri }
       }
     });
   };
@@ -319,7 +319,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
             />
             <ProfileImageContainer>
               <ResponsiveImage
-                imageUrl={state.userProfile.imageUri}
+                imageUrl={state.userProfile.avatar.uri}
                 height={SCALED_WIDTH}
                 width={SCALED_WIDTH}
                 style={{ borderRadius: 120 / 2 }}

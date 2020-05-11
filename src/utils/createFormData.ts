@@ -22,7 +22,7 @@ export default function createFormData(
   if (!photo) return;
   const data = new FormData();
 
-  data.append('images', {
+  data.append('avatar', {
     name: photo.fileName,
     type: photo.type,
     uri: photo.uri
