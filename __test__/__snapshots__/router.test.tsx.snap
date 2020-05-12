@@ -76,7 +76,6 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                 style={
                   Object {
                     "flex": 1,
-                    "overflow": "hidden",
                   }
                 }
               >
@@ -162,7 +161,7 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                           pointerEvents="none"
                           style={
                             Object {
-                              "backgroundColor": "#fff",
+                              "backgroundColor": "rgb(242, 242, 242)",
                               "bottom": 0,
                               "left": 0,
                               "position": "absolute",
