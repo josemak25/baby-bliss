@@ -91,14 +91,14 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       showInputsModal: true
     },
     selected: '',
+    hasSubmitted: false,
+    noOfComments: 0,
+    noOfPosts: 0,
     userProfile: {
       address: user ? user.address : '',
       phone: user ? user.mobileNumber : '',
       imageUri: user && user.avatar ? user.avatar : 'url'
-    },
-    hasSubmitted: false,
-    noOfComments: 0,
-    noOfPosts: 0
+    }
   });
 
   useEffect(() => {
@@ -109,6 +109,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
         showSnackbar(colors.POST_TIP_COLOR, 'Profile updated successfully!');
       }
     })();
+
     //fetch user data from the server
     (async () => {
       if (userState.token) await fetchProfile();
@@ -134,16 +135,16 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     //validate the phone number before sending this form.
     const phoneNotValid = validateFormFields('phone', state.userProfile.phone);
     if (phoneNotValid) {
-      showSnackbar(colors.LIKE_POST_COLOR, phoneNotValid);
-      return;
+      return showSnackbar(colors.LIKE_POST_COLOR, phoneNotValid);
     }
+
     const addressNotValid = validateFormFields(
       'address',
       state.userProfile.address
     );
+
     if (addressNotValid) {
-      showSnackbar(colors.LIKE_POST_COLOR, addressNotValid);
-      return;
+      return showSnackbar(colors.LIKE_POST_COLOR, addressNotValid);
     }
 
     const { phone, address } = state.userProfile;
@@ -158,10 +159,8 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       token: userState.token,
       id: user.id
     });
-    setState({
-      ...state,
-      hasSubmitted: true
-    });
+
+    setState({ ...state, hasSubmitted: true });
   };
 
   const handleLogout = async () => {
