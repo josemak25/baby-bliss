@@ -112,8 +112,6 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
     //validate the form  for empty fields before sending this form.
     for (let key in state.question) {
       if (!state.question[key] && key !== 'image') {
-        console.log(key);
-
         showSnackbar(
           colors.LIKE_POST_COLOR,
           'Please some entries are required!'

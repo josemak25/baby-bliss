@@ -60,8 +60,6 @@ export default function PageOne({ handleNavigation, handleChange, profile }) {
     });
   };
 
-  console.log(profile.birthDueDate);
-
   const handleDate = (date: Date | null) => {
     setTimeout(handleNavigation, 500);
     showDatePicker();
