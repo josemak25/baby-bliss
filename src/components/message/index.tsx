@@ -51,7 +51,6 @@ export default function Message(props: MessageProps) {
         ref={inputField => (ref.current = inputField)}
         onFocus={() => {
           scrollViewOnFocus();
-          setState({ ...state, inputType: 'smile' });
           isInputEmoji(false);
         }}
       />
