@@ -235,18 +235,39 @@ exports[`TEST APP BOTTOM TAB NAVIGATOR COMPONENT(<AppBottomTabNavigator/>) rende
                                     ]
                                   }
                                 >
-                                  <ActivityIndicator
-                                    animating={true}
-                                    color="#50AE7C"
-                                    hidesWhenStopped={true}
-                                    size="large"
+                                  <View
                                     style={
-                                      Object {
-                                        "position": "absolute",
-                                        "top": 100,
-                                      }
+                                      Array [
+                                        Object {
+                                          "alignItems": "center",
+                                          "flexBasis": 0,
+                                          "flexGrow": 1,
+                                          "flexShrink": 1,
+                                          "justifyContent": "center",
+                                          "paddingBottom": 20,
+                                          "paddingLeft": 20,
+                                          "paddingRight": 20,
+                                          "paddingTop": 20,
+                                        },
+                                      ]
                                     }
-                                  />
+                                  >
+                                    <Text
+                                      style={
+                                        Array [
+                                          Object {
+                                            "color": "#68696F",
+                                            "fontFamily": "montserrat-semi-bold",
+                                            "fontSize": 12,
+                                            "textAlign": "center",
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Tap to refresh
+                                    </Text>
+                                    <Text />
+                                  </View>
                                 </View>
                               </RCTSafeAreaView>
                             </View>
