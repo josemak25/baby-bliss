@@ -1,7 +1,10 @@
 import React, { FunctionComponent, useEffect } from 'react';
+import Animated from 'react-native-reanimated';
 import { useHeaderHeight } from 'react-navigation-stack';
 
 import { Container } from './styles';
+
+const AnimatedContainer = Animated.createAnimatedComponent(Container);
 
 type HeaderProps = {
   testID?: string;
@@ -21,9 +24,9 @@ const Header: FunctionComponent<HeaderProps> = ({
   }, []);
 
   return (
-    <Container style={[{ height: HEADER }, style]} testID={testID}>
+    <AnimatedContainer style={[{ height: HEADER }, style]} testID={testID}>
       {children}
-    </Container>
+    </AnimatedContainer>
   );
 };
 
