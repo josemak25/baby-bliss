@@ -1,5 +1,4 @@
 import { ResponseInterface, PostInterface } from '../posts/types';
-
 /*
  **************************************************************
  ****************** POST CATEGORY TYPES ***********************
