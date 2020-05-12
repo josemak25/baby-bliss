@@ -16,6 +16,7 @@ type MessageProps = {
   setNewMessage(message: string): void;
   message: string;
   handleInsertEmoji(status: boolean): void;
+  scrollViewOnFocus(): void;
 };
 
 export default function Message(props: MessageProps) {
@@ -28,7 +29,8 @@ export default function Message(props: MessageProps) {
     dispatchMessage,
     setNewMessage,
     message,
-    handleInsertEmoji
+    handleInsertEmoji,
+    scrollViewOnFocus
   } = props;
 
   const onSendMessage = () => {
@@ -52,6 +54,7 @@ export default function Message(props: MessageProps) {
         autoFocus={false}
         ref={inputField => (ref.current = inputField)}
         onFocus={() => {
+          scrollViewOnFocus();
           handleInsertEmoji(false);
           setState({ ...state, inputType: 'smile' });
         }}
