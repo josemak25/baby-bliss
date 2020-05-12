@@ -17,7 +17,7 @@ export default function AppRouter() {
       break;
 
     default:
-      showSnackbar('#50AE7C', 'Internet is back!');
+      break;
   }
 
   return (
