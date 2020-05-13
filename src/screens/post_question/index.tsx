@@ -71,7 +71,7 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
       !categoryState.error &&
       !categoryState.isLoading
     ) {
-      showSnackbar(colors.POST_TIP_COLOR, 'Profile updated successfully!');
+      showSnackbar(colors.POST_TIP_COLOR, 'Question uploaded successfully!');
       setState({
         ...state,
         question: {
