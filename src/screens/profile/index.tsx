@@ -1,4 +1,7 @@
 import React, { useState, Fragment, useEffect } from 'react';
+import Animated, { Easing } from 'react-native-reanimated';
+import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
 import {
   SafeAreaView,
   ScrollView,
@@ -8,9 +11,6 @@ import {
   AsyncStorage,
   ActivityIndicator
 } from 'react-native';
-import Animated, { Easing } from 'react-native-reanimated';
-import { Entypo, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import * as ImagePicker from 'expo-image-picker';
 import { NavigationInterface, STORE_USER_PROFILE } from '../../constants';
 import { useThemeContext } from '../../theme';
 
@@ -68,11 +68,16 @@ const SCALED_WIDTH = applyScale(120);
 export default function ProfileScreen(props: ProfileScreenProp) {
   const { colors, fonts } = useThemeContext();
   const {
-    store: { userState, connectionState },
+    store: { userState },
     dispatch
   } = useStoreContext();
 
   const { user } = userState;
+  const avatar = {
+    fileName: '',
+    type: '',
+    uri: user && user.avatar ? user.avatar : 'url'
+  };
 
   const [state, setState] = useState({
     animateContentHeightOne: new Animated.Value(applyScale(70)),
@@ -91,14 +96,14 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       showInputsModal: true
     },
     selected: '',
+    hasSubmitted: false,
+    noOfComments: 0,
+    noOfPosts: 0,
     userProfile: {
       address: user ? user.address : '',
       phone: user ? user.mobileNumber : '',
-      imageUri: user && user.avatar ? user.avatar : 'url'
-    },
-    hasSubmitted: false,
-    noOfComments: 0,
-    noOfPosts: 0
+      avatar
+    }
   });
 
   useEffect(() => {
@@ -109,11 +114,12 @@ export default function ProfileScreen(props: ProfileScreenProp) {
         showSnackbar(colors.POST_TIP_COLOR, 'Profile updated successfully!');
       }
     })();
+
     //fetch user data from the server
     (async () => {
       if (userState.token) await fetchProfile();
     })();
-  }, [userState.token, user, connectionState.isConnected]);
+  }, [userState.token, user]);
 
   const onHandleChange = (field: string) => (value: string) => {
     setState({
@@ -134,34 +140,27 @@ export default function ProfileScreen(props: ProfileScreenProp) {
     //validate the phone number before sending this form.
     const phoneNotValid = validateFormFields('phone', state.userProfile.phone);
     if (phoneNotValid) {
-      showSnackbar(colors.LIKE_POST_COLOR, phoneNotValid);
-      return;
+      return showSnackbar(colors.LIKE_POST_COLOR, phoneNotValid);
     }
+
     const addressNotValid = validateFormFields(
       'address',
       state.userProfile.address
     );
+
     if (addressNotValid) {
-      showSnackbar(colors.LIKE_POST_COLOR, addressNotValid);
-      return;
+      return showSnackbar(colors.LIKE_POST_COLOR, addressNotValid);
     }
 
     const { phone, address } = state.userProfile;
-    // const payload = createFormData(state.userProfile.image, {
-    //   mobileNumber: phone,
-    //   address
-    // });
-    // console.log(payload);
 
     userActions(USER_ACTION_TYPES.UPDATE_PROFILE)(dispatch, {
       payload: { mobileNumber: phone, address },
       token: userState.token,
       id: user.id
     });
-    setState({
-      ...state,
-      hasSubmitted: true
-    });
+
+    setState({ ...state, hasSubmitted: true });
   };
 
   const handleLogout = async () => {
@@ -276,7 +275,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
       ...state,
       userProfile: {
         ...state.userProfile,
-        imageUri: response.uri
+        avatar: { ...state.userProfile.avatar, uri: response.uri }
       }
     });
   };
@@ -320,7 +319,7 @@ export default function ProfileScreen(props: ProfileScreenProp) {
             />
             <ProfileImageContainer>
               <ResponsiveImage
-                imageUrl={state.userProfile.imageUri}
+                imageUrl={state.userProfile.avatar.uri}
                 height={SCALED_WIDTH}
                 width={SCALED_WIDTH}
                 style={{ borderRadius: 120 / 2 }}

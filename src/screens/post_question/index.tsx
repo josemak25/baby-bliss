@@ -71,7 +71,7 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
       !categoryState.error &&
       !categoryState.isLoading
     ) {
-      showSnackbar(colors.POST_TIP_COLOR, 'Profile updated successfully!');
+      showSnackbar(colors.POST_TIP_COLOR, 'Question uploaded successfully!');
       setState({
         ...state,
         question: {
@@ -112,8 +112,6 @@ export default function PostQuestionScreen(props: PostQuestionScreenProp) {
     //validate the form  for empty fields before sending this form.
     for (let key in state.question) {
       if (!state.question[key] && key !== 'image') {
-        console.log(key);
-
         showSnackbar(
           colors.LIKE_POST_COLOR,
           'Please some entries are required!'

@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Ionicons } from '@expo/vector-icons';
 import {
   StatusBar,
-  ScrollView,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
   Dimensions
 } from 'react-native';
-
+import Constants from 'expo-constants';
+import Animated from 'react-native-reanimated';
 import { useThemeContext } from '../../theme';
 import { useStoreContext } from '../../store';
 import Message from '../../components/message';
@@ -18,10 +19,8 @@ import {
   POST_TYPES
 } from '../../store/posts/types';
 import postsActions from '../../store/posts/actions';
-import { Ionicons } from '@expo/vector-icons';
 import Header from '../../commons/header';
 import { NavigationInterface } from '../../constants';
-
 import Comment from '../../components/comments';
 import Eye from '../../../assets/icons/eye';
 import LoveIcon from '../../../assets/icons/love';
@@ -59,13 +58,26 @@ type messageType = {
   content?: string;
 };
 
+const HEADER_EXPANDED_HEIGHT = 300;
+const HEADER_COLLAPSED_HEIGHT = 60 + Constants.statusBarHeight;
+
+const AnimatedHeaderContentContainer = Animated.createAnimatedComponent(
+  HeaderContentContainer
+);
+
+const AnimatedSmallHeaderContentContainer = Animated.createAnimatedComponent(
+  HeaderContentContainer
+);
+
+const AnimatedDetailsTitle = Animated.createAnimatedComponent(DetailsTitle);
+
 const { width: DEVICE_WIDTH } = Dimensions.get('window');
 
 export default function UserBlogDetails(props: BlogDetailsProp) {
-  const { colors } = useThemeContext();
+  const { colors, fonts } = useThemeContext();
 
   const {
-    store: { postState, userState, connectionState },
+    store: { postState, userState },
     dispatch
   } = useStoreContext();
 
@@ -88,36 +100,44 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
     actionType: null,
     replyToName: '',
     text: '',
-    insertEmoji: false
+    insertEmoji: false,
+    displayHeader: false,
+    scrollY: new Animated.Value(0),
+    inputType: 'smile'
   });
 
   const ref = useRef({
     scrollViewRef: null,
     messageComponentY: null,
-    scrollViewHeight: null,
     canScrollDown: false
   });
 
+  Animated.useCode(() => {
+    return Animated.call([state.scrollY], ([scrollY]) => {
+      if (!state.displayHeader && Math.ceil(scrollY) >= 100) {
+        return setState({ ...state, displayHeader: true });
+      }
+
+      if (state.displayHeader && Math.ceil(scrollY) <= 100) {
+        return setState({ ...state, displayHeader: false });
+      }
+    });
+  }, [state.displayHeader]);
+
   useEffect(() => {
-    if (!state.text) {
-      setState({
-        ...state,
-        replyToName: ''
-      });
-    }
+    if (state.insertEmoji) Keyboard.dismiss();
+
+    if (!state.text) setState({ ...state, replyToName: '' });
 
     if (ref.current.canScrollDown && !postState.isLoading) {
-      ref.current.scrollViewRef.scrollTo({
-        y: ref.current.scrollViewHeight,
-        animated: true
-      });
+      ref.current.scrollViewRef.getNode().scrollToEnd({ animated: true });
       ref.current.canScrollDown = false;
     }
   }, [
     state.text,
     ref.current.canScrollDown,
     postState.isLoading,
-    ref.current.scrollViewHeight
+    state.insertEmoji
   ]);
 
   const handleOnFocusRequest = (
@@ -130,38 +150,31 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
       ...state,
       commentId,
       actionType,
-      replyToName: `@${userName} `, //this holds reference of the reply name to strip off before dispatching the message
-      text: `@${userName} ` //State that hold the text user is entering
+      replyToName: `@${userName} ` //this holds reference of the reply name to strip off before dispatching the message
     });
   };
 
   const dispatchMessage = () => {
-    let message: messageType = {
-      authToken: userState.token,
-      id
-    };
+    let message: messageType = { authToken: userState.token, id };
     let { actionType } = state;
+
     actionType = actionType ? actionType : POST_ACTION_TYPES.POST_COMMENT;
+    const content = state.text.replace(state.replyToName, '');
+
+    if (!content) {
+      return;
+    }
     if (state.replyToName) {
-      message = {
-        ...message,
-        content: state.text.replace(state.replyToName, ''),
-        commentId: state.commentId
-      };
+      message = { ...message, content, commentId: state.commentId };
     } else {
-      message = {
-        ...message,
-        content: state.text
-      };
+      message = { ...message, content: state.text };
     }
 
     postsActions(actionType)(dispatch, message);
     ref.current.canScrollDown = true;
   };
 
-  const setMessage = (message: string) => {
-    setState({ ...state, text: message });
-  };
+  const setMessage = (message: string) => setState({ ...state, text: message });
 
   const handleLikeComment = (
     id: string,
@@ -170,10 +183,7 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
   ) => {
     dispatch({
       type: POST_TYPES.LIKE_COMMENT,
-      payload: {
-        commentIndex,
-        userId: id
-      }
+      payload: { commentIndex, userId: id }
     });
 
     postsActions(POST_ACTION_TYPES.LIKE_COMMENT)(dispatch, {
@@ -185,19 +195,46 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
     });
   };
 
-  const handleInsertEmoji = (status: boolean) => {
-    if (status && state.insertEmoji) {
-      return setState({ ...state, insertEmoji: !state.insertEmoji });
+  const isInputEmoji = (status: boolean) => {
+    const inputType = state.inputType === 'smile' ? 'keyboard' : 'smile';
+
+    if (status) {
+      setState({ ...state, insertEmoji: !state.insertEmoji, inputType });
+      return;
     }
 
-    setState({ ...state, insertEmoji: status });
+    setState({ ...state, insertEmoji: status, inputType: 'smile' });
   };
 
-  useEffect(() => {
-    if (state.insertEmoji) {
-      Keyboard.dismiss();
+  const HEADER_HEIGHT = Animated.interpolate(state.scrollY, {
+    inputRange: [0, HEADER_EXPANDED_HEIGHT - HEADER_COLLAPSED_HEIGHT],
+    outputRange: [HEADER_EXPANDED_HEIGHT, HEADER_COLLAPSED_HEIGHT],
+    extrapolate: Animated.Extrapolate.CLAMP
+  });
+
+  const HEADER_CONTENT_CONTAINER_OPACITY = Animated.interpolate(state.scrollY, {
+    inputRange: [0, HEADER_EXPANDED_HEIGHT - HEADER_COLLAPSED_HEIGHT],
+    outputRange: [1, 0],
+    extrapolate: Animated.Extrapolate.CLAMP
+  });
+
+  const SMALL_HEADER_CONTENT_CONTAINER_OPACITY = Animated.interpolate(
+    state.scrollY,
+    {
+      inputRange: [
+        HEADER_COLLAPSED_HEIGHT,
+        HEADER_EXPANDED_HEIGHT - HEADER_COLLAPSED_HEIGHT
+      ],
+      outputRange: [0, 1],
+      extrapolate: Animated.Extrapolate.CLAMP
     }
-  }, [state.insertEmoji]);
+  );
+
+  const HEADER_TITLE = Animated.interpolate(state.scrollY, {
+    inputRange: [0, fonts.LARGE_SIZE + 10 - fonts.MEDIUM_SIZE],
+    outputRange: [fonts.LARGE_SIZE + 10, fonts.MEDIUM_SIZE],
+    extrapolate: Animated.Extrapolate.CLAMP
+  });
 
   return (
     <KeyboardAvoidingView
@@ -208,44 +245,81 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
       }}
     >
       <StatusBar barStyle="dark-content" />
-      <ScrollView
+      <Header
+        style={{
+          height: HEADER_HEIGHT,
+          paddingLeft: 0,
+          paddingRight: 0,
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          zIndex: 999
+        }}
+      >
+        <AnimatedHeaderContentContainer
+          style={{ opacity: HEADER_CONTENT_CONTAINER_OPACITY }}
+        >
+          <GoBack onPress={() => props.navigation.goBack()}>
+            <Ionicons
+              name="ios-arrow-back"
+              size={25}
+              color={colors.FONT_LIGHT_COLOR}
+            />
+          </GoBack>
+          <HeaderTextContainer>
+            <DetailsTipContainer>
+              <DetailsTip>Baby Tips</DetailsTip>
+            </DetailsTipContainer>
+            <AnimatedDetailsTitle style={{ fontSize: HEADER_TITLE }}>
+              {topic}
+            </AnimatedDetailsTitle>
+          </HeaderTextContainer>
+        </AnimatedHeaderContentContainer>
+
+        {/* SECOND SMALL HEADER */}
+        <AnimatedSmallHeaderContentContainer
+          style={{
+            position: 'absolute',
+            flexDirection: 'row',
+            alignItems: 'center',
+            opacity: SMALL_HEADER_CONTENT_CONTAINER_OPACITY,
+            display: state.displayHeader ? 'flex' : 'none',
+            backgroundColor: colors.POST_TIP_COLOR
+          }}
+        >
+          <GoBack onPress={() => props.navigation.goBack()} testID="backButton">
+            <Ionicons
+              name="ios-arrow-back"
+              size={25}
+              color={colors.BG_LIGHT_COLOR}
+            />
+          </GoBack>
+
+          <DetailsTip
+            style={{
+              color: colors.BG_LIGHT_COLOR,
+              fontSize: fonts.LARGE_SIZE,
+              paddingRight: 10
+            }}
+          >
+            Baby Tips
+          </DetailsTip>
+        </AnimatedSmallHeaderContentContainer>
+      </Header>
+      <Animated.ScrollView
         contentContainerStyle={{
           flexGrow: 1,
-          backgroundColor: colors.BD_DARK_COLOR
+          backgroundColor: colors.BD_DARK_COLOR,
+          paddingTop: HEADER_EXPANDED_HEIGHT
         }}
+        scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}
         ref={scrollRef => (ref.current.scrollViewRef = scrollRef)}
-        onContentSizeChange={(_width, height) =>
-          (ref.current.scrollViewHeight = height)
-        }
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: state.scrollY } } }],
+          { useNativeDriver: true }
+        )}
       >
-        <Header style={{ height: 350, paddingLeft: 0, paddingRight: 0 }}>
-          <HeaderContentContainer>
-            <GoBack onPress={() => props.navigation.goBack()}>
-              <Ionicons
-                name="ios-arrow-back"
-                size={25}
-                color={colors.FONT_LIGHT_COLOR}
-              />
-            </GoBack>
-            <HeaderTextContainer>
-              <DetailsTipContainer>
-                <DetailsTip>Baby Tips</DetailsTip>
-              </DetailsTipContainer>
-              <DetailsTitle>{topic}</DetailsTitle>
-              <ActionContainer>
-                <Eye style={{ position: 'relative', right: 9 }} width="30%" />
-                <NoOfViews>{abbreviateNumber(noOfViews)}</NoOfViews>
-                <LoveIcon
-                  style={{ position: 'relative', right: 10 }}
-                  width="30%"
-                  height="40%"
-                />
-                <NoOfLikes>{abbreviateNumber(noOfLikes)}</NoOfLikes>
-              </ActionContainer>
-            </HeaderTextContainer>
-          </HeaderContentContainer>
-        </Header>
         <TouchableWithoutFeedback
           onPress={() => {
             Keyboard.dismiss();
@@ -257,6 +331,16 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
           }}
         >
           <Container testID="blog-details">
+            <ActionContainer>
+              <Eye style={{ position: 'relative', right: 9 }} width="30%" />
+              <NoOfViews>{abbreviateNumber(noOfViews)}</NoOfViews>
+              <LoveIcon
+                style={{ position: 'relative', right: 10 }}
+                width="30%"
+                height="40%"
+              />
+              <NoOfLikes>{abbreviateNumber(noOfLikes)}</NoOfLikes>
+            </ActionContainer>
             <PostImage
               source={{
                 uri: images.length > 0 ? images[0] : 'https://bit.ly/2THZ4SC'
@@ -270,7 +354,7 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
             <Description>{description}</Description>
             <CommentHeader>comment</CommentHeader>
             <CommentsContainer>
-              {postState.comments.length && connectionState.isConnected ? (
+              {postState.comments.length ? (
                 postState.comments.map(
                   (comment: CommentInterface, index: number) => (
                     <Comment
@@ -296,7 +380,7 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
             </CommentsContainer>
           </Container>
         </TouchableWithoutFeedback>
-      </ScrollView>
+      </Animated.ScrollView>
       {state.insertEmoji && (
         <EmojiSelectorContainer>
           <EmojiSelector
@@ -309,12 +393,15 @@ export default function UserBlogDetails(props: BlogDetailsProp) {
         </EmojiSelectorContainer>
       )}
       <Message
-        // focus={false}
         dispatchMessage={dispatchMessage}
         setNewMessage={setMessage}
-        message={state.text}
+        message={state.replyToName ? `@${state.replyToName} ` : state.text}
         testID="postDetailMessageInput"
-        handleInsertEmoji={handleInsertEmoji}
+        scrollViewOnFocus={() =>
+          ref.current.scrollViewRef.getNode().scrollToEnd()
+        }
+        isInputEmoji={isInputEmoji}
+        inputType={state.inputType}
       />
     </KeyboardAvoidingView>
   );

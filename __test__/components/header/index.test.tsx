@@ -4,6 +4,10 @@ import { render } from '@testing-library/react-native';
 import Theme from '../../../src/theme';
 import Header from '../../../src/commons/header';
 
+jest.mock('react-native-reanimated', () =>
+  require('react-native-reanimated/mock')
+);
+
 jest.mock('react-navigation-stack', () => ({
   useHeaderHeight: jest.fn().mockReturnValue(60)
 }));

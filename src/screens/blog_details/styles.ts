@@ -16,8 +16,6 @@ export const HeaderImage = styled.ImageBackground`
 export const HeaderOverLay = styled.View`
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.FONT_DARK_COLOR};
-  opacity: 0.7;
   position: absolute;
 `;
 
@@ -74,8 +72,8 @@ export const FloatingMessageButton = styled(LinearGradient)`
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: -40px;
   right: 30px;
+  z-index: 999;
 `;
 
 export const ActionContainer = styled.View`
